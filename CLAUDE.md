@@ -56,7 +56,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 ## Despliegue
 - Repositorio **rosazaba/zaba-web**: público (lo exige GitHub Pages gratis), con el proyecto entero sin `originales/`.
 - GitHub Pages publica desde la rama `main`, carpeta `/docs`.
-- Claude hace el push desde su espacio de trabajo con la conexión de GitHub de claude.ai. El usuario no usa cliente de git.
+- Claude hace el push desde su espacio de trabajo mediante la app de Claude para GitHub (instalada solo en `zaba-web`). El usuario no usa cliente de git.
 - Mientras no haya dominio, `dominio` vale `https://rosazaba.github.io/zaba-web` y `publicar_dominio: false`. Los enlaces internos son relativos, así que la web funciona en esa subruta y en el dominio sin cambios.
 - Dominio .com:
   1. Poner `dominio` y `publicar_dominio: true` en `textos/general.yml`. El build crea `docs/CNAME`.
@@ -78,4 +78,4 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
   - Logo, en `originales/logo/`.
   - Fotos reales: ahora mismo no hay ninguna.
 - Por confirmar con el usuario: precios de los servicios, ubicación ("Spain") y el dominio (`zaba.com` está puesto provisionalmente).
-- Publicación: confirmar que existe `rosazaba/zaba-web` y que GitHub está conectado en claude.ai. Después, primer push y activar Pages.
+- Publicación: activar GitHub Pages (lo hace el usuario: Settings → Pages → `main` /docs; la app de Claude no tiene permiso de administración) cuando haya fotos reales y textos revisados.
