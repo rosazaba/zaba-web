@@ -266,6 +266,14 @@ def main():
     for gal in galerias:
         paginas.append((f"galeria-{gal['id']}", f"work/{gal['url']}/", "galeria.html", {"galeria": gal}))
 
+    # Iconos SVG locales (motor/assets/iconos/), incrustados en el HTML y coloreados con el color del texto
+    iconos = {}
+    for f in (MOTOR / "assets" / "iconos").glob("*.svg"):
+        svg = f.read_text(encoding="utf-8")
+        svg = re.sub(r"<title>.*?</title>", "", svg)
+        svg = svg.replace('role="img"', 'aria-hidden="true" focusable="false" fill="currentColor" class="icono"')
+        iconos[f.stem] = Markup(svg.strip())
+
     env = Environment(loader=FileSystemLoader(MOTOR / "plantillas"), autoescape=True,
                       trim_blocks=True, lstrip_blocks=True)
 
@@ -333,7 +341,7 @@ def main():
                              .replace("</", "<\\/"))
 
             html = env.get_template(plantilla).render(json_ld=json_ld,
-                lang=lang, pid=pid, T=T, url=url, asset=asset, srcset=srcset, foto=foto,
+                lang=lang, pid=pid, iconos=iconos, T=T, url=url, asset=asset, srcset=srcset, foto=foto,
                 g=g, inicio=inicio, work=work, services=services, about=about, contact=contact,
                 portada=portada[0] if portada else None, destacadas=destacadas,
                 foto_about=foto_about[0] if foto_about else None,

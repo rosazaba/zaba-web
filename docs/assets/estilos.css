@@ -318,3 +318,11 @@ p { margin: 0 0 1.2em; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .js .aparece { opacity: 1; transform: none; }
 }
+
+/* Iconos de redes (SVG locales de motor/assets/iconos, coloreados con el color del texto) */
+.icono { display: block; width: 22px; height: 22px; }
+.icono-red { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-left: -11px; border-radius: 50%; transition: color .2s, background .2s; }
+.icono-red:hover { color: var(--mantequilla); }
+.icono-red--grande { margin: 4px 0 0 -10px; color: var(--tierra); }
+.icono-red--grande .icono { width: 26px; height: 26px; }
+.icono-red--grande:hover { color: var(--mar); }

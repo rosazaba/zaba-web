@@ -20,8 +20,10 @@
       </div>
       <ul>
         {% if g.contacto.email %}<li><a href="mailto:{{ g.contacto.email }}">✉ {{ g.contacto.email }}</a></li>{% endif %}
-        {% if g.contacto.instagram %}<li><a href="https://www.instagram.com/{{ g.contacto.instagram }}/" target="_blank" rel="noopener">Instagram · @{{ g.contacto.instagram }}</a></li>{% endif %}
       </ul>
+      {% if g.contacto.instagram %}
+      <a class="icono-red icono-red--grande" href="https://www.instagram.com/{{ g.contacto.instagram }}/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">{{ iconos.instagram }}</a>
+      {% endif %}
     </aside>
     <div class="contacto__form">
     <h2>{{ T(contact.formulario_titulo) }}</h2>
