@@ -25,7 +25,6 @@ originales/
 └── services/
     ├── surf/           → 1 foto para "Sesión de surf"
     ├── buceo/          → 1 foto para "Sesión submarina"
-    ├── marcas/         → 1 foto para "Marcas y escuelas"
     └── copias/         → 1 foto para "Copias artísticas"
 ```
 

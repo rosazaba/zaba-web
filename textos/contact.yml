@@ -6,9 +6,9 @@ titulo:
   fr: "Contact"
 
 intro:
-  en: "Planning a session, a project or just want a print? Write to me and I'll get back to you soon."
-  es: "¿Quieres una sesión, un proyecto o una copia impresa? Escríbeme y te respondo pronto."
-  fr: "Une séance, un projet ou simplement un tirage ? Écrivez-moi et je vous réponds rapidement."
+  en: "Planning a session or want a print? Write to me and I'll get back to you soon."
+  es: "¿Quieres una sesión o una copia impresa? Escríbeme y te respondo pronto."
+  fr: "Une séance ou un tirage ? Écrivez-moi et je vous réponds rapidement."
 
 formulario:
   nombre:   { en: "Name",                  es: "Nombre",               fr: "Nom" }

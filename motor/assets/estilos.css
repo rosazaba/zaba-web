@@ -205,7 +205,7 @@ p { margin: 0 0 1.2em; }
 
 /* ── Servicios ──────────────────────────────────────────── */
 .mini-servicios { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--linea); }
-@media (min-width: 760px) { .mini-servicios { grid-template-columns: repeat(2, 1fr); column-gap: 48px; } }
+@media (min-width: 760px) { .mini-servicios { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); column-gap: 48px; } }
 .mini-servicio { display: grid; grid-template-columns: 44px 1fr auto; align-items: baseline; gap: 12px; padding: 22px 4px; border-bottom: 1px solid var(--linea); text-decoration: none; transition: padding .3s, color .3s; }
 .mini-servicio:hover { padding-left: 12px; color: var(--mar); }
 .mini-servicio__num { font: 400 .75rem var(--sans); letter-spacing: .2em; color: var(--ocre); }

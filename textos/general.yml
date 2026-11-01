@@ -26,9 +26,9 @@ lema:
   fr: "Photographie de surf et sous-marine"
 
 descripcion_google:
-  en: "Zaba — surf and underwater photography. Portfolio, photo sessions, brands and prints."
-  es: "Zaba — fotografía de surf y submarina. Portfolio, sesiones de fotos, marcas y copias impresas."
-  fr: "Zaba — photographie de surf et sous-marine. Portfolio, séances photo, marques et tirages."
+  en: "Zaba — surf and underwater photography. Portfolio, surf and underwater photo sessions, and prints."
+  es: "Zaba — fotografía de surf y submarina. Portfolio, sesiones de fotos de surf y buceo, y copias impresas."
+  fr: "Zaba — photographie de surf et sous-marine. Portfolio, séances photo de surf et de plongée, et tirages."
 
 menu:
   inicio:   { en: "Home",     es: "Inicio",    fr: "Accueil" }

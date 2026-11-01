@@ -40,18 +40,6 @@ lista:
       es: ["Una o dos inmersiones", "Más de 30 fotos editadas", "Galería online en 72 h"]
       fr: ["Une ou deux plongées", "Plus de 30 photos retouchées", "Galerie en ligne sous 72 h"]
 
-  - carpeta: marcas
-    titulo: { en: "Brands & schools", es: "Marcas y escuelas", fr: "Marques et écoles" }
-    precio: ""
-    texto:
-      en: "Content for surf and dive schools, shops and ocean brands: campaigns, social media and websites."
-      es: "Contenido para escuelas de surf y buceo, tiendas y marcas del mar: campañas, redes sociales y webs."
-      fr: "Contenus pour écoles de surf et de plongée, boutiques et marques liées à l'océan : campagnes, réseaux sociaux et sites web."
-    incluye:
-      en: ["Tailored plan and shot list", "Commercial usage licence", "Photo and short video options"]
-      es: ["Plan y lista de tomas a medida", "Licencia de uso comercial", "Opciones de foto y vídeo corto"]
-      fr: ["Plan et liste de prises sur mesure", "Licence d'utilisation commerciale", "Options photo et vidéo courte"]
-
   - carpeta: copias
     titulo: { en: "Fine art prints", es: "Copias artísticas", fr: "Tirages d'art" }
     precio: "45 €"
