@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block titulo %}{{ T(about.titulo) }} — {{ g.marca }}{% endblock %}
+{% block contenido %}
+<section class="sobre">
+  <div class="ancho sobre__in">
+    {% if foto_about %}
+    <div class="sobre__foto">{{ foto(foto_about, "(min-width: 900px) 40vw, 100vw", "", "eager", g.marca) }}</div>
+    {% endif %}
+    <div class="sobre__texto">
+      <p class="antetitulo">{{ T(about.titulo) }}</p>
+      <h1>{{ T(about.entradilla) }}</h1>
+      {% for p in T(about.parrafos) %}<p>{{ p }}</p>{% endfor %}
+      <dl class="datos">
+        {% for d in about.datos %}
+        <div><dt>{{ T(d.etiqueta) }}</dt><dd>{{ T(d.valor) }}</dd></div>
+        {% endfor %}
+      </dl>
+      <div class="botones">
+        <a class="boton" href="{{ url('contact/') }}">{{ T(g.botones.escribeme) }}</a>
+        <a class="boton boton--linea" href="{{ url('work/') }}">{{ T(g.botones.ver_trabajo) }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

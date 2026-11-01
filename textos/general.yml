@@ -1,0 +1,56 @@
+# ─────────────────────────────────────────────────────────────
+#  DATOS GENERALES DE LA WEB
+#  Cada texto tiene sus tres idiomas: en (inglés), es, fr.
+#  Cambia lo que quieras entre comillas y pídele a Claude que publique.
+# ─────────────────────────────────────────────────────────────
+
+marca: "Zaba"
+
+# Dirección final de la web (cuando tengas el dominio). Sirve para Google y redes.
+dominio: "https://rosazaba.github.io/zaba-web"   # cambiar al .com cuando esté enlazado
+# Pon true cuando el dominio ya apunte a GitHub (crea el archivo CNAME).
+publicar_dominio: false
+
+contacto:
+  email: ""                    # tu email público de contacto (pendiente)
+  instagram: ""                # solo el usuario, sin @ (pendiente)
+  whatsapp: "34619811240"      # con prefijo y sin espacios. Vacío = no se muestra
+  telefono: "+34 619 81 12 40" # para llamar. Vacío = no se muestra
+  # Clave gratuita de https://web3forms.com para que el formulario te llegue al email.
+  # Vacío = el botón abre el programa de correo del visitante.
+  web3forms_clave: ""
+
+lema:
+  en: "Surf & underwater photography"
+  es: "Fotografía de surf y submarina"
+  fr: "Photographie de surf et sous-marine"
+
+descripcion_google:
+  en: "Zaba — surf and underwater photography. Portfolio, photo sessions, brands and prints."
+  es: "Zaba — fotografía de surf y submarina. Portfolio, sesiones de fotos, marcas y copias impresas."
+  fr: "Zaba — photographie de surf et sous-marine. Portfolio, séances photo, marques et tirages."
+
+menu:
+  inicio:   { en: "Home",     es: "Inicio",    fr: "Accueil" }
+  work:     { en: "Work",     es: "Trabajos",  fr: "Travaux" }
+  services: { en: "Services", es: "Servicios", fr: "Services" }
+  about:    { en: "About",    es: "Sobre mí",  fr: "À propos" }
+  contact:  { en: "Contact",  es: "Contacto",  fr: "Contact" }
+
+botones:
+  ver_trabajo:  { en: "See the work",     es: "Ver trabajos",       fr: "Voir les travaux" }
+  reservar:     { en: "Book a session",   es: "Reservar sesión",    fr: "Réserver une séance" }
+  ver_galeria:  { en: "Open gallery",     es: "Ver galería",        fr: "Voir la galerie" }
+  ver_servicios: { en: "All services",    es: "Todos los servicios", fr: "Tous les services" }
+  escribeme:    { en: "Get in touch",     es: "Escríbeme",          fr: "Écrivez-moi" }
+  pedir:        { en: "Ask about this",   es: "Consultar",          fr: "Demander" }
+
+pie:
+  frase:
+    en: "Chasing light above and below the surface."
+    es: "Persiguiendo la luz, sobre y bajo el agua."
+    fr: "À la poursuite de la lumière, au-dessus et sous la surface."
+  derechos:
+    en: "All photographs © Zaba. Please don't use them without permission."
+    es: "Todas las fotografías © Zaba. No las uses sin permiso."
+    fr: "Toutes les photographies © Zaba. Merci de ne pas les utiliser sans autorisation."

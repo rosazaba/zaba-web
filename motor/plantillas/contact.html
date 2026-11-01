@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block titulo %}{{ T(contact.titulo) }} — {{ g.marca }}{% endblock %}
+{% set F = contact.formulario %}
+{% block contenido %}
+<section class="cabeza-pagina">
+  <div class="estrecho">
+    <p class="antetitulo">{{ g.marca }}</p>
+    <h1>{{ T(contact.titulo) }}</h1>
+    <p class="texto-grande">{{ T(contact.intro) }}</p>
+  </div>
+</section>
+
+<section class="bloque bloque--sin-arriba">
+  <div class="contacto">
+    <aside class="contacto__directo">
+      <h2>{{ T(contact.directo) }}</h2>
+      <div class="contacto__botones">
+        {% if g.contacto.whatsapp %}<a class="boton" href="https://wa.me/{{ g.contacto.whatsapp }}" target="_blank" rel="noopener">{{ T(contact.whatsapp) }}</a>{% endif %}
+        {% if g.contacto.telefono %}<a class="boton boton--linea" href="tel:{{ g.contacto.telefono|replace(' ', '') }}">{{ T(contact.llamar) }} · {{ g.contacto.telefono }}</a>{% endif %}
+      </div>
+      <ul>
+        {% if g.contacto.email %}<li><a href="mailto:{{ g.contacto.email }}">✉ {{ g.contacto.email }}</a></li>{% endif %}
+        {% if g.contacto.instagram %}<li><a href="https://instagram.com/{{ g.contacto.instagram }}" target="_blank" rel="noopener">Instagram · @{{ g.contacto.instagram }}</a></li>{% endif %}
+      </ul>
+    </aside>
+    <div class="contacto__form">
+    <h2>{{ T(contact.formulario_titulo) }}</h2>
+    <form class="formulario" data-formulario
+          data-clave="{{ g.contacto.web3forms_clave }}" data-email="{{ g.contacto.email }}"
+          data-gracias="{{ T(F.gracias) }}" data-error="{{ T(F.error) }}">
+      <input type="hidden" name="subject" value="{{ g.marca }} · web">
+      <input type="checkbox" name="botcheck" class="oculto" tabindex="-1" autocomplete="off">
+      <label>{{ T(F.nombre) }}<input name="name" required autocomplete="name"></label>
+      {# El email solo hace falta si el formulario se envía con Web3Forms; con el correo del visitante ya va incluido #}
+      {% if g.contacto.web3forms_clave %}<label>{{ T(F.email) }}<input name="email" type="email" required autocomplete="email"></label>{% endif %}
+      <label>{{ T(F.servicio) }}
+        <select name="service" data-servicio>
+          {% for valor, texto in contact.intereses.items() %}<option value="{{ valor }}">{{ T(texto) }}</option>{% endfor %}
+        </select>
+      </label>
+      <label class="ancho-total">{{ T(F.mensaje) }}<textarea name="message" rows="4" required></textarea></label>
+      <button class="boton ancho-total" type="submit">{{ T(F.enviar) }}</button>
+      <p class="formulario__estado ancho-total" role="status" aria-live="polite"></p>
+    </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

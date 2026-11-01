@@ -1,0 +1,42 @@
+# TRABAJOS (galerías)
+# Cada carpeta dentro de originales/work/ es una galería.
+# Para crear una galería nueva: crea la carpeta con fotos y añade aquí su bloque
+# (si no la añades, se publica igualmente usando el nombre de la carpeta).
+# Las fotos se ordenan por nombre de archivo: usa 01-, 02-, 03-... para elegir el orden.
+
+titulo:
+  en: "Work"
+  es: "Trabajos"
+  fr: "Travaux"
+
+intro:
+  en: "Two galleries, one obsession: the water."
+  es: "Dos galerías, una obsesión: el agua."
+  fr: "Deux galeries, une obsession : l'eau."
+
+galerias:
+  surf:
+    url: "surf"          # dirección: zaba.com/work/surf/
+    orden: 1
+    titulo:  { en: "Surf",   es: "Surf",   fr: "Surf" }
+    resumen:
+      en: "Line-ups, barrels and the people who chase them."
+      es: "Picos, tubos y la gente que los persigue."
+      fr: "Les line-ups, les tubes et ceux qui les chassent."
+    texto:
+      en: "Shot from the water and from the shore, at dawn and at golden hour."
+      es: "Desde el agua y desde la orilla, al amanecer y a última hora de la tarde."
+      fr: "Depuis l'eau et depuis la plage, à l'aube et à l'heure dorée."
+
+  buceo:
+    url: "diving"        # dirección: zaba.com/work/diving/
+    orden: 2
+    titulo:  { en: "Diving", es: "Buceo",  fr: "Plongée" }
+    resumen:
+      en: "Life beneath the surface, in natural light."
+      es: "La vida bajo la superficie, con luz natural."
+      fr: "La vie sous la surface, en lumière naturelle."
+    texto:
+      en: "Reefs, wrecks, marine life and the divers who explore them."
+      es: "Arrecifes, pecios, vida marina y los buceadores que los exploran."
+      fr: "Récifs, épaves, vie marine et les plongeurs qui les explorent."

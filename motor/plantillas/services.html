@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block titulo %}{{ T(services.titulo) }} — {{ g.marca }}{% endblock %}
+{% block contenido %}
+<section class="cabeza-pagina">
+  <div class="estrecho">
+    <p class="antetitulo">{{ g.marca }}</p>
+    <h1>{{ T(services.titulo) }}</h1>
+    <p class="texto-grande">{{ T(services.intro) }}</p>
+  </div>
+</section>
+
+<section class="bloque bloque--sin-arriba">
+  <div class="ancho servicios">
+    {% for s in lista_servicios %}
+    <article class="servicio aparece" id="{{ s.carpeta }}">
+      {% if s.foto %}<div class="servicio__foto">{{ foto(s.foto, "(min-width: 900px) 45vw, 100vw") }}</div>{% endif %}
+      <div class="servicio__texto">
+        <span class="servicio__num">0{{ loop.index }}</span>
+        <h2>{{ T(s.titulo) }}</h2>
+        <p class="servicio__precio">{% if s.precio %}<small>{{ T(services.desde) }}</small> {{ s.precio }}{% else %}{{ T(services.consultar) }}{% endif %}</p>
+        <p>{{ T(s.texto) }}</p>
+        <ul class="lista-check">
+          {% for item in T(s.incluye) %}<li>{{ item }}</li>{% endfor %}
+        </ul>
+        <a class="boton boton--linea" href="{{ url('contact/') }}?s={{ s.carpeta }}">{{ T(g.botones.pedir) }}</a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="bloque bloque--arena">
+  <div class="ancho">
+    <h2 class="titulo-seccion aparece">{{ T(services.pasos_titulo) }}</h2>
+    <ol class="pasos">
+      {% for p in services.pasos %}
+      <li class="paso aparece">
+        <span class="paso__num">{{ loop.index }}</span>
+        <h3>{{ T(p.titulo) }}</h3>
+        <p>{{ T(p.texto) }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+{% include "_cierre.html" %}
+{% endblock %}

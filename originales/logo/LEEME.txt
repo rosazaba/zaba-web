@@ -1,0 +1,5 @@
+Pon aqui tu logo.
+Ideal: SVG. Si no, PNG con fondo transparente, minimo 1000 px de ancho.
+Si tienes version clara (para encima de fotos) y oscura, pon las dos: logo-claro y logo-oscuro.
+Si tienes un simbolo o icono aparte, ponlo como icono (se usara como icono de la pestana del navegador).
+Puedes borrar este archivo cuando pongas el logo.

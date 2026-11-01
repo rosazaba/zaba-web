@@ -1,0 +1,4 @@
+Pillow>=10
+Jinja2>=3
+PyYAML>=6
+numpy>=1.24

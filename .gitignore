@@ -1,0 +1,7 @@
+# Las fotos originales no se suben a GitHub
+originales/**
+!originales/**/
+!originales/**/LEEME.txt
+__pycache__/
+.DS_Store
+Thumbs.db

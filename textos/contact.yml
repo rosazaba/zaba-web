@@ -1,0 +1,38 @@
+# CONTACTO
+
+titulo:
+  en: "Contact"
+  es: "Contacto"
+  fr: "Contact"
+
+intro:
+  en: "Planning a session, a project or just want a print? Write to me and I'll get back to you soon."
+  es: "¿Quieres una sesión, un proyecto o una copia impresa? Escríbeme y te respondo pronto."
+  fr: "Une séance, un projet ou simplement un tirage ? Écrivez-moi et je vous réponds rapidement."
+
+formulario:
+  nombre:   { en: "Name",                  es: "Nombre",               fr: "Nom" }
+  email:    { en: "Email",                 es: "Email",                fr: "E-mail" }
+  servicio: { en: "I'm interested in",     es: "Me interesa",          fr: "Je suis intéressé·e par" }
+  mensaje:  { en: "Message",               es: "Mensaje",              fr: "Message" }
+  enviar:   { en: "Send message",          es: "Enviar mensaje",       fr: "Envoyer le message" }
+  gracias:  { en: "Thank you! I'll reply very soon.", es: "¡Gracias! Te respondo muy pronto.", fr: "Merci ! Je vous réponds très vite." }
+  error:    { en: "Something went wrong. Please email me directly.", es: "Algo ha fallado. Escríbeme directamente por email.", fr: "Une erreur s'est produite. Écrivez-moi directement par e-mail." }
+
+# Opciones de "Me interesa" (valor: texto en cada idioma)
+intereses:
+  surf:  { en: "Surf",   es: "Surf",  fr: "Surf" }
+  buceo: { en: "Diving", es: "Buceo", fr: "Plongée" }
+
+llamar:   { en: "Call",     es: "Llamar",   fr: "Appeler" }
+whatsapp: { en: "WhatsApp", es: "WhatsApp", fr: "WhatsApp" }
+
+directo:
+  en: "Call or message me"
+  es: "Llámame o escríbeme"
+  fr: "Appelez-moi ou écrivez-moi"
+
+formulario_titulo:
+  en: "Or send me a message"
+  es: "O envíame un mensaje"
+  fr: "Ou envoyez-moi un message"

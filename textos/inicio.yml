@@ -1,0 +1,48 @@
+# PÁGINA DE INICIO
+# Foto grande de portada: originales/inicio/portada/  (pon UNA foto)
+# Selección de fotos destacadas: originales/inicio/destacadas/  (6–9 fotos)
+
+portada_titulo:
+  en: "Where the ocean tells the story"
+  es: "Donde el océano cuenta la historia"
+  fr: "Là où l'océan raconte l'histoire"
+
+portada_subtitulo:
+  en: "Surf and underwater photography by Zaba"
+  es: "Fotografía de surf y submarina por Zaba"
+  fr: "Photographie de surf et sous-marine par Zaba"
+
+intro_titulo:
+  en: "Hello, I'm Zaba."
+  es: "Hola, soy Zaba."
+  fr: "Bonjour, je suis Zaba."
+
+intro_texto:
+  en: "I photograph surfers, divers and the sea itself — the line of a wave at sunrise, the blue silence a few metres down. If you want images of your session, your school or your brand that feel as good as being in the water, you're in the right place."
+  es: "Fotografío surfistas, buceadores y el propio mar: la línea de una ola al amanecer, el silencio azul a unos metros de profundidad. Si quieres imágenes de tu sesión, tu escuela o tu marca que transmitan lo mismo que estar en el agua, estás en el sitio adecuado."
+  fr: "Je photographie les surfeurs, les plongeurs et la mer elle-même : la ligne d'une vague au lever du soleil, le silence bleu à quelques mètres de profondeur. Si vous voulez des images de votre session, de votre école ou de votre marque qui donnent la même sensation que d'être dans l'eau, vous êtes au bon endroit."
+
+categorias_titulo:
+  en: "Two worlds, one sea"
+  es: "Dos mundos, un mismo mar"
+  fr: "Deux mondes, une seule mer"
+
+destacadas_titulo:
+  en: "Selected frames"
+  es: "Selección"
+  fr: "Sélection"
+
+servicios_titulo:
+  en: "What I offer"
+  es: "Qué ofrezco"
+  fr: "Ce que je propose"
+
+cierre_titulo:
+  en: "Let's go out and shoot"
+  es: "Salgamos a hacer fotos"
+  fr: "Allons shooter ensemble"
+
+cierre_texto:
+  en: "Tell me where, when and what you have in mind. I usually reply within a day."
+  es: "Cuéntame dónde, cuándo y qué tienes en mente. Suelo responder en menos de un día."
+  fr: "Dites-moi où, quand et ce que vous avez en tête. Je réponds en général en moins d'une journée."
