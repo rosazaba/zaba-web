@@ -5,3 +5,5 @@ originales/**
 __pycache__/
 .DS_Store
 Thumbs.db
+# Vista previa local (se abre con doble clic, no se publica)
+vista-previa/

@@ -3,7 +3,7 @@
 Generador de la web de Zaba.
 
   python motor/build.py            -> genera la web en docs/ (lo que se publica en GitHub Pages)
-  python motor/build.py --preview  -> igual, pero con enlaces .../index.html para verla sin servidor
+  python motor/build.py --preview  -> genera vista-previa/ con enlaces .../index.html, para abrirla con doble clic
 
 Lee:
   originales/   fotos originales (no se suben a GitHub)
@@ -34,6 +34,9 @@ CALIDAD = 80
 MIN_LADO = 1600                       # avisa si una foto original es más pequeña que esto
 
 PREVIEW = "--preview" in sys.argv
+if PREVIEW:
+    # La vista previa local va a otra carpeta: nunca se mezcla con la web publicable (docs/)
+    SALIDA = RAIZ / "vista-previa"
 avisos = []
 generadas = set()
 
@@ -207,7 +210,15 @@ def main():
     contact = leer("contact")
 
     # Fotos
-    portada = [optimizar(p, "inicio/portada") for p in fotos_de("inicio/portada")[:1]]
+    fotos_portada = fotos_de("inicio/portada")[:1]
+    if not fotos_portada and inicio.get("portada_foto"):
+        # Sin foto en la carpeta de portada: usa la indicada en textos/inicio.yml (sin duplicar el archivo)
+        candidata = ORIG / inicio["portada_foto"]
+        if candidata.exists():
+            fotos_portada = [candidata]
+        else:
+            avisos.append(f"No existe la foto de portada indicada en textos/inicio.yml: originales/{inicio['portada_foto']}")
+    portada = [optimizar(p, "inicio/portada") for p in fotos_portada]
     destacadas = [optimizar(p, "inicio/destacadas") for p in fotos_de("inicio/destacadas")]
     foto_about = [optimizar(p, "about") for p in fotos_de("about")[:1]]
     logo = procesar_logo()
@@ -233,6 +244,13 @@ def main():
             "portada": fotos[0],
         })
     galerias.sort(key=lambda x: (x["orden"], x["id"]))
+    if not destacadas:
+        # Sin selección propia: se muestran fotos de las galerías (hasta 9, repartidas entre ellas)
+        filas = [gal["fotos"] for gal in galerias]
+        destacadas = [f for grupo in zip(*filas) for f in grupo][:9] if len(filas) > 1 else (filas[0][:9] if filas else [])
+        if len(filas) > 1 and len(destacadas) < 9:
+            usadas = {id(f) for f in destacadas}
+            destacadas += [f for grupo in filas for f in grupo if id(f) not in usadas][:9 - len(destacadas)]
 
     lista_servicios = []
     for s in services.get("lista", []):
@@ -355,7 +373,7 @@ def main():
     # Resumen
     total = sum(f.stat().st_size for f in (SALIDA / "img").rglob("*") if f.is_file()) if (SALIDA / "img").exists() else 0
     n_fotos = len(destacadas) + len(portada) + len(foto_about) + sum(len(x["fotos"]) for x in galerias)
-    print(f"✓ Web generada en docs/  ·  {len(paginas) * len(IDIOMAS)} páginas  ·  {n_fotos} fotos  ·  {total/1e6:.1f} MB de imágenes"
+    print(f"✓ Web generada en {SALIDA.name}/  ·  {len(paginas) * len(IDIOMAS)} páginas  ·  {n_fotos} fotos  ·  {total/1e6:.1f} MB de imágenes"
           + ("  ·  modo vista previa" if PREVIEW else ""))
     for a in avisos:
         print("⚠", a)
@@ -364,4 +382,5 @@ def main():
 if __name__ == "__main__":
     main()
     import revisar
+    revisar.DOCS = SALIDA
     sys.exit(revisar.main())

@@ -8,6 +8,7 @@
 | `textos/` | Todos los textos de la web en inglés, español y francés | Sí, si quieres corregir algo (o pídeselo a Claude) |
 | `motor/` | El generador, las plantillas, el diseño y la revisión automática | No hace falta |
 | `docs/` | La web final ya generada (es lo que publica GitHub) | No: se genera sola |
+| `vista-previa/` | Copia de la web para verla en tu ordenador: abre `vista-previa\index.html` con doble clic | Solo para mirar |
 
 ## Dónde va cada foto
 

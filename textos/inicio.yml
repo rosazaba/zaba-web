@@ -1,6 +1,9 @@
 # PÁGINA DE INICIO
 # Foto grande de portada: originales/inicio/portada/  (pon UNA foto)
+#   Si esa carpeta está vacía, se usa la foto indicada aquí (ruta dentro de originales/):
+portada_foto: "work/surf/DSC05298.jpg"
 # Selección de fotos destacadas: originales/inicio/destacadas/  (6–9 fotos)
+#   Si esa carpeta está vacía, se muestran fotos de las galerías.
 
 portada_titulo:
   en: "Where the ocean tells the story"

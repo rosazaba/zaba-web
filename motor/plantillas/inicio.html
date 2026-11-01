@@ -23,7 +23,7 @@
   </div>
 </section>
 
-{% if galerias %}
+{% if galerias|length > 1 %}
 <section class="bloque bloque--sin-arriba">
   <div class="ancho">
     <h2 class="titulo-seccion aparece">{{ T(inicio.categorias_titulo) }}</h2>

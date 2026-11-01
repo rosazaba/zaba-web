@@ -29,10 +29,11 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
   - `plantillas/`: plantillas Jinja.
   - `assets/`: CSS y JS.
 - `docs/`: web generada, que es lo que publica GitHub Pages. **No se edita a mano**; se regenera siempre con `build.py`.
+- `vista-previa/`: copia para ver en local con doble clic. No se publica.
 
 ## Reglas técnicas
 - `python motor/build.py` genera la web y ejecuta la revisión. **Solo se publica con 0 errores.** Los avisos se le cuentan al usuario.
-- `--preview` genera enlaces terminados en `index.html`. Es solo para la vista previa en un artifact. **Nunca se despliega una build con `--preview`.**
+- `--preview` genera `vista-previa/` (ignorada por git) con enlaces terminados en `index.html`. Sirve para que el usuario la abra con doble clic en `web1\vista-previa\index.html` y para el artifact de vista previa. Tras cada cambio se regeneran `docs/` y `vista-previa/` y las dos se copian a `web1`.
 - Fotos:
   - Siempre pasan por `optimizar()`: WebP a 640, 1280 y 2000 px, sin EXIF ni GPS.
   - Se ordenan por nombre de archivo (`01-`, `02-`…).
@@ -76,6 +77,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - Datos del usuario:
   - Email público, Instagram y clave de Web3Forms (en `textos/general.yml`).
   - Logo, en `originales/logo/`.
-  - Fotos reales: ahora mismo no hay ninguna.
+  - Fotos: solo hay 6 de surf. Faltan buceo, portada propia, destacadas, Sobre mí y servicios.
+  - Logo: el actual sale de una imagen de WhatsApp (comprimida, 1600 px). Pedir el original o un SVG.
 - Por confirmar con el usuario: precios de los servicios, ubicación ("Spain") y el dominio (`zaba.com` está puesto provisionalmente).
 - Publicación: activar GitHub Pages (lo hace el usuario: Settings → Pages → `main` /docs; la app de Claude no tiene permiso de administración) cuando haya fotos reales y textos revisados.
