@@ -33,7 +33,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 
 ## Reglas técnicas
 - `python motor/build.py` genera la web y ejecuta la revisión. **Solo se publica con 0 errores.** Los avisos se le cuentan al usuario.
-- `--preview` genera `vista-previa/` (ignorada por git) con enlaces terminados en `index.html`. Sirve para que el usuario la abra con doble clic en `web1\vista-previa\index.html`. **No publicar ni actualizar artifacts de vista previa**: el usuario revisa en su ordenador. Tras cada cambio se regeneran `docs/` y `vista-previa/` y las dos se copian a `web1`.
+- `--preview` genera `vista-previa/` (ignorada por git) con enlaces terminados en `index.html`. Sirve para que el usuario la abra con doble clic en `web1\vista-previa\index.html`. **No publicar ni actualizar artifacts de vista previa por iniciativa propia**: el usuario revisa en su ordenador. Solo se publica una vista previa online cuando el usuario la pide explícitamente (por ejemplo, si está en el móvil). Tras cada cambio se regeneran `docs/` y `vista-previa/` y las dos se copian a `web1`.
 - Fotos:
   - Siempre pasan por `optimizar()`: WebP a 640, 1280 y 2000 px, sin EXIF ni GPS.
   - Se ordenan por nombre de archivo (`01-`, `02-`…).
