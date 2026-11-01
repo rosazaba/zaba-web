@@ -12,7 +12,8 @@ dominio: "https://rosazaba.github.io/zaba-web"   # cambiar al .com cuando esté 
 publicar_dominio: false
 
 contacto:
-  email: ""                    # tu email público de contacto (pendiente)
+  email: ""                    # email visible en la web (vacío = no se muestra)
+  email_formulario: "rouszaba@gmail.com"   # adonde llegan los mensajes del formulario (no se muestra)
   instagram: "r.zabafoto"      # solo el usuario, sin @
   whatsapp: "34619811240"      # con prefijo y sin espacios. Vacío = no se muestra
   telefono: "+34 619 81 12 40" # para llamar. Vacío = no se muestra

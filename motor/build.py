@@ -349,6 +349,8 @@ def main():
                 idiomas=otros_idiomas, alternos=alternos,
                 canonical=g["dominio"].rstrip("/") + "/" + ruta_completa,
                 tiene_compartir=bool(portada), logo=logo,
+                # email de destino codificado (base64 al revés) para que no lo lean los robots de spam
+                email_codificado=__import__("base64").b64encode((g["contacto"].get("email_formulario") or g["contacto"].get("email") or "").encode())[::-1].decode(),
                 **extra,
             )
             out = SALIDA / ruta_completa / "index.html"

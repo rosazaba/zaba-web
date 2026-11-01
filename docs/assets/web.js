@@ -118,7 +118,8 @@
         // Sin clave: abre el correo del visitante con el mensaje ya escrito
         var interes = sel ? sel.options[sel.selectedIndex].text : "";
         var texto = datos.get("message") + "\n\n— " + datos.get("name") + " (" + interes + ")";
-        location.href = "mailto:" + (form.dataset.email || "") + "?subject=" + encodeURIComponent(datos.get("subject") + " · " + interes) +
+        var destino = form.dataset.destino ? atob(form.dataset.destino.split("").reverse().join("")) : "";
+        location.href = "mailto:" + destino + "?subject=" + encodeURIComponent(datos.get("subject") + " · " + interes) +
           "&body=" + encodeURIComponent(texto);
       }
     });

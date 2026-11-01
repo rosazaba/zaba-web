@@ -109,7 +109,8 @@ def revisar_textos(errores, avisos):
 
     g = yaml.safe_load((TEXTOS / "general.yml").read_text(encoding="utf-8"))
     c = g.get("contacto", {})
-    if not c.get("email"): avisos.append("Pendiente: email de contacto (textos/general.yml → contacto.email)")
+    if not (c.get("email_formulario") or c.get("email")):
+        errores.append("Falta el email de destino del formulario (textos/general.yml → contacto.email_formulario)")
     if not c.get("instagram"): avisos.append("Pendiente: usuario de Instagram (textos/general.yml → contacto.instagram)")
     if not c.get("web3forms_clave"): avisos.append("Pendiente: clave de Web3Forms; el formulario abrirá el correo del visitante en vez de enviarse solo")
     return g

@@ -27,7 +27,7 @@
     <div class="contacto__form">
     <h2>{{ T(contact.formulario_titulo) }}</h2>
     <form class="formulario" data-formulario
-          data-clave="{{ g.contacto.web3forms_clave }}" data-email="{{ g.contacto.email }}"
+          data-clave="{{ g.contacto.web3forms_clave }}" data-destino="{{ email_codificado }}"
           data-gracias="{{ T(F.gracias) }}" data-error="{{ T(F.error) }}">
       <input type="hidden" name="subject" value="{{ g.marca }} · web">
       <input type="checkbox" name="botcheck" class="oculto" tabindex="-1" autocomplete="off">

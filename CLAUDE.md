@@ -51,6 +51,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - Contacto:
   - Primero los botones de WhatsApp y Llamar.
   - Después el formulario, que solo tiene nombre, "me interesa" (surf o buceo, en `textos/contact.yml` → `intereses`) y mensaje.
+  - Destino de los mensajes: `contacto.email_formulario` (rouszaba@gmail.com). No se muestra en la web; va codificado en `data-destino` (base64 invertido) para evitar robots. `contacto.email` es el email visible y está vacío a propósito.
   - Sin `web3forms_clave`, el formulario abre el correo del visitante (mailto). Con clave, envía por Web3Forms y muestra un campo de email.
   - El botón flotante de WhatsApp no aparece en la página de contacto.
 
@@ -75,8 +76,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 
 ## Pendiente
 - Datos del usuario:
-  - Email público, Instagram y clave de Web3Forms (en `textos/general.yml`).
-  - Logo, en `originales/logo/`.
+  - Clave de Web3Forms (en `textos/general.yml`), creada con rouszaba@gmail.com.
   - Fotos: solo hay 6 de surf. Faltan buceo, portada propia, destacadas, Sobre mí y servicios.
   - Logo: el actual sale de una imagen de WhatsApp (comprimida, 1600 px). Pedir el original o un SVG.
 - Por confirmar con el usuario: precios de los servicios, ubicación ("Spain") y el dominio (`zaba.com` está puesto provisionalmente).
