@@ -85,7 +85,7 @@
       {% if g.contacto.email %}<a href="mailto:{{ g.contacto.email }}">{{ g.contacto.email }}</a>{% endif %}
       {% if g.contacto.telefono %}<a href="tel:{{ g.contacto.telefono|replace(' ', '') }}">{{ g.contacto.telefono }}</a>{% endif %}
       {% if g.contacto.whatsapp %}<a href="https://wa.me/{{ g.contacto.whatsapp }}" target="_blank" rel="noopener">WhatsApp</a>{% endif %}
-      {% if g.contacto.instagram %}<a href="https://instagram.com/{{ g.contacto.instagram }}" rel="noopener" target="_blank">Instagram · @{{ g.contacto.instagram }}</a>{% endif %}
+      {% if g.contacto.instagram %}<a href="https://www.instagram.com/{{ g.contacto.instagram }}/" rel="noopener" target="_blank">Instagram · @{{ g.contacto.instagram }}</a>{% endif %}
       <div class="idiomas idiomas--pie">
         {% for i in idiomas %}<a href="{{ i.href }}" hreflang="{{ i.code }}"{% if i.actual %} aria-current="true"{% endif %}>{{ i.label }}</a>{% endfor %}
       </div>

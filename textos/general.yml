@@ -13,7 +13,7 @@ publicar_dominio: false
 
 contacto:
   email: ""                    # tu email público de contacto (pendiente)
-  instagram: ""                # solo el usuario, sin @ (pendiente)
+  instagram: "r.zabafoto"      # solo el usuario, sin @
   whatsapp: "34619811240"      # con prefijo y sin espacios. Vacío = no se muestra
   telefono: "+34 619 81 12 40" # para llamar. Vacío = no se muestra
   # Clave gratuita de https://web3forms.com para que el formulario te llegue al email.

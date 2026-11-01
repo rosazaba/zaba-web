@@ -319,7 +319,7 @@ def main():
             if logo and logo["src"].endswith((".webp", ".svg")): negocio["logo"] = dom + "/" + logo["src"]
             if g["contacto"].get("email"): negocio["email"] = g["contacto"]["email"]
             if g["contacto"].get("telefono"): negocio["telephone"] = g["contacto"]["telefono"].replace(" ", "")
-            if g["contacto"].get("instagram"): negocio["sameAs"] = ["https://instagram.com/" + g["contacto"]["instagram"]]
+            if g["contacto"].get("instagram"): negocio["sameAs"] = ["https://www.instagram.com/" + g["contacto"]["instagram"] + "/"]
             grafo = [negocio]
             if ruta:
                 migas = [("inicio", "")] + ([("work", "work/")] if pid.startswith("galeria") else [])
