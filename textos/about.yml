@@ -2,7 +2,6 @@
 # Fotos: originales/3-sobre-mi/
 #   portada/   -> la foto apaisada de arriba (horizontal), dentro de la carpeta «portada»
 #   retrato-…  -> tu foto del bloque «¡Hola! Soy Rosa» (mejor vertical)
-#   el resto   -> la cuadrícula de fotos de abajo (se ordenan por nombre: 01-, 02-…)
 # Mientras no haya fotos tuyas se usan las de «provisional» (fotos de tus galerías).
 
 titulo:
@@ -32,11 +31,11 @@ hola_subtitulo:
 # Tu historia. Cada línea es un párrafo. (TEXTO PROVISIONAL: cámbialo por el tuyo)
 parrafos:
   en:
-    - "I'm a surf and underwater photographer. What started as filming friends in the line-up turned into a way of life: reading forecasts, waking up before sunrise and spending hours in the water waiting for the right moment."
+    - "I'm a surf and diving photographer. What started as filming friends in the line-up turned into a way of life: reading forecasts, waking up before sunrise and spending hours in the water waiting for the right moment."
     - "Below the surface I found a different kind of quiet. Diving taught me patience and respect for the ocean — and that the best images come when you blend in rather than chase."
     - "Today I work with surfers and divers who want honest, luminous images of their time in the sea."
   es:
-    - "Me dedico a la fotografía de surf y submarina. Lo que empezó grabando a mis amigos en el pico se convirtió en una forma de vida: mirar previsiones, levantarme antes del amanecer y pasar horas en el agua esperando el momento justo."
+    - "Me dedico a la fotografía de surf y buceo. Lo que empezó grabando a mis amigos en el pico se convirtió en una forma de vida: mirar previsiones, levantarme antes del amanecer y pasar horas en el agua esperando el momento justo."
     - "Bajo la superficie encontré otro tipo de calma. El buceo me enseñó paciencia y respeto por el océano, y que las mejores imágenes llegan cuando te integras en lugar de perseguir."
     - "Hoy trabajo con surfistas y buceadores que quieren imágenes honestas y luminosas de su tiempo en el mar."
   fr:
@@ -72,12 +71,6 @@ objetivos:
       es: "Fotos que quieras imprimir y guardar, no solo publicar."
       fr: "Des photos que vous voudrez imprimer et garder, pas seulement publier."
 
-# ── 4. Cuadrícula de fotos con frases cortas ────────────────  (TEXTO PROVISIONAL)
-frases:
-  - { en: "Natural light, always.",          es: "Luz natural, siempre.",            fr: "La lumière naturelle, toujours." }
-  - { en: "Patience before speed.",          es: "Paciencia antes que prisa.",       fr: "La patience avant la vitesse." }
-  - { en: "Above and below the surface.",    es: "Sobre y bajo la superficie.",      fr: "Au-dessus et sous la surface." }
-
 # Pequeños datos (etiqueta + valor)
 datos:
   - etiqueta: { en: "Based in", es: "Vivo en", fr: "Où" }
@@ -90,11 +83,4 @@ datos:
 # Fotos provisionales mientras no haya fotos tuyas en originales/3-sobre-mi/ (rutas dentro de originales/)
 provisional:
   portada: "1-trabajos/buceo/_MG_8142.jpg"
-  retrato: "1-trabajos/buceo/IMG_0895.jpg"
-  cuadricula:
-    - "1-trabajos/buceo/_MG_3060.jpg"
-    - "1-trabajos/surf/DSC05129.jpg"
-    - "1-trabajos/dron/IMG_20260907_09553035.jpeg"
-    - "1-trabajos/buceo/IMG_4893.jpg"
-    - "1-trabajos/surf/DSC08525.jpg"
-    - "1-trabajos/buceo/_MG_2970.jpg"
+  retrato: "3-sobre-mi/WhatsApp Image 2026-11-02 at 9.44.22 PM.jpeg"   # retrato del bloque «Hola» (elegido por Rosa)

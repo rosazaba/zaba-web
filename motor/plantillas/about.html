@@ -53,25 +53,6 @@
 </section>
 {% endif %}
 
-{# 4. Cuadrícula de fotos con frases #}
-{% if sobre.cuadricula %}
-<section class="bloque">
-  <div class="ancho">
-    <div class="collage" data-galeria>
-      {% set frases = about.frases or [] %}
-      {% for f in sobre.cuadricula %}
-      <a class="collage__foto{% if loop.index0 % 2 == 0 %} collage__foto--ancha{% endif %} aparece" href="{{ asset(f.srcset[-1][1]) }}" style="--foco: {{ f.foco[0] }}% {{ f.foco[1] }}%">
-        {{ foto(f, "(min-width: 900px) 33vw, 50vw", "", "lazy", g.marca ~ " — " ~ T(about.titulo) ~ " " ~ loop.index) }}
-      </a>
-      {% if loop.index % 2 == 0 and frases[loop.index // 2 - 1] is defined %}
-      <p class="collage__frase aparece" aria-hidden="false">{{ T(frases[loop.index // 2 - 1]) }}</p>
-      {% endif %}
-      {% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
-
 {# 5. Datos y contacto #}
 <section class="bloque bloque--sin-arriba">
   <div class="estrecho">

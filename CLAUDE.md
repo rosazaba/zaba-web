@@ -22,8 +22,8 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
   - Cada sección y cada galería tiene su subcarpeta `portada/` con UNA foto (la usuaria las quiere así para encontrarlas rápido): `1-trabajos/portada/` (la grande, ya girada), `1-trabajos/<galería>/portada/` (recuadros) y `3-sobre-mi/portada/`. Tienen prioridad sobre `textos/inicio.yml` y `work.yml`. Las fotos de una subcarpeta `portada/` no cuentan como fotos de la galería.
   - `1-trabajos/`: `portada/`, `seleccion/` (tira, opcional) y una carpeta por galería (`buceo/`, `surf/`, `dron/`).
   - `2-servicios/`: `portada/` y `<servicio>/`
-  - `4-contacto/`: `portada/` (el diseño con foto de Servicios y Contacto será parecido al de Sobre mí; pendiente)
-  - `3-sobre-mi/`: `portada/` (foto apaisada con la cita), `retrato-…` (bloque «¡Hola! Soy Rosa») y el resto para la cuadrícula. Sin fotos propias usa `textos/about.yml` → `provisional`.
+  - `4-contacto/`: `portada/` (foto de arriba de Contacto)
+  - `3-sobre-mi/`: `portada/` (foto apaisada con la cita) y `retrato-…` (bloque «¡Hola! Soy Rosa»). El resto de fotos de la carpeta de momento no se usan. Sin fotos propias usa `textos/about.yml` → `provisional`.
   - `logo/`
   - Las rutas de las imágenes publicadas no cambian (`img/work/...`, `img/inicio/...`, `img/about/...`, `img/services/...`).
 - `textos/*.yml`: todo el texto visible. Cada clave lleva `en`, `es` y `fr`.
@@ -47,14 +47,15 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
   - Si no tiene transparencia, se le quita el fondo liso automáticamente.
   - La versión blanca se genera con un filtro CSS, salvo que exista `logo-claro`.
   - El favicon sale de `icono` o, si no hay, del propio logo.
-- Portada = página de trabajos (no hay página `/work/`; en el menú se llama Work/Trabajos/Travaux y apunta a la raíz). Estructura: foto de portada baja con la frase encima y, debajo, una foto por galería en fila de tres (también en móvil), cada una con su título y enlace a `work/<url>/`.
+- Portada = página de trabajos (no hay página `/work/`; en el menú se llama Work/Trabajo/Travail (en singular, lo pidió la usuaria) y apunta a la raíz). Estructura: foto de portada baja con la frase encima y, debajo, una foto por galería en fila de tres (también en móvil), cada una con su título y enlace a `work/<url>/`.
 - Galerías: buceo (`diving`), surf y dron (`drone`), en ese orden (`orden` en `textos/work.yml`). La foto de cada recuadro es la primera de la galería por nombre (`01-`). Una galería definida en `work.yml` sin fotos sale como «Próximamente» con el color de `color`.
 - Galería nueva: crear `originales/1-trabajos/<carpeta>` y su bloque en `textos/work.yml` → `galerias`.
 - Tira «Selección» de la portada (debajo de las tres galerías): si `1-trabajos/seleccion/` está vacía, coge las `TIRA_POR_GALERIA` (10) mejores fotos de cada galería (nitidez + contraste + color, sin ráfagas casi iguales), las entremezcla sin repetir galería seguida y con el color más parecido a la anterior. Fotos cuadradas, veladas (opacidad .55, algo desaturadas) para no quitar protagonismo a las tres galerías; se mueve sola.
 - Fotos de bancos de imágenes (nombre con unsplash, pexels, pixabay…): `fotos_de()` nunca las publica y avisa. Las de Unsplash que descargó la usuaria están en `1-trabajos/fotos-banco-imagenes/` (en `NO_SON_GALERIAS`, no es galería).
 - Fotos repetidas: `quitar_repetidas()` en `build.py` no publica la misma imagen dos veces (huella visual) ni dos versiones de la misma toma (DSC05033 y DSC05033-2). Se queda la `portada:` de `work.yml` si es una de ellas; si no, la primera por nombre. Se avisa en el build.
 - Portadas: se cambian sustituyendo la foto de la carpeta `portada/` de cada sección o galería. Respaldo: `textos/inicio.yml` → `portada_foto` (+ `portada_girar`) y `textos/work.yml` → `portada:`.
-- Sobre mí (`about.html`): foto apaisada con cita (`cita`, `cita_autor`, `cita_lado` izquierda/derecha), bloque «¡Hola! Soy Rosa» (título · retrato · historia), «Mi propósito» con 3 objetivos, y cuadrícula de fotos entremezclada con `frases` (una de cada dos fotos ocupa dos columnas). Textos provisionales hasta que la usuaria mande los suyos.
+- Sobre mí (`about.html`): foto apaisada con cita (`cita`, `cita_autor`, `cita_lado` izquierda/derecha; foto de `3-sobre-mi/portada/`; mismo alto que la de Trabajo), bloque «¡Hola! Soy Rosa» (título · retrato · historia; retrato = archivo `retrato-…` o, si no hay, `provisional.retrato` en `about.yml`), «Mi propósito» con 3 objetivos y datos. Sin cuadrícula ni tira de fotos (la usuaria las quitó). Textos provisionales hasta que la usuaria mande los suyos.
+- Servicios y Contacto: foto de arriba de su carpeta `portada/` (mismo estilo y alto que Sobre mí) con el título y la entradilla encima; sin foto salen con la cabecera de texto.
 - Fotos: WebP con calidad adaptable (baja hasta que pesan menos de `PESO_MAX`). Siempre se guardan en `docs/img`; `vista-previa/` no tiene imágenes propias, las enlaza desde `../docs/img`.
 - `build.py` borra las páginas generadas que ya no existen (pero en `web1` no se pueden borrar desde aquí: pedírselo al usuario).
 - Idiomas: inglés por defecto en la raíz, español en `/es/` y francés en `/fr/`. Las URLs son iguales en los tres idiomas.

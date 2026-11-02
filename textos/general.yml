@@ -22,23 +22,23 @@ contacto:
   web3forms_clave: ""
 
 lema:
-  en: "Surf & underwater photography"
-  es: "Fotografía de surf y submarina"
-  fr: "Photographie de surf et sous-marine"
+  en: "Surf & diving photography"
+  es: "Fotografía de surf y buceo"
+  fr: "Photographie de surf et de plongée"
 
 descripcion_google:
-  en: "Zaba — surf and underwater photography. Portfolio, surf and underwater photo sessions, and prints."
-  es: "Zaba — fotografía de surf y submarina. Portfolio, sesiones de fotos de surf y buceo, y copias impresas."
-  fr: "Zaba — photographie de surf et sous-marine. Portfolio, séances photo de surf et de plongée, et tirages."
+  en: "Zaba — surf and diving photography. Portfolio, surf and underwater photo sessions, and prints."
+  es: "Zaba — fotografía de surf y buceo. Portfolio, sesiones de fotos de surf y buceo, y copias impresas."
+  fr: "Zaba — photographie de surf et de plongée. Portfolio, séances photo de surf et de plongée, et tirages."
 
 menu:
-  inicio:   { en: "Work",     es: "Trabajos",  fr: "Travaux" }   # la portada es la página de trabajos
+  inicio:   { en: "Work",     es: "Trabajo",   fr: "Travail" }   # la portada es la página de trabajo
   services: { en: "Services", es: "Servicios", fr: "Services" }
   about:    { en: "About",    es: "Sobre mí",  fr: "À propos" }
   contact:  { en: "Contact",  es: "Contacto",  fr: "Contact" }
 
 botones:
-  ver_trabajo:  { en: "See the work",     es: "Ver trabajos",       fr: "Voir les travaux" }
+  ver_trabajo:  { en: "See the work",     es: "Ver trabajo",        fr: "Voir le travail" }
   reservar:     { en: "Book a session",   es: "Reservar sesión",    fr: "Réserver une séance" }
   ver_galeria:  { en: "View gallery",     es: "Ver galería",        fr: "Voir la galerie" }
   ver_servicios: { en: "All services",    es: "Todos los servicios", fr: "Tous les services" }

@@ -28,7 +28,7 @@ C_PORTADA = f"{C_TRABAJOS}/portada"    # la foto grande de arriba (cada galería
 C_SELECCION = f"{C_TRABAJOS}/seleccion"
 C_SERVICIOS = "2-servicios"
 C_SOBRE_MI = "3-sobre-mi"
-C_CONTACTO = "4-contacto"             # de momento solo su carpeta portada/ (el diseño de la página llegará después)
+C_CONTACTO = "4-contacto"             # solo su carpeta portada/ (foto de arriba de Contacto)
 BANCOS_IMAGENES = ("unsplash", "pexels", "pixabay", "shutterstock", "istock", "adobestock", "freepik")
 NO_SON_GALERIAS = {"portada", "portadas", "seleccion", "fotos-banco-imagenes"}
 TEXTOS = RAIZ / "textos"
@@ -394,7 +394,7 @@ def main():
             avisos.append(f"No existe la foto de portada indicada en textos/inicio.yml: originales/{inicio['portada_foto']}")
     portada = [optimizar(p, "inicio/portada", int(inicio.get("portada_girar") or 0)) for p in fotos_portada]
     destacadas = [optimizar(p, "inicio/destacadas") for p in fotos_de(C_SELECCION)]
-    # Sobre mí: portada-… (arriba), retrato-… (bloque «Hola») y el resto para la cuadrícula.
+    # Sobre mí: 3-sobre-mi/portada/ (arriba) y retrato-… o about.yml → provisional.retrato (bloque «Hola»).
     # Si aún no hay fotos propias, se usan las de about.yml → provisional.
     propias = fotos_de(C_SOBRE_MI)
     prov = about.get("provisional") or {}
@@ -411,13 +411,9 @@ def main():
         "portada": optimizar(elegir("portada"), "about") if elegir("portada") else None,
         "retrato": optimizar(elegir("retrato"), "about") if elegir("retrato") else None,
     }
-    resto = [p for p in propias if not slug(p.stem).startswith(("portada", "retrato"))]
-    if not resto:
-        resto = [p for p in (prov_foto(r) for r in prov.get("cuadricula") or []) if p]
-    sobre["cuadricula"] = [optimizar(p, "about") for p in resto]
     if not propias and not de_portadas(C_SOBRE_MI):
         avisos.append("Sobre mí usa fotos provisionales: pon tus fotos en originales/3-sobre-mi/ (portada-…, retrato-… y el resto).")
-    foto_about = [f for f in [sobre["portada"], sobre["retrato"], *sobre["cuadricula"]] if f]
+    foto_about = [f for f in [sobre["portada"], sobre["retrato"]] if f]
     logo = procesar_logo()
 
     galerias = []
@@ -485,11 +481,18 @@ def main():
         f = fotos_de(f"{C_SERVICIOS}/{s['carpeta']}")[:1]
         lista_servicios.append({**s, "foto": optimizar(f[0], f"services/{s['carpeta']}") if f else None})
 
+    # Foto de arriba de Servicios y Contacto: su carpeta portada/ (si está vacía, la página sale sin foto)
+    def portada_de(carpeta, destino):
+        p = de_portadas(carpeta)
+        return optimizar(p, destino) if p else None
+    portada_servicios = portada_de(C_SERVICIOS, "services")
+    portada_contacto = portada_de(C_CONTACTO, "contact")
+
     # Páginas: (id, ruta sin idioma, plantilla, datos extra)
     paginas = [("inicio", "", "inicio.html", {}),
-               ("services", "services/", "services.html", {}),
+               ("services", "services/", "services.html", {"portada_pagina": portada_servicios}),
                ("about", "about/", "about.html", {}),
-               ("contact", "contact/", "contact.html", {})]
+               ("contact", "contact/", "contact.html", {"portada_pagina": portada_contacto})]
     for gal in galerias:
         paginas.append((f"galeria-{gal['id']}", f"work/{gal['url']}/", "galeria.html", {"galeria": gal}))
 

@@ -1,13 +1,25 @@
 {% extends "base.html" %}
 {% block titulo %}{{ T(contact.titulo) }} — {{ g.marca }}{% endblock %}
 {% set F = contact.formulario %}
+{% block clase_body %}{% if portada_pagina %} cabecera-sobre-foto{% endif %}{% endblock %}
 {% block contenido %}
+{% if portada_pagina %}
+<section class="sobre-hero sobre-hero--izquierda">
+  {{ foto(portada_pagina, "100vw", "sobre-hero__img", "eager", g.marca ~ " — " ~ T(contact.titulo)) }}
+  <div class="sobre-hero__velo"></div>
+  <div class="sobre-hero__cita">
+    <h1>{{ T(contact.titulo) }}</h1>
+    <p class="texto-grande">{{ T(contact.intro) }}</p>
+  </div>
+</section>
+{% else %}
 <section class="cabeza-pagina">
   <div class="estrecho">
     <h1>{{ T(contact.titulo) }}</h1>
     <p class="texto-grande">{{ T(contact.intro) }}</p>
   </div>
 </section>
+{% endif %}
 
 <section class="bloque bloque--sin-arriba">
   <div class="contacto">
