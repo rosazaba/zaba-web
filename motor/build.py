@@ -199,13 +199,15 @@ def entremezclar(grupos):
     return orden
 
 
-def optimizar(src: Path, destino_rel: str):
+def optimizar(src: Path, destino_rel: str, girar: int = 0):
     """Genera versiones WebP en varios anchos. Devuelve datos para <img srcset>."""
-    base = slug(src.stem)
+    base = slug(src.stem) + (f"-giro{girar % 360}" if girar % 360 else "")
     carpeta = IMG_DIR / destino_rel
     carpeta.mkdir(parents=True, exist_ok=True)
     with Image.open(src) as im:
         im = ImageOps.exif_transpose(im)          # respeta la orientación de la cámara
+        if girar % 360:                           # giro pedido en textos (grados, en el sentido del reloj)
+            im = im.rotate(-girar, expand=True)
         if im.mode not in ("RGB", "L"):
             im = im.convert("RGB")
         w0, h0 = im.size
@@ -380,7 +382,7 @@ def main():
             fotos_portada = [candidata]
         else:
             avisos.append(f"No existe la foto de portada indicada en textos/inicio.yml: originales/{inicio['portada_foto']}")
-    portada = [optimizar(p, "inicio/portada") for p in fotos_portada]
+    portada = [optimizar(p, "inicio/portada", int(inicio.get("portada_girar") or 0)) for p in fotos_portada]
     destacadas = [optimizar(p, "inicio/destacadas") for p in fotos_de(C_SELECCION)]
     foto_about = [optimizar(p, "about") for p in fotos_de(C_SOBRE_MI)[:1]]
     logo = procesar_logo()
