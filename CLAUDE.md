@@ -38,7 +38,8 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
   - Siempre pasan por `optimizar()`: WebP a 640, 1280 y 2000 px, sin EXIF ni GPS.
   - Se ordenan por nombre de archivo (`01-`, `02-`…).
   - Si un original mide menos de 1600 px de lado, se avisa al usuario.
-- Logo: cualquier formato en `originales/logo/`.
+- Logo: cualquier formato en `originales/logo/`. Si hay SVG y PNG con el mismo nombre, se usa el SVG.
+  - Archivos actuales: `logo-oscuro.svg`, `logo-claro.svg` e `icono.svg` (la última A), redibujados en vector por Claude a partir de la imagen de WhatsApp. Los `.png` del mismo nombre son copias en alta resolución; `icono.png` genera los favicons.
   - Si no tiene transparencia, se le quita el fondo liso automáticamente.
   - La versión blanca se genera con un filtro CSS, salvo que exista `logo-claro`.
   - El favicon sale de `icono` o, si no hay, del propio logo.
@@ -78,6 +79,5 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - Datos del usuario:
   - Clave de Web3Forms (en `textos/general.yml`), creada con rouszaba@gmail.com.
   - Fotos: solo hay 6 de surf. Faltan buceo, portada propia, destacadas, Sobre mí y servicios.
-  - Logo: el actual sale de una imagen de WhatsApp (comprimida, 1600 px). Pedir el original o un SVG.
 - Por confirmar con el usuario: precios de los servicios, ubicación ("Spain") y el dominio (`zaba.com` está puesto provisionalmente).
 - Publicación: activar GitHub Pages (lo hace el usuario: Settings → Pages → `main` /docs; la app de Claude no tiene permiso de administración) cuando haya fotos reales y textos revisados.

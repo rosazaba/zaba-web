@@ -139,13 +139,13 @@ def procesar_logo():
         return None
     def buscar(*claves):
         for clave in claves:
-            for p in sorted(archivos):
+            for p in sorted(archivos, key=lambda p: (p.suffix.lower() != ".svg", p.name)):   # el SVG tiene prioridad
                 if clave in slug(p.stem):
                     return p
         return None
     claro = buscar("claro", "light", "blanco", "white")
     icono = buscar("icono", "icon", "simbolo", "symbol")
-    principal = buscar("oscuro", "dark") or next((p for p in sorted(archivos) if p not in (claro, icono)), None) or claro
+    principal = buscar("oscuro", "dark") or next((p for p in sorted(archivos, key=lambda p: (p.suffix.lower() != ".svg", p.name)) if p not in (claro, icono)), None) or claro
     destino = SALIDA / "img" / "logo"
     destino.mkdir(parents=True, exist_ok=True)
 
@@ -153,7 +153,12 @@ def procesar_logo():
         if src.suffix.lower() == ".svg":
             out = destino / f"{nombre}.svg"; generadas.add(out)
             shutil.copyfile(src, out)
-            return {"src": f"img/logo/{nombre}.svg", "ancho": 0, "alto": 0}, None
+            vb = re.search(r'viewBox="([^"]+)"', src.read_text(encoding="utf-8"))
+            ancho = alto = 0
+            if vb:                                       # tamaño intrínseco a 160 px de alto (evita saltos al cargar)
+                _, _, w, h = (float(v) for v in vb.group(1).replace(",", " ").split())
+                ancho, alto = round(w * 160 / h), 160
+            return {"src": f"img/logo/{nombre}.svg", "ancho": ancho, "alto": alto}, None
         with Image.open(src) as im:
             im = _quitar_fondo(ImageOps.exif_transpose(im))
             caja = im.getchannel("A").getbbox()        # recorta márgenes vacíos
@@ -172,6 +177,8 @@ def procesar_logo():
 
     # Iconos (pestaña del navegador, acceso directo en el móvil)
     fuente_icono = None
+    if icono and icono.suffix.lower() == ".svg":     # los favicons PNG salen de la versión PNG del icono, si existe
+        icono = next((p for p in sorted(archivos) if p.stem == icono.stem and p.suffix.lower() != ".svg"), icono)
     if icono and icono.suffix.lower() != ".svg":
         with Image.open(icono) as im:
             fuente_icono = _quitar_fondo(ImageOps.exif_transpose(im))
