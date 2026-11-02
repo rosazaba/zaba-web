@@ -24,7 +24,7 @@ RAIZ = Path(__file__).resolve().parent.parent
 ORIG = RAIZ / "originales"
 # Carpetas de originales/ (siguen el orden del menú). La portada y los trabajos son la misma página.
 C_TRABAJOS = "1-trabajos"            # portada/, seleccion/ y una carpeta por galería (buceo/, surf/, dron/…)
-C_PORTADA = f"{C_TRABAJOS}/portadas"   # portada-trabajos.jpg (la grande) y portada-<galería>.jpg (recuadros)
+C_PORTADA = f"{C_TRABAJOS}/portada"    # la foto grande de arriba (cada galería tiene además su <galería>/portada/)
 C_SELECCION = f"{C_TRABAJOS}/seleccion"
 C_SERVICIOS = "2-servicios"
 C_SOBRE_MI = "3-sobre-mi"
@@ -374,10 +374,10 @@ def main():
     contact = leer("contact")
 
     # Fotos
-    def de_portadas(clave):
-        """Foto de originales/1-trabajos/portadas cuyo nombre empieza por portada-<clave>."""
-        return next((p for p in fotos_de(C_PORTADA) if slug(p.stem).startswith(f"portada-{slug(clave)}")), None)
-    fotos_portada = [p for p in [de_portadas("trabajos")] if p]
+    def de_portadas(carpeta):
+        """Primera foto de la subcarpeta «portada» de una sección o galería (originales/<carpeta>/portada/)."""
+        return next(iter(fotos_de(f"{carpeta}/portada")), None)
+    fotos_portada = fotos_de(C_PORTADA)[:1]
     if not fotos_portada and inicio.get("portada_foto"):
         # Sin foto en la carpeta de portada: usa la indicada en textos/inicio.yml (sin duplicar el archivo)
         candidata = ORIG / inicio["portada_foto"]
@@ -397,6 +397,8 @@ def main():
         if ruta: avisos.append(f"No existe la foto provisional de Sobre mí: originales/{ruta}")
         return None
     def elegir(clave):
+        if clave == "portada" and de_portadas(C_SOBRE_MI):          # 3-sobre-mi/portada/
+            return de_portadas(C_SOBRE_MI)
         return next((p for p in propias if slug(p.stem).startswith(clave)), None) or prov_foto(prov.get(clave))
     sobre = {
         "portada": optimizar(elegir("portada"), "about") if elegir("portada") else None,
@@ -406,7 +408,7 @@ def main():
     if not resto:
         resto = [p for p in (prov_foto(r) for r in prov.get("cuadricula") or []) if p]
     sobre["cuadricula"] = [optimizar(p, "about") for p in resto]
-    if not propias:
+    if not propias and not de_portadas(C_SOBRE_MI):
         avisos.append("Sobre mí usa fotos provisionales: pon tus fotos en originales/3-sobre-mi/ (portada-…, retrato-… y el resto).")
     foto_about = [f for f in [sobre["portada"], sobre["retrato"], *sobre["cuadricula"]] if f]
     logo = procesar_logo()
@@ -424,7 +426,8 @@ def main():
         nombre = carpeta.replace("-", " ").capitalize()
         fotos = [optimizar(p, f"work/{carpeta}") for p in fotos_de(f"{C_TRABAJOS}/{carpeta}")]
         # portada del recuadro: portadas/portada-<galería>.jpg (si no hay, la de work.yml o la primera)
-        f_portada = optimizar(de_portadas(carpeta), "inicio/portadas") if de_portadas(carpeta) else None
+        p_portada = de_portadas(f"{C_TRABAJOS}/{carpeta}")
+        f_portada = optimizar(p_portada, "inicio/portadas") if p_portada else None
         # si la portada es una de las fotos repetidas, en la galería se queda esa versión y no la otra
         es_portada = lambda f: f["origen"] == c.get("portada") or (f_portada and bin(f["huella"] ^ f_portada["huella"]).count("1") <= 10)
         fotos.sort(key=lambda f: not es_portada(f))

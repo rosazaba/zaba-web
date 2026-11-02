@@ -1,1 +1,4 @@
-1 foto tuya para la pagina Sobre mi (mejor vertical).
+Fotos tuyas para la pagina Sobre mi:
+- La portada (foto apaisada de arriba) va en la carpeta portada/
+- retrato-... : tu foto del bloque Hola, soy Rosa (mejor vertical)
+- El resto: la cuadricula de fotos de abajo (se ordenan por nombre: 01-, 02-...)

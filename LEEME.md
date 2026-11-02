@@ -16,22 +16,27 @@ Las carpetas siguen el orden del menú de la web (Trabajos · Servicios · Sobre
 
 ```
 originales/
-├── 1-trabajos/          → LA PORTADA
-│   ├── portada/         → 1 foto grande de arriba (mejor horizontal)
+├── 1-trabajos/          → LA PORTADA (página de trabajos)
+│   ├── portada/         → la foto grande de arriba (horizontal)
 │   ├── buceo/           → galería Buceo
+│   │   └── portada/     →   foto del recuadro de Buceo
 │   ├── surf/            → galería Surf
+│   │   └── portada/     →   foto del recuadro de Surf
 │   ├── dron/            → galería Dron
+│   │   └── portada/     →   foto del recuadro de Dron
 │   └── seleccion/       → opcional: fotos para la tira «Selección»
 ├── 2-servicios/
-│   ├── surf/            → 1 foto para "Sesión de surf"
-│   ├── buceo/           → 1 foto para "Sesión submarina"
-│   ├── copias/          → 1 foto para "Copias artísticas"
-│   └── marcas/          → 1 foto para "Marcas y escuelas"
-├── 3-sobre-mi/          → 1 foto tuya (mejor vertical)
+│   ├── surf/  buceo/  copias/  marcas/   → 1 foto para cada servicio
+├── 3-sobre-mi/
+│   ├── portada/         → la foto apaisada de arriba (con la cita)
+│   ├── retrato-…        → tu foto junto a «¡Hola! Soy Rosa»
+│   └── (el resto)       → la cuadrícula de fotos
 └── logo/                → el logo (ya está preparado)
 ```
 
-- **Orden:** las fotos se ordenan por nombre. Llámalas `01-...`, `02-...` para elegir el orden. En cada galería, la `01-` es la que sale en su recuadro de la portada.
+- **Portadas:** cada sección y cada galería tiene su carpeta `portada` con UNA foto. Para cambiar una portada, sustituye esa foto.
+
+- **Orden:** las fotos se ordenan por nombre. Llámalas `01-...`, `02-...` para elegir el orden.
 - **Tira «Selección»:** si `seleccion/` está vacía, se hace sola con fotos de buceo, surf y dron ordenadas por color. Si pones fotos ahí, salen solo esas.
 - **Formato:** JPG, PNG o TIFF, al tamaño original. No hace falta reducirlas; Claude las optimiza.
 - **Galería nueva:** crea otra carpeta dentro de `originales/1-trabajos/` (por ejemplo `apnea/`), mete las fotos y pídele a Claude que la añada.

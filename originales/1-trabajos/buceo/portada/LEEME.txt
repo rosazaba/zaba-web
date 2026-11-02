@@ -1,0 +1,3 @@
+PORTADA del recuadro de Buceo en la pagina principal (mejor vertical).
+Pon aqui UNA sola foto. Para cambiarla, sustituyela por otra.
+No hace falta quitarla de la galeria: puede estar en los dos sitios.

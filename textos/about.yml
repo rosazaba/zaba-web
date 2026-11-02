@@ -1,6 +1,6 @@
 # SOBRE MÍ
 # Fotos: originales/3-sobre-mi/
-#   portada-…  -> la foto apaisada de arriba (horizontal)
+#   portada/   -> la foto apaisada de arriba (horizontal), dentro de la carpeta «portada»
 #   retrato-…  -> tu foto del bloque «¡Hola! Soy Rosa» (mejor vertical)
 #   el resto   -> la cuadrícula de fotos de abajo (se ordenan por nombre: 01-, 02-…)
 # Mientras no haya fotos tuyas se usan las de «provisional» (fotos de tus galerías).
