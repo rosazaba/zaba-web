@@ -327,16 +327,11 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .contacto__directo li a:hover { color: var(--mar); }
 
 /* ── Pie ───────────────────────────────────────────────── */
-.pie { background: #2F2A26; color: #D9CFC1; padding: 64px 0 28px; font-size: .95rem; }
-.pie__in { max-width: var(--max); margin: 0 auto; padding: 0 var(--margen); display: grid; gap: 36px; }
-@media (min-width: 760px) { .pie__in { grid-template-columns: 2fr 1fr 1.4fr; } }
-.logo--pie { color: var(--arena); display: inline-block; margin-bottom: 14px; }
-.pie__marca p { font: 300 1.15rem/1.45 var(--serif); color: #BFB2A2; max-width: 26ch; }
-.pie__nav, .pie__contacto { display: flex; flex-direction: column; gap: 10px; }
+.pie { background: #2F2A26; color: #D9CFC1; padding: clamp(48px, 8vw, 80px) 0; }
+.pie__in { max-width: var(--max); margin: 0 auto; padding: 0 var(--margen); display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; }
+.pie__frase { margin: 0; font: 300 1.15rem/1.45 var(--serif); color: #BFB2A2; max-width: 40ch; text-wrap: balance; }
 .pie a { text-decoration: none; }
-.pie a:hover { color: var(--mantequilla); }
-.idiomas--pie { margin-top: 6px; margin-left: -7px; }
-.pie__legal { max-width: var(--max); margin: 48px auto 0; padding: 22px var(--margen) 0; border-top: 1px solid rgba(255,255,255,.1); font-size: .78rem; color: var(--gris); }
+.logo--pie { color: var(--arena); display: inline-block; }
 
 /* Botón flotante de WhatsApp (solo si hay número) */
 .whatsapp { position: fixed; right: 18px; bottom: calc(18px + env(safe-area-inset-bottom)); z-index: 40; width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; background: var(--mar); color: #fff; box-shadow: 0 6px 22px rgba(46,41,37,.25); }

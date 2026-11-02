@@ -67,34 +67,16 @@
 {% block contenido %}{% endblock %}
 </main>
 
-{% if pid != 'inicio' %}{# la usuaria no quiere el pie oscuro en la página de Trabajo #}
+{# Pie: solo el logo y una frase (lo pidió la usuaria), igual en todas las páginas #}
 <footer class="pie">
   <div class="pie__in">
-    <div class="pie__marca">
-      <a class="logo logo--pie{% if logo %} logo--img{% endif %}" href="{{ url('') }}" aria-label="{{ g.marca }}">
-        {%- if logo -%}<img class="logo__claro{% if not logo.claro %} logo__claro--filtro{% endif %}" src="{{ asset(logo.claro or logo.src) }}" alt="{{ g.marca }}"{% if logo.ancho %} width="{{ logo.ancho }}" height="{{ logo.alto }}"{% endif %}>
-        {%- else -%}{{ g.marca }}{%- endif -%}
-      </a>
-      <p>{{ T(g.pie.frase) }}</p>
-    </div>
-    <nav class="pie__nav" aria-label="Footer">
-      {% for id, ruta in [('inicio',''),('services','services/'),('about','about/'),('contact','contact/')] %}
-      <a href="{{ url(ruta) }}">{{ T(g.menu[id]) }}</a>
-      {% endfor %}
-    </nav>
-    <div class="pie__contacto">
-      {% if g.contacto.email %}<a href="mailto:{{ g.contacto.email }}">{{ g.contacto.email }}</a>{% endif %}
-      {% if g.contacto.telefono %}<a href="tel:{{ g.contacto.telefono|replace(' ', '') }}">{{ g.contacto.telefono }}</a>{% endif %}
-      {% if g.contacto.whatsapp %}<a href="https://wa.me/{{ g.contacto.whatsapp }}" target="_blank" rel="noopener">WhatsApp</a>{% endif %}
-      {% if g.contacto.instagram %}<a class="icono-red" href="https://www.instagram.com/{{ g.contacto.instagram }}/" rel="noopener" target="_blank" aria-label="Instagram" title="Instagram">{{ iconos.instagram }}</a>{% endif %}
-      <div class="idiomas idiomas--pie">
-        {% for i in idiomas %}<a href="{{ i.href }}" hreflang="{{ i.code }}"{% if i.actual %} aria-current="true"{% endif %}>{{ i.label }}</a>{% endfor %}
-      </div>
-    </div>
+    <a class="logo logo--pie{% if logo %} logo--img{% endif %}" href="{{ url('') }}" aria-label="{{ g.marca }}">
+      {%- if logo -%}<img class="logo__claro{% if not logo.claro %} logo__claro--filtro{% endif %}" src="{{ asset(logo.claro or logo.src) }}" alt="{{ g.marca }}"{% if logo.ancho %} width="{{ logo.ancho }}" height="{{ logo.alto }}"{% endif %}>
+      {%- else -%}{{ g.marca }}{%- endif -%}
+    </a>
+    <p class="pie__frase">{{ T(g.pie.frase) }}</p>
   </div>
-  <p class="pie__legal">© {{ g.marca }} · {{ T(g.pie.derechos) }}</p>
 </footer>
-{% endif %}
 
 {% if g.contacto.whatsapp and pid != 'contact' %}
 <a class="whatsapp" href="https://wa.me/{{ g.contacto.whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp">
