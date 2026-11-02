@@ -3,6 +3,8 @@
 Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se ve sobre todo en móvil, el SEO importa y debe ser fácil de actualizar.
 
 ## Reparto del trabajo
+- **Cambios en `originales/` o `motor/` (estructura de carpetas, portadas, fotos nuevas, páginas nuevas): ANTES de tocar nada en `web1`, explicar a la usuaria exactamente qué carpetas se crean, qué se mueve y qué se quita, y pedirle permiso.** Claude mantiene él mismo la estructura: crea las carpetas nuevas y quita las antiguas cuando su contenido ya no se usa, siempre avisando y con permiso.
+- Cuando la usuaria mande el nombre de una foto de portada, Claude la coloca en su carpeta `portada/` (preguntando antes).
 - **El usuario** decide el contenido y selecciona las fotos. No toca código ni hace pasos técnicos.
 - **Claude** hace todo lo técnico: optimizar, generar, revisar, publicar y configurar.
 - El usuario escribe en español. Claude traduce a EN y FR y le enseña los textos nuevos antes de publicar.
@@ -19,7 +21,8 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - `originales/`: fotos y logo del usuario a tamaño original. **No se modifican nunca y no se suben a GitHub** (están en `.gitignore`). Carpetas en el orden del menú (constantes `C_*` en `build.py`):
   - Cada sección y cada galería tiene su subcarpeta `portada/` con UNA foto (la usuaria las quiere así para encontrarlas rápido): `1-trabajos/portada/` (la grande, ya girada), `1-trabajos/<galería>/portada/` (recuadros) y `3-sobre-mi/portada/`. Tienen prioridad sobre `textos/inicio.yml` y `work.yml`. Las fotos de una subcarpeta `portada/` no cuentan como fotos de la galería.
   - `1-trabajos/`: `portada/`, `seleccion/` (tira, opcional) y una carpeta por galería (`buceo/`, `surf/`, `dron/`).
-  - `2-servicios/<servicio>`
+  - `2-servicios/`: `portada/` y `<servicio>/`
+  - `4-contacto/`: `portada/` (el diseño con foto de Servicios y Contacto será parecido al de Sobre mí; pendiente)
   - `3-sobre-mi/`: `portada/` (foto apaisada con la cita), `retrato-…` (bloque «¡Hola! Soy Rosa») y el resto para la cuadrícula. Sin fotos propias usa `textos/about.yml` → `provisional`.
   - `logo/`
   - Las rutas de las imágenes publicadas no cambian (`img/work/...`, `img/inicio/...`, `img/about/...`, `img/services/...`).
@@ -48,6 +51,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - Galerías: buceo (`diving`), surf y dron (`drone`), en ese orden (`orden` en `textos/work.yml`). La foto de cada recuadro es la primera de la galería por nombre (`01-`). Una galería definida en `work.yml` sin fotos sale como «Próximamente» con el color de `color`.
 - Galería nueva: crear `originales/1-trabajos/<carpeta>` y su bloque en `textos/work.yml` → `galerias`.
 - Tira «Selección» de la portada (debajo de las tres galerías): si `1-trabajos/seleccion/` está vacía, coge las `TIRA_POR_GALERIA` (10) mejores fotos de cada galería (nitidez + contraste + color, sin ráfagas casi iguales), las entremezcla sin repetir galería seguida y con el color más parecido a la anterior. Fotos cuadradas, veladas (opacidad .55, algo desaturadas) para no quitar protagonismo a las tres galerías; se mueve sola.
+- Fotos de bancos de imágenes (nombre con unsplash, pexels, pixabay…): `fotos_de()` nunca las publica y avisa. La usuaria descargó varias de Unsplash a `1-trabajos/surf/`.
 - Fotos repetidas: `quitar_repetidas()` en `build.py` no publica la misma imagen dos veces (huella visual) ni dos versiones de la misma toma (DSC05033 y DSC05033-2). Se queda la `portada:` de `work.yml` si es una de ellas; si no, la primera por nombre. Se avisa en el build.
 - Portadas: se cambian sustituyendo la foto de la carpeta `portada/` de cada sección o galería. Respaldo: `textos/inicio.yml` → `portada_foto` (+ `portada_girar`) y `textos/work.yml` → `portada:`.
 - Sobre mí (`about.html`): foto apaisada con cita (`cita`, `cita_autor`, `cita_lado` izquierda/derecha), bloque «¡Hola! Soy Rosa» (título · retrato · historia), «Mi propósito» con 3 objetivos, y cuadrícula de fotos entremezclada con `frases` (una de cada dos fotos ocupa dos columnas). Textos provisionales hasta que la usuaria mande los suyos.

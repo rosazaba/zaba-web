@@ -26,15 +26,19 @@ originales/
 │   │   └── portada/     →   foto del recuadro de Dron
 │   └── seleccion/       → opcional: fotos para la tira «Selección»
 ├── 2-servicios/
-│   ├── surf/  buceo/  copias/  marcas/   → 1 foto para cada servicio
+│   ├── portada/         → la foto apaisada de arriba
+│   └── surf/  buceo/  copias/  marcas/   → 1 foto para cada servicio
 ├── 3-sobre-mi/
 │   ├── portada/         → la foto apaisada de arriba (con la cita)
 │   ├── retrato-…        → tu foto junto a «¡Hola! Soy Rosa»
 │   └── (el resto)       → la cuadrícula de fotos
+├── 4-contacto/
+│   └── portada/         → la foto apaisada de arriba
 └── logo/                → el logo (ya está preparado)
 ```
 
 - **Portadas:** cada sección y cada galería tiene su carpeta `portada` con UNA foto. Para cambiar una portada, sustituye esa foto.
+- **Fotos de bancos de imágenes** (Unsplash, Pexels…): no las pongas dentro de las galerías. Si hay alguna, la web la ignora y avisa, para que nunca salga como trabajo tuyo.
 
 - **Orden:** las fotos se ordenan por nombre. Llámalas `01-...`, `02-...` para elegir el orden.
 - **Tira «Selección»:** si `seleccion/` está vacía, se hace sola con fotos de buceo, surf y dron ordenadas por color. Si pones fotos ahí, salen solo esas.

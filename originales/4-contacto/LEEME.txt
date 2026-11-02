@@ -1,0 +1,2 @@
+Fotos para la pagina Contacto.
+- La portada (foto apaisada de arriba) va en la carpeta portada/

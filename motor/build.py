@@ -28,6 +28,8 @@ C_PORTADA = f"{C_TRABAJOS}/portada"    # la foto grande de arriba (cada galería
 C_SELECCION = f"{C_TRABAJOS}/seleccion"
 C_SERVICIOS = "2-servicios"
 C_SOBRE_MI = "3-sobre-mi"
+C_CONTACTO = "4-contacto"             # de momento solo su carpeta portada/ (el diseño de la página llegará después)
+BANCOS_IMAGENES = ("unsplash", "pexels", "pixabay", "shutterstock", "istock", "adobestock", "freepik")
 NO_SON_GALERIAS = {"portada", "portadas", "seleccion"}
 TEXTOS = RAIZ / "textos"
 MOTOR = RAIZ / "motor"
@@ -69,7 +71,12 @@ def fotos_de(carpeta):
     c = ORIG / carpeta
     if not c.exists():
         return []
-    return sorted(p for p in c.iterdir() if p.suffix.lower() in EXT and not p.name.startswith("."))
+    fotos = sorted(p for p in c.iterdir() if p.suffix.lower() in EXT and not p.name.startswith("."))
+    # Las fotos de bancos de imágenes no son de la fotógrafa: nunca se publican como trabajo suyo
+    ajenas = [p for p in fotos if any(b in p.name.lower() for b in BANCOS_IMAGENES)]
+    for p in ajenas:
+        avisos.append(f"Foto de banco de imágenes, no se publica: {p.relative_to(ORIG)}")
+    return [p for p in fotos if p not in ajenas]
 
 
 def _color_lab(im):
