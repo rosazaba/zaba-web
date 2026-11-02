@@ -1,9 +1,10 @@
-# PÁGINA DE INICIO
-# Foto grande de portada: originales/inicio/portada/  (pon UNA foto)
+# PORTADA (también es la página de TRABAJOS)
+# PORTADA = PÁGINA DE TRABAJOS. Todas sus fotos van en originales/1-trabajos/
+# Foto grande de arriba: originales/1-trabajos/portada/  (pon UNA foto, mejor horizontal)
 #   Si esa carpeta está vacía, se usa la foto indicada aquí (ruta dentro de originales/):
-portada_foto: "work/surf/DSC05298.jpg"
-# Selección de fotos destacadas: originales/inicio/destacadas/  (6–9 fotos)
-#   Si esa carpeta está vacía, se muestran fotos de las galerías.
+portada_foto: "1-trabajos/surf/DSC04838.jpg"
+# Tira de fotos «Selección»: originales/1-trabajos/seleccion/  (opcional; salen en el orden de sus nombres)
+#   Si esa carpeta está vacía, se eligen solas de las galerías y se ordenan por color.
 
 portada_titulo:
   en: "Where the ocean tells the story"

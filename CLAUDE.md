@@ -16,12 +16,12 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - Al usuario no se le pide instalar nada.
 
 ## Estructura
-- `originales/`: fotos y logo del usuario a tamaño original. **No se modifican nunca y no se suben a GitHub** (están en `.gitignore`). Una carpeta por sección o galería:
-  - `inicio/portada`, `inicio/destacadas`
-  - `work/<galeria>`
-  - `about`
-  - `services/<servicio>`
-  - `logo`
+- `originales/`: fotos y logo del usuario a tamaño original. **No se modifican nunca y no se suben a GitHub** (están en `.gitignore`). Carpetas en el orden del menú (constantes `C_*` en `build.py`):
+  - `1-trabajos/`: la portada (= página de trabajos): `portada/`, `seleccion/` (tira, opcional) y una carpeta por galería (`buceo/`, `surf/`, `dron/`).
+  - `2-servicios/<servicio>`
+  - `3-sobre-mi/`
+  - `logo/`
+  - Las rutas de las imágenes publicadas no cambian (`img/work/...`, `img/inicio/...`, `img/about/...`, `img/services/...`).
 - `textos/*.yml`: todo el texto visible. Cada clave lleva `en`, `es` y `fr`.
 - `motor/`:
   - `build.py`: generador.
@@ -43,7 +43,14 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
   - Si no tiene transparencia, se le quita el fondo liso automáticamente.
   - La versión blanca se genera con un filtro CSS, salvo que exista `logo-claro`.
   - El favicon sale de `icono` o, si no hay, del propio logo.
-- Galería nueva: basta con crear `originales/work/<carpeta>`. El título y la URL se definen en `textos/work.yml` → `galerias`.
+- Portada = página de trabajos (no hay página `/work/`; en el menú se llama Work/Trabajos/Travaux y apunta a la raíz). Estructura: foto de portada baja con la frase encima y, debajo, una foto por galería en fila de tres (también en móvil), cada una con su título y enlace a `work/<url>/`.
+- Galerías: buceo (`diving`), surf y dron (`drone`), en ese orden (`orden` en `textos/work.yml`). La foto de cada recuadro es la primera de la galería por nombre (`01-`). Una galería definida en `work.yml` sin fotos sale como «Próximamente» con el color de `color`.
+- Galería nueva: crear `originales/1-trabajos/<carpeta>` y su bloque en `textos/work.yml` → `galerias`.
+- Tira «Selección» de la portada (debajo de las tres galerías): si `1-trabajos/seleccion/` está vacía, coge las `TIRA_POR_GALERIA` (10) mejores fotos de cada galería (nitidez + contraste + color, sin ráfagas casi iguales), las entremezcla sin repetir galería seguida y con el color más parecido a la anterior. Fotos cuadradas, veladas (opacidad .55, algo desaturadas) para no quitar protagonismo a las tres galerías; se mueve sola.
+- Fotos repetidas: `quitar_repetidas()` en `build.py` no publica la misma imagen dos veces (huella visual) ni dos versiones de la misma toma (DSC05033 y DSC05033-2). Se queda la `portada:` de `work.yml` si es una de ellas; si no, la primera por nombre. Se avisa en el build.
+- Portadas: la grande de arriba en `textos/inicio.yml` → `portada_foto`; la de cada recuadro en `textos/work.yml` → `portada:` (nombre exacto del archivo).
+- Fotos: WebP con calidad adaptable (baja hasta que pesan menos de `PESO_MAX`). Siempre se guardan en `docs/img`; `vista-previa/` no tiene imágenes propias, las enlaza desde `../docs/img`.
+- `build.py` borra las páginas generadas que ya no existen (pero en `web1` no se pueden borrar desde aquí: pedírselo al usuario).
 - Idiomas: inglés por defecto en la raíz, español en `/es/` y francés en `/fr/`. Las URLs son iguales en los tres idiomas.
 - Cada función nueva que afecte al SEO o a los enlaces debe llevar su comprobación en `revisar.py`.
 - Diseño:

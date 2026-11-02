@@ -58,7 +58,8 @@
       var sig = lista[(actual + 1) % lista.length]; if (sig) (new Image()).src = sig.href;
     }
     function abrir(gal, i) {
-      lista = Array.prototype.slice.call(gal.querySelectorAll("a"));
+      lista = Array.prototype.slice.call(gal.querySelectorAll("a:not([data-copia])"));
+      i = i % lista.length;                 // las copias de la tira abren la foto original
       ultimoFoco = document.activeElement;
       visor.classList.add("abierto"); body.style.overflow = "hidden";
       mostrar(i);
@@ -94,6 +95,38 @@
       x0 = null;
     });
   }
+
+  /* Tira de fotos de la portada: avanza sola, se para al tocarla o pasar el ratón y se puede deslizar */
+  document.querySelectorAll("[data-tira]").forEach(function (visorTira) {
+    var pista = visorTira.firstElementChild;
+    var quieto = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var pausa = false, reanudar = null, pos = 0, ultimo = null, VEL = 28;   // píxeles por segundo
+    function mitad() { return pista.scrollWidth / 2; }
+    function parar() { pausa = true; clearTimeout(reanudar); }
+    function seguir(ms) { clearTimeout(reanudar); reanudar = setTimeout(function () { pausa = false; pos = visorTira.scrollLeft; }, ms); }
+    visorTira.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") parar(); });
+    visorTira.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") seguir(300); });
+    visorTira.addEventListener("touchstart", parar, { passive: true });
+    visorTira.addEventListener("touchend", function () { seguir(2500); }, { passive: true });
+    visorTira.addEventListener("focusin", parar);
+    visorTira.addEventListener("focusout", function () { seguir(1000); });
+    visorTira.addEventListener("scroll", function () {
+      var m = mitad();                      // bucle infinito: al pasar la mitad vuelve al principio
+      if (visorTira.scrollLeft >= m) { visorTira.scrollLeft -= m; pos = visorTira.scrollLeft; }
+      else if (visorTira.scrollLeft <= 0 && pausa) { visorTira.scrollLeft += m; pos = visorTira.scrollLeft; }
+    }, { passive: true });
+    var visible = true;
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(visorTira);
+    function paso(t) {
+      if (ultimo !== null && !pausa && visible && !quieto) {
+        pos += VEL * Math.min(t - ultimo, 64) / 1000;
+        if (pos >= mitad()) pos -= mitad();
+        visorTira.scrollLeft = pos;
+      }
+      ultimo = t; requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  });
 
   /* Formulario de contacto */
   var form = document.querySelector("[data-formulario]");

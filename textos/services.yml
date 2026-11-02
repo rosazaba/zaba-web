@@ -1,5 +1,5 @@
 # SERVICIOS
-# Cada servicio usa la foto de su carpeta en originales/services/<carpeta>/
+# Cada servicio usa la foto de su carpeta en originales/2-servicios/<carpeta>/
 # precio: escribe "" para que ponga "Consultar".
 
 titulo:

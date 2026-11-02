@@ -4,7 +4,7 @@
 {% block contenido %}
 <section class="cabeza-pagina">
   <div class="estrecho">
-    <p class="antetitulo"><a href="{{ url('work/') }}">{{ T(work.titulo) }}</a> / {{ galeria.fotos|length }}</p>
+    <p class="antetitulo"><a href="{{ url('') }}">{{ T(g.menu.inicio) }}</a>{% if galeria.fotos %} / {{ galeria.fotos|length }}{% endif %}</p>
     <h1>{{ T(galeria.titulo) }}</h1>
     <p class="texto-grande">{{ T(galeria.resumen) }}</p>
     {% if T(galeria.texto) %}<p>{{ T(galeria.texto) }}</p>{% endif %}
@@ -13,6 +13,12 @@
 
 <section class="bloque bloque--sin-arriba">
   <div class="ancho">
+    {% if not galeria.fotos %}
+    <div class="pronto"{% if galeria.color %} style="--color-trabajo: var(--{{ galeria.color }})"{% endif %}>
+      <p class="pronto__titulo">{{ T(work.proximamente) }}</p>
+      <p>{{ T(work.proximamente_texto) }}</p>
+    </div>
+    {% else %}
     <div class="mosaico mosaico--galeria" data-galeria>
       {% for f in galeria.fotos %}
       <a class="mosaico__item aparece" href="{{ asset(f.srcset[-1][1]) }}" data-ancho="{{ f.ancho }}" data-alto="{{ f.alto }}">
@@ -20,6 +26,7 @@
       </a>
       {% endfor %}
     </div>
+    {% endif %}
   </div>
 </section>
 

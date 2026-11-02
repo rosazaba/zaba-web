@@ -1,0 +1,3 @@
+Fotos de la galeria de Buceo.
+Se ordenan por nombre: 01-, 02-, 03-...
+La 01- es la que sale en su recuadro de la portada.

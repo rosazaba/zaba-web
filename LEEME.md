@@ -12,25 +12,29 @@
 
 ## Dónde va cada foto
 
+Las carpetas siguen el orden del menú de la web (Trabajos · Servicios · Sobre mí). La portada y la página de trabajos son la misma, así que todo lo de la portada va en `1-trabajos`.
+
 ```
 originales/
-├── inicio/
-│   ├── portada/        → 1 foto grande para la portada (mejor horizontal)
-│   └── destacadas/     → 6–9 fotos para la selección de la página de inicio
-├── work/
-│   ├── surf/           → galería de Surf
-│   └── buceo/          → galería de Buceo
-├── about/              → 1 foto tuya (mejor vertical)
-├── logo/               → tu logo original (SVG ideal; PNG o JPG también valen)
-└── services/
-    ├── surf/           → 1 foto para "Sesión de surf"
-    ├── buceo/          → 1 foto para "Sesión submarina"
-    └── copias/         → 1 foto para "Copias artísticas"
+├── 1-trabajos/          → LA PORTADA
+│   ├── portada/         → 1 foto grande de arriba (mejor horizontal)
+│   ├── buceo/           → galería Buceo
+│   ├── surf/            → galería Surf
+│   ├── dron/            → galería Dron
+│   └── seleccion/       → opcional: fotos para la tira «Selección»
+├── 2-servicios/
+│   ├── surf/            → 1 foto para "Sesión de surf"
+│   ├── buceo/           → 1 foto para "Sesión submarina"
+│   ├── copias/          → 1 foto para "Copias artísticas"
+│   └── marcas/          → 1 foto para "Marcas y escuelas"
+├── 3-sobre-mi/          → 1 foto tuya (mejor vertical)
+└── logo/                → el logo (ya está preparado)
 ```
 
-- **Orden:** las fotos se ordenan por nombre. Llámalas `01-...`, `02-...` para elegir el orden.
-- **Formato:** JPG, PNG o TIFF, al tamaño original. No hace falta reducirlas; Claude las optimiza solo.
-- **Galería nueva:** crea una carpeta dentro de `originales/work/` (por ejemplo `originales/work/apnea/`), mete las fotos y pídele a Claude que la añada.
+- **Orden:** las fotos se ordenan por nombre. Llámalas `01-...`, `02-...` para elegir el orden. En cada galería, la `01-` es la que sale en su recuadro de la portada.
+- **Tira «Selección»:** si `seleccion/` está vacía, se hace sola con fotos de buceo, surf y dron ordenadas por color. Si pones fotos ahí, salen solo esas.
+- **Formato:** JPG, PNG o TIFF, al tamaño original. No hace falta reducirlas; Claude las optimiza.
+- **Galería nueva:** crea otra carpeta dentro de `originales/1-trabajos/` (por ejemplo `apnea/`), mete las fotos y pídele a Claude que la añada.
 
 ## Cómo actualizar la web
 

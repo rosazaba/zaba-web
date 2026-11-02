@@ -1,0 +1,3 @@
+OPCIONAL: fotos para la tira "Seleccion" de la portada.
+Si esta carpeta esta vacia, la tira se hace sola con fotos de buceo, surf y dron ordenadas por color.
+Si pones fotos aqui, salen solo estas y en el orden de sus nombres: 01-, 02-...

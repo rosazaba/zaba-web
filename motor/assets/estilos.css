@@ -175,6 +175,49 @@ p { margin: 0 0 1.2em; }
 @keyframes bajar { 0% { opacity: 0; transform: translateY(0); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(12px); } }
 @media (max-width: 899px) { .hero__bajar { display: none; } }
 
+/* Portada corta: deja ver las tres galerías sin apenas bajar */
+.hero--corta { height: 56vh; height: 56svh; min-height: 340px; max-height: 720px; }
+.hero--corta .hero__texto { bottom: clamp(22px, 6vh, 64px); }
+.hero--corta h1 { font-size: clamp(2rem, 6.4vw, 4.2rem); max-width: 16ch; }
+@media (min-width: 900px) { .hero--corta { height: 52vh; height: 52svh; } }
+
+/* ── Galerías en la portada (buceo · surf · dron) ───────── */
+.trabajos { padding: clamp(10px, 2.2vw, 28px) 0 clamp(36px, 6vw, 80px); }
+.trabajos__fila { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(8px, 1.6vw, 22px); }
+.trabajo { position: relative; display: block; overflow: hidden; aspect-ratio: 2 / 3; border-radius: var(--radio);
+  color: #fff; text-decoration: none; background: var(--color-trabajo, var(--tierra)); }
+.trabajo__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
+.trabajo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(40,30,22,.62) 100%); transition: background .4s; }
+.trabajo--vacio::after { background: radial-gradient(120% 80% at 50% 0%, rgba(255,255,255,.16), rgba(255,255,255,0) 60%), linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(30,24,20,.28) 100%); }
+.trabajo:hover .trabajo__img { transform: scale(1.05); }
+.trabajo:focus-visible { outline: 2px solid var(--ocre); outline-offset: 3px; }
+.trabajo__texto { position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; padding: clamp(10px, 2.6vw, 34px); display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+.trabajo__titulo { font: 400 clamp(1.3rem, 5.2vw, 3.4rem)/1 var(--serif); letter-spacing: .01em; text-shadow: 0 1px 14px rgba(30,24,20,.35); }
+.trabajo__ver { font: 400 clamp(.54rem, 1.8vw, .72rem)/1.2 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--mantequilla);
+  padding-bottom: 3px; border-bottom: 1px solid color-mix(in srgb, var(--mantequilla) 55%, transparent); transition: border-color .3s; }
+.trabajo:hover .trabajo__ver { border-bottom-color: var(--mantequilla); }
+@media (min-width: 760px) { .trabajos .ancho { max-width: 820px; } }
+
+/* Tira de fotos que se desplaza sola (ordenada por color) */
+.tira { padding: 0 0 clamp(40px, 7vw, 90px); }
+.tira__titulo { text-align: center; margin-bottom: 1rem; }
+.tira__visor { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+.tira__visor::-webkit-scrollbar { display: none; }
+.tira__pista { display: flex; gap: clamp(6px, 1vw, 12px); width: max-content; padding: 0 var(--margen); }
+.tira__foto { --h: 120px; display: block; flex: none; width: var(--h); height: var(--h); overflow: hidden; border-radius: var(--radio); background: var(--arena-2); cursor: zoom-in; }
+/* cuadradas y veladas: no compiten con las tres galerías; recuperan el color al pasar por encima */
+.tira__foto img { width: 100%; height: 100%; object-fit: cover; object-position: var(--foco, 50% 50%);
+  opacity: .55; filter: saturate(.7); transition: opacity .5s, filter .5s, transform .9s cubic-bezier(.2,.7,.2,1); }
+.tira__foto:hover img, .tira__foto:focus-visible img { opacity: 1; filter: none; transform: scale(1.04); }
+@media (min-width: 900px) { .tira__foto { --h: 170px; } }
+html:not(.js) .tira__foto[data-copia] { display: none; }
+
+/* Galería sin fotos todavía */
+.pronto { padding: clamp(40px, 8vw, 90px) var(--margen); text-align: center; color: #fff; border-radius: var(--radio);
+  background: radial-gradient(120% 90% at 50% 0%, rgba(255,255,255,.16), rgba(255,255,255,0) 60%), var(--color-trabajo, var(--tierra)); }
+.pronto__titulo { font: 400 clamp(2rem, 6vw, 3.4rem)/1.1 var(--serif); margin: 0 0 .6rem; }
+.pronto p:last-child { max-width: 42ch; margin: 0 auto; opacity: .92; }
+
 /* Intro */
 .intro { text-align: center; }
 .intro .titulo-grande { font-style: italic; color: var(--tierra); }

@@ -1,24 +1,44 @@
 # TRABAJOS (galerías)
-# Cada carpeta dentro de originales/work/ es una galería.
-# Para crear una galería nueva: crea la carpeta con fotos y añade aquí su bloque
-# (si no la añades, se publica igualmente usando el nombre de la carpeta).
-# Las fotos se ordenan por nombre de archivo: usa 01-, 02-, 03-... para elegir el orden.
+# La portada de la web muestra una foto por galería (la primera por nombre de archivo).
+# Al pulsarla se abre la página de esa galería.
+# Cada carpeta dentro de originales/1-trabajos/ es una galería (salvo portada/ y seleccion/):
+#   originales/1-trabajos/buceo  ·  originales/1-trabajos/surf  ·  originales/1-trabajos/dron
+# Las fotos se ordenan por nombre de archivo: usa 01-, 02-, 03-... para elegir el orden
+# La foto de cada recuadro de la portada se elige abajo con «portada:» (si está vacío, la primera por nombre).
+# Una galería de esta lista sin fotos aparece como «Próximamente».
 
-titulo:
-  en: "Work"
-  es: "Trabajos"
-  fr: "Travaux"
+proximamente:
+  en: "Coming soon"
+  es: "Próximamente"
+  fr: "Bientôt"
 
-intro:
-  en: "Two galleries, one obsession: the water."
-  es: "Dos galerías, una obsesión: el agua."
-  fr: "Deux galeries, une obsession : l'eau."
+proximamente_texto:
+  en: "New photos are on their way. In the meantime, get in touch if you'd like a session."
+  es: "Pronto habrá fotos nuevas. Mientras tanto, escríbeme si quieres una sesión."
+  fr: "De nouvelles photos arrivent bientôt. En attendant, écrivez-moi si vous souhaitez une séance."
 
 galerias:
-  surf:
-    url: "surf"          # dirección: zaba.com/work/surf/
+  buceo:
+    url: "diving"        # dirección: .../work/diving/
     orden: 1
-    titulo:  { en: "Surf",   es: "Surf",   fr: "Surf" }
+    color: "mar"         # color del recuadro mientras no haya fotos
+    portada: "_MG_5822.jpg"   # foto del recuadro en la portada (nombre exacto del archivo). Vacío = la primera por nombre
+    titulo:  { en: "Dive", es: "Buceo", fr: "Plongée" }
+    resumen:
+      en: "Life beneath the surface, in natural light."
+      es: "La vida bajo la superficie, con luz natural."
+      fr: "La vie sous la surface, en lumière naturelle."
+    texto:
+      en: "Reefs, wrecks, marine life and the divers who explore them."
+      es: "Arrecifes, pecios, vida marina y los buceadores que los exploran."
+      fr: "Récifs, épaves, vie marine et les plongeurs qui les explorent."
+
+  surf:
+    url: "surf"          # dirección: .../work/surf/
+    orden: 2
+    color: "tierra"
+    portada: "DSC05297.jpg"
+    titulo:  { en: "Surf", es: "Surf", fr: "Surf" }
     resumen:
       en: "Line-ups, barrels and the people who chase them."
       es: "Picos, tubos y la gente que los persigue."
@@ -28,15 +48,13 @@ galerias:
       es: "Desde el agua y desde la orilla, al amanecer y a última hora de la tarde."
       fr: "Depuis l'eau et depuis la plage, à l'aube et à l'heure dorée."
 
-  buceo:
-    url: "diving"        # dirección: zaba.com/work/diving/
-    orden: 2
-    titulo:  { en: "Diving", es: "Buceo",  fr: "Plongée" }
+  dron:
+    url: "drone"         # dirección: .../work/drone/
+    orden: 3
+    color: "ocre"
+    portada: "IMG_20260907_09541134.jpeg"
+    titulo:  { en: "Drone", es: "Dron", fr: "Drone" }
     resumen:
-      en: "Life beneath the surface, in natural light."
-      es: "La vida bajo la superficie, con luz natural."
-      fr: "La vie sous la surface, en lumière naturelle."
-    texto:
-      en: "Reefs, wrecks, marine life and the divers who explore them."
-      es: "Arrecifes, pecios, vida marina y los buceadores que los exploran."
-      fr: "Récifs, épaves, vie marine et les plongeurs qui les explorent."
+      en: "The coast from above: waves, reefs and lines in the sand."
+      es: "La costa desde el aire: olas, arrecifes y líneas en la arena."
+      fr: "La côte vue du ciel : vagues, récifs et lignes dans le sable."

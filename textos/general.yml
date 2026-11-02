@@ -32,8 +32,7 @@ descripcion_google:
   fr: "Zaba — photographie de surf et sous-marine. Portfolio, séances photo de surf et de plongée, et tirages."
 
 menu:
-  inicio:   { en: "Home",     es: "Inicio",    fr: "Accueil" }
-  work:     { en: "Work",     es: "Trabajos",  fr: "Travaux" }
+  inicio:   { en: "Work",     es: "Trabajos",  fr: "Travaux" }   # la portada es la página de trabajos
   services: { en: "Services", es: "Servicios", fr: "Services" }
   about:    { en: "About",    es: "Sobre mí",  fr: "À propos" }
   contact:  { en: "Contact",  es: "Contacto",  fr: "Contact" }
@@ -41,7 +40,7 @@ menu:
 botones:
   ver_trabajo:  { en: "See the work",     es: "Ver trabajos",       fr: "Voir les travaux" }
   reservar:     { en: "Book a session",   es: "Reservar sesión",    fr: "Réserver une séance" }
-  ver_galeria:  { en: "Open gallery",     es: "Ver galería",        fr: "Voir la galerie" }
+  ver_galeria:  { en: "View gallery",     es: "Ver galería",        fr: "Voir la galerie" }
   ver_servicios: { en: "All services",    es: "Todos los servicios", fr: "Tous les services" }
   escribeme:    { en: "Get in touch",     es: "Escríbeme",          fr: "Écrivez-moi" }
   pedir:        { en: "Ask about this",   es: "Consultar",          fr: "Demander" }

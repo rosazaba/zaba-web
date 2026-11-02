@@ -2,64 +2,49 @@
 {% block clase_body %} cabecera-sobre-foto{% endblock %}
 {% block contenido %}
 
-<section class="hero">
+<section class="hero hero--corta">
   {% if portada %}{{ foto(portada, "100vw", "hero__img", "eager") }}{% endif %}
   <div class="hero__velo"></div>
   <div class="hero__texto">
     <p class="antetitulo">{{ T(g.lema) }}</p>
     <h1>{{ T(inicio.portada_titulo) }}</h1>
-    <div class="botones">
-      <a class="boton boton--claro" href="{{ url('work/') }}">{{ T(g.botones.ver_trabajo) }}</a>
-      <a class="boton boton--linea-claro" href="{{ url('contact/') }}">{{ T(g.botones.reservar) }}</a>
-    </div>
-  </div>
-  <a class="hero__bajar" href="#intro" aria-label="Scroll"><span></span></a>
-</section>
-
-<section class="intro bloque" id="intro">
-  <div class="estrecho aparece">
-    <h2 class="titulo-grande">{{ T(inicio.intro_titulo) }}</h2>
-    <p class="texto-grande">{{ T(inicio.intro_texto) }}</p>
   </div>
 </section>
 
-{% if galerias|length > 1 %}
-<section class="bloque bloque--sin-arriba">
+<section class="trabajos" aria-label="{{ T(g.menu.inicio) }}">
   <div class="ancho">
-    <h2 class="titulo-seccion aparece">{{ T(inicio.categorias_titulo) }}</h2>
-    <div class="categorias">
+    <div class="trabajos__fila">
       {% for gal in galerias %}
-      <a class="categoria aparece" href="{{ url('work/' ~ gal.url ~ '/') }}">
-        {{ foto(gal.portada, "(min-width: 760px) 50vw, 100vw", "categoria__img") }}
-        <span class="categoria__texto">
-          <span class="categoria__num">0{{ loop.index }}</span>
-          <span class="categoria__titulo">{{ T(gal.titulo) }}</span>
-          <span class="categoria__resumen">{{ T(gal.resumen) }}</span>
+      <a class="trabajo{% if not gal.portada %} trabajo--vacio{% endif %}" href="{{ url('work/' ~ gal.url ~ '/') }}"{% if gal.color %} style="--color-trabajo: var(--{{ gal.color }})"{% endif %}>
+        {% if gal.portada %}{{ foto(gal.portada, "(min-width: 760px) 33vw, 34vw", "trabajo__img", "eager", T(gal.titulo) ~ " — " ~ g.marca) }}{% endif %}
+        <span class="trabajo__texto">
+          <span class="trabajo__titulo">{{ T(gal.titulo) }}</span>
+          <span class="trabajo__ver">{{ T(g.botones.ver_galeria) }}</span>
         </span>
       </a>
       {% endfor %}
     </div>
   </div>
 </section>
-{% endif %}
 
 {% if destacadas %}
-<section class="bloque bloque--arena">
-  <div class="ancho">
-    <h2 class="titulo-seccion aparece">{{ T(inicio.destacadas_titulo) }}</h2>
-    <div class="mosaico" data-galeria>
+<section class="tira" aria-label="{{ T(inicio.destacadas_titulo) }}">
+  <p class="antetitulo tira__titulo">{{ T(inicio.destacadas_titulo) }}</p>
+  <div class="tira__visor" data-tira>
+    <div class="tira__pista" data-galeria>
+      {% for copia in [false, true] %}
       {% for f in destacadas %}
-      <a class="mosaico__item aparece" href="{{ asset(f.srcset[-1][1]) }}" data-ancho="{{ f.ancho }}" data-alto="{{ f.alto }}">
-        {{ foto(f, "(min-width: 1100px) 33vw, 50vw") }}
+      <a class="tira__foto" href="{{ asset(f.srcset[-1][1]) }}" style="--foco: {{ f.foco[0] }}% {{ f.foco[1] }}%"{% if copia %} data-copia aria-hidden="true" tabindex="-1"{% endif %}>
+        {{ foto(f, "(min-width: 900px) " ~ ([f.ratio, 1]|max * 170)|round|int ~ "px, " ~ ([f.ratio, 1]|max * 120)|round|int ~ "px", "", "lazy", "" if copia else g.marca ~ " — " ~ T(g.lema) ~ " " ~ loop.index) }}
       </a>
       {% endfor %}
+      {% endfor %}
     </div>
-    <p class="centro"><a class="boton boton--linea" href="{{ url('work/') }}">{{ T(g.botones.ver_trabajo) }}</a></p>
   </div>
 </section>
 {% endif %}
 
-<section class="bloque">
+<section class="bloque bloque--arena">
   <div class="ancho">
     <h2 class="titulo-seccion aparece">{{ T(inicio.servicios_titulo) }}</h2>
     <div class="mini-servicios">
