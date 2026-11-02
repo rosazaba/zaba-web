@@ -36,3 +36,7 @@ formulario_titulo:
   en: "Or send me a message"
   es: "O envíame un mensaje"
   fr: "Ou envoyez-moi un message"
+
+# Encuadre de la foto de arriba: "horizontal vertical" en %. 50% 50% = centrada;
+# vertical más bajo (p. ej. 25%) enseña más la parte de arriba de la foto, más alto (75%) la de abajo.
+portada_encuadre: "65% 25%"   # se ve la cresta de la ola y la montaña

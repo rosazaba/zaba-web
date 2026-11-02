@@ -69,3 +69,8 @@ pasos:
       en: "We shoot, I edit, and you receive your private online gallery."
       es: "Hacemos las fotos, las edito y recibes tu galería online privada."
       fr: "On shoote, je retouche, et vous recevez votre galerie privée en ligne."
+
+# Encuadre de la foto de arriba: "horizontal vertical" en %. 50% 50% = centrada;
+# vertical más bajo (p. ej. 25%) enseña más la parte de arriba de la foto, más alto (75%) la de abajo.
+portada_encuadre: "25% 70%"   # se ve el surfista entero, con los pies
+portada_lado: "derecha"      # izquierda o derecha: dónde va el título sobre la foto (a la derecha para no tapar al surfista)

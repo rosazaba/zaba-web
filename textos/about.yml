@@ -83,4 +83,9 @@ datos:
 # Fotos provisionales mientras no haya fotos tuyas en originales/3-sobre-mi/ (rutas dentro de originales/)
 provisional:
   portada: "1-trabajos/buceo/_MG_8142.jpg"
-  retrato: "3-sobre-mi/WhatsApp Image 2026-11-02 at 9.44.22 PM.jpeg"   # retrato del bloque «Hola» (elegido por Rosa)
+  retrato: "3-sobre-mi/IMG-20261010-WA0004.jpg"   # retrato del bloque «Hola» (elegido por Rosa)
+
+# Encuadre de la foto de arriba: "horizontal vertical" en %. 50% 50% = centrada;
+# vertical más bajo (p. ej. 25%) enseña más la parte de arriba de la foto, más alto (75%) la de abajo.
+portada_encuadre: "50% 50%"
+retrato_encuadre: "28% 50%"   # foto del bloque «¡Hola! Soy Rosa»: más bajo el primer número = se ve más la parte izquierda (la cámara)

@@ -367,13 +367,13 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .icono-red { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-left: -11px; border-radius: 50%; transition: color .2s, background .2s; }
 .icono-red:hover { color: var(--mantequilla); }
 .icono-red--grande { margin: 4px 0 0 -10px; color: var(--tierra); }
-.icono-red--grande .icono { width: 26px; height: 26px; }
+.icono-red--grande .icono { width: 22px; height: 22px; }   /* trazo fino, a juego con Jost */
 .icono-red--grande:hover { color: var(--mar); }
 
 /* ── Sobre mí ───────────────────────────────────────────── */
 /* 1. Foto apaisada con cita (más baja que la portada principal) */
 .sobre-hero { position: relative; height: 56vh; height: 56svh; min-height: 340px; max-height: 720px; overflow: hidden; color: #fff; background: var(--mar-oscuro); display: flex; align-items: flex-end; }
-.sobre-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.sobre-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--encuadre, 50% 50%); }   /* encuadre: portada_encuadre en el .yml de la página */
 .sobre-hero__velo { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,24,20,.35) 0%, rgba(30,24,20,0) 30%, rgba(30,24,20,.15) 55%, rgba(30,24,20,.6) 100%); }
 .sobre-hero__cita { position: relative; z-index: 1; width: 100%; max-width: var(--max); margin: 0 auto; padding: var(--altura-cabecera) var(--margen) clamp(26px, 6vh, 60px); }
 .sobre-hero__cita blockquote { margin: 0; max-width: 36ch; }
@@ -397,7 +397,7 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .hola__titulo h1 { font-size: clamp(2.3rem, 5.5vw, 3.8rem); color: var(--tierra); margin-bottom: .35em; }
 .hola__sub { margin: 0; font: 400 .78rem/1.4 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--gris); }
 .hola__foto { position: relative; max-width: 360px; }
-.hola__foto img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radio); position: relative; z-index: 1; }
+.hola__foto img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: var(--encuadre, 50% 50%); border-radius: var(--radio); position: relative; z-index: 1; }
 .hola__texto p { color: #4a423b; }
 .hola__texto p:first-child { font-size: 1.12rem; }
 @media (min-width: 900px) { .hola__in { grid-template-columns: 1fr 1fr 1.25fr; } .hola__foto { justify-self: center; width: 100%; } }

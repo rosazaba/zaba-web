@@ -67,6 +67,7 @@
 {% block contenido %}{% endblock %}
 </main>
 
+{% if pid != 'inicio' %}{# la usuaria no quiere el pie oscuro en la página de Trabajo #}
 <footer class="pie">
   <div class="pie__in">
     <div class="pie__marca">
@@ -93,6 +94,7 @@
   </div>
   <p class="pie__legal">© {{ g.marca }} · {{ T(g.pie.derechos) }}</p>
 </footer>
+{% endif %}
 
 {% if g.contacto.whatsapp and pid != 'contact' %}
 <a class="whatsapp" href="https://wa.me/{{ g.contacto.whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp">

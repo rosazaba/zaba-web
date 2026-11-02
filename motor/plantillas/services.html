@@ -3,7 +3,7 @@
 {% block clase_body %}{% if portada_pagina %} cabecera-sobre-foto{% endif %}{% endblock %}
 {% block contenido %}
 {% if portada_pagina %}
-<section class="sobre-hero sobre-hero--izquierda">
+<section class="sobre-hero sobre-hero--{{ 'derecha' if services.portada_lado == 'derecha' else 'izquierda' }}"{% if services.portada_encuadre %} style="--encuadre: {{ services.portada_encuadre }}"{% endif %}>
   {{ foto(portada_pagina, "100vw", "sobre-hero__img", "eager", g.marca ~ " — " ~ T(services.titulo)) }}
   <div class="sobre-hero__velo"></div>
   <div class="sobre-hero__cita">

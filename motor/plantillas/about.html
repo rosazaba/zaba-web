@@ -5,7 +5,7 @@
 
 {# 1. Foto apaisada con cita #}
 {% if sobre.portada %}
-<section class="sobre-hero sobre-hero--{{ 'derecha' if about.cita_lado == 'derecha' else 'izquierda' }}">
+<section class="sobre-hero sobre-hero--{{ 'derecha' if about.cita_lado == 'derecha' else 'izquierda' }}"{% if about.portada_encuadre %} style="--encuadre: {{ about.portada_encuadre }}"{% endif %}>
   {{ foto(sobre.portada, "100vw", "sobre-hero__img", "eager", g.marca ~ " — " ~ T(about.titulo)) }}
   <div class="sobre-hero__velo"></div>
   <figure class="sobre-hero__cita">
@@ -24,7 +24,7 @@
       <p class="hola__sub">{{ T(about.hola_subtitulo) }}</p>
     </div>
     {% if sobre.retrato %}
-    <div class="hola__foto aparece">{{ foto(sobre.retrato, "(min-width: 900px) 28vw, 80vw", "", "lazy", T(about.hola_titulo)) }}</div>
+    <div class="hola__foto aparece"{% if about.retrato_encuadre %} style="--encuadre: {{ about.retrato_encuadre }}"{% endif %}>{{ foto(sobre.retrato, "(min-width: 900px) 28vw, 80vw", "", "lazy", T(about.hola_titulo)) }}</div>
     {% endif %}
     <div class="hola__texto aparece">
       {% for p in T(about.parrafos) %}<p>{{ p }}</p>{% endfor %}
