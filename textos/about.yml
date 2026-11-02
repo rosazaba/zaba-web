@@ -1,30 +1,82 @@
 # SOBRE MÍ
-# Tu foto: originales/3-sobre-mi/  (pon UNA foto tuya, mejor vertical)
+# Fotos: originales/3-sobre-mi/
+#   portada-…  -> la foto apaisada de arriba (horizontal)
+#   retrato-…  -> tu foto del bloque «¡Hola! Soy Rosa» (mejor vertical)
+#   el resto   -> la cuadrícula de fotos de abajo (se ordenan por nombre: 01-, 02-…)
+# Mientras no haya fotos tuyas se usan las de «provisional» (fotos de tus galerías).
 
 titulo:
   en: "About me"
   es: "Sobre mí"
   fr: "À propos"
 
-entradilla:
-  en: "I grew up with salt in my hair and a camera in my hand."
-  es: "Crecí con sal en el pelo y una cámara en la mano."
-  fr: "J'ai grandi avec du sel dans les cheveux et un appareil photo à la main."
+# ── 1. Foto de arriba con cita ──────────────────────────────
+cita:
+  en: "The sea, once it casts its spell, holds one in its net of wonder forever."
+  es: "El mar, una vez que lanza su hechizo, te atrapa para siempre en su red de maravillas."
+  fr: "La mer, une fois qu'elle a jeté son sort, vous retient à jamais dans son filet de merveilles."
+cita_autor: "Jacques-Yves Cousteau"
+cita_lado: "izquierda"        # izquierda o derecha: dónde va la cita sobre la foto
 
-# Cada línea es un párrafo
+# ── 2. ¡Hola! Soy Rosa ──────────────────────────────────────
+hola_titulo:
+  en: "Hi! I'm Rosa"
+  es: "¡Hola! Soy Rosa"
+  fr: "Bonjour ! Je suis Rosa"
+
+hola_subtitulo:
+  en: "The person behind the lens"
+  es: "Quién está detrás de la lente"
+  fr: "Derrière l'objectif"
+
+# Tu historia. Cada línea es un párrafo. (TEXTO PROVISIONAL: cámbialo por el tuyo)
 parrafos:
   en:
-    - "I'm Zaba, a surf and underwater photographer. What started as filming friends in the line-up turned into a way of life: reading forecasts, waking up before sunrise and spending hours in the water waiting for the right moment."
+    - "I'm a surf and underwater photographer. What started as filming friends in the line-up turned into a way of life: reading forecasts, waking up before sunrise and spending hours in the water waiting for the right moment."
     - "Below the surface I found a different kind of quiet. Diving taught me patience and respect for the ocean — and that the best images come when you blend in rather than chase."
     - "Today I work with surfers and divers who want honest, luminous images of their time in the sea."
   es:
-    - "Soy Zaba y me dedico a la fotografía de surf y submarina. Lo que empezó grabando a mis amigos en el pico se convirtió en una forma de vida: mirar previsiones, levantarme antes del amanecer y pasar horas en el agua esperando el momento justo."
+    - "Me dedico a la fotografía de surf y submarina. Lo que empezó grabando a mis amigos en el pico se convirtió en una forma de vida: mirar previsiones, levantarme antes del amanecer y pasar horas en el agua esperando el momento justo."
     - "Bajo la superficie encontré otro tipo de calma. El buceo me enseñó paciencia y respeto por el océano, y que las mejores imágenes llegan cuando te integras en lugar de perseguir."
     - "Hoy trabajo con surfistas y buceadores que quieren imágenes honestas y luminosas de su tiempo en el mar."
   fr:
-    - "Je suis Zaba, photographe de surf et sous-marin. Ce qui a commencé en filmant mes amis au line-up est devenu un mode de vie : lire les prévisions, se lever avant le soleil et passer des heures dans l'eau à attendre le bon moment."
+    - "Je suis photographe de surf et de plongée. Ce qui a commencé en filmant mes amis au line-up est devenu un mode de vie : lire les prévisions, se lever avant le soleil et passer des heures dans l'eau à attendre le bon moment."
     - "Sous la surface, j'ai trouvé un autre calme. La plongée m'a appris la patience et le respect de l'océan — et que les meilleures images viennent quand on se fond dans le décor plutôt que de courir après."
     - "Aujourd'hui, je travaille avec des surfeurs et des plongeurs qui veulent des images sincères et lumineuses de leurs moments en mer."
+
+# ── 3. Mi propósito ─────────────────────────────────────────  (TEXTO PROVISIONAL)
+proposito_titulo:
+  en: "My purpose"
+  es: "Mi propósito"
+  fr: "Ma démarche"
+
+proposito_texto:
+  en: "I want every image to carry what it feels like to be in the water: the light, the cold, the silence and the adrenaline."
+  es: "Quiero que cada imagen transmita lo que se siente estando en el agua: la luz, el frío, el silencio y la adrenalina."
+  fr: "Je veux que chaque image transmette ce que l'on ressent dans l'eau : la lumière, le froid, le silence et l'adrénaline."
+
+objetivos:
+  - titulo: { en: "Real moments",       es: "Momentos reales",        fr: "Des moments vrais" }
+    texto:
+      en: "No poses: I look for the instant that tells your session as it was."
+      es: "Sin poses: busco el instante que cuenta tu sesión tal y como fue."
+      fr: "Pas de poses : je cherche l'instant qui raconte votre session telle qu'elle a été."
+  - titulo: { en: "Respect for the sea", es: "Respeto por el mar",     fr: "Le respect de la mer" }
+    texto:
+      en: "I photograph without disturbing marine life and following good diving practice."
+      es: "Fotografío sin molestar a la vida marina y siguiendo las buenas prácticas de buceo."
+      fr: "Je photographie sans déranger la vie marine, en respectant les bonnes pratiques de plongée."
+  - titulo: { en: "Images that last",   es: "Imágenes que perduran",  fr: "Des images qui restent" }
+    texto:
+      en: "Photos you'll want to print and keep, not just post."
+      es: "Fotos que quieras imprimir y guardar, no solo publicar."
+      fr: "Des photos que vous voudrez imprimer et garder, pas seulement publier."
+
+# ── 4. Cuadrícula de fotos con frases cortas ────────────────  (TEXTO PROVISIONAL)
+frases:
+  - { en: "Natural light, always.",          es: "Luz natural, siempre.",            fr: "La lumière naturelle, toujours." }
+  - { en: "Patience before speed.",          es: "Paciencia antes que prisa.",       fr: "La patience avant la vitesse." }
+  - { en: "Above and below the surface.",    es: "Sobre y bajo la superficie.",      fr: "Au-dessus et sous la surface." }
 
 # Pequeños datos (etiqueta + valor)
 datos:
@@ -34,3 +86,15 @@ datos:
     valor:    { en: "Surf · Scuba · Freediving", es: "Surf · Buceo · Apnea", fr: "Surf · Plongée · Apnée" }
   - etiqueta: { en: "Languages", es: "Idiomas", fr: "Langues" }
     valor:    { en: "English · Español · Français", es: "English · Español · Français", fr: "English · Español · Français" }
+
+# Fotos provisionales mientras no haya fotos tuyas en originales/3-sobre-mi/ (rutas dentro de originales/)
+provisional:
+  portada: "1-trabajos/buceo/_MG_8142.jpg"
+  retrato: "1-trabajos/buceo/IMG_0895.jpg"
+  cuadricula:
+    - "1-trabajos/buceo/_MG_3060.jpg"
+    - "1-trabajos/surf/DSC05129.jpg"
+    - "1-trabajos/dron/IMG_20260907_09553035.jpeg"
+    - "1-trabajos/buceo/IMG_4893.jpg"
+    - "1-trabajos/surf/DSC08525.jpg"
+    - "1-trabajos/buceo/_MG_2970.jpg"

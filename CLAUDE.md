@@ -17,9 +17,10 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 
 ## Estructura
 - `originales/`: fotos y logo del usuario a tamaño original. **No se modifican nunca y no se suben a GitHub** (están en `.gitignore`). Carpetas en el orden del menú (constantes `C_*` en `build.py`):
-  - `1-trabajos/`: la portada (= página de trabajos): `portada/`, `seleccion/` (tira, opcional) y una carpeta por galería (`buceo/`, `surf/`, `dron/`).
+  - `1-trabajos/`: la portada (= página de trabajos): `portadas/`, `seleccion/` (tira, opcional) y una carpeta por galería (`buceo/`, `surf/`, `dron/`).
+    - `portadas/`: `portada-trabajos (…)` (la grande, ya girada) y `portada-buceo|surf|dron (…)` (recuadros). Entre paréntesis, el nombre de la foto original. Tienen prioridad sobre `textos/inicio.yml` y `work.yml`.
   - `2-servicios/<servicio>`
-  - `3-sobre-mi/`
+  - `3-sobre-mi/`: `portada-…` (foto apaisada con la cita), `retrato-…` (bloque «¡Hola! Soy Rosa») y el resto para la cuadrícula. Sin fotos propias usa `textos/about.yml` → `provisional`.
   - `logo/`
   - Las rutas de las imágenes publicadas no cambian (`img/work/...`, `img/inicio/...`, `img/about/...`, `img/services/...`).
 - `textos/*.yml`: todo el texto visible. Cada clave lleva `en`, `es` y `fr`.
@@ -48,14 +49,15 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - Galería nueva: crear `originales/1-trabajos/<carpeta>` y su bloque en `textos/work.yml` → `galerias`.
 - Tira «Selección» de la portada (debajo de las tres galerías): si `1-trabajos/seleccion/` está vacía, coge las `TIRA_POR_GALERIA` (10) mejores fotos de cada galería (nitidez + contraste + color, sin ráfagas casi iguales), las entremezcla sin repetir galería seguida y con el color más parecido a la anterior. Fotos cuadradas, veladas (opacidad .55, algo desaturadas) para no quitar protagonismo a las tres galerías; se mueve sola.
 - Fotos repetidas: `quitar_repetidas()` en `build.py` no publica la misma imagen dos veces (huella visual) ni dos versiones de la misma toma (DSC05033 y DSC05033-2). Se queda la `portada:` de `work.yml` si es una de ellas; si no, la primera por nombre. Se avisa en el build.
-- Portadas: la grande de arriba en `textos/inicio.yml` → `portada_foto`; la de cada recuadro en `textos/work.yml` → `portada:` (nombre exacto del archivo).
+- Portadas: se cambian sustituyendo la foto en `originales/1-trabajos/portadas/`. Respaldo: `textos/inicio.yml` → `portada_foto` (+ `portada_girar`) y `textos/work.yml` → `portada:`.
+- Sobre mí (`about.html`): foto apaisada con cita (`cita`, `cita_autor`, `cita_lado` izquierda/derecha), bloque «¡Hola! Soy Rosa» (título · retrato · historia), «Mi propósito» con 3 objetivos, y cuadrícula de fotos entremezclada con `frases` (una de cada dos fotos ocupa dos columnas). Textos provisionales hasta que la usuaria mande los suyos.
 - Fotos: WebP con calidad adaptable (baja hasta que pesan menos de `PESO_MAX`). Siempre se guardan en `docs/img`; `vista-previa/` no tiene imágenes propias, las enlaza desde `../docs/img`.
 - `build.py` borra las páginas generadas que ya no existen (pero en `web1` no se pueden borrar desde aquí: pedírselo al usuario).
 - Idiomas: inglés por defecto en la raíz, español en `/es/` y francés en `/fr/`. Las URLs son iguales en los tres idiomas.
 - Cada función nueva que afecte al SEO o a los enlaces debe llevar su comprobación en `revisar.py`.
 - Diseño:
   - Solo tema claro. Paleta: arena, tierra/marrón, ocre, amanecer, amarillo suave, azul verdoso y un toque de gris. Tokens en `:root` de `estilos.css`.
-  - Tipografías: Cormorant Garamond y Jost.
+  - Tipografía: solo Jost (sin remates). Títulos en Jost Light (300), textos y menú en Jost 400. El token `--serif` del CSS se llama así por historia pero apunta a Jost.
 - Contacto:
   - Primero los botones de WhatsApp y Llamar.
   - Después el formulario, que solo tiene nombre, "me interesa" (surf o buceo, en `textos/contact.yml` → `intereses`) y mensaje.
@@ -80,11 +82,12 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 2. Claude trae `originales/`, `textos/` y `motor/` desde `web1`.
 3. Ejecuta `build.py` y revisa el resultado en móvil y escritorio con capturas.
 4. Devuelve a `web1` los archivos cambiados, `docs/` incluido.
-5. Hace commit y push al repositorio, y confirma la publicación.
+5. Hace commit y push al repositorio, y confirma la publicación. **La usuaria quiere que cada cambio se suba a GitHub en cuanto esté listo** (sin preguntar), salvo pruebas que ella aún tiene que decidir.
 
 ## Pendiente
 - Datos del usuario:
   - Clave de Web3Forms (en `textos/general.yml`), creada con rouszaba@gmail.com.
-  - Fotos: solo hay 6 de surf. Faltan buceo, portada propia, destacadas, Sobre mí y servicios.
+  - Fotos: faltan las de Sobre mí (portada, retrato, cuadrícula), las de servicios y los originales de dron con más resolución.
+  - Textos de Sobre mí (historia, propósito, objetivos, frases): los actuales son provisionales.
 - Por confirmar con el usuario: precios de los servicios, ubicación ("Spain") y el dominio (`zaba.com` está puesto provisionalmente).
 - Publicación: activar GitHub Pages (lo hace el usuario: Settings → Pages → `main` /docs; la app de Claude no tiene permiso de administración) cuando haya fotos reales y textos revisados.

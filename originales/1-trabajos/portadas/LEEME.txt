@@ -1,0 +1,5 @@
+PORTADAS de la pagina principal (Trabajos):
+- portada-trabajos  -> la foto grande de arriba (horizontal)
+- portada-buceo, portada-surf, portada-dron -> la foto de cada recuadro (mejor vertical)
+Para cambiar una portada, sustituye su foto por otra y mantén el principio del nombre (portada-buceo...).
+Entre parentesis va el nombre de la foto original, para encontrarla rapido.

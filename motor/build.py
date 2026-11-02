@@ -24,11 +24,11 @@ RAIZ = Path(__file__).resolve().parent.parent
 ORIG = RAIZ / "originales"
 # Carpetas de originales/ (siguen el orden del menú). La portada y los trabajos son la misma página.
 C_TRABAJOS = "1-trabajos"            # portada/, seleccion/ y una carpeta por galería (buceo/, surf/, dron/…)
-C_PORTADA = f"{C_TRABAJOS}/portada"
+C_PORTADA = f"{C_TRABAJOS}/portadas"   # portada-trabajos.jpg (la grande) y portada-<galería>.jpg (recuadros)
 C_SELECCION = f"{C_TRABAJOS}/seleccion"
 C_SERVICIOS = "2-servicios"
 C_SOBRE_MI = "3-sobre-mi"
-NO_SON_GALERIAS = {"portada", "seleccion"}
+NO_SON_GALERIAS = {"portada", "portadas", "seleccion"}
 TEXTOS = RAIZ / "textos"
 MOTOR = RAIZ / "motor"
 SALIDA = RAIZ / "docs"
@@ -374,7 +374,10 @@ def main():
     contact = leer("contact")
 
     # Fotos
-    fotos_portada = fotos_de(C_PORTADA)[:1]
+    def de_portadas(clave):
+        """Foto de originales/1-trabajos/portadas cuyo nombre empieza por portada-<clave>."""
+        return next((p for p in fotos_de(C_PORTADA) if slug(p.stem).startswith(f"portada-{slug(clave)}")), None)
+    fotos_portada = [p for p in [de_portadas("trabajos")] if p]
     if not fotos_portada and inicio.get("portada_foto"):
         # Sin foto en la carpeta de portada: usa la indicada en textos/inicio.yml (sin duplicar el archivo)
         candidata = ORIG / inicio["portada_foto"]
@@ -384,7 +387,28 @@ def main():
             avisos.append(f"No existe la foto de portada indicada en textos/inicio.yml: originales/{inicio['portada_foto']}")
     portada = [optimizar(p, "inicio/portada", int(inicio.get("portada_girar") or 0)) for p in fotos_portada]
     destacadas = [optimizar(p, "inicio/destacadas") for p in fotos_de(C_SELECCION)]
-    foto_about = [optimizar(p, "about") for p in fotos_de(C_SOBRE_MI)[:1]]
+    # Sobre mí: portada-… (arriba), retrato-… (bloque «Hola») y el resto para la cuadrícula.
+    # Si aún no hay fotos propias, se usan las de about.yml → provisional.
+    propias = fotos_de(C_SOBRE_MI)
+    prov = about.get("provisional") or {}
+    def prov_foto(ruta):
+        p = ORIG / ruta if ruta else None
+        if p and p.exists(): return p
+        if ruta: avisos.append(f"No existe la foto provisional de Sobre mí: originales/{ruta}")
+        return None
+    def elegir(clave):
+        return next((p for p in propias if slug(p.stem).startswith(clave)), None) or prov_foto(prov.get(clave))
+    sobre = {
+        "portada": optimizar(elegir("portada"), "about") if elegir("portada") else None,
+        "retrato": optimizar(elegir("retrato"), "about") if elegir("retrato") else None,
+    }
+    resto = [p for p in propias if not slug(p.stem).startswith(("portada", "retrato"))]
+    if not resto:
+        resto = [p for p in (prov_foto(r) for r in prov.get("cuadricula") or []) if p]
+    sobre["cuadricula"] = [optimizar(p, "about") for p in resto]
+    if not propias:
+        avisos.append("Sobre mí usa fotos provisionales: pon tus fotos en originales/3-sobre-mi/ (portada-…, retrato-… y el resto).")
+    foto_about = [f for f in [sobre["portada"], sobre["retrato"], *sobre["cuadricula"]] if f]
     logo = procesar_logo()
 
     galerias = []
@@ -399,8 +423,11 @@ def main():
         c = conf.get(carpeta, {}) or {}
         nombre = carpeta.replace("-", " ").capitalize()
         fotos = [optimizar(p, f"work/{carpeta}") for p in fotos_de(f"{C_TRABAJOS}/{carpeta}")]
-        # si la portada elegida en work.yml es una de las repetidas, se queda ella y no la otra
-        fotos.sort(key=lambda f: f["origen"] != c.get("portada"))
+        # portada del recuadro: portadas/portada-<galería>.jpg (si no hay, la de work.yml o la primera)
+        f_portada = optimizar(de_portadas(carpeta), "inicio/portadas") if de_portadas(carpeta) else None
+        # si la portada es una de las fotos repetidas, en la galería se queda esa versión y no la otra
+        es_portada = lambda f: f["origen"] == c.get("portada") or (f_portada and bin(f["huella"] ^ f_portada["huella"]).count("1") <= 10)
+        fotos.sort(key=lambda f: not es_portada(f))
         fotos = quitar_repetidas(fotos, ya_vistas, carpeta)
         fotos.sort(key=lambda f: f["origen"])
         if not fotos:
@@ -416,7 +443,7 @@ def main():
             "resumen": c.get("resumen", {i: "" for i in IDIOMAS}),
             "texto": c.get("texto", {i: "" for i in IDIOMAS}),
             "fotos": fotos,
-            "portada": next((f for f in fotos if f["origen"] == c.get("portada")), fotos[0] if fotos else None),
+            "portada": f_portada or next((f for f in fotos if f["origen"] == c.get("portada")), fotos[0] if fotos else None),
             "color": c.get("color", ""),
         })
     galerias.sort(key=lambda x: (x["orden"], x["id"]))
@@ -534,7 +561,7 @@ def main():
                 lang=lang, pid=pid, iconos=iconos, T=T, url=url, asset=asset, srcset=srcset, foto=foto,
                 g=g, inicio=inicio, work=work, services=services, about=about, contact=contact,
                 portada=portada[0] if portada else None, destacadas=destacadas,
-                foto_about=foto_about[0] if foto_about else None,
+                foto_about=foto_about[0] if foto_about else None, sobre=sobre,
                 galerias=galerias, lista_servicios=lista_servicios,
                 idiomas=otros_idiomas, alternos=alternos,
                 canonical=g["dominio"].rstrip("/") + "/" + ruta_completa,

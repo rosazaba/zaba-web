@@ -4,7 +4,8 @@
 # Cada carpeta dentro de originales/1-trabajos/ es una galería (salvo portada/ y seleccion/):
 #   originales/1-trabajos/buceo  ·  originales/1-trabajos/surf  ·  originales/1-trabajos/dron
 # Las fotos se ordenan por nombre de archivo: usa 01-, 02-, 03-... para elegir el orden
-# La foto de cada recuadro de la portada se elige abajo con «portada:» (si está vacío, la primera por nombre).
+# La foto de cada recuadro de la portada está en originales/1-trabajos/portadas/ (portada-buceo, portada-surf, portada-dron).
+# Para cambiarla, cambia esa foto. Si no hay, se usa «portada:» de abajo y, si está vacío, la primera por nombre.
 # Una galería de esta lista sin fotos aparece como «Próximamente».
 
 proximamente:
@@ -22,7 +23,7 @@ galerias:
     url: "diving"        # dirección: .../work/diving/
     orden: 1
     color: "mar"         # color del recuadro mientras no haya fotos
-    portada: "_MG_5822.jpg"   # foto del recuadro en la portada (nombre exacto del archivo). Vacío = la primera por nombre
+    portada: ""
     titulo:  { en: "Dive", es: "Buceo", fr: "Plongée" }
     resumen:
       en: "Life beneath the surface, in natural light."
@@ -37,7 +38,7 @@ galerias:
     url: "surf"          # dirección: .../work/surf/
     orden: 2
     color: "tierra"
-    portada: "DSC05297.jpg"
+    portada: ""
     titulo:  { en: "Surf", es: "Surf", fr: "Surf" }
     resumen:
       en: "Line-ups, barrels and the people who chase them."
@@ -52,7 +53,7 @@ galerias:
     url: "drone"         # dirección: .../work/drone/
     orden: 3
     color: "ocre"
-    portada: "IMG_20260907_09541134.jpeg"
+    portada: ""
     titulo:  { en: "Drone", es: "Dron", fr: "Drone" }
     resumen:
       en: "The coast from above: waves, reefs and lines in the sand."

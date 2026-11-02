@@ -1,10 +1,10 @@
 # PORTADA (también es la página de TRABAJOS)
 # PORTADA = PÁGINA DE TRABAJOS. Todas sus fotos van en originales/1-trabajos/
-# Foto grande de arriba: originales/1-trabajos/portada/  (pon UNA foto, mejor horizontal)
-#   Si esa carpeta está vacía, se usa la foto indicada aquí (ruta dentro de originales/):
-portada_foto: "1-trabajos/dron/IMG_20260907_09551703.jpeg"
-# Girar la foto de portada (en grados, sentido del reloj): 0, 90, 180 o 270
-portada_girar: 90
+# Foto grande de arriba: originales/1-trabajos/portadas/portada-trabajos.jpg (ya girada en horizontal).
+#   Si no hay, se usa la indicada aquí (ruta dentro de originales/):
+portada_foto: ""
+# Girar esa foto (en grados, sentido del reloj): 0, 90, 180 o 270
+portada_girar: 0
 # Tira de fotos «Selección»: originales/1-trabajos/seleccion/  (opcional; salen en el orden de sus nombres)
 #   Si esa carpeta está vacía, se eligen solas de las galerías y se ordenan por color.
 

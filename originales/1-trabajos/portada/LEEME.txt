@@ -1,2 +1,0 @@
-PORTADA: 1 foto grande para arriba del todo (mejor horizontal).
-La frase de la portada se escribe en textos/inicio.yml
