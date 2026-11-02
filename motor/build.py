@@ -479,6 +479,8 @@ def main():
     lista_servicios = []
     for s in services.get("lista", []):
         f = fotos_de(f"{C_SERVICIOS}/{s['carpeta']}")[:1]
+        if not f and s.get("foto_provisional") and (ORIG / s["foto_provisional"]).exists():   # mientras su carpeta esté vacía
+            f = [ORIG / s["foto_provisional"]]
         lista_servicios.append({**s, "foto": optimizar(f[0], f"services/{s['carpeta']}") if f else None})
 
     # Foto de arriba de Servicios y Contacto: su carpeta portada/ (si está vacía, la página sale sin foto)

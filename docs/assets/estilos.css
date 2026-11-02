@@ -16,6 +16,7 @@
   --mar-oscuro: #2C5E5B;
   --gris:       #85878A;   /* gris elegante */
   --linea:      #E2D7C6;
+  --topo:       #D9CCB8;   /* marrón claro neutro (algo más oscuro que los crudos), para bloques de color */
 
   --serif: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;   /* títulos: Jost, la misma familia que el menú */
   --sans:  "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -83,6 +84,8 @@ p { margin: 0 0 1.2em; }
 .boton--linea:hover { background: var(--tierra); color: #fff; border-color: var(--tierra); }
 .boton--claro { background: var(--arena); color: var(--tinta); border-color: var(--arena); }
 .boton--claro:hover { background: var(--mantequilla); border-color: var(--mantequilla); }
+.boton--oscuro { background: #2F2A26; color: #fff; border-color: #2F2A26; }
+.boton--oscuro:hover { background: var(--tinta); border-color: var(--tinta); }
 .boton--linea-claro { background: transparent; color: #fff; border-color: rgba(255,255,255,.75); }
 .boton--linea-claro:hover { background: rgba(255,255,255,.15); border-color: #fff; }
 
@@ -255,33 +258,46 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .mini-servicio__titulo { font: 400 1.4rem/1.25 var(--serif); }
 .mini-servicio__precio { font-size: .85rem; color: var(--gris); white-space: nowrap; }
 
-.servicios { display: grid; gap: clamp(56px, 9vw, 120px); }
-.servicio { display: grid; gap: clamp(24px, 4vw, 64px); align-items: center; }
+/* Servicios en bandas: foto + bloque de color, alternando el lado */
+.paquete { display: grid; }
+.paquete__foto { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--linea); }
+.paquete__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.paquete__texto { padding: clamp(40px, 7vw, 96px) var(--margen); display: flex; flex-direction: column; justify-content: center; }
+.paquete__texto h2 { font-size: clamp(2rem, 3.6vw, 2.8rem); margin-bottom: 1.2rem; }
+.paquete__cols { display: grid; gap: 22px 40px; margin-bottom: 2rem; }
+.paquete__cols > p { margin: 0; font-size: .95rem; }
+.paquete__etiqueta { margin: 0 0 .5rem; font: 500 .7rem/1.4 var(--sans); letter-spacing: .24em; text-transform: uppercase; }
+.paquete__etiqueta:empty { display: none; }
+.paquete__lista { list-style: none; margin: 0 0 1.4rem; padding: 0; font: 400 .74rem/1.9 var(--sans); letter-spacing: .16em; text-transform: uppercase; }
+.paquete__precio { margin: 0; font: 300 1.9rem/1.1 var(--serif); }
+.paquete .boton { align-self: flex-start; }
+.paquete__texto { color: var(--tinta); }
+.paquete:nth-child(odd) .paquete__texto { background: var(--topo); }
+.paquete:nth-child(even) .paquete__texto { background: var(--arena-2); }
+.paquete__etiqueta { color: var(--tierra); }
 @media (min-width: 900px) {
-  .servicio { grid-template-columns: 1fr 1fr; }
-  .servicio:nth-child(even) .servicio__foto { order: 2; }
-  .servicio:not(:has(.servicio__foto)) { grid-template-columns: 1fr; max-width: 760px; margin: 0 auto; width: 100%; }
+  .paquete { grid-template-columns: 1fr 1fr; min-height: 560px; }
+  .paquete__foto { aspect-ratio: auto; min-height: 420px; }
+  .paquete:nth-child(even) .paquete__foto { order: 2; }
+  .paquete--sin-foto { grid-template-columns: 1fr; }
+  .paquete__texto { padding: clamp(56px, 6vw, 96px) clamp(40px, 6vw, 96px); }
+  .paquete__cols { grid-template-columns: 1.15fr 1fr; }
 }
-.servicio__foto { overflow: hidden; border-radius: var(--radio); aspect-ratio: 4 / 3; background: var(--linea); }
-.servicio__foto img { width: 100%; height: 100%; object-fit: cover; }
-.servicio__num { font: 400 .75rem var(--sans); letter-spacing: .3em; color: var(--ocre); }
-.servicio h2 { margin-top: .3em; }
-.servicio__precio { font: 400 1.4rem var(--serif); color: var(--mar); }
-.servicio__precio small { font: 400 .75rem var(--sans); letter-spacing: .15em; text-transform: uppercase; color: var(--gris); }
 .lista-check { list-style: none; padding: 0; margin: 0 0 1.8rem; }
 .lista-check li { position: relative; padding: 8px 0 8px 28px; border-bottom: 1px solid var(--linea); }
 .lista-check li::before { content: ""; position: absolute; left: 2px; top: 50%; width: 12px; height: 1.5px; background: var(--ocre); }
 
-.pasos { list-style: none; margin: 0; padding: 0; display: grid; gap: 40px; counter-reset: paso; }
-@media (min-width: 760px) { .pasos { grid-template-columns: repeat(3, 1fr); } }
-.paso { text-align: center; padding: 0 8px; }
-.paso__num { display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; margin-bottom: 16px; border-radius: 50%; border: 1px solid var(--ocre); font: 300 1.5rem var(--serif); color: var(--tierra); background: var(--papel); }
-.paso p { color: #5a5048; }
+.pasos { list-style: none; margin: clamp(32px, 5vw, 64px) 0 0; padding: 0; display: grid; gap: 40px; }
+@media (min-width: 760px) { .pasos { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 48px; } }
+.paso { padding: 0; }
+.paso__num { display: block; margin-bottom: 18px; font: 300 clamp(2.4rem, 4vw, 3.2rem)/1 var(--serif); color: var(--tierra); }
+.paso h3 { font-size: 1.3rem; margin-bottom: .6rem; }
+.paso p { color: #5a5048; font-size: .92rem; }
 
 /* ── Cierre (llamada a contactar) ──────────────────────── */
 .cierre {
   text-align: center; padding: clamp(80px, 12vw, 150px) 0;
-  background: linear-gradient(160deg, var(--mantequilla) 0%, #F0C9A0 48%, var(--amanecer) 100%);
+  background: var(--topo);   /* tono plano (la usuaria no quería el degradado de atardecer) */
 }
 .cierre .titulo-grande { color: var(--tinta); }
 .cierre p { font-size: 1.15rem; color: #4a3b30; margin-bottom: 2rem; }
@@ -388,14 +404,20 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 }
 
 /* 2. ¡Hola! Soy Rosa: título · foto · texto */
-.hola__in { display: grid; gap: clamp(24px, 4vw, 56px); align-items: center; }
-.hola__titulo h1 { font-size: clamp(2.3rem, 5.5vw, 3.8rem); color: var(--tierra); margin-bottom: .35em; }
-.hola__sub { margin: 0; font: 400 .78rem/1.4 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--gris); }
-.hola__foto { position: relative; max-width: 360px; }
-.hola__foto img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: var(--encuadre, 50% 50%); border-radius: var(--radio); position: relative; z-index: 1; }
-.hola__texto p { color: #4a423b; }
-.hola__texto p:first-child { font-size: 1.12rem; }
-@media (min-width: 900px) { .hola__in { grid-template-columns: 1fr 1fr 1.25fr; } .hola__foto { justify-self: center; width: 100%; } }
+/* ¡Hola! Soy Rosa: banda oscura, foto a la izquierda y texto a la derecha (como el ejemplo de la usuaria) */
+.hola { background: var(--topo); color: var(--tinta); padding: clamp(56px, 9vw, 110px) 0; }
+.hola__in { display: grid; gap: clamp(28px, 5vw, 80px); align-items: center; }
+.hola__foto { max-width: 440px; width: 100%; }
+.hola__foto--h { max-width: 600px; }
+.hola__foto--h img { aspect-ratio: 4 / 3 !important; }
+.hola__foto img { display: block; width: 100%; aspect-ratio: 5 / 6; object-fit: cover; object-position: var(--encuadre, 50% 50%); border-radius: var(--radio); }
+.hola__texto { max-width: 620px; }
+.hola__texto .antetitulo { color: var(--tierra); }
+.hola__texto h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); color: var(--tinta); margin-bottom: .3em; }
+.hola__sub { margin: 0 0 1.8rem; font: 400 .78rem/1.4 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: #6f6458; }
+.hola__texto p:not([class]) { color: #3f3832; }
+.hola__boton { margin: 2rem 0 0; }
+@media (min-width: 900px) { .hola__in { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); } .hola__foto { justify-self: center; } }
 
 
 /* 3. Mi propósito */

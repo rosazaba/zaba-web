@@ -23,6 +23,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
   - `1-trabajos/`: `portada/`, `seleccion/` (tira, opcional) y una carpeta por galería (`buceo/`, `surf/`, `dron/`).
   - `2-servicios/`: `portada/` y `<servicio>/`
   - `4-contacto/`: `portada/` (foto de arriba de Contacto)
+  - `simulacros/`: capturas de diseños que le gustan a la usuaria, como referencia. No se publican.
   - `3-sobre-mi/`: `portada/` (foto apaisada con la cita) y `retrato-…` (bloque «¡Hola! Soy Rosa»). El resto de fotos de la carpeta de momento no se usan. Sin fotos propias usa `textos/about.yml` → `provisional`.
   - `logo/`
   - Las rutas de las imágenes publicadas no cambian (`img/work/...`, `img/inicio/...`, `img/about/...`, `img/services/...`).
@@ -54,14 +55,16 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - Fotos de bancos de imágenes (nombre con unsplash, pexels, pixabay…): `fotos_de()` nunca las publica y avisa. Las de Unsplash que descargó la usuaria están en `1-trabajos/fotos-banco-imagenes/` (en `NO_SON_GALERIAS`, no es galería).
 - Fotos repetidas: `quitar_repetidas()` en `build.py` no publica la misma imagen dos veces (huella visual) ni dos versiones de la misma toma (DSC05033 y DSC05033-2). Se queda la `portada:` de `work.yml` si es una de ellas; si no, la primera por nombre. Se avisa en el build.
 - Portadas: se cambian sustituyendo la foto de la carpeta `portada/` de cada sección o galería. Respaldo: `textos/inicio.yml` → `portada_foto` (+ `portada_girar`) y `textos/work.yml` → `portada:`.
-- Sobre mí (`about.html`): foto apaisada con cita (`cita`, `cita_autor`, `cita_lado` izquierda/derecha; foto de `3-sobre-mi/portada/`; mismo alto que la de Trabajo), bloque «¡Hola! Soy Rosa» (título · retrato · historia; retrato = archivo `retrato-…` o, si no hay, `provisional.retrato` en `about.yml`), «Mi propósito» con 3 objetivos y datos. Sin cuadrícula ni tira de fotos (la usuaria las quitó). Textos provisionales hasta que la usuaria mande los suyos.
-- Servicios y Contacto: foto de arriba de su carpeta `portada/` (mismo estilo y alto que Sobre mí) con el título y la entradilla encima; sin foto salen con la cabecera de texto.
+- Sobre mí (`about.html`): SIN foto de arriba (`mostrar_portada: false` en `about.yml`; la cita sigue guardada). Empieza con el bloque «¡Hola! Soy Rosa» en banda de color `--topo`: foto a la izquierda (si es horizontal sale 4/3, si es vertical 5/6), y a la derecha título, subtítulo, historia y botón «Escríbeme» (inspirado en el ejemplo de `originales/simulacros/`). Retrato = archivo `retrato-…` o `provisional.retrato` (ahora la misma foto de `3-sobre-mi/portada/`). Después «Mi propósito» con 3 objetivos y datos. Sin cuadrícula ni tira de fotos. Textos provisionales.
+- Servicios y Contacto: foto de arriba de su carpeta `portada/` con el título y la entradilla encima; sin foto salen con la cabecera de texto.
+- Servicios: cada servicio es una banda a todo el ancho, foto + bloque de color alternando el lado (colores alternos `--topo` y `--arena-2`); dentro, texto, «Incluye», «Desde» + precio y botón. Foto de `2-servicios/<carpeta>/` o, si está vacía, `foto_provisional` en `services.yml`. Debajo, «Próximos pasos / Cómo funciona» con números grandes 01, 02, 03 (ejemplo en `originales/simulacros/`).
 - Encuadre de las fotos de arriba: `portada_encuadre` ("x% y%") en `services.yml`, `contact.yml` y `about.yml`; `portada_lado` (izquierda/derecha) en `services.yml` para el texto; `retrato_encuadre` en `about.yml` para la foto de «¡Hola! Soy Rosa».
 - Fotos: WebP con calidad adaptable (baja hasta que pesan menos de `PESO_MAX`). Siempre se guardan en `docs/img`; `vista-previa/` no tiene imágenes propias, las enlaza desde `../docs/img`.
 - `build.py` borra las páginas generadas que ya no existen (pero en `web1` no se pueden borrar desde aquí: pedírselo al usuario).
 - Idiomas: inglés por defecto en la raíz, español en `/es/` y francés en `/fr/`. Las URLs son iguales en los tres idiomas.
 - Cada función nueva que afecte al SEO o a los enlaces debe llevar su comprobación en `revisar.py`.
 - Diseño:
+  - Nada de marrón oscuro en bloques de contenido ni degradados de atardecer (no le gustan a la usuaria). Para bloques de color se usa `--topo` (#D9CCB8, marrón claro neutro) alternado con `--arena-2`. El bloque final «Salgamos a hacer fotos» (`_cierre.html`) es `--topo` plano. El único bloque oscuro es el pie.
   - Solo tema claro. Paleta: arena, tierra/marrón, ocre, amanecer, amarillo suave, azul verdoso y un toque de gris. Tokens en `:root` de `estilos.css`.
   - Tipografía: solo Jost (sin remates). Títulos en Jost Light (300), textos y menú en Jost 400. El token `--serif` del CSS se llama así por historia pero apunta a Jost.
 - Pie (bloque marrón): solo el logo y la frase `pie.frase` de `general.yml`, centrados, igual en todas las páginas (sin menú, teléfono, WhatsApp, Instagram ni idiomas; lo pidió la usuaria). WhatsApp ya está en el botón flotante e Instagram va en Contacto.

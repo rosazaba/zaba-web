@@ -10,6 +10,7 @@ titulo:
   fr: "À propos"
 
 # ── 1. Foto de arriba con cita ──────────────────────────────
+mostrar_portada: false   # la usuaria la quitó: la página empieza con el bloque oscuro «¡Hola! Soy Rosa». true = vuelve a salir
 cita:
   en: "The sea, once it casts its spell, holds one in its net of wonder forever."
   es: "El mar, una vez que lanza su hechizo, te atrapa para siempre en su red de maravillas."
@@ -83,9 +84,9 @@ datos:
 # Fotos provisionales mientras no haya fotos tuyas en originales/3-sobre-mi/ (rutas dentro de originales/)
 provisional:
   portada: "1-trabajos/buceo/_MG_8142.jpg"
-  retrato: "3-sobre-mi/IMG-20261010-WA0004.jpg"   # retrato del bloque «Hola» (elegido por Rosa)
+  retrato: "3-sobre-mi/portada/IMG_20221225_181806_612.jpg"   # retrato del bloque «Hola»: la misma foto de la portada (elegido por Rosa)
 
 # Encuadre de la foto de arriba: "horizontal vertical" en %. 50% 50% = centrada;
 # vertical más bajo (p. ej. 25%) enseña más la parte de arriba de la foto, más alto (75%) la de abajo.
 portada_encuadre: "50% 50%"
-retrato_encuadre: "28% 50%"   # foto del bloque «¡Hola! Soy Rosa»: más bajo el primer número = se ve más la parte izquierda (la cámara)
+retrato_encuadre: "60% 50%"   # foto del bloque «¡Hola! Soy Rosa»: "horizontal vertical" en %; más bajo el primero = se ve más la parte izquierda

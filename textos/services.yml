@@ -1,5 +1,6 @@
 # SERVICIOS
 # Cada servicio usa la foto de su carpeta en originales/2-servicios/<carpeta>/
+# Mientras esa carpeta esté vacía usa foto_provisional (ruta dentro de originales/).
 # precio: escribe "" para que ponga "Consultar".
 
 titulo:
@@ -12,11 +13,13 @@ intro:
   es: "Cada sesión se planifica según las condiciones (marea, olas, visibilidad y luz) para conseguir las mejores imágenes posibles."
   fr: "Chaque séance est planifiée selon les conditions — marée, houle, visibilité et lumière — pour obtenir les meilleures images possibles."
 
-desde:     { en: "From",          es: "Desde",     fr: "À partir de" }
+desde:     { en: "Starting at",   es: "Desde",     fr: "À partir de" }
+incluye_titulo: { en: "Includes", es: "Incluye", fr: "Inclus" }
 consultar: { en: "Price on request", es: "Consultar", fr: "Sur demande" }
 
 lista:
   - carpeta: surf
+    foto_provisional: "1-trabajos/surf/DSC05129.jpg"
     titulo: { en: "Surf session", es: "Sesión de surf", fr: "Séance de surf" }
     precio: "120 €"
     texto:
@@ -29,6 +32,7 @@ lista:
       fr: ["1 h 30 dans l'eau", "Plus de 40 photos retouchées", "Galerie en ligne sous 72 h"]
 
   - carpeta: buceo
+    foto_provisional: "1-trabajos/buceo/_MG_3060.jpg"
     titulo: { en: "Underwater session", es: "Sesión submarina", fr: "Séance sous-marine" }
     precio: "180 €"
     texto:
@@ -41,6 +45,7 @@ lista:
       fr: ["Une ou deux plongées", "Plus de 30 photos retouchées", "Galerie en ligne sous 72 h"]
 
   - carpeta: copias
+    foto_provisional: "1-trabajos/dron/IMG_20260907_09553035.jpeg"
     titulo: { en: "Fine art prints", es: "Copias artísticas", fr: "Tirages d'art" }
     precio: "45 €"
     texto:
@@ -52,6 +57,7 @@ lista:
       es: ["Papel de calidad museo", "Firmadas y numeradas", "Envío disponible"]
       fr: ["Papier qualité musée", "Signés et numérotés", "Livraison possible"]
 
+pasos_antetitulo: { en: "Next steps", es: "Próximos pasos", fr: "Prochaines étapes" }
 pasos_titulo: { en: "How it works", es: "Cómo funciona", fr: "Comment ça marche" }
 pasos:
   - titulo: { en: "Tell me your idea", es: "Cuéntame tu idea", fr: "Racontez-moi votre idée" }

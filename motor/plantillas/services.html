@@ -20,33 +20,38 @@
 </section>
 {% endif %}
 
-<section class="bloque bloque--sin-arriba">
-  <div class="ancho servicios">
-    {% for s in lista_servicios %}
-    <article class="servicio aparece" id="{{ s.carpeta }}">
-      {% if s.foto %}<div class="servicio__foto">{{ foto(s.foto, "(min-width: 900px) 45vw, 100vw") }}</div>{% endif %}
-      <div class="servicio__texto">
-        <span class="servicio__num">0{{ loop.index }}</span>
-        <h2>{{ T(s.titulo) }}</h2>
-        <p class="servicio__precio">{% if s.precio %}<small>{{ T(services.desde) }}</small> {{ s.precio }}{% else %}{{ T(services.consultar) }}{% endif %}</p>
+{# Servicios en bandas: foto y bloque de color alternos (como el ejemplo de la usuaria) #}
+<section class="paquetes">
+  {% for s in lista_servicios %}
+  <article class="paquete{% if not s.foto %} paquete--sin-foto{% endif %}" id="{{ s.carpeta }}">
+    {% if s.foto %}<div class="paquete__foto">{{ foto(s.foto, "(min-width: 900px) 50vw, 100vw", "", "lazy", T(s.titulo)) }}</div>{% endif %}
+    <div class="paquete__texto aparece">
+      <h2>{{ T(s.titulo) }}</h2>
+      <div class="paquete__cols">
         <p>{{ T(s.texto) }}</p>
-        <ul class="lista-check">
-          {% for item in T(s.incluye) %}<li>{{ item }}</li>{% endfor %}
-        </ul>
-        <a class="boton boton--linea" href="{{ url('contact/') }}?s={{ s.carpeta }}">{{ T(g.botones.pedir) }}</a>
+        <div>
+          <p class="paquete__etiqueta">{{ T(services.incluye_titulo) }}</p>
+          <ul class="paquete__lista">{% for item in T(s.incluye) %}<li>{{ item }}</li>{% endfor %}</ul>
+          <p class="paquete__etiqueta">{% if s.precio %}{{ T(services.desde) }}{% endif %}</p>
+          <p class="paquete__precio">{{ s.precio if s.precio else T(services.consultar) }}</p>
+        </div>
       </div>
-    </article>
-    {% endfor %}
-  </div>
+      <a class="boton" href="{{ url('contact/') }}?s={{ s.carpeta }}">{{ T(g.botones.pedir) }}</a>
+    </div>
+  </article>
+  {% endfor %}
 </section>
 
-<section class="bloque bloque--arena">
+<section class="bloque">
   <div class="ancho">
-    <h2 class="titulo-seccion aparece">{{ T(services.pasos_titulo) }}</h2>
+    <div class="centro aparece">
+      {% if services.pasos_antetitulo %}<p class="antetitulo">{{ T(services.pasos_antetitulo) }}</p>{% endif %}
+      <h2 class="titulo-seccion">{{ T(services.pasos_titulo) }}</h2>
+    </div>
     <ol class="pasos">
       {% for p in services.pasos %}
       <li class="paso aparece">
-        <span class="paso__num">{{ loop.index }}</span>
+        <span class="paso__num">0{{ loop.index }}</span>
         <h3>{{ T(p.titulo) }}</h3>
         <p>{{ T(p.texto) }}</p>
       </li>

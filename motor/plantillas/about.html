@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block titulo %}{{ T(about.titulo) }} — {{ g.marca }}{% endblock %}
-{% block clase_body %}{% if sobre.portada %} cabecera-sobre-foto{% endif %}{% endblock %}
+{% block clase_body %}{% if sobre.portada and about.mostrar_portada %} cabecera-sobre-foto{% endif %}{% endblock %}
 {% block contenido %}
 
-{# 1. Foto apaisada con cita #}
-{% if sobre.portada %}
+{# 1. Foto apaisada con cita (solo si about.yml → mostrar_portada: true) #}
+{% if sobre.portada and about.mostrar_portada %}
 <section class="sobre-hero sobre-hero--{{ 'derecha' if about.cita_lado == 'derecha' else 'izquierda' }}"{% if about.portada_encuadre %} style="--encuadre: {{ about.portada_encuadre }}"{% endif %}>
   {{ foto(sobre.portada, "100vw", "sobre-hero__img", "eager", g.marca ~ " — " ~ T(about.titulo)) }}
   <div class="sobre-hero__velo"></div>
@@ -15,19 +15,18 @@
 </section>
 {% endif %}
 
-{# 2. ¡Hola! Soy Rosa #}
-<section class="hola bloque">
+{# 2. ¡Hola! Soy Rosa: bloque oscuro con la foto a la izquierda y el texto a la derecha #}
+<section class="hola">
   <div class="ancho hola__in">
-    <div class="hola__titulo aparece">
+    {% if sobre.retrato %}
+    <div class="hola__foto{% if sobre.retrato.ancho > sobre.retrato.alto %} hola__foto--h{% endif %} aparece"{% if about.retrato_encuadre %} style="--encuadre: {{ about.retrato_encuadre }}"{% endif %}>{{ foto(sobre.retrato, "(min-width: 900px) 34vw, 90vw", "", "eager", T(about.hola_titulo)) }}</div>
+    {% endif %}
+    <div class="hola__texto aparece">
       <p class="antetitulo">{{ T(about.titulo) }}</p>
       <h1>{{ T(about.hola_titulo) }}</h1>
       <p class="hola__sub">{{ T(about.hola_subtitulo) }}</p>
-    </div>
-    {% if sobre.retrato %}
-    <div class="hola__foto aparece"{% if about.retrato_encuadre %} style="--encuadre: {{ about.retrato_encuadre }}"{% endif %}>{{ foto(sobre.retrato, "(min-width: 900px) 28vw, 80vw", "", "lazy", T(about.hola_titulo)) }}</div>
-    {% endif %}
-    <div class="hola__texto aparece">
       {% for p in T(about.parrafos) %}<p>{{ p }}</p>{% endfor %}
+      <p class="hola__boton"><a class="boton boton--claro" href="{{ url('contact/') }}">{{ T(g.botones.escribeme) }}</a></p>
     </div>
   </div>
 </section>
