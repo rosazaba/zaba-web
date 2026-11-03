@@ -139,8 +139,8 @@ p { margin: 0 0 1.2em; }
 .menu-abierto .hamburguesa span:first-child { top: 21px; transform: rotate(45deg); }
 .menu-abierto .hamburguesa span:last-child  { top: 21px; transform: rotate(-45deg); }
 
-/* Con 6 apartados el menú horizontal necesita ancho: por debajo de 1180 px se abre con la hamburguesa */
-@media (max-width: 1179px) {
+/* Con 6 apartados el menú horizontal necesita ancho: por debajo de 1260 px («Tienda de impresiones» es largo) se abre con la hamburguesa */
+@media (max-width: 1259px) {
   .menu {
     position: fixed; inset: 0; z-index: 55; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 40px;
     background: var(--arena); color: var(--tinta);
@@ -154,7 +154,7 @@ p { margin: 0 0 1.2em; }
   .menu li a[aria-current="page"] { color: var(--ocre); }
   .menu-abierto { overflow: hidden; }
 }
-@media (min-width: 1180px) {
+@media (min-width: 1260px) {
   .hamburguesa { display: none; }
   .menu { display: flex; align-items: center; gap: 28px; }
   .menu ul { display: flex; gap: 24px; }

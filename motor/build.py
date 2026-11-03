@@ -32,10 +32,11 @@ C_SELECCION = f"{C_TRABAJOS}/seleccion"
 C_SERVICIOS = _primera("2-tarifa", "2-servicios")   # página «Tarifa / Rates»: portada/ y <servicio>/
 C_SOBRE_MI = "3-sobre-mi"
 C_CONTACTO = "4-contacto"             # solo su carpeta portada/ (foto del fondo-mural de Contacto)
-C_PRINT = _primera("5-tienda", "5-print-store")   # página «Tienda / Print Store»: portada/ (cabecera) y las fotos que se venden impresas (las 2 primeras salen en las estancias)
+C_PRINT = _primera("5-tienda-de-impresiones", "5-tienda", "5-print-store")   # página «Tienda de impresiones / Print Store»: portada/ (cabecera) y las fotos que se venden impresas (las 2 primeras salen en las estancias)
 C_ENCUENTRA = "6-encuentra-tus-fotos"  # portada/ (cabecera) y <playa>/<AAAA-MM-DD>/ con las fotos de cada sesión
 # Rutas escritas en textos/*.yml con el nombre antiguo de una carpeta siguen funcionando
-ALIAS_CARPETAS = {"1-trabajos": C_TRABAJOS, "1-servicios": C_TRABAJOS, "1-servicio": C_TRABAJOS, "2-servicios": C_SERVICIOS, "2-tarifa": C_SERVICIOS}
+ALIAS_CARPETAS = {"1-trabajos": C_TRABAJOS, "1-servicios": C_TRABAJOS, "1-servicio": C_TRABAJOS, "2-servicios": C_SERVICIOS, "2-tarifa": C_SERVICIOS,
+                  "5-tienda": C_PRINT, "5-tienda-de-impresiones": C_PRINT, "5-print-store": C_PRINT}
 
 
 def en_orig(ruta):
@@ -576,7 +577,7 @@ def main():
     # ── Tienda: estancias (salón, dormitorio, estudio…) con una foto enmarcada en la pared ──
     tienda = leer("print-store")
     portada_tienda = portada_de(C_PRINT, "print-store")
-    # Estancias REALES: originales/5-tienda/estancias/<tipo>-… (salon-…, dormitorio-…, estudio-…; fotos reales o de IA).
+    # Estancias REALES: originales/5-tienda-de-impresiones/estancias/<tipo>-… (salon-…, dormitorio-…, estudio-…; fotos reales o de IA).
     # La foto que se cuelga en cada una: print-store.yml → estancias_reales.<tipo>.foto (ruta dentro de originales/).
     # Las fotos de las habitaciones no pasan por fotos_de(): pueden venir de un banco de imágenes (no son trabajo suyo).
     carpeta_est = ORIG / C_PRINT / "estancias"
@@ -722,7 +723,7 @@ def main():
     if not any(e["real"] for e in estancias):
         avisos.append(f"La Tienda usa las estancias dibujadas: pon fotos de habitaciones en originales/{C_PRINT}/estancias/.")
     # «Elige tu foto» (paso 1): una pestaña por galería (Surf, Buceo, Dron) con las fotos que la usuaria pone a la venta
-    # en originales/5-tienda/<galería>/. Si esa carpeta está vacía, de ejemplo salen las mejores de la galería.
+    # en originales/5-tienda-de-impresiones/<galería>/. Si esa carpeta está vacía, de ejemplo salen las mejores de la galería.
     # Cada foto lleva un código corto (SURF-03, por su orden en la carpeta) que se apunta solo en el formulario de pedido.
     grupos_tienda = []
     for gal in galerias:
