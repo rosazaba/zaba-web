@@ -546,7 +546,8 @@ def main():
             if a.get("max") and len(fa) > int(a["max"]):
                 avisos.append(f"Apartado «{sub}»: hay {len(fa)} fotos y se muestran {a['max']} (las de «primeras» y, después, las más variadas).")
                 fa = fa[:int(a["max"])]
-            apartados.append({"id": slug(a["carpeta"]), "titulo": a.get("titulo") or {i: a["carpeta"] for i in IDIOMAS}, "fotos": fa})
+            apartados.append({"id": slug(a["carpeta"]), "titulo": a.get("titulo") or {i: a["carpeta"] for i in IDIOMAS},
+                              "texto": a.get("texto") or {i: "" for i in IDIOMAS}, "fotos": fa})
         if c.get("apartados"):
             con_fotos = [a for a in apartados if a["fotos"]]
             if con_fotos and fotos:

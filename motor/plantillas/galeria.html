@@ -33,17 +33,16 @@
     </div>
     {% endmacro %}
     {% if galeria.apartados %}
-    <div class="pestanas" data-pestanas>
-      {% if galeria.apartados|length > 1 %}
-      <div class="pestanas__botones" role="tablist">
-        {% for a in galeria.apartados %}<button type="button" class="ficha" role="tab" id="tab-{{ a.id }}" aria-controls="ap-{{ a.id }}" aria-selected="{{ 'true' if loop.first else 'false' }}" data-pestana="{{ a.id }}">{{ T(a.titulo) }}</button>{% endfor %}
-      </div>
-      {% endif %}
+    {# Buceo: los tres apartados uno debajo de otro, cada uno con su título, una breve descripción y su tira de 6 #}
+    <div class="apartados">
       {% for a in galeria.apartados %}
-      <div class="pestanas__panel" id="ap-{{ a.id }}" role="tabpanel" aria-labelledby="tab-{{ a.id }}" data-panel="{{ a.id }}">
-        <h2 class="pestanas__titulo">{{ T(a.titulo) }}</h2>
+      <section class="apartado" id="{{ a.id }}">
+        <div class="apartado__cab">
+          <h2 class="apartado__titulo">{{ T(a.titulo) }}</h2>
+          {% if T(a.texto) %}<p class="apartado__texto">{{ T(a.texto) }}</p>{% endif %}
+        </div>
         {{ cuadricula(a.fotos, T(galeria.titulo) ~ " · " ~ T(a.titulo)) }}
-      </div>
+      </section>
       {% endfor %}
     </div>
     {% else %}

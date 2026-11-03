@@ -518,6 +518,13 @@ html:not(.js) .cuadros__ver, .grupo-fotos.abierto .cuadros__ver { display: none;
 .cuadros__item { display: block; overflow: hidden; border-radius: var(--radio); background: var(--linea); cursor: zoom-in; }
 .cuadros__item img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
 .cuadros__item:focus-visible { outline: 2px solid var(--mar); outline-offset: 3px; }
+/* Apartados de una galería (buceo): uno debajo de otro, con título y breve descripción */
+.apartados { display: grid; gap: clamp(40px, 6vw, 72px); }
+.apartado + .apartado { padding-top: clamp(32px, 5vw, 56px); border-top: 1px solid var(--linea); }
+.apartado__cab { display: grid; gap: 6px 40px; margin: 0 0 clamp(16px, 2.4vw, 24px); align-items: baseline; }
+.apartado__titulo { font-size: clamp(1.5rem, 3vw, 2rem); margin: 0; }
+.apartado__texto { margin: 0; max-width: 60ch; font-size: 1rem; line-height: 1.65; color: var(--gris, inherit); }
+@media (min-width: 900px) { .apartado__cab { grid-template-columns: minmax(180px, 1fr) 3fr; } }
 .pestanas__botones { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0 0 clamp(20px, 3vw, 32px); }
 .pestanas__titulo { font-size: clamp(1.4rem, 3vw, 1.9rem); margin: 0 0 16px; }
 .pestanas__panel + .pestanas__panel { margin-top: clamp(32px, 5vw, 56px); }
