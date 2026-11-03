@@ -2,22 +2,25 @@
 {% block titulo %}{{ T(tienda.titulo) }} — {{ g.marca }}{% endblock %}
 {% block descripcion %}{{ T(tienda.descripcion_google) }}{% endblock %}
 {% block contenido %}
-{% set salon = estancias[0] if estancias else none %}
-{% set otras = estancias[1:] %}
 {% set F = tienda.form %}
 
-{# Título centrado y la estancia grande con una foto colgada #}
+{# Título centrado y las tres estancias (salón, dormitorio, estudio) a la misma altura #}
 <section class="tienda-cab">
   <div class="ancho">
     <p class="antetitulo">{{ T(tienda.antetitulo) }}</p>
     <h1>{{ T(tienda.titulo) }}</h1>
     <p class="tienda-cab__intro">{{ T(tienda.intro) }}</p>
-    {% if salon %}
-    <figure class="estancia estancia--grande">
-      {% if salon.real %}<img class="estancia__foto" src="{{ asset(salon.real.src) }}" width="{{ salon.real.ancho }}" height="{{ salon.real.alto }}" fetchpriority="high" decoding="async" alt="{{ T(tienda.estancias.salon) }} — {{ g.marca }}">
-      {% else %}{% with e=salon %}{% include "_estancia.html" %}{% endwith %}{% endif %}
-    </figure>
-    {% elif portada_pagina %}{{ foto(portada_pagina, "(min-width: 900px) 760px, 100vw", "tienda-cab__foto", "eager") }}{% endif %}
+    {% if estancias %}
+    <div class="tienda-estancias__fila">
+      {% for e in estancias %}
+      <figure class="estancia">
+        {% if e.real %}<img class="estancia__foto" src="{{ asset(e.real.src) }}" width="{{ e.real.ancho }}" height="{{ e.real.alto }}" {% if loop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async" alt="{{ T(tienda.estancias[e.tipo]) }} — {{ g.marca }}">
+        {% else %}{% include "_estancia.html" %}{% endif %}
+        <figcaption>{{ T(tienda.estancias[e.tipo]) }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+    {% endif %}
   </div>
 </section>
 
@@ -34,24 +37,6 @@
     {% endfor %}
   </ol>
 </section>
-
-{# El resto de estancias (dormitorio, estudio…) #}
-{% if otras %}
-<section class="tienda-estancias">
-  <div class="ancho">
-    <h2 class="tienda-estancias__titulo">{{ T(tienda.estancias_titulo) }}</h2>
-    <div class="tienda-estancias__fila">
-      {% for e in otras %}
-      <figure class="estancia">
-        {% if e.real %}<img class="estancia__foto" src="{{ asset(e.real.src) }}" width="{{ e.real.ancho }}" height="{{ e.real.alto }}" loading="lazy" decoding="async" alt="{{ T(tienda.estancias[e.tipo]) }} — {{ g.marca }}">
-        {% else %}{% include "_estancia.html" %}{% endif %}
-        <figcaption>{{ T(tienda.estancias[e.tipo]) }}</figcaption>
-      </figure>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
 
 {# Paso 1: elegir la foto, por categorías #}
 <section class="bloque bloque--arena tienda-elige" id="elige" data-elige>

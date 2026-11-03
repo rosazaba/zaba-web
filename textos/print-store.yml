@@ -1,9 +1,9 @@
 # TIENDA (en inglés: Print Store; en francés: Boutique). Dirección: /print-store/
 # Organización inspirada en la tienda de Laurita Polvorilla: título, estancia grande, 3 pasos,
 # «Elige tu foto», «Materiales» + «Tamaños y precios» y formulario de pedido (se envía por WhatsApp).
-# Fotos: originales/5-tienda/ → las fotos a la venta (las 2 primeras salen colgadas en el salón y el dormitorio).
-#        Si está vacía, en «Elige tu foto» salen las galerías (Surf, Buceo, Dron).
-#        originales/5-tienda/estancias/ → fotos de las habitaciones (salon-… y dormitorio-…).
+# Fotos: originales/5-tienda/buceo/, surf/ y dron/ → las fotos a la venta (pestañas de «Elige tu foto»).
+#        Si una está vacía, de ejemplo salen las mejores fotos de esa galería.
+#        originales/5-tienda/estancias/ → habitaciones (salon-…, dormitorio-…, estudio-…) y las fotos que se cuelgan en ellas.
 
 titulo:
   en: "Print Store"
@@ -41,7 +41,7 @@ estancias_reales:
   estudio:
     foto: "5-tienda/estancias/IMG_20260907_09544991.jpeg" # dron (la playa desde arriba), en horizontal
     girar: 90
-    hueco: [19.82, 0, 85.88, 44.63]   # la foto ocupa el lienzo del cuadro de roble que ya hay sobre el escritorio
+    hueco: [19.76, 0, 85.88, 45.32]   # la foto ocupa el lienzo del cuadro de roble que ya hay sobre el escritorio
 
 estancias:
   salon:      { en: "Living room", es: "Salón",      fr: "Salon" }

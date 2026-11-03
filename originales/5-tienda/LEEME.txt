@@ -1,2 +1,2 @@
-Fotos que vendes impresas (opcional). Si pones fotos aqui, son las que se eligen en la Tienda; si esta vacia, se eligen de las galerias (Surf, Buceo, Dron).
-estancias/ = habitaciones de ejemplo con tus fotos colgadas. portada/ no se usa ahora.
+Tienda. Una carpeta por categoria con las fotos que vendes impresas: buceo/, surf/ y dron/ (salen en las pestañas de «Elige tu foto», en ese orden de nombre).
+estancias/ = habitaciones de ejemplo con tus fotos colgadas.

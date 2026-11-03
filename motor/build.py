@@ -592,6 +592,33 @@ def main():
             cuadro = ImageOps.exif_transpose(cuadro).convert("RGB")
             if c.get("girar"):
                 cuadro = cuadro.rotate(-float(c["girar"]), expand=True)     # grados en el sentido del reloj
+            def guardar(img, centro_px):
+                """Las tres estancias salen cuadradas (misma altura en la Tienda), centradas en el cuadro."""
+                lado = min(img.size)
+                x = min(max(0, round(centro_px - lado / 2)), img.width - lado)
+                y = (img.height - lado) // 2 if img.height > lado else 0
+                img = img.crop((x, y, x + lado, y + lado))
+                img.save(out, "WEBP", quality=82, method=5)
+                e["real"] = {"src": f"img/print-store/{out.name}", "ancho": lado, "alto": lado}
+            def con_paspartu(ancho_l, alto_l, refs):
+                """La foto entera (sin recortar) sobre un paspartú del tamaño del lienzo. El paspartú toma la luz de la
+                pared a ambos lados del cuadro (algo más clara) y lleva una sombra fina en el borde, como en un marco real."""
+                import numpy as np
+                if not c.get("paspartu", True):
+                    return ImageOps.fit(cuadro, (ancho_l, alto_l), Image.LANCZOS)
+                izq, der = (np.array(fondo.crop(r).resize((1, 1), Image.BOX).getpixel((0, 0)), float) for r in refs)
+                t = np.linspace(0, 1, ancho_l)[None, :, None]
+                capa = (1 - t) * izq + t * der
+                capa = np.repeat(capa, alto_l, axis=0) * 1.05 + 5
+                # sombra interior: más marcada arriba (la luz viene de arriba) y suave en los lados
+                yy = np.arange(alto_l)[:, None]; xx = np.arange(ancho_l)[None, :]
+                d = max(3, round(min(ancho_l, alto_l) * 0.012))
+                sombra = 1 - 0.28 * np.exp(-yy / d) - 0.16 * np.exp(-xx / d) - 0.16 * np.exp(-(ancho_l - 1 - xx) / d) - 0.10 * np.exp(-(alto_l - 1 - yy) / d)
+                base = Image.fromarray(np.clip(capa * sombra[:, :, None], 0, 255).astype("uint8"))
+                m = round(min(ancho_l, alto_l) * 0.075)
+                f = cuadro.copy(); f.thumbnail((ancho_l - 2 * m, alto_l - 2 * m), Image.LANCZOS)
+                base.paste(f, ((ancho_l - f.width) // 2, (alto_l - f.height) // 2))
+                return base
             if c.get("recorte"):                                            # proporción ancho/alto, p. ej. 1.5
                 rw = float(c["recorte"])
                 cw, ch = (cuadro.width, round(cuadro.width / rw)) if cuadro.width / cuadro.height < rw else (round(cuadro.height * rw), cuadro.height)
@@ -603,7 +630,10 @@ def main():
                 ancho_l = max(abs(dst[1][0] - dst[0][0]), abs(dst[2][0] - dst[3][0]))
                 alto_l = max(abs(dst[3][1] - dst[0][1]), abs(dst[2][1] - dst[1][1]))
                 cw, ch = round(ancho_l * 2), round(alto_l * 2)
-                lienzo = ImageOps.fit(cuadro, (cw, ch), Image.LANCZOS)
+                xs = [p[0] for p in dst]; ys = [p[1] for p in dst]
+                refs = ((round(min(xs) - W * 0.06), round(min(ys)), round(min(xs) - W * 0.02), round(max(ys))),
+                        (round(max(xs) + W * 0.02), round(min(ys)), round(max(xs) + W * 0.06), round(max(ys))))
+                lienzo = con_paspartu(cw, ch, refs)
                 src_pts = [(0, 0), (cw, 0), (cw, ch), (0, ch)]
                 # coeficientes de la transformación (de cada punto de la habitación al punto del lienzo)
                 import numpy as np
@@ -615,16 +645,16 @@ def main():
                 mascara = Image.new("L", fondo.size, 0)
                 ImageDraw.Draw(mascara).polygon(dst, fill=255)
                 fondo.paste(capa, (0, 0), mascara.filter(ImageFilter.GaussianBlur(0.6)))
-                fondo.save(out, "WEBP", quality=82, method=5)
-                e["real"] = {"src": f"img/print-store/{out.name}", "ancho": W, "alto": H}
+                guardar(fondo, sum(xs) / 4)
                 estancias.append(e)
                 continue
             if c.get("hueco"):
                 # la foto sustituye el lienzo de un cuadro que ya está en la habitación: [x0, y0, x1, y1] en %
                 x0, y0, x1, y1 = (round(v / 100 * (W if i % 2 == 0 else H)) for i, v in enumerate(c["hueco"]))
-                fondo.paste(ImageOps.fit(cuadro, (x1 - x0, y1 - y0), Image.LANCZOS), (x0, y0))
-                fondo.save(out, "WEBP", quality=82, method=5)
-                e["real"] = {"src": f"img/print-store/{out.name}", "ancho": W, "alto": H}
+                refs = ((max(0, x0 - round(W * 0.06)), y0, max(1, x0 - round(W * 0.03)), y1),
+                        (min(W - 2, x1 + round(W * 0.03)), y0, min(W - 1, x1 + round(W * 0.06)), y1))
+                fondo.paste(con_paspartu(x1 - x0, y1 - y0, refs), (x0, y0))
+                guardar(fondo, (x0 + x1) / 2)
                 estancias.append(e)
                 continue
             # marco de roble fino y paspartú blanco (grosor relativo al ancho de la habitación)
@@ -648,26 +678,27 @@ def main():
                 d = ImageDraw.Draw(fondo)
                 d.rectangle((x, y, x + w - 1, y + h - 1), fill=(176, 138, 98))                   # roble
                 d.rectangle((x + borde[0], y + borde[0], x + w - borde[0] - 1, y + h - borde[0] - 1), fill=(246, 244, 239))  # paspartú
-            fondo.paste(ImageOps.fit(cuadro, (fw, fh), Image.LANCZOS), (x + b, y + b))
-            fondo.save(out, "WEBP", quality=82, method=5)
-        e["real"] = {"src": f"img/print-store/{out.name}", "ancho": W, "alto": H}
+            fondo.paste(cuadro.resize((fw, fh), Image.LANCZOS), (x + b, y + b))   # la foto entera, sin recortar
+            guardar(fondo, x + w / 2)
         estancias.append(e)
     if not any(e["real"] for e in estancias):
         avisos.append(f"La Tienda usa las estancias dibujadas: pon fotos de habitaciones en originales/{C_PRINT}/estancias/.")
-    # Colección para elegir foto (paso 1): las fotos de 5-tienda/ si las hay; si no, las galerías (Surf, Buceo, Dron).
-    # Cada foto lleva un código corto (SURF-03) que se apunta solo en el formulario de pedido.
-    propias = fotos_de(C_PRINT)
-    if propias:
-        grupos_tienda = [{"id": "coleccion", "titulo": tienda.get("coleccion_titulo") or {"en": "Collection", "es": "Colección", "fr": "Collection"},
-                          "fotos": [optimizar(p, "print-store") for p in propias]}]
-    else:
-        grupos_tienda = [{"id": gal["id"], "titulo": gal["titulo"], "fotos": gal["fotos"]} for gal in galerias if gal["fotos"]]
+    # «Elige tu foto» (paso 1): una pestaña por galería (Surf, Buceo, Dron) con las fotos que la usuaria pone a la venta
+    # en originales/5-tienda/<galería>/. Si esa carpeta está vacía, de ejemplo salen las mejores de la galería.
+    # Cada foto lleva un código corto (SURF-03, por su orden en la carpeta) que se apunta solo en el formulario de pedido.
+    grupos_tienda = []
+    for gal in galerias:
+        venta = [optimizar(p, f"print-store/{gal['id']}") for p in fotos_de(f"{C_PRINT}/{gal['id']}")]
+        if not venta and gal["fotos"]:
+            avisos.append(f"Tienda: {C_PRINT}/{gal['id']}/ está vacía; de ejemplo salen fotos de la galería «{gal['id']}».")
+        if venta or gal["fotos"]:
+            grupos_tienda.append({"id": gal["id"], "titulo": gal["titulo"], "fotos": venta or gal["fotos"], "ejemplo": not venta})
     for gr in grupos_tienda:
         pre = slug(gr["id"]).upper().replace("-", "")[:8]
-        # el código sale del orden en la galería (no cambia aunque se muestren menos)
+        # el código sale del orden (no cambia aunque se muestren menos)
         todas = [{"foto": f, "codigo": f"{pre}-{n:02d}"} for n, f in enumerate(gr["fotos"], 1)]
-        if gr["id"] != "coleccion" and len(todas) > FOTOS_TIENDA_POR_GALERIA:
-            # de una galería: solo las mejores (nitidez, contraste y color), en su orden
+        if gr["ejemplo"] and len(todas) > FOTOS_TIENDA_POR_GALERIA:
+            # ejemplo sacado de la galería: solo las mejores (nitidez, contraste y color), en su orden
             mejores = sorted(todas, key=lambda x: -x["foto"].get("calidad", 0))[:FOTOS_TIENDA_POR_GALERIA]
             todas = [x for x in todas if x in mejores]
         gr["fotos"] = todas
