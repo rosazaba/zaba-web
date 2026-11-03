@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block titulo %}{{ T(tienda.titulo) }} — {{ g.marca }}{% endblock %}
+{% block descripcion %}{{ T(tienda.descripcion_google) }}{% endblock %}
+{% block contenido %}
+{% with cab_variante="print", cab_palabra="PRINT", cab_ante=T(tienda.antetitulo), cab_titulo=T(tienda.titulo),
+        cab_intro=T(tienda.intro), cab_foto=portada_pagina or (estancias[0].foto if estancias else none) %}
+{% include "_cabecera_nueva.html" %}
+{% endwith %}
+
+{# Dos simulaciones: la foto colgada en un salón y en un dormitorio #}
+{% if estancias %}
+<section class="bloque estancias-bloque">
+  <div class="ancho">
+    <h2 class="titulo-seccion aparece">{{ T(tienda.estancias_titulo) }}</h2>
+    <div class="estancias">
+      {% for e in estancias %}
+      <figure class="estancia aparece">
+        {% include "_estancia.html" %}
+        <figcaption>{{ T(tienda.estancias[e.tipo]) }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{# Instrucciones paso a paso (la tienda no tiene apartados) #}
+<section class="bloque bloque--arena">
+  <div class="ancho">
+    <h2 class="titulo-seccion aparece">{{ T(tienda.pasos_titulo) }}</h2>
+    <ol class="pasos-tienda">
+      {% for p in tienda.pasos %}
+      <li class="paso-tienda aparece">
+        <span class="paso-tienda__num">0{{ loop.index }}</span>
+        <h3>{{ T(p.titulo) }}</h3>
+        <p>{{ T(p.texto) }}</p>
+        {% if p.boton %}<a class="enlace-flecha" href="{{ url('') }}">{{ T(p.boton) }} →</a>{% endif %}
+        {% if loop.index == 2 %}
+        <ul class="tamanos" aria-label="{{ T(tienda.tamanos_titulo) }}">
+          {% for t in tienda.tamanos %}<li><span>{{ t.medida }}</span><strong>{{ t.precio or T(services.consultar) }}</strong></li>{% endfor %}
+        </ul>
+        {% endif %}
+        {% if loop.index == 3 %}<p class="paso-tienda__nota">{{ T(tienda.marco_nota) }}</p>{% endif %}
+        {% if loop.last and g.contacto.whatsapp %}
+        <a class="boton" href="https://wa.me/{{ g.contacto.whatsapp }}?text={{ T(tienda.mensaje_whatsapp)|urlencode }}" target="_blank" rel="noopener">{{ T(tienda.pedir) }}</a>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+{% include "_cierre.html" %}
+{% endblock %}

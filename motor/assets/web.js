@@ -128,6 +128,38 @@
     requestAnimationFrame(paso);
   });
 
+  /* Encuentra tus fotos: buscador por texto (playa, pueblo, fecha) y fichas por playa */
+  var buscador = document.querySelector("[data-buscador]");
+  if (buscador) {
+    var campo = buscador.querySelector("[data-buscar]");
+    var fichas = buscador.querySelectorAll("[data-playa]");
+    var playaActiva = "";
+    var normal = function (t) { return (t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); };
+    function filtrar() {
+      var q = normal(campo.value.trim()), alguna = false;
+      buscador.querySelectorAll("[data-playa-bloque]").forEach(function (b) {
+        var deEsta = !playaActiva || b.dataset.playaBloque === playaActiva;
+        var sesiones = b.querySelectorAll("[data-sesion]"), visibles = 0;
+        sesiones.forEach(function (s) {
+          var ok = deEsta && (!q || normal(s.dataset.texto).indexOf(q) > -1);
+          s.hidden = !ok; if (ok) { visibles++; if (q) s.open = true; }
+        });
+        var nombreCoincide = !q || normal(b.dataset.texto).indexOf(q) > -1;
+        var mostrar = deEsta && (sesiones.length ? visibles > 0 : nombreCoincide);
+        b.hidden = !mostrar; if (mostrar) alguna = true;
+      });
+      buscador.querySelector("[data-nada]").hidden = alguna;
+    }
+    campo.addEventListener("input", filtrar);
+    fichas.forEach(function (f) {
+      f.addEventListener("click", function () {
+        playaActiva = f.dataset.playa;
+        fichas.forEach(function (o) { o.setAttribute("aria-pressed", o === f); });
+        filtrar();
+      });
+    });
+  }
+
   /* Formulario de contacto */
   var form = document.querySelector("[data-formulario]");
   if (form) {
@@ -150,7 +182,8 @@
       } else {
         // Sin clave: abre el correo del visitante con el mensaje ya escrito
         var interes = sel ? sel.options[sel.selectedIndex].text : "";
-        var texto = datos.get("message") + "\n\n— " + datos.get("name") + " (" + interes + ")";
+        var nombre = [datos.get("name"), datos.get("surname")].filter(Boolean).join(" ");
+        var texto = datos.get("message") + "\n\n— " + nombre + " (" + interes + ")";
         var destino = form.dataset.destino ? atob(form.dataset.destino.split("").reverse().join("")) : "";
         location.href = "mailto:" + destino + "?subject=" + encodeURIComponent(datos.get("subject") + " · " + interes) +
           "&body=" + encodeURIComponent(texto);

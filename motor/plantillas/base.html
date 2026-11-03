@@ -47,7 +47,7 @@
     </a>
     <nav class="menu" id="menu" aria-label="Main">
       <ul>
-        {% for id, ruta in [('inicio',''),('services','services/'),('about','about/'),('contact','contact/')] %}
+        {% for id, ruta in rutas.items() %}
         <li><a href="{{ url(ruta) }}"{% if pid == id or (id == 'inicio' and pid.startswith('galeria')) %} aria-current="page"{% endif %}>{{ T(g.menu[id]) }}</a></li>
         {% endfor %}
       </ul>

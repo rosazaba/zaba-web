@@ -28,6 +28,7 @@ class Pagina(HTMLParser):
         self.lang = None; self.titulos = []; self.h1 = 0; self.metas = {}; self.links = []
         self.hreflang = {}; self.canonical = None; self.imgs = []; self.refs = []; self.ids = set()
         self.jsonld = []; self._en = None; self._buf = ""
+        self.codigos = []; self.comprar = []; self.estancias = 0; self.menu = []; self._en_menu = False
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -46,17 +47,27 @@ class Pagina(HTMLParser):
         elif tag == "script":
             if a.get("type") == "application/ld+json": self._en, self._buf = "jsonld", ""
             elif a.get("src"): self.refs.append(("script", a["src"]))
+        elif tag == "image" and a.get("href"):          # foto dentro de las estancias ilustradas (SVG)
+            self.refs.append(("img", a["href"]))
+            self.estancias += 1
+        elif tag == "nav" and a.get("id") == "menu":
+            self._en_menu = True
+        elif tag == "li" and "data-codigo" in a:
+            self.codigos.append(a["data-codigo"])
         elif tag == "img":
             self.imgs.append(a)
             if a.get("src"): self.refs.append(("img", a["src"]))
             for parte in (a.get("srcset") or "").split(","):
                 if parte.strip(): self.refs.append(("img", parte.strip().split()[0]))
         elif tag == "a" and a.get("href"):
+            if self._en_menu and a.get("href") and not a.get("hreflang"): self.menu.append(a["href"])
+            if "wa.me" in a["href"] and "text=" in a["href"]: self.comprar.append(a["href"])
             self.refs.append(("a", a["href"]))
             if a.get("target") == "_blank" and "noopener" not in (a.get("rel") or ""):
                 self.links.append(a["href"])
 
     def handle_endtag(self, tag):
+        if tag == "nav": self._en_menu = False
         if tag in ("title", "script") and self._en:
             (self.titulos if self._en == "title" else self.jsonld).append(self._buf.strip())
             self._en = None
@@ -190,6 +201,24 @@ def main():
 
     for (lang, t), lista in titulos.items():
         if len(lista) > 1: errores.append(f"Título repetido en {lang} «{t}»: {', '.join(lista)}")
+
+    # Menú: mismo número de apartados en todas las páginas
+    n_menu = {len(a.menu) for a in analizadas.values()}
+    if len(n_menu) > 1: errores.append(f"El menú no tiene los mismos apartados en todas las páginas: {sorted(n_menu)}")
+    # Encuentra tus fotos: códigos únicos y botón «Comprar» con el código de cada foto
+    todos = []
+    for p, a in analizadas.items():
+        rel = p.relative_to(DOCS).as_posix()
+        if not rel.startswith(("find-your-photos", "es/find-your-photos", "fr/find-your-photos")): continue
+        if len(set(a.codigos)) != len(a.codigos): errores.append(f"{rel}: hay fotos con el código repetido")
+        for c in a.codigos:
+            if not any(c in u for u in a.comprar): errores.append(f"{rel}: la foto {c} no tiene botón de compra con su código")
+        if rel.startswith("find-your-photos"): todos += a.codigos
+    # Print Store: las dos estancias con su foto
+    for p, a in analizadas.items():
+        rel = p.relative_to(DOCS).as_posix()
+        if rel.endswith("print-store/index.html") and a.estancias < 2:
+            avisos.append(f"{rel}: Print Store tiene {a.estancias} estancias con foto (deberían ser 2)")
 
     # Sitemap y robots
     sm = DOCS / "sitemap.xml"

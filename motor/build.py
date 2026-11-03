@@ -23,14 +23,32 @@ from PIL import Image, ImageOps
 RAIZ = Path(__file__).resolve().parent.parent
 ORIG = RAIZ / "originales"
 # Carpetas de originales/ (siguen el orden del menú). La portada y los trabajos son la misma página.
-C_TRABAJOS = "1-trabajos"            # portada/, seleccion/ y una carpeta por galería (buceo/, surf/, dron/…)
+def _primera(*nombres):
+    """La primera carpeta que exista (sirve con el nombre nuevo y con el antiguo mientras se renombra)."""
+    return next((n for n in nombres if (ORIG / n).exists()), nombres[0])
+C_TRABAJOS = _primera("1-servicios", "1-trabajos")   # página «Servicios / My services»: portada/, seleccion/ y una carpeta por galería
 C_PORTADA = f"{C_TRABAJOS}/portada"    # la foto grande de arriba (cada galería tiene además su <galería>/portada/)
 C_SELECCION = f"{C_TRABAJOS}/seleccion"
-C_SERVICIOS = "2-servicios"
+C_SERVICIOS = _primera("2-tarifa", "2-servicios")   # página «Tarifa / Rates»: portada/ y <servicio>/
 C_SOBRE_MI = "3-sobre-mi"
-C_CONTACTO = "4-contacto"             # solo su carpeta portada/ (foto de arriba de Contacto)
+C_CONTACTO = "4-contacto"             # solo su carpeta portada/ (foto del fondo-mural de Contacto)
+C_PRINT = "5-print-store"            # portada/ (cabecera) y las fotos que se venden impresas (las 2 primeras salen en las estancias)
+C_ENCUENTRA = "6-encuentra-tus-fotos"  # portada/ (cabecera) y <playa>/<AAAA-MM-DD>/ con las fotos de cada sesión
+# Rutas escritas en textos/*.yml con el nombre antiguo de una carpeta siguen funcionando
+ALIAS_CARPETAS = {"1-trabajos": C_TRABAJOS, "1-servicios": C_TRABAJOS, "2-servicios": C_SERVICIOS, "2-tarifa": C_SERVICIOS}
+
+
+def en_orig(ruta):
+    """Ruta dentro de originales/ con la carpeta de primer nivel actualizada si se ha renombrado."""
+    if not ruta: return None
+    primera, _, resto = str(ruta).partition("/")
+    return ORIG / ALIAS_CARPETAS.get(primera, primera) / resto
 BANCOS_IMAGENES = ("unsplash", "pexels", "pixabay", "shutterstock", "istock", "adobestock", "freepik")
 NO_SON_GALERIAS = {"portada", "portadas", "seleccion", "fotos-banco-imagenes"}
+PRECIO_FOTO_DEFECTO = "15 €"
+# Menú (en este orden) y la dirección de cada página
+RUTAS = {"inicio": "", "services": "rates/", "print": "print-store/", "encuentra": "find-your-photos/",
+         "about": "about/", "contact": "contact/"}
 TEXTOS = RAIZ / "textos"
 MOTOR = RAIZ / "motor"
 SALIDA = RAIZ / "docs"
@@ -359,6 +377,45 @@ def procesar_logo():
     return datos
 
 
+# ── «Encuentra tus fotos»: vistas previas pequeñas con marca de agua ──
+ANCHO_MARCA = 960          # las fotos a la venta solo se publican a este tamaño y con marca de agua
+
+
+def con_marca(src: Path, destino_rel: str, codigo: str):
+    """Vista previa protegida: pequeña, con el logo repetido en diagonal y el código de la foto."""
+    from PIL import ImageDraw
+    carpeta = IMG_DIR / destino_rel
+    carpeta.mkdir(parents=True, exist_ok=True)
+    out = carpeta / f"{slug(codigo)}.webp"
+    generadas.add(out)
+    with Image.open(src) as im:
+        im = ImageOps.exif_transpose(im).convert("RGB")
+        im.thumbnail((ANCHO_MARCA, ANCHO_MARCA), Image.LANCZOS)
+        w, h = im.size
+        if not out.exists() or out.stat().st_mtime < src.stat().st_mtime:
+            capa = Image.new("RGBA", (w * 2, h * 2), (0, 0, 0, 0))
+            logo_marca = next((p for p in [ORIG / "logo" / "logo-claro.png", ORIG / "logo" / "logo-oscuro.png"] if p.exists()), None)
+            if logo_marca:
+                with Image.open(logo_marca) as lg:
+                    lg = lg.convert("RGBA")
+                    lg.thumbnail((int(w * .26), int(w * .26)), Image.LANCZOS)
+                    blanco = Image.new("RGBA", lg.size, (255, 255, 255, 0))
+                    blanco.putalpha(lg.getchannel("A").point(lambda a: int(a * .42)))
+                    paso_x, paso_y = int(lg.width * 1.45), int(lg.height * 3.2)
+                    for fila, y in enumerate(range(0, capa.height, paso_y)):
+                        for x in range(-paso_x + (fila % 2) * paso_x // 2, capa.width, paso_x):
+                            capa.alpha_composite(blanco, (x, y))
+            capa = capa.rotate(24, resample=Image.BICUBIC)
+            capa = capa.crop((w // 2, h // 2, w // 2 + w, h // 2 + h))
+            base = im.convert("RGBA"); base.alpha_composite(capa)
+            # banda inferior con el código, para que el cliente lo pueda citar
+            d = ImageDraw.Draw(base)
+            d.rectangle([0, h - 30, w, h], fill=(46, 41, 37, 150))
+            d.text((12, h - 23), f"ZABA · {codigo}", fill=(255, 255, 255, 230))
+            base.convert("RGB").save(out, "WEBP", quality=62, method=5)
+    return {"codigo": codigo, "src": f"img/{destino_rel}/{out.name}", "ancho": w, "alto": h}
+
+
 def limpiar_imagenes_viejas():
     carpeta = SALIDA / "img"
     if not carpeta.exists():
@@ -387,7 +444,7 @@ def main():
     fotos_portada = fotos_de(C_PORTADA)[:1]
     if not fotos_portada and inicio.get("portada_foto"):
         # Sin foto en la carpeta de portada: usa la indicada en textos/inicio.yml (sin duplicar el archivo)
-        candidata = ORIG / inicio["portada_foto"]
+        candidata = en_orig(inicio["portada_foto"])
         if candidata.exists():
             fotos_portada = [candidata]
         else:
@@ -399,7 +456,7 @@ def main():
     propias = fotos_de(C_SOBRE_MI)
     prov = about.get("provisional") or {}
     def prov_foto(ruta):
-        p = ORIG / ruta if ruta else None
+        p = en_orig(ruta) if ruta else None
         if p and p.exists(): return p
         if ruta: avisos.append(f"No existe la foto provisional de Sobre mí: originales/{ruta}")
         return None
@@ -479,8 +536,8 @@ def main():
     lista_servicios = []
     for s in services.get("lista", []):
         f = fotos_de(f"{C_SERVICIOS}/{s['carpeta']}")[:1]
-        if not f and s.get("foto_provisional") and (ORIG / s["foto_provisional"]).exists():   # mientras su carpeta esté vacía
-            f = [ORIG / s["foto_provisional"]]
+        if not f and s.get("foto_provisional") and en_orig(s["foto_provisional"]).exists():   # mientras su carpeta esté vacía
+            f = [en_orig(s["foto_provisional"])]
         lista_servicios.append({**s, "foto": optimizar(f[0], f"services/{s['carpeta']}") if f else None})
 
     # Foto de arriba de Servicios y Contacto: su carpeta portada/ (si está vacía, la página sale sin foto)
@@ -490,11 +547,55 @@ def main():
     portada_servicios = portada_de(C_SERVICIOS, "services")
     portada_contacto = portada_de(C_CONTACTO, "contact")
 
+    # ── Print Store: 2 estancias (salón y dormitorio) con una foto colgada en cada una ──
+    tienda = leer("print-store")
+    portada_tienda = portada_de(C_PRINT, "print-store")
+    fotos_tienda = [optimizar(p, "print-store") for p in fotos_de(C_PRINT)[:2]]
+    if len(fotos_tienda) < 2:
+        # Mientras 5-print-store/ esté vacía: las mejores fotos horizontales de galerías distintas
+        candidatas = []
+        for gal in galerias:
+            horiz = sorted([f for f in gal["fotos"] if f["ratio"] > 1.25], key=lambda f: -f["calidad"])
+            if horiz: candidatas.append(horiz[0])
+        candidatas.sort(key=lambda f: -f["calidad"])
+        fotos_tienda += candidatas[:2 - len(fotos_tienda)]
+        avisos.append("Print Store usa fotos de las galerías de ejemplo: pon las tuyas en originales/5-print-store/ (las 2 primeras salen en las estancias).")
+    estancias = [{"tipo": t, "foto": f} for t, f in zip(["salon", "dormitorio"], fotos_tienda)]
+
+    # ── Encuentra tus fotos: playa → sesión (fecha) → fotos con marca de agua y código ──
+    encuentra = leer("encuentra")
+    portada_encuentra = portada_de(C_ENCUENTRA, "encuentra")
+    if not portada_encuentra:
+        # sin foto propia en 6-encuentra-tus-fotos/portada/: la mejor foto vertical de surf
+        surf = next((gal["fotos"] for gal in galerias if gal["id"] == "surf"), [])
+        vert = sorted([f for f in surf if f["ratio"] < 1], key=lambda f: -f["calidad"]) or sorted(surf, key=lambda f: -f["calidad"])
+        portada_encuentra = vert[0] if vert else None
+    precio_foto = encuentra.get("precio_foto") or PRECIO_FOTO_DEFECTO
+    playas = []
+    for loc in encuentra.get("localizaciones", []):
+        base = ORIG / C_ENCUENTRA / loc["carpeta"]
+        sesiones = []
+        if base.exists():
+            for d in sorted((d for d in base.iterdir() if d.is_dir() and d.name != "portada"), key=lambda d: d.name, reverse=True):
+                m = re.match(r"(\d{4})-(\d{2})-(\d{2})", d.name)
+                if not m:
+                    avisos.append(f"Sesión con nombre que no es una fecha AAAA-MM-DD, no se publica: {d.relative_to(ORIG)}")
+                    continue
+                fotos_sesion = [con_marca(p, f"encuentra/{loc['carpeta']}/{d.name}",
+                                          f"{loc['codigo']}-{''.join(m.groups())}-{n:03d}")
+                                for n, p in enumerate(fotos_de(d.relative_to(ORIG).as_posix()), 1)]
+                if fotos_sesion:
+                    sesiones.append({"fecha": d.name, "fecha_corta": f"{m.group(3)}/{m.group(2)}/{m.group(1)}", "fotos": fotos_sesion})
+        playas.append({**loc, "sesiones": sesiones, "n_fotos": sum(len(x["fotos"]) for x in sesiones)})
+
     # Páginas: (id, ruta sin idioma, plantilla, datos extra)
+    # Rutas de las páginas del menú (sin idioma). Las mismas en los tres idiomas.
     paginas = [("inicio", "", "inicio.html", {}),
-               ("services", "services/", "services.html", {"portada_pagina": portada_servicios}),
-               ("about", "about/", "about.html", {}),
-               ("contact", "contact/", "contact.html", {"portada_pagina": portada_contacto})]
+               ("services", RUTAS["services"], "services.html", {"portada_pagina": portada_servicios}),
+               ("print", RUTAS["print"], "print-store.html", {"portada_pagina": portada_tienda}),
+               ("encuentra", RUTAS["encuentra"], "encuentra.html", {"portada_pagina": portada_encuentra}),
+               ("about", RUTAS["about"], "about.html", {}),
+               ("contact", RUTAS["contact"], "contact.html", {"portada_pagina": portada_contacto})]
     for gal in galerias:
         paginas.append((f"galeria-{gal['id']}", f"work/{gal['url']}/", "galeria.html", {"galeria": gal}))
 
@@ -575,6 +676,7 @@ def main():
             html = env.get_template(plantilla).render(json_ld=json_ld,
                 lang=lang, pid=pid, iconos=iconos, T=T, url=url, asset=asset, srcset=srcset, foto=foto,
                 g=g, inicio=inicio, work=work, services=services, about=about, contact=contact,
+                rutas=RUTAS, tienda=tienda, estancias=estancias, encuentra=encuentra, playas=playas, precio_foto=precio_foto,
                 portada=portada[0] if portada else None, destacadas=destacadas,
                 foto_about=foto_about[0] if foto_about else None, sobre=sobre,
                 galerias=galerias, lista_servicios=lista_servicios,

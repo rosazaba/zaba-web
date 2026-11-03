@@ -1,0 +1,18 @@
+{# Cabecera exclusiva de las páginas Print Store y Encuentra tus fotos.
+   Variables: cab_variante (print|encuentra), cab_palabra (palabra grande de fondo), cab_ante, cab_titulo, cab_intro, cab_foto #}
+<section class="cab-nueva cab-nueva--{{ cab_variante }}">
+  <span class="cab-nueva__palabra" aria-hidden="true">{{ cab_palabra }}</span>
+  <div class="cab-nueva__in">
+    <div class="cab-nueva__texto">
+      <p class="cab-nueva__chip">{{ cab_ante }}</p>
+      <h1>{{ cab_titulo }}</h1>
+      <p class="cab-nueva__intro">{{ cab_intro }}</p>
+    </div>
+    {% if cab_foto %}
+    <div class="cab-nueva__arco">
+      {{ foto(cab_foto, "(min-width: 900px) 34vw, 70vw", "", "eager", g.marca ~ " — " ~ cab_titulo) }}
+    </div>
+    {% endif %}
+  </div>
+  <svg class="cab-nueva__ola" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 C 180 10, 360 10, 540 45 S 900 95, 1080 50 S 1320 5, 1440 35 V90 H0 Z"/></svg>
+</section>

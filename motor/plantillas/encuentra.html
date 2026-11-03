@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block titulo %}{{ T(encuentra.titulo) }} — {{ g.marca }}{% endblock %}
+{% block descripcion %}{{ T(encuentra.descripcion_google) }}{% endblock %}
+{% block contenido %}
+{% with cab_variante="encuentra", cab_palabra="FIND", cab_ante=T(encuentra.antetitulo), cab_titulo=T(encuentra.titulo),
+        cab_intro=T(encuentra.intro), cab_foto=portada_pagina %}
+{% include "_cabecera_nueva.html" %}
+{% endwith %}
+
+<section class="buscador" data-buscador>
+  <div class="ancho">
+    <ol class="buscador__pasos">
+      {% for p in encuentra.pasos %}<li><span>{{ loop.index }}</span>{{ T(p) }}</li>{% endfor %}
+    </ol>
+    <div class="buscador__barra">
+      <input type="search" class="buscador__campo" placeholder="{{ T(encuentra.buscar) }}" aria-label="{{ T(encuentra.buscar) }}" data-buscar>
+      <div class="buscador__fichas" role="group" aria-label="{{ T(encuentra.titulo) }}">
+        <button type="button" class="ficha" aria-pressed="true" data-playa="">{{ T(encuentra.todas) }}</button>
+        {% for pl in playas %}<button type="button" class="ficha" aria-pressed="false" data-playa="{{ pl.carpeta }}">{{ pl.nombre }} · {{ pl.lugar }}</button>{% endfor %}
+      </div>
+    </div>
+    <p class="precio-foto"><strong>{{ precio_foto }}</strong> {{ T(encuentra.por_foto) }}</p>
+
+    {% for pl in playas %}
+    <article class="playa" data-playa-bloque="{{ pl.carpeta }}" data-texto="{{ (pl.nombre ~ ' ' ~ pl.lugar)|lower }}">
+      <header class="playa__cabeza">
+        <h2>{{ pl.nombre }} <span>· {{ pl.lugar }}</span></h2>
+        <p>{% if pl.n_fotos %}{{ pl.sesiones|length }} × {{ T(encuentra.sesion)|lower }} · {{ pl.n_fotos }} {{ T(encuentra.fotos) }}{% endif %}</p>
+      </header>
+      {% for ses in pl.sesiones %}
+      <details class="sesion" data-sesion data-texto="{{ (pl.nombre ~ ' ' ~ pl.lugar ~ ' ' ~ ses.fecha ~ ' ' ~ ses.fecha_corta)|lower }}"{% if loop.first %} open{% endif %}>
+        <summary><span class="sesion__fecha">{{ ses.fecha_corta }}</span><span class="sesion__n">{{ ses.fotos|length }} {{ T(encuentra.fotos) }}</span></summary>
+        <ul class="fotos-venta">
+          {% for f in ses.fotos %}
+          <li class="foto-venta" data-codigo="{{ f.codigo }}">
+            <img src="{{ asset(f.src) }}" width="{{ f.ancho }}" height="{{ f.alto }}" loading="lazy" decoding="async" alt="{{ pl.nombre }} {{ ses.fecha_corta }} — {{ f.codigo }}">
+            <div class="foto-venta__pie">
+              <span class="foto-venta__codigo">{{ f.codigo }}</span>
+              {% if g.contacto.whatsapp %}<a class="boton boton--mini" href="https://wa.me/{{ g.contacto.whatsapp }}?text={{ (T(encuentra.mensaje_whatsapp) ~ ' ' ~ f.codigo ~ ' (' ~ pl.nombre ~ ', ' ~ ses.fecha_corta ~ ')')|urlencode }}" target="_blank" rel="noopener">{{ T(encuentra.comprar) }} · {{ precio_foto }}</a>{% endif %}
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </details>
+      {% else %}
+      <p class="playa__vacia">{{ T(encuentra.sin_sesiones) }}</p>
+      {% endfor %}
+    </article>
+    {% endfor %}
+    <p class="buscador__nada" data-nada hidden>{{ T(encuentra.sin_resultados) }}</p>
+  </div>
+</section>
+{% endblock %}

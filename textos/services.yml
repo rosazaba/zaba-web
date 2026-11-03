@@ -1,12 +1,12 @@
-# SERVICIOS
+# TARIFA (antes «Servicios»; en el menú: Rates / Tarifa / Tarifs). Dirección: /rates/
 # Cada servicio usa la foto de su carpeta en originales/2-servicios/<carpeta>/
 # Mientras esa carpeta esté vacía usa foto_provisional (ruta dentro de originales/).
 # precio: escribe "" para que ponga "Consultar".
 
 titulo:
-  en: "Services"
-  es: "Servicios"
-  fr: "Services"
+  en: "Rates"
+  es: "Tarifa"
+  fr: "Tarifs"
 
 intro:
   en: "Every session is planned around the conditions — tide, swell, visibility and light — so you get the best possible images."

@@ -1,0 +1,2 @@
+Una carpeta por playa y, dentro, una carpeta por sesion con la fecha AAAA-MM-DD (por ejemplo 2026-11-01) con sus fotos.
+Las playas nuevas se anaden en textos/encuentra.yml.

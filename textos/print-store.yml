@@ -1,0 +1,90 @@
+# PRINT STORE (Tienda de impresión). Dirección: /print-store/
+# Fotos: originales/5-print-store/  → las 2 primeras salen colgadas en el salón y en el dormitorio.
+#        originales/5-print-store/portada/ → foto (opcional) de la cabecera.
+# Mientras la carpeta esté vacía se usan fotos de las galerías como ejemplo.
+
+titulo:
+  en: "Print Store"
+  es: "Print Store"
+  fr: "Print Store"
+
+antetitulo:
+  en: "Fine art prints"
+  es: "Copias artísticas"
+  fr: "Tirages d'art"
+
+intro:
+  en: "Take the ocean home. Any photo from my galleries, printed on museum-grade paper and ready to hang."
+  es: "Llévate el mar a casa. Cualquier foto de mis galerías, impresa en papel de calidad museo y lista para colgar."
+  fr: "Rapportez l'océan chez vous. N'importe quelle photo de mes galeries, imprimée sur papier qualité musée et prête à accrocher."
+
+estancias_titulo:
+  en: "See it on your wall"
+  es: "Así queda en tu pared"
+  fr: "Voyez-la sur votre mur"
+
+estancias:
+  salon:      { en: "Living room", es: "Salón",      fr: "Salon" }
+  dormitorio: { en: "Bedroom",     es: "Dormitorio", fr: "Chambre" }
+
+pasos_titulo:
+  en: "How to order your print"
+  es: "Cómo pedir tu copia"
+  fr: "Comment commander votre tirage"
+
+pasos:
+  - titulo: { en: "Choose your photo", es: "Elige tu foto", fr: "Choisissez votre photo" }
+    texto:
+      en: "Browse the galleries and note the photo you love (or send me a screenshot)."
+      es: "Recorre las galerías y apunta la foto que te enamore (o mándame una captura)."
+      fr: "Parcourez les galeries et notez la photo qui vous plaît (ou envoyez-moi une capture)."
+    boton: { en: "View galleries", es: "Ver galerías", fr: "Voir les galeries" }
+  - titulo: { en: "Choose the size", es: "Elige el tamaño", fr: "Choisissez le format" }
+    texto:
+      en: "Pick one of the sizes below. Every print is signed and numbered."
+      es: "Escoge uno de los tamaños de abajo. Todas las copias van firmadas y numeradas."
+      fr: "Choisissez l'un des formats ci-dessous. Chaque tirage est signé et numéroté."
+  - titulo: { en: "Choose the finish", es: "Elige el acabado", fr: "Choisissez la finition" }
+    texto:
+      en: "Paper only, or framed in natural oak or white wood with a passe-partout."
+      es: "Solo papel, o enmarcada en roble natural o madera blanca con paspartú."
+      fr: "Papier seul, ou encadré en chêne naturel ou bois blanc avec passe-partout."
+  - titulo: { en: "Order on WhatsApp", es: "Pídela por WhatsApp", fr: "Commandez sur WhatsApp" }
+    texto:
+      en: "Send me the photo, size and finish. I'll confirm the price and delivery time."
+      es: "Mándame la foto, el tamaño y el acabado. Te confirmo el precio y el plazo de entrega."
+      fr: "Envoyez-moi la photo, le format et la finition. Je vous confirme le prix et le délai."
+
+# Tamaños y precios (provisionales). precio "" = «Consultar»
+tamanos_titulo:
+  en: "Sizes"
+  es: "Tamaños"
+  fr: "Formats"
+tamanos:
+  - medida: "20 × 30 cm"
+    precio: "45 €"
+  - medida: "30 × 45 cm"
+    precio: "65 €"
+  - medida: "40 × 60 cm"
+    precio: "95 €"
+  - medida: "60 × 90 cm"
+    precio: "150 €"
+marco_nota:
+  en: "Frame: +40 € to +90 € depending on size."
+  es: "Marco: de +40 € a +90 € según el tamaño."
+  fr: "Cadre : de +40 € à +90 € selon le format."
+
+pedir:
+  en: "Order a print on WhatsApp"
+  es: "Pedir una copia por WhatsApp"
+  fr: "Commander un tirage sur WhatsApp"
+# Mensaje que aparece ya escrito en WhatsApp
+mensaje_whatsapp:
+  en: "Hi Zaba! I'd like a print. Photo: … / Size: … / Finish: …"
+  es: "¡Hola Zaba! Quiero una copia impresa. Foto: … / Tamaño: … / Acabado: …"
+  fr: "Bonjour Zaba ! Je voudrais un tirage. Photo : … / Format : … / Finition : …"
+
+descripcion_google:
+  en: "Fine art prints of surf, diving and drone photography by Zaba. Choose your photo, size and finish."
+  es: "Copias artísticas de fotografía de surf, buceo y dron de Zaba. Elige tu foto, tamaño y acabado."
+  fr: "Tirages d'art de photographies de surf, plongée et drone par Zaba. Choisissez photo, format et finition."

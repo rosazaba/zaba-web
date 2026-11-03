@@ -1,13 +1,11 @@
 {% extends "base.html" %}
-{% block clase_body %} cabecera-sobre-foto{% endblock %}
 {% block contenido %}
 
-<section class="hero hero--corta">
-  {% if portada %}{{ foto(portada, "100vw", "hero__img", "eager") }}{% endif %}
-  <div class="hero__velo"></div>
-  <div class="hero__texto">
-    <p class="antetitulo">{{ T(g.lema) }}</p>
-    <h1>{{ T(inicio.portada_titulo) }}</h1>
+{# Sin foto de cabecera: arriba, un espacio para el texto de introducción (textos/inicio.yml → intro_servicios_…) #}
+<section class="intro-servicios">
+  <div class="estrecho">
+    <h1>{{ T(inicio.intro_servicios_titulo) }}</h1>
+    <p class="texto-grande">{{ T(inicio.intro_servicios_texto) }}</p>
   </div>
 </section>
 
@@ -49,14 +47,14 @@
     <h2 class="titulo-seccion aparece">{{ T(inicio.servicios_titulo) }}</h2>
     <div class="mini-servicios">
       {% for s in lista_servicios %}
-      <a class="mini-servicio aparece" href="{{ url('services/') }}#{{ s.carpeta }}">
+      <a class="mini-servicio aparece" href="{{ url(rutas.services) }}#{{ s.carpeta }}">
         <span class="mini-servicio__num">0{{ loop.index }}</span>
         <span class="mini-servicio__titulo">{{ T(s.titulo) }}</span>
         <span class="mini-servicio__precio">{% if s.precio %}{{ T(services.desde) }} {{ s.precio }}{% else %}{{ T(services.consultar) }}{% endif %}</span>
       </a>
       {% endfor %}
     </div>
-    <p class="centro"><a class="boton boton--linea" href="{{ url('services/') }}">{{ T(g.botones.ver_servicios) }}</a></p>
+    <p class="centro"><a class="boton boton--linea" href="{{ url(rutas.services) }}">{{ T(g.botones.ver_servicios) }}</a></p>
   </div>
 </section>
 

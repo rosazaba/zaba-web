@@ -1,0 +1,1 @@
+Sesiones de esta playa: crea una carpeta por fecha (AAAA-MM-DD) y pon dentro las fotos.

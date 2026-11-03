@@ -12,31 +12,36 @@
 
 ## Dónde va cada foto
 
-Las carpetas siguen el orden del menú de la web (Trabajos · Servicios · Sobre mí). La portada y la página de trabajos son la misma, así que todo lo de la portada va en `1-trabajos`.
+Las carpetas siguen el orden del menú de la web: Servicios · Tarifa · Sobre mí · Contacto · Print Store · Encuentra tus fotos. La portada de la web es la página «Servicios» (tus galerías).
+
+> **Renombrar:** `1-trabajos` → `1-servicios` y `2-servicios` → `2-tarifa`. La web funciona con los dos nombres, así que puedes cambiarlos cuando quieras.
 
 ```
 originales/
-├── 1-trabajos/          → LA PORTADA (página de trabajos)
-│   ├── portada/         → la foto grande de arriba (horizontal)
-│   ├── buceo/           → galería Buceo
-│   │   └── portada/     →   foto del recuadro de Buceo
-│   ├── surf/            → galería Surf
-│   │   └── portada/     →   foto del recuadro de Surf
-│   ├── dron/            → galería Dron
-│   │   └── portada/     →   foto del recuadro de Dron
+├── 1-servicios/         → PORTADA = página «Servicios» (antes 1-trabajos)
+│   ├── portada/         → foto para la vista previa al compartir la web
+│   ├── buceo/  surf/  dron/   → una galería cada una
+│   │   └── portada/     →   foto del recuadro de esa galería
 │   └── seleccion/       → opcional: fotos para la tira «Selección»
-├── 2-servicios/
+├── 2-tarifa/            → página «Tarifa» (antes 2-servicios)
 │   ├── portada/         → la foto apaisada de arriba
-│   └── surf/  buceo/  copias/  marcas/   → 1 foto para cada servicio
+│   └── surf/  buceo/  copias/   → 1 foto para cada servicio
 ├── 3-sobre-mi/
-│   ├── portada/         → la foto apaisada de arriba (con la cita)
-│   ├── retrato-…        → tu foto junto a «¡Hola! Soy Rosa»
-│   └── (el resto)       → la cuadrícula de fotos
+│   ├── portada/         → foto de «¡Hola! Soy Rosa»
+│   └── retrato-…        → (opcional) otra foto tuya para ese bloque
 ├── 4-contacto/
-│   └── portada/         → la foto apaisada de arriba
+│   └── portada/         → la foto del fondo-mural (sale en transparencia)
+├── 5-print-store/       → fotos que vendes impresas (las 2 primeras salen en el salón y el dormitorio)
+│   └── portada/         → (opcional) foto de la cabecera
+├── 6-encuentra-tus-fotos/
+│   ├── portada/         → (opcional) foto de la cabecera
+│   ├── playa-de-patos-vigo/
+│   │   └── 2026-11-01/  → una carpeta por sesión, con la fecha AAAA-MM-DD
+│   └── playa-de-berria-santona/
 └── logo/                → el logo (ya está preparado)
 ```
 
+- **Encuentra tus fotos:** pon las fotos de cada sesión en `<playa>/<fecha>/`. La web las publica pequeñas, con marca de agua y un código (p. ej. `PATOS-20261101-007`). Quien compra te escribe por WhatsApp con ese código; tú cobras y le envías el original. Para añadir otra playa, pídeselo a Claude (o copia un bloque en `textos/encuentra.yml`).
 - **Portadas:** cada sección y cada galería tiene su carpeta `portada` con UNA foto. Para cambiar una portada, sustituye esa foto.
 - **Fotos de bancos de imágenes** (Unsplash, Pexels…): no las pongas dentro de las galerías. Si hay alguna, la web la ignora y avisa, para que nunca salga como trabajo tuyo.
 

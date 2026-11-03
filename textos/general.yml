@@ -32,8 +32,10 @@ descripcion_google:
   fr: "Zaba — photographie de surf et de plongée. Portfolio, séances photo de surf et de plongée, et tirages."
 
 menu:
-  inicio:   { en: "Work",     es: "Trabajo",   fr: "Travail" }   # la portada es la página de trabajo
-  services: { en: "Services", es: "Servicios", fr: "Services" }
+  inicio:    { en: "My services",      es: "Servicios",           fr: "Mes services" }   # la portada (galerías)
+  services:  { en: "Rates",            es: "Tarifa",              fr: "Tarifs" }         # precios de las sesiones
+  print:     { en: "Print Store",      es: "Print Store",         fr: "Print Store" }
+  encuentra: { en: "Find your photos", es: "Encuentra tus fotos", fr: "Trouvez vos photos" }
   about:    { en: "About",    es: "Sobre mí",  fr: "À propos" }
   contact:  { en: "Contact",  es: "Contacto",  fr: "Contact" }
 
@@ -41,7 +43,7 @@ botones:
   ver_trabajo:  { en: "See the work",     es: "Ver trabajo",        fr: "Voir le travail" }
   reservar:     { en: "Book a session",   es: "Reservar sesión",    fr: "Réserver une séance" }
   ver_galeria:  { en: "View gallery",     es: "Ver galería",        fr: "Voir la galerie" }
-  ver_servicios: { en: "All services",    es: "Todos los servicios", fr: "Tous les services" }
+  ver_servicios: { en: "See all rates",   es: "Ver tarifa",         fr: "Voir les tarifs" }
   escribeme:    { en: "Get in touch",     es: "Escríbeme",          fr: "Écrivez-moi" }
   pedir:        { en: "Ask about this",   es: "Consultar",          fr: "Demander" }
 

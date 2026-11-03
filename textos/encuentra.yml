@@ -1,0 +1,57 @@
+# ENCUENTRA TUS FOTOS. Dirección: /find-your-photos/
+# Fotos: originales/6-encuentra-tus-fotos/<carpeta de la playa>/<AAAA-MM-DD>/  (una carpeta por sesión)
+#        originales/6-encuentra-tus-fotos/portada/ → foto (opcional) de la cabecera.
+# En la web solo salen pequeñas y con marca de agua; cada foto lleva un código (p. ej. PATOS-20261101-007).
+# Al pulsar «Comprar», el cliente te escribe por WhatsApp con ese código. Tú cobras y le envías la foto original.
+
+precio_foto: "15 €"
+
+# Playas. Para añadir una: crea su carpeta en originales/6-encuentra-tus-fotos/ y copia un bloque.
+#   carpeta: nombre de la carpeta · codigo: prefijo corto en MAYÚSCULAS para los códigos de las fotos
+localizaciones:
+  - carpeta: "playa-de-patos-vigo"
+    codigo: "PATOS"
+    nombre: "Playa de Patos"
+    lugar: "Vigo"
+  - carpeta: "playa-de-berria-santona"
+    codigo: "BERRIA"
+    nombre: "Playa de Berria"
+    lugar: "Santoña"
+
+titulo:
+  en: "Find your photos"
+  es: "Encuentra tus fotos"
+  fr: "Trouvez vos photos"
+
+antetitulo:
+  en: "Were you in the water?"
+  es: "¿Estuviste en el agua?"
+  fr: "Vous étiez à l'eau ?"
+
+intro:
+  en: "Search by beach and date, find yourself and buy your photo. You'll receive it in full resolution and without watermark."
+  es: "Busca por playa y fecha, encuéntrate y compra tu foto. Te la envío en alta resolución y sin marca de agua."
+  fr: "Cherchez par plage et par date, retrouvez-vous et achetez votre photo. Vous la recevez en haute résolution et sans filigrane."
+
+buscar: { en: "Search beach, town or date (e.g. 01/11/2026)", es: "Busca playa, pueblo o fecha (p. ej. 01/11/2026)", fr: "Cherchez plage, ville ou date (ex. 01/11/2026)" }
+todas:  { en: "All", es: "Todas", fr: "Toutes" }
+sin_resultados: { en: "No sessions match your search.", es: "No hay sesiones que coincidan con tu búsqueda.", fr: "Aucune séance ne correspond à votre recherche." }
+sin_sesiones: { en: "No sessions yet — coming soon.", es: "Aún no hay sesiones: muy pronto.", fr: "Pas encore de séances — bientôt." }
+fotos: { en: "photos", es: "fotos", fr: "photos" }
+sesion: { en: "Session", es: "Sesión", fr: "Séance" }
+comprar: { en: "Buy", es: "Comprar", fr: "Acheter" }
+por_foto: { en: "per photo", es: "por foto", fr: "par photo" }
+mensaje_whatsapp:
+  en: "Hi Zaba! I'd like to buy the photo"
+  es: "¡Hola Zaba! Quiero comprar la foto"
+  fr: "Bonjour Zaba ! Je voudrais acheter la photo"
+
+pasos:
+  - { en: "Find your session", es: "Busca tu sesión", fr: "Trouvez votre séance" }
+  - { en: "Tap «Buy» on your photo", es: "Pulsa «Comprar» en tu foto", fr: "Touchez « Acheter » sur votre photo" }
+  - { en: "Pay and receive it in full resolution", es: "Págala y recíbela en alta resolución", fr: "Payez et recevez-la en haute résolution" }
+
+descripcion_google:
+  en: "Surfed at Playa de Patos or Berria? Find and buy your surf photos by beach and date — Zaba surf photography."
+  es: "¿Surfeaste en Playa de Patos o Berria? Encuentra y compra tus fotos de surf por playa y fecha — Zaba."
+  fr: "Vous avez surfé à Patos ou Berria ? Trouvez et achetez vos photos de surf par plage et date — Zaba."

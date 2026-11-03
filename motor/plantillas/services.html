@@ -36,7 +36,8 @@
           <p class="paquete__precio">{{ s.precio if s.precio else T(services.consultar) }}</p>
         </div>
       </div>
-      <a class="boton" href="{{ url('contact/') }}?s={{ s.carpeta }}">{{ T(g.botones.pedir) }}</a>
+      {% if s.carpeta == 'copias' %}<a class="boton" href="{{ url(rutas.print) }}">{{ T(g.menu.print) }} →</a>
+      {% else %}<a class="boton" href="{{ url(rutas.contact) }}?s={{ s.carpeta }}">{{ T(g.botones.pedir) }}</a>{% endif %}
     </div>
   </article>
   {% endfor %}
