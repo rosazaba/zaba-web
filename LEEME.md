@@ -12,7 +12,7 @@
 
 ## Dónde va cada foto
 
-Las carpetas siguen el orden del menú de la web: Servicios · Tarifa · Sobre mí · Contacto · Print Store · Encuentra tus fotos. La portada de la web es la página «Servicios» (tus galerías).
+Las carpetas siguen el orden del menú de la web: Servicios · Tarifa · Tienda · Encuentra tus fotos · Sobre mí · Contacto. La portada de la web es la página «Servicios» (tus galerías).
 
 > **Renombrar:** `1-trabajos` → `1-servicios` y `2-servicios` → `2-tarifa`. La web funciona con los dos nombres, así que puedes cambiarlos cuando quieras.
 
@@ -31,7 +31,7 @@ originales/
 │   └── retrato-…        → (opcional) otra foto tuya para ese bloque
 ├── 4-contacto/
 │   └── portada/         → la foto del fondo-mural (sale en transparencia)
-├── 5-print-store/       → fotos que vendes impresas (las 2 primeras salen en el salón y el dormitorio)
+├── 5-tienda/            → fotos que vendes impresas (las 2 primeras salen en el salón y el dormitorio)
 │   └── portada/         → (opcional) foto de la cabecera
 ├── 6-encuentra-tus-fotos/
 │   ├── portada/         → (opcional) foto de la cabecera

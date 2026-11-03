@@ -2,7 +2,7 @@
 {% block titulo %}{{ T(encuentra.titulo) }} — {{ g.marca }}{% endblock %}
 {% block descripcion %}{{ T(encuentra.descripcion_google) }}{% endblock %}
 {% block contenido %}
-{% with cab_variante="encuentra", cab_palabra="FIND", cab_ante=T(encuentra.antetitulo), cab_titulo=T(encuentra.titulo),
+{% with cab_variante="encuentra", cab_ante=T(encuentra.antetitulo), cab_titulo=T(encuentra.titulo),
         cab_intro=T(encuentra.intro), cab_foto=portada_pagina %}
 {% include "_cabecera_nueva.html" %}
 {% endwith %}

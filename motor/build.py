@@ -32,7 +32,7 @@ C_SELECCION = f"{C_TRABAJOS}/seleccion"
 C_SERVICIOS = _primera("2-tarifa", "2-servicios")   # página «Tarifa / Rates»: portada/ y <servicio>/
 C_SOBRE_MI = "3-sobre-mi"
 C_CONTACTO = "4-contacto"             # solo su carpeta portada/ (foto del fondo-mural de Contacto)
-C_PRINT = "5-print-store"            # portada/ (cabecera) y las fotos que se venden impresas (las 2 primeras salen en las estancias)
+C_PRINT = _primera("5-tienda", "5-print-store")   # página «Tienda / Print Store»: portada/ (cabecera) y las fotos que se venden impresas (las 2 primeras salen en las estancias)
 C_ENCUENTRA = "6-encuentra-tus-fotos"  # portada/ (cabecera) y <playa>/<AAAA-MM-DD>/ con las fotos de cada sesión
 # Rutas escritas en textos/*.yml con el nombre antiguo de una carpeta siguen funcionando
 ALIAS_CARPETAS = {"1-trabajos": C_TRABAJOS, "1-servicios": C_TRABAJOS, "2-servicios": C_SERVICIOS, "2-tarifa": C_SERVICIOS}
@@ -559,17 +559,17 @@ def main():
             if horiz: candidatas.append(horiz[0])
         candidatas.sort(key=lambda f: -f["calidad"])
         fotos_tienda += candidatas[:2 - len(fotos_tienda)]
-        avisos.append("Print Store usa fotos de las galerías de ejemplo: pon las tuyas en originales/5-print-store/ (las 2 primeras salen en las estancias).")
+        avisos.append(f"La Tienda usa fotos de las galerías de ejemplo: pon las tuyas en originales/{C_PRINT}/ (las 2 primeras salen en las estancias).")
     estancias = [{"tipo": t, "foto": f} for t, f in zip(["salon", "dormitorio"], fotos_tienda)]
 
     # ── Encuentra tus fotos: playa → sesión (fecha) → fotos con marca de agua y código ──
     encuentra = leer("encuentra")
     portada_encuentra = portada_de(C_ENCUENTRA, "encuentra")
     if not portada_encuentra:
-        # sin foto propia en 6-encuentra-tus-fotos/portada/: la mejor foto vertical de surf
+        # sin foto en 6-encuentra-tus-fotos/portada/: una foto horizontal de acción de surf (no la del surfista en el agua)
         surf = next((gal["fotos"] for gal in galerias if gal["id"] == "surf"), [])
-        vert = sorted([f for f in surf if f["ratio"] < 1], key=lambda f: -f["calidad"]) or sorted(surf, key=lambda f: -f["calidad"])
-        portada_encuentra = vert[0] if vert else None
+        horiz = sorted([f for f in surf if f["ratio"] > 1.2 and "05313" not in f["origen"]], key=lambda f: -f["calidad"])
+        portada_encuentra = horiz[0] if horiz else None
     precio_foto = encuentra.get("precio_foto") or PRECIO_FOTO_DEFECTO
     playas = []
     for loc in encuentra.get("localizaciones", []):

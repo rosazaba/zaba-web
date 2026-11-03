@@ -24,7 +24,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
   - `2-tarifa/` (antes `2-servicios/`; página «Tarifa / Rates»): `portada/` y `<servicio>/`
   - El motor acepta los dos nombres (`_primera()` en `build.py`) y `en_orig()` traduce rutas antiguas escritas en los `.yml`. La usuaria renombra ella las carpetas en su Explorador.
   - `4-contacto/`: `portada/` (foto del fondo-mural de Contacto)
-  - `5-print-store/`: `portada/` (opcional, cabecera) y las fotos a la venta; las 2 primeras salen colgadas en el salón y el dormitorio ilustrados. Vacía → las mejores fotos horizontales de dos galerías.
+  - `5-tienda/` (acepta también `5-print-store/`): `portada/` (opcional, cabecera) y las fotos a la venta; las 2 primeras salen colgadas en el salón y el dormitorio ilustrados. Vacía → las mejores fotos horizontales de dos galerías.
   - `6-encuentra-tus-fotos/`: `portada/` (opcional, cabecera) y `<playa>/<AAAA-MM-DD>/` con las fotos de cada sesión. Las playas se definen en `textos/encuentra.yml` → `localizaciones` (carpeta, código, nombre, lugar).
   - `simulacros/`: capturas de diseños que le gustan a la usuaria, como referencia. No se publican.
   - `3-sobre-mi/`: `portada/` (foto apaisada con la cita) y `retrato-…` (bloque «¡Hola! Soy Rosa»). El resto de fotos de la carpeta de momento no se usan. Sin fotos propias usa `textos/about.yml` → `provisional`.
@@ -51,8 +51,8 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
   - Si no tiene transparencia, se le quita el fondo liso automáticamente.
   - La versión blanca se genera con un filtro CSS, salvo que exista `logo-claro`.
   - El favicon sale de `icono` o, si no hay, del propio logo.
-- Menú (orden y rutas en `RUTAS` de `build.py`; nombres en `general.yml` → `menu`): Servicios/My services/Mes services (raíz) · Tarifa/Rates/Tarifs (`/rates/`) · Print Store (`/print-store/`) · Encuentra tus fotos/Find your photos/Trouvez vos photos (`/find-your-photos/`) · Sobre mí (`/about/`) · Contacto (`/contact/`). Con 6 apartados, por debajo de 1180 px el menú se abre con la hamburguesa.
-- Portada = página «Servicios» (las galerías). SIN foto de cabecera: arriba un bloque de texto de introducción (`inicio.yml` → `intro_servicios_titulo` / `intro_servicios_texto`, provisional). Debajo, una foto por galería en fila de tres con enlace a `work/<url>/`, la tira «Selección» y el resumen de la Tarifa. La foto de `portada/` solo se usa para la vista previa al compartir (og:image).
+- Menú (orden y rutas en `RUTAS` de `build.py`; nombres en `general.yml` → `menu`): Servicios/My services/Mes services (raíz) · Tarifa/Rates/Tarifs (`/rates/`) · Tienda/Print Store/Print Store (`/print-store/`; en castellano se llama «Tienda») · Encuentra tus fotos/Find your photos/Trouvez vos photos (`/find-your-photos/`) · Sobre mí (`/about/`) · Contacto (`/contact/`). Con 6 apartados, por debajo de 1180 px el menú se abre con la hamburguesa.
+- Portada = página «Servicios» (antes «Trabajo»; solo cambió el nombre, NO el estilo): foto de portada baja con la frase encima y, debajo, una foto por galería en fila de tres (también en móvil) con enlace a `work/<url>/`, la tira «Selección» y el resumen de la Tarifa.
 - Galerías: buceo (`diving`), surf y dron (`drone`), en ese orden (`orden` en `textos/work.yml`). La foto de cada recuadro es la primera de la galería por nombre (`01-`). Una galería definida en `work.yml` sin fotos sale como «Próximamente» con el color de `color`.
 - Galería nueva: crear `originales/1-trabajos/<carpeta>` y su bloque en `textos/work.yml` → `galerias`.
 - Tira «Selección» de la portada (debajo de las tres galerías): si `1-trabajos/seleccion/` está vacía, coge las `TIRA_POR_GALERIA` (10) mejores fotos de cada galería (nitidez + contraste + color, sin ráfagas casi iguales), las entremezcla sin repetir galería seguida y con el color más parecido a la anterior. Fotos cuadradas, veladas (opacidad .55, algo desaturadas) para no quitar protagonismo a las tres galerías; se mueve sola.
@@ -60,7 +60,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - Fotos repetidas: `quitar_repetidas()` en `build.py` no publica la misma imagen dos veces (huella visual) ni dos versiones de la misma toma (DSC05033 y DSC05033-2). Se queda la `portada:` de `work.yml` si es una de ellas; si no, la primera por nombre. Se avisa en el build.
 - Portadas: se cambian sustituyendo la foto de la carpeta `portada/` de cada sección o galería. Respaldo: `textos/inicio.yml` → `portada_foto` (+ `portada_girar`) y `textos/work.yml` → `portada:`.
 - Sobre mí (`about.html`): SIN foto de arriba (`mostrar_portada: false` en `about.yml`; la cita sigue guardada). Empieza con el bloque «¡Hola! Soy Rosa» en banda de color `--topo`: foto a la izquierda (si es horizontal sale 4/3, si es vertical 5/6), y a la derecha título, subtítulo, historia y botón «Escríbeme» (inspirado en el ejemplo de `originales/simulacros/`). Retrato = archivo `retrato-…` o `provisional.retrato` (ahora la misma foto de `3-sobre-mi/portada/`). Después «Mi propósito» con 3 objetivos y datos. Sin cuadrícula ni tira de fotos. Textos provisionales.
-- Tarifa: foto de arriba de su carpeta `portada/` con el título y la entradilla encima; sin foto sale con la cabecera de texto. El servicio «Copias artísticas» enlaza a Print Store.
+- Tarifa: SIN cabecera con foto (la foto de `2-tarifa/portada/` ya no se usa): arriba título y texto de introducción (`services.yml` → `titulo` / `intro`, provisional). El servicio «Copias artísticas» enlaza a la Tienda.
 - Tarifa: cada servicio es una banda a todo el ancho, foto + bloque de color alternando el lado (colores alternos `--topo` y `--arena-2`); dentro, texto, «Incluye», «Desde» + precio y botón. Foto de `2-servicios/<carpeta>/` o, si está vacía, `foto_provisional` en `services.yml`. Debajo, «Próximos pasos / Cómo funciona» con números grandes 01, 02, 03 (ejemplo en `originales/simulacros/`).
 - Encuadre de las fotos de arriba: `portada_encuadre` ("x% y%") en `services.yml`, `contact.yml` y `about.yml`; `portada_lado` (izquierda/derecha) en `services.yml` para el texto; `retrato_encuadre` en `about.yml` para la foto de «¡Hola! Soy Rosa».
 - Fotos: WebP con calidad adaptable (baja hasta que pesan menos de `PESO_MAX`). Siempre se guardan en `docs/img`; `vista-previa/` no tiene imágenes propias, las enlaza desde `../docs/img`.
@@ -74,16 +74,17 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - Pie (bloque marrón): solo el logo y la frase `pie.frase` de `general.yml`, centrados, igual en todas las páginas (sin menú, teléfono, WhatsApp, Instagram ni idiomas; lo pidió la usuaria). WhatsApp ya está en el botón flotante e Instagram va en Contacto.
 - Contacto:
   - Sin foto de cabecera ni botón «Llamar». Fondo tipo mural a toda la página: foto de `4-contacto/portada/` en transparencia (`mural_opacidad`) sobre un color sólido (`mural_color`, en `contact.yml`).
-  - A la izquierda título, entradilla, WhatsApp e Instagram; a la derecha el formulario en una tarjeta ligeramente girada con sombra ocre.
+  - A la izquierda título, entradilla, WhatsApp e Instagram; a la derecha el formulario en una tarjeta recta, sin sombra.
   - Campos: Nombre, Apellidos, «Asunto a tratar» (desplegable: surf, buceo, dron, en `contact.yml` → `intereses`) y Mensaje (la usuaria quiso mantenerlo).
   - Destino de los mensajes: `contacto.email_formulario` (rouszaba@gmail.com). No se muestra en la web; va codificado en `data-destino` (base64 invertido) para evitar robots. `contacto.email` es el email visible y está vacío a propósito.
   - Sin `web3forms_clave`, el formulario abre el correo del visitante (mailto). Con clave, envía por Web3Forms y muestra un campo de email.
   - El botón flotante de WhatsApp no aparece en la página de contacto.
 
-- Cabecera exclusiva de Print Store y Encuentra tus fotos (`_cabecera_nueva.html`): banda de color (Print: `--mar`; Encuentra: `--mantequilla`), etiqueta, título grande, palabra decorativa en contorno (PRINT / FIND), foto en arco que flota y ola abajo. Foto: carpeta `portada/` de la página; si no hay, Print usa su primera estancia y Encuentra la mejor foto vertical de surf.
-- Print Store: dos estancias ILUSTRADAS en SVG (`_estancia.html`, salón y dormitorio; modernas, claras, luminosas) con la foto enmarcada en la pared. Sin apartados de tienda: instrucciones en 4 pasos (elige foto → tamaño → acabado → pide por WhatsApp con mensaje ya escrito). Tamaños, precios y nota del marco en `print-store.yml` (provisionales).
+- Cabecera exclusiva de Tienda y Encuentra tus fotos (`_cabecera_nueva.html`): banda de color de la gama de siempre (Tienda: `--topo`; Encuentra: `--arena-2`), etiqueta, título grande y foto CUADRADA. Sin amarillo, sin olas ni líneas curvas o torcidas (la usuaria no los quiere). Foto: carpeta `portada/` de la página; si no hay, la Tienda usa su primera estancia y Encuentra una foto horizontal de acción de surf (no la del surfista en el agua).
+- **Estilo de fotos en toda la web: rectas, sin arcos, sin marcos, sin sombras y sin movimiento** (la usuaria rechazó arcos, sombras y fotos torcidas). Esquinas con `--radio`.
+- Tienda (Print Store): dos estancias ILUSTRADAS en SVG (`_estancia.html`, salón y dormitorio; modernas, claras, luminosas) con la foto enmarcada en la pared. Sin apartados de tienda: instrucciones en 4 pasos (elige foto → tamaño → acabado → pide por WhatsApp con mensaje ya escrito). Tamaños, precios y nota del marco en `print-store.yml` (provisionales).
 - Encuentra tus fotos: buscador por texto (playa, pueblo, fecha) y fichas por playa (JS en `web.js`). Cada sesión es un desplegable con sus fotos. Las fotos se publican SOLO con `con_marca()`: 960 px, logo repetido en diagonal y banda con el código `<CÓDIGO>-<AAAAMMDD>-<nnn>`. «Comprar · 15 €» abre WhatsApp con el código. La usuaria cobra y envía el original (no hay pago ni descarga automáticos: lo decidió ella). Precio en `encuentra.yml` → `precio_foto`.
-- `revisar.py` comprueba además: mismo menú en todas las páginas, códigos únicos con botón de compra en Encuentra y 2 estancias con foto en Print Store.
+- `revisar.py` comprueba además: mismo menú en todas las páginas, códigos únicos con botón de compra en Encuentra y 2 estancias con foto en la Tienda.
 
 ## Despliegue
 - Repositorio **rosazaba/zaba-web**: público (lo exige GitHub Pages gratis), con el proyecto entero sin `originales/`.
@@ -110,7 +111,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
   - Fotos: faltan las de Sobre mí (portada, retrato, cuadrícula), las de servicios y los originales de dron con más resolución.
   - Textos de Sobre mí (historia, propósito, objetivos, frases): los actuales son provisionales.
 - Por confirmar con el usuario: precios de los servicios, ubicación ("Spain") y el dominio (`zaba.com` está puesto provisionalmente).
-- Print Store: fotos propias en `5-print-store/`, precios de tamaños y marcos por confirmar.
+- Tienda: fotos propias en `5-tienda/`, precios de tamaños y marcos por confirmar.
 - Encuentra tus fotos: aún sin sesiones (carpetas de Patos y Berria vacías).
 - En `web1` quedan sin uso `docs/services/`, `es/services/`, `fr/services/` (ahora `/rates/`), `2-servicios/marcas/` y `originales/work/` si existe: pedir a la usuaria que las borre.
 - Publicación: activar GitHub Pages (lo hace el usuario: Settings → Pages → `main` /docs; la app de Claude no tiene permiso de administración) cuando haya fotos reales y textos revisados.

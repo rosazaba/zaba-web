@@ -8,16 +8,6 @@ portada_girar: 0
 # Tira de fotos «Selección»: originales/1-trabajos/seleccion/  (opcional; salen en el orden de sus nombres)
 #   Si esa carpeta está vacía, se eligen solas de las galerías y se ordenan por color.
 
-# ── Texto de introducción de arriba (sustituye a la foto de cabecera; texto provisional) ──
-intro_servicios_titulo:
-  en: "My services"
-  es: "Servicios"
-  fr: "Mes services"
-intro_servicios_texto:
-  en: "Surf, diving and drone photography on the Atlantic coast. Have a look at each gallery and tell me what you'd like to capture: a session in the water, a dive or the coast seen from above."
-  es: "Fotografía de surf, buceo y dron en la costa atlántica. Echa un vistazo a cada galería y cuéntame qué quieres capturar: una sesión en el agua, una inmersión o la costa vista desde el aire."
-  fr: "Photographie de surf, de plongée et de drone sur la côte atlantique. Parcourez chaque galerie et dites-moi ce que vous aimeriez capturer : une séance dans l'eau, une plongée ou la côte vue du ciel."
-
 portada_titulo:
   en: "Where the ocean tells the story"
   es: "Donde el océano cuenta la historia"

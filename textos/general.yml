@@ -34,7 +34,7 @@ descripcion_google:
 menu:
   inicio:    { en: "My services",      es: "Servicios",           fr: "Mes services" }   # la portada (galerías)
   services:  { en: "Rates",            es: "Tarifa",              fr: "Tarifs" }         # precios de las sesiones
-  print:     { en: "Print Store",      es: "Print Store",         fr: "Print Store" }
+  print:     { en: "Print Store",      es: "Tienda",              fr: "Print Store" }
   encuentra: { en: "Find your photos", es: "Encuentra tus fotos", fr: "Trouvez vos photos" }
   about:    { en: "About",    es: "Sobre mí",  fr: "À propos" }
   contact:  { en: "Contact",  es: "Contacto",  fr: "Contact" }

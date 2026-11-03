@@ -2,7 +2,7 @@
 {% block titulo %}{{ T(tienda.titulo) }} — {{ g.marca }}{% endblock %}
 {% block descripcion %}{{ T(tienda.descripcion_google) }}{% endblock %}
 {% block contenido %}
-{% with cab_variante="print", cab_palabra="PRINT", cab_ante=T(tienda.antetitulo), cab_titulo=T(tienda.titulo),
+{% with cab_variante="print", cab_ante=T(tienda.antetitulo), cab_titulo=T(tienda.titulo),
         cab_intro=T(tienda.intro), cab_foto=portada_pagina or (estancias[0].foto if estancias else none) %}
 {% include "_cabecera_nueva.html" %}
 {% endwith %}

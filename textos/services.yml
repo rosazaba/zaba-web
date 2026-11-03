@@ -9,9 +9,9 @@ titulo:
   fr: "Tarifs"
 
 intro:
-  en: "Every session is planned around the conditions — tide, swell, visibility and light — so you get the best possible images."
-  es: "Cada sesión se planifica según las condiciones (marea, olas, visibilidad y luz) para conseguir las mejores imágenes posibles."
-  fr: "Chaque séance est planifiée selon les conditions — marée, houle, visibilité et lumière — pour obtenir les meilleures images possibles."
+  en: "Surf, diving and drone photography on the Atlantic coast. Have a look at each gallery and tell me what you'd like to capture: a session in the water, a dive or the coast seen from above."
+  es: "Fotografía de surf, buceo y dron en la costa atlántica. Echa un vistazo a cada galería y cuéntame qué quieres capturar: una sesión en el agua, una inmersión o la costa vista desde el aire."
+  fr: "Photographie de surf, de plongée et de drone sur la côte atlantique. Parcourez chaque galerie et dites-moi ce que vous aimeriez capturer : une séance dans l'eau, une plongée ou la côte vue du ciel."
 
 desde:     { en: "Starting at",   es: "Desde",     fr: "À partir de" }
 incluye_titulo: { en: "Includes", es: "Incluye", fr: "Inclus" }
