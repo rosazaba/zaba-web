@@ -13,20 +13,17 @@
 <section class="paquetes">
   {% for s in lista_servicios %}
   <article class="paquete{% if not s.foto %} paquete--sin-foto{% endif %}" id="{{ s.carpeta }}">
-    {% if s.foto %}<div class="paquete__foto">{{ foto(s.foto, "(min-width: 900px) 50vw, 100vw", "", "lazy", T(s.titulo)) }}</div>{% endif %}
+    {% if s.foto %}<div class="paquete__foto">{{ foto(s.foto, "(min-width: 800px) 440px, 100vw", "", "lazy", T(s.titulo)) }}</div>{% endif %}
     <div class="paquete__texto aparece">
       <h2>{{ T(s.titulo) }}</h2>
-      <div class="paquete__cols">
-        <p>{{ T(s.texto) }}</p>
-        <div>
-          <p class="paquete__etiqueta">{{ T(services.incluye_titulo) }}</p>
-          <ul class="paquete__lista">{% for item in T(s.incluye) %}<li>{{ item }}</li>{% endfor %}</ul>
-          <p class="paquete__etiqueta">{% if s.precio %}{{ T(services.desde) }}{% endif %}</p>
-          <p class="paquete__precio">{{ s.precio if s.precio else T(services.consultar) }}</p>
-        </div>
+      <p class="paquete__desc">{{ T(s.texto) }}</p>
+      <p class="paquete__etiqueta">{{ T(services.incluye_titulo) }}</p>
+      <ul class="paquete__lista">{% for item in T(s.incluye) %}<li>{{ item }}</li>{% endfor %}</ul>
+      <div class="paquete__pie">
+        <p class="paquete__precio">{% if s.precio %}<span class="paquete__etiqueta">{{ T(services.desde) }}</span>{% endif %}{{ s.precio if s.precio else T(services.consultar) }}</p>
+        {% if s.enlace == 'tienda' %}<a class="boton" href="{{ url(rutas.print) }}">{{ T(g.menu.print) }} →</a>
+        {% else %}<a class="boton" href="{{ url(rutas.contact) }}?s={{ s.carpeta }}">{{ T(g.botones.pedir) }}</a>{% endif %}
       </div>
-      {% if s.enlace == 'tienda' %}<a class="boton" href="{{ url(rutas.print) }}">{{ T(g.menu.print) }} →</a>
-      {% else %}<a class="boton" href="{{ url(rutas.contact) }}?s={{ s.carpeta }}">{{ T(g.botones.pedir) }}</a>{% endif %}
     </div>
   </article>
   {% endfor %}

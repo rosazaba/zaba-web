@@ -277,30 +277,30 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .mini-servicio__titulo { font: 400 1.4rem/1.25 var(--serif); }
 .mini-servicio__precio { font-size: .85rem; color: var(--gris); white-space: nowrap; }
 
-/* Servicios en bandas: foto + bloque de color, alternando el lado */
-.paquete { display: grid; }
-.paquete__foto { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--linea); }
+/* Servicios (Tarifa y Curso): una tarjeta por servicio, dentro del ancho de la página, con la foto pequeña
+   a un lado (alternando) y el texto aireado al otro. Sin sombras ni marcos. */
+.paquetes { max-width: 1080px; margin: 0 auto; padding: 0 var(--margen) clamp(24px, 4vw, 48px); display: grid; gap: clamp(18px, 2.4vw, 28px); }
+.paquete { display: grid; gap: clamp(20px, 3.4vw, 48px); align-items: center; padding: clamp(16px, 2.4vw, 28px); border-radius: var(--radio); background: var(--arena-2); color: var(--tinta); }
+.paquete:nth-child(even) { background: var(--topo); }
+.paquete__foto { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radio); background: var(--linea); }
 .paquete__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.paquete__texto { padding: clamp(40px, 7vw, 96px) var(--margen); display: flex; flex-direction: column; justify-content: center; }
-.paquete__texto h2 { font-size: clamp(2rem, 3.6vw, 2.8rem); margin-bottom: 1.2rem; }
-.paquete__cols { display: grid; gap: 22px 40px; margin-bottom: 2rem; }
-.paquete__cols > p { margin: 0; font-size: .95rem; }
-.paquete__etiqueta { margin: 0 0 .5rem; font: 500 .7rem/1.4 var(--sans); letter-spacing: .24em; text-transform: uppercase; }
+.paquete__texto { display: flex; flex-direction: column; padding: 4px clamp(4px, 1.4vw, 20px) 8px; max-width: 34rem; }
+.paquete__texto h2 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); margin: 0 0 .7rem; }
+.paquete__texto > p, .paquete__desc { margin: 0 0 1.1rem; font-size: 1rem; line-height: 1.7; }
+.paquete__etiqueta { margin: 0 0 .4rem; font: 500 .68rem/1.4 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--tierra); }
 .paquete__etiqueta:empty { display: none; }
-.paquete__lista { list-style: none; margin: 0 0 1.4rem; padding: 0; font: 400 .74rem/1.9 var(--sans); letter-spacing: .16em; text-transform: uppercase; }
-.paquete__precio { margin: 0; font: 300 1.9rem/1.1 var(--serif); }
+.paquete__lista { list-style: none; margin: 0 0 1.3rem; padding: 0; font-size: .95rem; line-height: 1.5; }
+.paquete__lista li { position: relative; padding: 3px 0 3px 18px; }
+.paquete__lista li::before { content: ""; position: absolute; left: 0; top: .85em; width: 8px; height: 1px; background: var(--tierra); }
+.paquete__pie { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px; padding-top: 1rem; border-top: 1px solid rgba(60, 45, 30, .14); }
+.paquete__precio { margin: 0; font: 300 1.7rem/1.1 var(--serif); }
+.paquete__precio .paquete__etiqueta { display: block; margin-bottom: .25rem; }
 .paquete .boton { align-self: flex-start; }
-.paquete__texto { color: var(--tinta); }
-.paquete:nth-child(odd) .paquete__texto { background: var(--topo); }
-.paquete:nth-child(even) .paquete__texto { background: var(--arena-2); }
-.paquete__etiqueta { color: var(--tierra); }
-@media (min-width: 900px) {
-  .paquete { grid-template-columns: 1fr 1fr; min-height: 560px; }
-  .paquete__foto { aspect-ratio: auto; min-height: 420px; }
+@media (min-width: 800px) {
+  .paquete { grid-template-columns: 5fr 7fr; }
+  .paquete:nth-child(even) { grid-template-columns: 7fr 5fr; }
   .paquete:nth-child(even) .paquete__foto { order: 2; }
-  .paquete--sin-foto { grid-template-columns: 1fr; }
-  .paquete__texto { padding: clamp(56px, 6vw, 96px) clamp(40px, 6vw, 96px); }
-  .paquete__cols { grid-template-columns: 1.15fr 1fr; }
+  .paquete--sin-foto, .paquete--sin-foto:nth-child(even) { grid-template-columns: 1fr; }
 }
 .lista-check { list-style: none; padding: 0; margin: 0 0 1.8rem; }
 .lista-check li { position: relative; padding: 8px 0 8px 28px; border-bottom: 1px solid var(--linea); }

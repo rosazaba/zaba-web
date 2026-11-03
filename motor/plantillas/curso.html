@@ -14,7 +14,7 @@
 <section class="paquetes">
   {% for p in partes_curso %}
   <article class="paquete{% if not p.foto %} paquete--sin-foto{% endif %}" id="{{ p.carpeta }}">
-    {% if p.foto %}<div class="paquete__foto">{{ foto(p.foto, "(min-width: 900px) 50vw, 100vw", "", "lazy", T(p.titulo) ~ " — " ~ T(curso.titulo)) }}</div>{% endif %}
+    {% if p.foto %}<div class="paquete__foto">{{ foto(p.foto, "(min-width: 800px) 440px, 100vw", "", "lazy", T(p.titulo) ~ " — " ~ T(curso.titulo)) }}</div>{% endif %}
     <div class="paquete__texto aparece">
       <p class="tienda-paso__num">0{{ loop.index }}</p>
       <h2>{{ T(p.titulo) }}</h2>
