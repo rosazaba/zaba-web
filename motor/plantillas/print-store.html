@@ -26,11 +26,12 @@
 
 {# Los 3 pasos #}
 <section class="tienda-pasos">
+  <h2 class="tienda-pasos__titulo">{{ T(tienda.como_funciona) }}</h2>
   <ol class="ancho tienda-pasos__lista">
     {% for p in tienda.pasos %}
     <li class="tienda-paso">
       <span class="tienda-paso__num">0{{ loop.index }}</span>
-      <h2>{{ T(p.titulo) }}</h2>
+      <h3>{{ T(p.titulo) }}</h3>
       <p>{{ T(p.texto) }}</p>
       <a class="enlace-flecha" href="#{{ p.destino }}">{{ T(p.boton) }} ↓</a>
     </li>
@@ -54,12 +55,13 @@
       <h3 class="tienda-grupo__titulo">{{ T(gr.titulo) }}</h3>
       <ul class="tienda-fotos">
         {% for x in gr.fotos %}
-        <li><button type="button" class="tienda-foto" data-codigo-foto="{{ x.codigo }}" aria-pressed="false">
+        <li{% if loop.index > 6 %} class="tienda-fotos__mas"{% endif %}><button type="button" class="tienda-foto" data-codigo-foto="{{ x.codigo }}" aria-pressed="false">
           {{ foto(x.foto, "(min-width: 900px) 220px, 45vw", "", "lazy", T(gr.titulo) ~ " " ~ x.codigo ~ " — " ~ g.marca) }}
           <span>{{ x.codigo }}</span>
         </button></li>
         {% endfor %}
       </ul>
+      {% if gr.fotos|length > 6 %}<p class="tienda-fotos__ver"><button type="button" class="boton boton--linea" data-ver-mas>{{ T(tienda.ver_mas) }} ({{ gr.fotos|length }})</button></p>{% endif %}
     </div>
     {% endfor %}
   </div>
@@ -88,7 +90,7 @@
 
 {# Paso 3: pedido (se envía por WhatsApp con el mensaje ya escrito) #}
 <section class="bloque tienda-pedido" id="pedido">
-  <div class="estrecho tienda-pedido__in">
+  <div class="ancho tienda-pedido__in">
     <div>
       <span class="tienda-paso__num">03</span>
       <h2>{{ T(tienda.pedido_titulo) }}</h2>

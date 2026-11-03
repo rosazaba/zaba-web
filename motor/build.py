@@ -573,8 +573,15 @@ def main():
             avisos.append(f"Tienda: no encuentro la foto de la estancia «{tipo}»: {c['foto']}")
         if not src:
             src = reserva.pop(0) if reserva else None
-        sala = next((p for p in sorted(carpeta_est.glob("*")) if p.suffix.lower() in EXT
-                     and slug(p.stem).startswith(tipo)), None) if carpeta_est.exists() else None
+        # la habitación: «habitacion:» en print-store.yml o, si no, el archivo que empieza por el nombre de la estancia
+        if c.get("habitacion"):
+            sala = carpeta_est / c["habitacion"]
+            if not sala.exists():
+                avisos.append(f"Tienda: no encuentro la habitación de la estancia «{tipo}»: {C_PRINT}/estancias/{c['habitacion']}")
+                sala = None
+        else:
+            sala = next((p for p in sorted(carpeta_est.glob("*")) if p.suffix.lower() in EXT
+                         and slug(p.stem).startswith(tipo)), None) if carpeta_est.exists() else None
         e = {"tipo": tipo, "foto": None, "real": None}
         if not src:
             continue

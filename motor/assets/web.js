@@ -166,6 +166,9 @@
       pestanas.forEach(function (p) { p.addEventListener("click", function () { verGrupo(p.dataset.pestana); }); });
       verGrupo(pestanas[0].dataset.pestana);
     }
+    elige.querySelectorAll("[data-ver-mas]").forEach(function (b) {
+      b.addEventListener("click", function () { b.closest("[data-grupo]").classList.add("abierto"); });
+    });
     var campoFoto = pedido && pedido.querySelector("[data-foto-elegida]");
     elige.querySelectorAll("[data-codigo-foto]").forEach(function (b) {
       b.addEventListener("click", function () {

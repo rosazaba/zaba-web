@@ -437,7 +437,7 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 
 
 /* ═════════════ Servicios (portada): espacio para el texto de introducción ═════════════ */
-.intro-servicios { padding: clamp(56px, 10vw, 120px) 0 clamp(28px, 5vw, 56px); text-align: center; }
+.intro-servicios { padding: clamp(56px, 7.2vw, 92px) 0 clamp(28px, 5vw, 56px); text-align: center; }   /* la primera banda empieza a la altura a la que termina la foto de Servicios */
 .intro-servicios h1 { font-size: clamp(2.4rem, 6vw, 4rem); margin-bottom: .35em; }
 .intro-servicios .texto-grande { margin: 0 auto; max-width: 62ch; }
 
@@ -485,14 +485,16 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 /* ═════════════ Tienda (organización como la de Laurita Polvorilla, con el estilo de Zaba) ═════════════ */
 .estancia { margin: 0; }
 .estancia__svg, .estancia__foto { display: block; width: 100%; height: auto; border-radius: var(--radio); }
-.tienda-cab { text-align: center; padding: clamp(48px, 9vw, 110px) 0 clamp(28px, 5vw, 56px); }
+.tienda-cab { text-align: center; padding: clamp(32px, 4.5vw, 60px) 0 clamp(24px, 4vw, 48px); }
 .tienda-cab h1 { margin-bottom: .2em; }
-.tienda-cab__intro { max-width: 46ch; margin: 0 auto clamp(28px, 5vw, 52px); color: var(--tierra); font-size: clamp(1.02rem, 2.2vw, 1.2rem); }
-.tienda-pasos { padding: 0 0 clamp(48px, 8vw, 96px); }
+.tienda-cab .antetitulo { margin-bottom: .6rem; }
+.tienda-cab__intro { max-width: 46ch; margin: 0 auto clamp(20px, 3vw, 34px); color: var(--tierra); font-size: clamp(1.02rem, 2.2vw, 1.2rem); }
+.tienda-pasos { padding: clamp(20px, 4vw, 48px) 0 clamp(48px, 8vw, 96px); }
 .tienda-pasos__lista { list-style: none; margin: 0 auto; display: grid; gap: 34px; text-align: center; }
 @media (min-width: 760px) { .tienda-pasos__lista { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
 .tienda-paso { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.tienda-paso h2 { font-size: clamp(1.4rem, 2.6vw, 1.75rem); margin: 0; }
+.tienda-pasos__titulo { text-align: center; font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0 0 clamp(26px, 4vw, 48px); padding: 0 var(--margen); }
+.tienda-paso h3 { font-size: clamp(1.4rem, 2.6vw, 1.75rem); margin: 0; }
 .tienda-paso p { margin: 0; color: #5a5048; font-size: .95rem; max-width: 30ch; }
 .tienda-paso .enlace-flecha { align-self: center; margin-top: 6px; }
 .tienda-paso__num { display: block; margin-bottom: 10px; font: 300 clamp(2.4rem, 4vw, 3.2rem)/1 var(--serif); color: var(--tierra); }
@@ -506,7 +508,12 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .js .tienda-pestanas ~ .tienda-grupo .tienda-grupo__titulo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .js .tienda-pestanas ~ .tienda-grupo + .tienda-grupo { margin-top: 0; }
 .tienda-grupo__titulo { font-size: 1.3rem; }
-.tienda-fotos { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(8px, 1.4vw, 16px); grid-template-columns: repeat(auto-fill, minmax(min(46%, 180px), 1fr)); }
+.tienda-fotos { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(8px, 1.4vw, 16px); grid-template-columns: repeat(3, 1fr); }
+@media (min-width: 900px) { .tienda-fotos { grid-template-columns: repeat(6, 1fr); } }
+/* de primeras solo una tira de 6; «Ver más» enseña el resto */
+.js .tienda-grupo:not(.abierto) .tienda-fotos__mas { display: none; }
+.tienda-fotos__ver { text-align: center; margin: 22px 0 0; }
+html:not(.js) .tienda-fotos__ver, .tienda-grupo.abierto .tienda-fotos__ver { display: none; }
 .tienda-foto { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; text-align: left; font: inherit; color: inherit; }
 .tienda-foto img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radio); outline: 3px solid transparent; outline-offset: 3px; transition: outline-color .2s; }
 .tienda-foto span { display: block; margin-top: 8px; font: 500 .74rem/1 var(--sans); letter-spacing: .14em; color: var(--tierra); }
@@ -521,9 +528,8 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .estancia figcaption { margin-top: 12px; font: 500 .74rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--tierra); text-align: center; }
 .tienda-opciones__in { display: grid; gap: clamp(36px, 6vw, 80px); }
 @media (min-width: 900px) { .tienda-opciones__in { grid-template-columns: 1fr 1fr; align-items: start; } }
-.tienda-pedido__in { text-align: center; }
-.tienda-pedido__in > div > p { max-width: 52ch; margin-left: auto; margin-right: auto; }
-.tienda-form { text-align: left; }
+.tienda-pedido__in > div > p { max-width: 52ch; }
+.tienda-form { max-width: 760px; }
 @media (min-width: 900px) { .tienda-opciones__h2 { margin-top: calc(clamp(2.4rem, 4vw, 3.2rem) + 10px); } }
 .tienda-opciones .lista-check strong { font-weight: 500; }
 .tamanos { list-style: none; margin: 4px 0 0; padding: 0; }

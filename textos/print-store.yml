@@ -20,30 +20,37 @@ intro:
   es: "Llévate el mar a casa. Mis fotografías, impresas en papel fine art y listas para colgar."
   fr: "Rapportez l'océan chez vous. Mes photographies, imprimées sur papier fine art et prêtes à accrocher."
 
-# Estancias reales: fotos de habitaciones en originales/5-tienda/estancias/ que empiecen por salon-, dormitorio- y estudio-.
-# Para cada una: foto que se cuelga (ruta dentro de originales/), girar (grados, sentido del reloj),
-# dónde va el cuadro en % de la foto de la habitación (centro_x, centro_y) y su tamaño (ancho, o alto).
-# El cuadro lleva marco fino de roble y paspartú blanco (marco: false → foto sola).
-# hueco: [x0, y0, x1, y1] en % → la foto sustituye el lienzo de un cuadro que ya está en la foto de la habitación.
-# esquinas: [[x, y] ×4] en % (arriba-izq, arriba-der, abajo-der, abajo-izq) → igual que hueco, para un cuadro en perspectiva.
-# Habitaciones de Unsplash (licencia libre): salón de @dada_design, dormitorio de @naiyaru y estudio de @steveungermann.
+# Estancias: en originales/5-tienda/estancias/ la usuaria nombra cada habitación como la foto que se cuelga en ella
+# (ola.jpg ↔ «foto ola.jpg», tortuga.jpg ↔ «foto tortuga.jpg», playa.jpg ↔ «foto playa.jpeg»).
+# Para cada estancia: habitacion (archivo), foto (ruta dentro de originales/), girar (grados, sentido del reloj) y dónde va:
+#   centro_x / centro_y / ancho (o alto) en % → cuadro nuevo con marco fino de roble y paspartú;
+#   hueco: [x0, y0, x1, y1] en % → la foto, entera sobre paspartú, ocupa el interior de un marco que ya está en la foto;
+#   esquinas: [[x, y] ×4] en % (arriba-izq, arriba-der, abajo-der, abajo-izq) → igual que hueco, para un marco en perspectiva.
+# La foto de la usuaria nunca se recorta. Las tres estancias salen cuadradas y a la misma altura.
+# Habitaciones de bancos de imágenes gratuitos (Unsplash): el sofá de @dada_design y el escritorio de @steveungermann
+# (retocado: sin el cuadro que salía cortado). El aparador (ola.jpg) lo eligió la usuaria.
 estancias_reales:
+  comedor:
+    habitacion: "ola.jpg"
+    foto: "5-tienda/estancias/foto ola.jpg"             # surf (la ola)
+    hueco: [33.94, 6.07, 78.76, 51.62]                   # dentro del marco negro que ya tiene la foto
   salon:
-    foto: "5-tienda/estancias/DSC04838.jpg"              # surf (la ola)
+    habitacion: "tortuga.jpg"
+    foto: "5-tienda/estancias/foto tortuga.jpg"         # buceo (la tortuga), en horizontal
+    girar: 90
     centro_x: 47
     centro_y: 24
     ancho: 36
-  dormitorio:
-    foto: "5-tienda/estancias/_MG_7611.jpg"              # buceo (la tortuga), en horizontal
-    girar: 90
-    # la foto ocupa el lienzo del cuadro que ya hay sobre la cama (se ve un poco en perspectiva)
-    esquinas: [[37.46, 12.28], [62.67, 7.5], [62.42, 34.78], [37.79, 35.78]]
   estudio:
-    foto: "5-tienda/estancias/IMG_20260907_09544991.jpeg" # dron (la playa desde arriba), en horizontal
+    habitacion: "playa.jpg"
+    foto: "5-tienda/estancias/foto playa.jpeg"          # dron (la playa desde arriba), en horizontal
     girar: 90
-    hueco: [19.76, 0, 85.88, 45.32]   # la foto ocupa el lienzo del cuadro de roble que ya hay sobre el escritorio
+    centro_x: 46
+    centro_y: 27
+    ancho: 44
 
 estancias:
+  comedor:    { en: "Dining room", es: "Comedor",    fr: "Salle à manger" }
   salon:      { en: "Living room", es: "Salón",      fr: "Salon" }
   dormitorio: { en: "Bedroom",     es: "Dormitorio", fr: "Chambre" }
   estudio:    { en: "Study",       es: "Estudio",    fr: "Bureau" }
@@ -52,6 +59,12 @@ estancias_titulo:
   en: "See it on your wall"
   es: "Así queda en tu pared"
   fr: "Voyez-la sur votre mur"
+
+# Título encima de los 3 pasos
+como_funciona:
+  en: "How does it work?"
+  es: "¿Cómo funciona?"
+  fr: "Comment ça marche ?"
 
 # Los 3 pasos de arriba (cada uno lleva a su apartado)
 pasos:
@@ -86,6 +99,10 @@ elige_texto:
   en: "Tap a photo to choose it: its code goes straight into the order form."
   es: "Toca una foto para elegirla: su código se apunta solo en el formulario de pedido."
   fr: "Touchez une photo pour la choisir : son code s'inscrit tout seul dans le formulaire."
+ver_mas:
+  en: "See more"
+  es: "Ver más"
+  fr: "Voir plus"
 elegida:
   en: "Chosen photo"
   es: "Foto elegida"
