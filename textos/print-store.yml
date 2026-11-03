@@ -35,14 +35,6 @@ estancias_reales:
     habitacion: "ola.jpg"
     foto: "5-tienda/estancias/foto ola.jpg"             # surf (la ola)
     hueco: [33.94, 6.07, 78.76, 51.62]                   # dentro del marco negro que ya tiene la foto
-  dormitorio:
-    habitacion: "tortuga.jpg"
-    foto: "5-tienda/estancias/foto tortuga.jpg"         # buceo (la tortuga), en horizontal
-    girar: 90
-    hueco: [34.26, 15.23, 65.14, 41.87]                  # dentro del marco fino que ya hay sobre la cama
-    paspartu: "#151515"                                  # paspartú negro, como la lámina que había
-    margen: 4
-    luz: 0.9
   salon:
     habitacion: "playa.jpg"
     foto: "5-tienda/estancias/foto playa.jpeg"          # dron (la playa desde arriba), en horizontal
@@ -51,6 +43,14 @@ estancias_reales:
     centro_y: 24
     ancho: 36
 
+  dormitorio:
+    habitacion: "tortuga.jpg"
+    foto: "5-tienda/estancias/foto tortuga.jpg"         # buceo (la tortuga), en horizontal
+    girar: 90
+    hueco: [34.26, 15.23, 65.14, 41.87]                  # dentro del marco fino que ya hay sobre la cama
+    paspartu: "#151515"                                  # paspartú negro, como la lámina que había
+    margen: 4
+    luz: 0.9
 estancias:
   comedor:    { en: "Dining room", es: "Comedor",    fr: "Salle à manger" }
   salon:      { en: "Living room", es: "Salón",      fr: "Salon" }

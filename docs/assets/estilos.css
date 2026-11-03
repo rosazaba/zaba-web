@@ -67,7 +67,8 @@ p { margin: 0 0 1.2em; }
   content: ""; display: block; width: 44px; height: 2px; margin: .5em auto 0;
   background: linear-gradient(90deg, var(--ocre), var(--amanecer));
 }
-.texto-grande { font-size: clamp(1.1rem, 2.4vw, 1.35rem); line-height: 1.65; color: #4a423b; }
+/* Texto de introducción de las cabeceras: el mismo tamaño en todas las páginas (Tarifa, Tienda, Encuentra, Contacto) */
+.texto-grande, .cab-nueva__intro, .tienda-cab__intro { font-size: clamp(1.1rem, 2.4vw, 1.35rem); line-height: 1.65; color: #4a423b; }
 
 /* Botones */
 .botones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.8rem; }
@@ -477,7 +478,7 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .cab-nueva__chip { display: inline-block; padding: 7px 14px; border-radius: var(--radio); background: var(--mar); color: #fff;
   font: 500 .72rem/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1.4rem; }
 .cab-nueva h1 { font-size: clamp(3rem, 9vw, 6.4rem); margin-bottom: .25em; }
-.cab-nueva__intro { font-size: clamp(1.05rem, 2.2vw, 1.3rem); max-width: 42ch; color: #4a423b; margin: 0; }
+.cab-nueva__intro { max-width: 42ch; margin: 0; }
 /* foto cuadrada y recta, sin marco, sombra ni movimiento (como en el resto de la web) */
 .cab-nueva__arco { justify-self: center; width: min(100%, 440px); aspect-ratio: 1 / 1; overflow: hidden; }
 .cab-nueva__arco img { width: 100%; height: 100%; object-fit: cover; }
@@ -488,7 +489,7 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .tienda-cab { text-align: center; padding: clamp(32px, 4.5vw, 60px) 0 clamp(24px, 4vw, 48px); }
 .tienda-cab h1 { margin-bottom: .2em; }
 .tienda-cab .antetitulo { margin-bottom: .6rem; }
-.tienda-cab__intro { max-width: 46ch; margin: 0 auto clamp(20px, 3vw, 34px); color: var(--tierra); font-size: clamp(1.02rem, 2.2vw, 1.2rem); }
+.tienda-cab__intro { max-width: 46ch; margin: 0 auto clamp(20px, 3vw, 34px); }
 .tienda-pasos { padding: clamp(20px, 4vw, 48px) 0 clamp(48px, 8vw, 96px); }
 .tienda-pasos__lista { list-style: none; margin: 0 auto; display: grid; gap: 34px; text-align: center; }
 @media (min-width: 760px) { .tienda-pasos__lista { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
@@ -515,7 +516,10 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .tienda-fotos__ver { text-align: center; margin: 22px 0 0; }
 html:not(.js) .tienda-fotos__ver, .tienda-grupo.abierto .tienda-fotos__ver { display: none; }
 .tienda-foto { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; text-align: left; font: inherit; color: inherit; }
-.tienda-foto img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radio); outline: 3px solid transparent; outline-offset: 3px; transition: outline-color .2s; }
+/* veladas como la tira «Selección» de Servicios; al pasar por encima o al elegirla, a todo color (sin moverse) */
+.tienda-foto img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radio); outline: 3px solid transparent; outline-offset: 3px;
+  opacity: .55; filter: saturate(.7); transition: outline-color .2s, opacity .4s, filter .4s; }
+.tienda-foto:hover img, .tienda-foto:focus-visible img, .tienda-foto[aria-pressed="true"] img { opacity: 1; filter: none; }
 .tienda-foto span { display: block; margin-top: 8px; font: 500 .74rem/1 var(--sans); letter-spacing: .14em; color: var(--tierra); }
 .tienda-foto:hover img { outline-color: var(--topo); }
 .tienda-foto[aria-pressed="true"] img { outline-color: var(--mar); }
