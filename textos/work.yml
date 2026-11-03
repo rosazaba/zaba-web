@@ -33,6 +33,16 @@ galerias:
       en: "Reefs, wrecks, marine life and the divers who explore them."
       es: "Arrecifes, pecios, vida marina y los buceadores que los exploran."
       fr: "Récifs, épaves, vie marine et les plongeurs qui les explorent."
+    # Apartados de la galería de buceo (pestañas). Fotos en originales/1-servicio/buceo/<carpeta>/.
+    # max: cuántas fotos se ven como mucho (las primeras por nombre).
+    apartados:
+      - carpeta: "reportaje"
+        max: 30
+        titulo: { en: "Photo report", es: "Reportaje", fr: "Reportage" }
+      - carpeta: "buceo-100"
+        titulo: { en: "Diving 100", es: "Buceo 100", fr: "Plongée 100" }
+      - carpeta: "curso"
+        titulo: { en: "Course", es: "Curso", fr: "Cours" }
 
   surf:
     url: "surf"          # dirección: .../work/surf/

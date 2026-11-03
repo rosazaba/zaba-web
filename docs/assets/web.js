@@ -153,6 +153,18 @@
     });
   }
 
+  /* Galerías con apartados (buceo): pestañas */
+  document.querySelectorAll("[data-pestanas]").forEach(function (caja) {
+    var botones = caja.querySelectorAll("[data-pestana]");
+    if (!botones.length) return;
+    function ver(id) {
+      botones.forEach(function (b) { b.setAttribute("aria-selected", b.dataset.pestana === id); });
+      caja.querySelectorAll("[data-panel]").forEach(function (p) { p.hidden = p.dataset.panel !== id; });
+    }
+    botones.forEach(function (b) { b.addEventListener("click", function () { ver(b.dataset.pestana); }); });
+    ver(botones[0].dataset.pestana);
+  });
+
   /* Tienda: pestañas por categoría, elegir foto (se apunta en el pedido) y pedido por WhatsApp */
   var elige = document.querySelector("[data-elige]");
   var pedido = document.querySelector("[data-pedido]");

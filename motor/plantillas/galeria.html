@@ -19,13 +19,33 @@
       <p>{{ T(work.proximamente_texto) }}</p>
     </div>
     {% else %}
-    <div class="mosaico mosaico--galeria" data-galeria>
-      {% for f in galeria.fotos %}
-      <a class="mosaico__item aparece" href="{{ asset(f.srcset[-1][1]) }}" data-ancho="{{ f.ancho }}" data-alto="{{ f.alto }}">
-        {{ foto(f, "(min-width: 1100px) 33vw, 50vw", "", "eager" if loop.index <= 4 else "lazy", T(galeria.titulo) ~ " — " ~ g.marca ~ " " ~ loop.index) }}
+    {# Fotos iguales y cuadradas; al tocarlas se abren enteras. Con apartados (buceo): una pestaña por apartado. #}
+    {% macro cuadricula(lista, titulo) %}
+    <div class="cuadros" data-galeria>
+      {% for f in lista %}
+      <a class="cuadros__item" href="{{ asset(f.srcset[-1][1]) }}" data-ancho="{{ f.ancho }}" data-alto="{{ f.alto }}">
+        {{ foto(f, "(min-width: 1100px) 25vw, (min-width: 600px) 33vw, 50vw", "", "eager" if loop.index <= 4 else "lazy", titulo ~ " — " ~ g.marca ~ " " ~ loop.index) }}
       </a>
       {% endfor %}
     </div>
+    {% endmacro %}
+    {% if galeria.apartados %}
+    <div class="pestanas" data-pestanas>
+      {% if galeria.apartados|length > 1 %}
+      <div class="pestanas__botones" role="tablist">
+        {% for a in galeria.apartados %}<button type="button" class="ficha" role="tab" id="tab-{{ a.id }}" aria-controls="ap-{{ a.id }}" aria-selected="{{ 'true' if loop.first else 'false' }}" data-pestana="{{ a.id }}">{{ T(a.titulo) }}</button>{% endfor %}
+      </div>
+      {% endif %}
+      {% for a in galeria.apartados %}
+      <div class="pestanas__panel" id="ap-{{ a.id }}" role="tabpanel" aria-labelledby="tab-{{ a.id }}" data-panel="{{ a.id }}">
+        <h2 class="pestanas__titulo">{{ T(a.titulo) }}</h2>
+        {{ cuadricula(a.fotos, T(galeria.titulo) ~ " · " ~ T(a.titulo)) }}
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    {{ cuadricula(galeria.fotos, T(galeria.titulo)) }}
+    {% endif %}
     {% endif %}
   </div>
 </section>

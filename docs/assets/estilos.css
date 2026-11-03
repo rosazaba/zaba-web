@@ -25,6 +25,8 @@
   --max: 1320px;
   --radio: 3px;
   --altura-cabecera: 68px;
+  --arriba: clamp(40px, 7vw, 90px);   /* espacio sobre el primer texto de cada página: igual en todas */
+  --hueco-etiqueta: 2.24rem;           /* alto de una .antetitulo: lo deja libre la página que no la tiene, para que el título quede a la misma altura */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -317,7 +319,7 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .datos dd { margin: 4px 0 0; font: 400 1.1rem/1.35 var(--serif); }
 
 /* ── Cabeza de página interior ─────────────────────────── */
-.cabeza-pagina { padding: clamp(48px, 9vw, 120px) 0 clamp(36px, 6vw, 72px); text-align: center; }
+.cabeza-pagina { padding: var(--arriba) 0 clamp(36px, 6vw, 72px); text-align: center; }
 .cabeza-pagina h1 { margin-bottom: .3em; }
 /* Título grande de cada página: el mismo tamaño en todas (el de Tarifa) */
 .hero--corta h1, .cabeza-pagina h1, .hola__texto h1, .intro-servicios h1, .mural__cabeza h1, .cab-nueva h1, .tienda-cab h1, .sesion-pagina h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
@@ -409,8 +411,8 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 
 /* 2. ¡Hola! Soy Rosa: título · foto · texto */
 /* ¡Hola! Soy Rosa: banda oscura, foto a la izquierda y texto a la derecha (como el ejemplo de la usuaria) */
-.hola { background: var(--topo); color: var(--tinta); padding: clamp(56px, 9vw, 110px) 0; }
-.hola__in { display: grid; gap: clamp(28px, 5vw, 80px); align-items: center; }
+.hola { background: var(--topo); color: var(--tinta); padding: var(--arriba) 0 clamp(56px, 9vw, 110px); }
+.hola__in { display: grid; gap: clamp(28px, 5vw, 80px); align-items: start; }
 .hola__foto { max-width: 440px; width: 100%; }
 .hola__foto--h { max-width: 600px; }
 .hola__foto--h img { aspect-ratio: 4 / 3 !important; }
@@ -440,13 +442,14 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 
 
 /* ═════════════ Servicios (portada): espacio para el texto de introducción ═════════════ */
-.intro-servicios { padding: clamp(56px, 7.2vw, 92px) 0 clamp(28px, 5vw, 56px); text-align: center; }   /* la primera banda empieza a la altura a la que termina la foto de Servicios */
+.intro-servicios { padding: var(--arriba) 0 clamp(20px, 2vw, 24px); text-align: center; }   /* la primera banda empieza a la altura a la que termina la foto de Servicios */
+.intro-servicios h1, .mural__cabeza h1 { margin-top: var(--hueco-etiqueta); }   /* estas páginas no tienen etiqueta encima del título */
 .intro-servicios h1 { margin-bottom: .35em; }
 .intro-servicios .texto-grande { margin: 0 auto; max-width: 62ch; }
 
 /* ═════════════ Contacto: fondo tipo mural ═════════════ */
 .mural { position: relative; overflow: hidden; background: var(--mural-color, var(--mar)); color: #fff;
-  padding: clamp(32px, 4.5vw, 60px) 0 clamp(56px, 9vw, 120px); min-height: calc(100svh - var(--altura-cabecera)); }   /* texto más arriba: poco margen superior */
+  padding: var(--arriba) 0 clamp(56px, 9vw, 120px); min-height: calc(100svh - var(--altura-cabecera)); }   /* el título a la misma altura que en las demás páginas */
 .mural__foto { position: absolute; inset: 0; opacity: var(--mural-opacidad, .28); mix-blend-mode: luminosity; }
 .mural__foto img { width: 100%; height: 100%; object-fit: cover; object-position: var(--encuadre, 50% 50%); }
 .mural__in { position: relative; max-width: var(--max); margin: 0 auto; padding: 0 var(--margen); display: grid; gap: clamp(32px, 5vw, 72px); align-items: start; }
@@ -473,7 +476,7 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 /* ═════════════ Cabecera exclusiva de Print Store y Encuentra tus fotos ═════════════ */
 /* Colores de la gama de siempre (sin amarillo ni líneas curvas): Tienda en --topo, Encuentra en --arena-2 */
 .cab-nueva { --c-fondo: var(--topo); --c-texto: var(--tinta);
-  position: relative; overflow: hidden; background: var(--c-fondo); color: var(--c-texto); padding: clamp(40px, 7vw, 96px) 0; }
+  position: relative; overflow: hidden; background: var(--c-fondo); color: var(--c-texto); padding: var(--arriba) 0 clamp(40px, 7vw, 96px); }
 .cab-nueva--encuentra { --c-fondo: var(--arena-2); }
 .cab-nueva__in { position: relative; max-width: var(--max); margin: 0 auto; padding: 0 var(--margen); display: grid; gap: clamp(28px, 5vw, 64px); align-items: center; }
 @media (min-width: 900px) { .cab-nueva__in:has(.cab-nueva__arco) { grid-template-columns: 1.2fr .8fr; } }
@@ -483,12 +486,25 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .cab-nueva__arco { justify-self: center; width: min(100%, 440px); aspect-ratio: 1 / 1; overflow: hidden; }
 .cab-nueva__arco img { width: 100%; height: 100%; object-fit: cover; }
 
+/* ═════════════ Galerías (Surf, Buceo, Dron): fotos iguales, cuadradas y más pequeñas ═════════════ */
+.cuadros { display: grid; gap: clamp(6px, 1vw, 12px); grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 600px) { .cuadros { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1100px) { .cuadros { grid-template-columns: repeat(4, 1fr); } }
+.cuadros__item { display: block; overflow: hidden; border-radius: var(--radio); background: var(--linea); cursor: zoom-in; }
+.cuadros__item img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+.cuadros__item:focus-visible { outline: 2px solid var(--mar); outline-offset: 3px; }
+.pestanas__botones { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0 0 clamp(20px, 3vw, 32px); }
+.pestanas__titulo { font-size: clamp(1.4rem, 3vw, 1.9rem); margin: 0 0 16px; }
+.pestanas__panel + .pestanas__panel { margin-top: clamp(32px, 5vw, 56px); }
+/* con JS: solo se ve el apartado elegido y su título va en la pestaña */
+.js [data-pestanas] .pestanas__botones ~ .pestanas__panel .pestanas__titulo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.js [data-pestanas] .pestanas__botones ~ .pestanas__panel + .pestanas__panel { margin-top: 0; }
+
 /* ═════════════ Tienda (organización como la de Laurita Polvorilla, con el estilo de Zaba) ═════════════ */
 .estancia { margin: 0; }
 .estancia__svg, .estancia__foto { display: block; width: 100%; height: auto; border-radius: var(--radio); }
-.tienda-cab { text-align: center; padding: clamp(32px, 4.5vw, 60px) 0 clamp(24px, 4vw, 48px); }
+.tienda-cab { text-align: center; padding: var(--arriba) 0 clamp(24px, 4vw, 48px); }
 .tienda-cab h1 { margin-bottom: .2em; }
-.tienda-cab .antetitulo { margin-bottom: .6rem; }
 .tienda-cab__intro { max-width: 46ch; margin: 0 auto clamp(20px, 3vw, 34px); }
 .tienda-pasos { padding: clamp(20px, 4vw, 48px) 0 clamp(48px, 8vw, 96px); }
 .tienda-pasos__lista { list-style: none; margin: 0 auto; display: grid; gap: 34px; text-align: center; }
@@ -583,7 +599,7 @@ html:not(.js) .tienda-fotos__ver, .tienda-grupo.abierto .tienda-fotos__ver { dis
 .encuentra-avisos__subida span { color: var(--mar); }
 .encuentra-avisos__legal { font-size: .82rem; color: var(--gris); max-width: 70ch; }
 /* página de cada sesión */
-.sesion-pagina { padding: clamp(36px, 6vw, 72px) 0 clamp(64px, 10vw, 120px); }
+.sesion-pagina { padding: var(--arriba) 0 clamp(64px, 10vw, 120px); }
 .sesion-pagina__volver { display: inline-block; margin-bottom: 22px; }
 .sesion-pagina h1 { margin-bottom: .25em; }
 .sesion-pagina__datos { color: var(--tierra); }

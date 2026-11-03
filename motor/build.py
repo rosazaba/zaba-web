@@ -495,12 +495,36 @@ def main():
         fotos.sort(key=lambda f: not es_portada(f))
         fotos = quitar_repetidas(fotos, ya_vistas, carpeta)
         fotos.sort(key=lambda f: f["origen"])
-        if not fotos:
+        hay_en_apartados = any(fotos_de(f"{C_TRABAJOS}/{carpeta}/{a['carpeta']}") for a in (c.get("apartados") or []))
+        if not fotos and not hay_en_apartados:
             if carpeta not in conf:
                 avisos.append(f"La galería '{carpeta}' está vacía y no se publica.")
                 continue
             avisos.append(f"La galería '{carpeta}' aún no tiene fotos: se muestra como «Próximamente».")
+        # Apartados (solo si work.yml los define, p. ej. buceo: reportaje / buceo-100 / curso): cada uno su subcarpeta.
+        apartados = []
+        for a in c.get("apartados") or []:
+            sub = f"{carpeta}/{a['carpeta']}"
+            fa = [optimizar(p, f"work/{sub}") for p in fotos_de(f"{C_TRABAJOS}/{sub}")]
+            fa = quitar_repetidas(fa, ya_vistas, sub)
+            fa.sort(key=lambda f: f["origen"])
+            if a.get("max") and len(fa) > int(a["max"]):
+                avisos.append(f"Apartado «{sub}»: hay {len(fa)} fotos y solo se muestran las {a['max']} primeras por nombre.")
+                fa = fa[:int(a["max"])]
+            apartados.append({"id": slug(a["carpeta"]), "titulo": a.get("titulo") or {i: a["carpeta"] for i in IDIOMAS}, "fotos": fa})
+        if c.get("apartados"):
+            con_fotos = [a for a in apartados if a["fotos"]]
+            if con_fotos and fotos:
+                avisos.append(f"Hay {len(fotos)} fotos sueltas en {C_TRABAJOS}/{carpeta}/ que no salen en la galería: muévelas a "
+                              + ", ".join(a["carpeta"] for a in c["apartados"]) + ".")
+            elif not con_fotos and fotos:
+                avisos.append(f"Los apartados de «{carpeta}» están vacíos: de momento la galería enseña las fotos sueltas, sin apartados.")
+            # para la portada, la tira «Selección» y la Tienda cuentan todas las fotos de la galería
+            fotos_pagina = None if not con_fotos else con_fotos
+            fotos = fotos + [f for a in apartados for f in a["fotos"]]
+            apartados = fotos_pagina or []
         galerias.append({
+            "apartados": apartados,
             "id": carpeta,
             "url": slug(c.get("url", carpeta)),
             "orden": c.get("orden", 99),
