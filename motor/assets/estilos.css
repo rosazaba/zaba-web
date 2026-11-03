@@ -454,7 +454,7 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .mural__cabeza h1 { margin-bottom: .2em; }
 .mural__cabeza .texto-grande { color: rgba(255,255,255,.88); max-width: 34ch; }
 .mural__directo { margin-top: 2rem; }
-.mural__etiqueta { font: 500 .72rem/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--arena-2); margin-bottom: 14px; }
+.mural__etiqueta { color: var(--arena-2); }   /* mismo formato que .antetitulo; solo cambia el color sobre el mural */
 .mural__botones { display: flex; align-items: center; gap: 14px; }
 .mural__ig { color: #fff; margin-left: 0; width: 48px; height: 48px; border: 1px solid rgba(255,255,255,.6); }
 .mural__ig .icono { width: 22px; height: 22px; }
@@ -477,8 +477,6 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .cab-nueva--encuentra { --c-fondo: var(--arena-2); }
 .cab-nueva__in { position: relative; max-width: var(--max); margin: 0 auto; padding: 0 var(--margen); display: grid; gap: clamp(28px, 5vw, 64px); align-items: center; }
 @media (min-width: 900px) { .cab-nueva__in:has(.cab-nueva__arco) { grid-template-columns: 1.2fr .8fr; } }
-.cab-nueva__chip { display: inline-block; padding: 7px 14px; border-radius: var(--radio); background: var(--mar); color: #fff;
-  font: 500 .72rem/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1.4rem; }
 .cab-nueva h1 { margin-bottom: .25em; }
 .cab-nueva__intro { max-width: 42ch; margin: 0; }
 /* foto cuadrada y recta, sin marco, sombra ni movimiento (como en el resto de la web) */

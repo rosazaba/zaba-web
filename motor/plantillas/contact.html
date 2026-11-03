@@ -11,7 +11,7 @@
       <h1>{{ T(contact.titulo) }}</h1>
       <p class="texto-grande">{{ T(contact.intro) }}</p>
       <div class="mural__directo">
-        <p class="mural__etiqueta">{{ T(contact.directo) }}</p>
+        <p class="antetitulo mural__etiqueta">{{ T(contact.directo) }}</p>
         <div class="mural__botones">
           {% if g.contacto.whatsapp %}<a class="boton boton--claro" href="https://wa.me/{{ g.contacto.whatsapp }}" target="_blank" rel="noopener">{{ T(contact.whatsapp) }}</a>{% endif %}
           {% if g.contacto.instagram %}<a class="icono-red mural__ig" href="https://www.instagram.com/{{ g.contacto.instagram }}/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">{{ iconos.instagram }}</a>{% endif %}
