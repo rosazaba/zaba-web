@@ -26,7 +26,7 @@ ORIG = RAIZ / "originales"
 def _primera(*nombres):
     """La primera carpeta que exista (sirve con el nombre nuevo y con el antiguo mientras se renombra)."""
     return next((n for n in nombres if (ORIG / n).exists()), nombres[0])
-C_TRABAJOS = _primera("1-servicios", "1-trabajos")   # página «Servicios / My services»: portada/, seleccion/ y una carpeta por galería
+C_TRABAJOS = _primera("1-servicio", "1-servicios", "1-trabajos")   # página «Servicios / My services»: portada/, seleccion/ y una carpeta por galería
 C_PORTADA = f"{C_TRABAJOS}/portada"    # la foto grande de arriba (cada galería tiene además su <galería>/portada/)
 C_SELECCION = f"{C_TRABAJOS}/seleccion"
 C_SERVICIOS = _primera("2-tarifa", "2-servicios")   # página «Tarifa / Rates»: portada/ y <servicio>/
@@ -35,7 +35,7 @@ C_CONTACTO = "4-contacto"             # solo su carpeta portada/ (foto del fondo
 C_PRINT = _primera("5-tienda", "5-print-store")   # página «Tienda / Print Store»: portada/ (cabecera) y las fotos que se venden impresas (las 2 primeras salen en las estancias)
 C_ENCUENTRA = "6-encuentra-tus-fotos"  # portada/ (cabecera) y <playa>/<AAAA-MM-DD>/ con las fotos de cada sesión
 # Rutas escritas en textos/*.yml con el nombre antiguo de una carpeta siguen funcionando
-ALIAS_CARPETAS = {"1-trabajos": C_TRABAJOS, "1-servicios": C_TRABAJOS, "2-servicios": C_SERVICIOS, "2-tarifa": C_SERVICIOS}
+ALIAS_CARPETAS = {"1-trabajos": C_TRABAJOS, "1-servicios": C_TRABAJOS, "1-servicio": C_TRABAJOS, "2-servicios": C_SERVICIOS, "2-tarifa": C_SERVICIOS}
 
 
 def en_orig(ruta):

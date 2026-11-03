@@ -20,7 +20,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 ## Estructura
 - `originales/`: fotos y logo del usuario a tamaño original. **No se modifican nunca y no se suben a GitHub** (están en `.gitignore`). Carpetas en el orden del menú (constantes `C_*` en `build.py`):
   - Cada sección y cada galería tiene su subcarpeta `portada/` con UNA foto (la usuaria las quiere así para encontrarlas rápido): `1-trabajos/portada/` (la grande, ya girada), `1-trabajos/<galería>/portada/` (recuadros) y `3-sobre-mi/portada/`. Tienen prioridad sobre `textos/inicio.yml` y `work.yml`. Las fotos de una subcarpeta `portada/` no cuentan como fotos de la galería.
-  - `1-servicios/` (antes `1-trabajos/`; página «Servicios / My services»): `portada/`, `seleccion/` (tira, opcional) y una carpeta por galería (`buceo/`, `surf/`, `dron/`).
+  - `1-servicio/` (así la llamó la usuaria; antes `1-trabajos/`. El motor acepta `1-servicio`, `1-servicios` y `1-trabajos`; página «Servicios / My services»): `portada/`, `seleccion/` (tira, opcional) y una carpeta por galería (`buceo/`, `surf/`, `dron/`).
   - `2-tarifa/` (antes `2-servicios/`; página «Tarifa / Rates»): `portada/` y `<servicio>/`
   - El motor acepta los dos nombres (`_primera()` en `build.py`) y `en_orig()` traduce rutas antiguas escritas en los `.yml`. La usuaria renombra ella las carpetas en su Explorador.
   - `4-contacto/`: `portada/` (foto del fondo-mural de Contacto)
@@ -113,5 +113,5 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - Por confirmar con el usuario: precios de los servicios, ubicación ("Spain") y el dominio (`zaba.com` está puesto provisionalmente).
 - Tienda: fotos propias en `5-tienda/`, precios de tamaños y marcos por confirmar.
 - Encuentra tus fotos: aún sin sesiones (carpetas de Patos y Berria vacías).
-- En `web1` quedan sin uso `docs/services/`, `es/services/`, `fr/services/` (ahora `/rates/`), `2-servicios/marcas/` y `originales/work/` si existe: pedir a la usuaria que las borre.
+- En `web1` quedan sin uso `docs/services/`, `es/services/`, `fr/services/` (ahora `/rates/`), `2-tarifa/marcas/` y `5-print-store/`: pedir a la usuaria que las borre.
 - Publicación: activar GitHub Pages (lo hace el usuario: Settings → Pages → `main` /docs; la app de Claude no tiene permiso de administración) cuando haya fotos reales y textos revisados.
