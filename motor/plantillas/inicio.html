@@ -44,21 +44,4 @@
 </section>
 {% endif %}
 
-<section class="bloque bloque--arena">
-  <div class="ancho">
-    <h2 class="titulo-seccion aparece">{{ T(inicio.servicios_titulo) }}</h2>
-    <div class="mini-servicios">
-      {% for s in lista_servicios %}
-      <a class="mini-servicio aparece" href="{{ url(rutas.services) }}#{{ s.carpeta }}">
-        <span class="mini-servicio__num">0{{ loop.index }}</span>
-        <span class="mini-servicio__titulo">{{ T(s.titulo) }}</span>
-        <span class="mini-servicio__precio">{% if s.precio %}{{ T(services.desde) }} {{ s.precio }}{% else %}{{ T(services.consultar) }}{% endif %}</span>
-      </a>
-      {% endfor %}
-    </div>
-    <p class="centro"><a class="boton boton--linea" href="{{ url(rutas.services) }}">{{ T(g.botones.ver_servicios) }}</a></p>
-  </div>
-</section>
-
-{% include "_cierre.html" %}
 {% endblock %}
