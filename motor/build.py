@@ -32,12 +32,12 @@ C_SELECCION = f"{C_TRABAJOS}/seleccion"
 C_SERVICIOS = _primera("2-tarifa", "2-servicios")   # página «Tarifa / Rates»: portada/ y <servicio>/
 C_SOBRE_MI = "3-sobre-mi"
 C_CONTACTO = "4-contacto"             # solo su carpeta portada/ (foto del fondo-mural de Contacto)
-C_PRINT = _primera("5-tienda-de-impresiones", "5-tienda", "5-print-store")   # página «Tienda de impresiones / Print Store»: portada/ (cabecera) y las fotos que se venden impresas (las 2 primeras salen en las estancias)
+C_PRINT = _primera("5-tienda-de-impresiones", "5-tienda de impresiones", "5-tienda", "5-print-store")   # página «Tienda de impresiones / Print Store»: portada/ (cabecera) y las fotos que se venden impresas (las 2 primeras salen en las estancias)
 C_CURSO = _primera("6-curso-foto-sub")   # página «Curso foto sub»: teoria/, practica/ y edicion/ (una foto en cada una)
 C_ENCUENTRA = _primera("7-encuentra-tus-fotos", "6-encuentra-tus-fotos")  # (antes 6-encuentra-tus-fotos) portada/ (cabecera) y <playa>/<AAAA-MM-DD>/ con las fotos de cada sesión
 # Rutas escritas en textos/*.yml con el nombre antiguo de una carpeta siguen funcionando
 ALIAS_CARPETAS = {"1-trabajos": C_TRABAJOS, "1-servicios": C_TRABAJOS, "1-servicio": C_TRABAJOS, "2-servicios": C_SERVICIOS, "2-tarifa": C_SERVICIOS,
-                  "5-tienda": C_PRINT, "5-tienda-de-impresiones": C_PRINT, "5-print-store": C_PRINT,
+                  "5-tienda": C_PRINT, "5-tienda-de-impresiones": C_PRINT, "5-tienda de impresiones": C_PRINT, "5-print-store": C_PRINT,
                   "6-encuentra-tus-fotos": C_ENCUENTRA, "7-encuentra-tus-fotos": C_ENCUENTRA}
 
 
