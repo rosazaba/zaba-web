@@ -1,4 +1,4 @@
-# TIENDA (en inglés y francés: Print Store). Dirección: /print-store/
+# TIENDA (en inglés: Print Store; en francés: Boutique). Dirección: /print-store/
 # Fotos: originales/5-tienda/  → las 2 primeras salen colgadas en el salón y en el dormitorio.
 #        originales/5-tienda/portada/ → foto (opcional) de la cabecera.
 # Mientras la carpeta esté vacía se usan fotos de las galerías como ejemplo.
@@ -6,7 +6,7 @@
 titulo:
   en: "Print Store"
   es: "Tienda"
-  fr: "Print Store"
+  fr: "Boutique"
 
 antetitulo:
   en: "Fine art prints"
