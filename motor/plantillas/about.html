@@ -22,9 +22,8 @@
     <div class="hola__foto{% if sobre.retrato.ancho > sobre.retrato.alto %} hola__foto--h{% endif %} aparece"{% if about.retrato_encuadre %} style="--encuadre: {{ about.retrato_encuadre }}"{% endif %}>{{ foto(sobre.retrato, "(min-width: 900px) 34vw, 90vw", "", "eager", T(about.hola_titulo)) }}</div>
     {% endif %}
     <div class="hola__texto aparece">
-      <p class="antetitulo">{{ T(about.titulo) }}</p>
+      <p class="antetitulo">{{ T(about.hola_subtitulo) }}</p>{# «Quién está detrás de la lente» como etiqueta encima del título #}
       <h1>{{ T(about.hola_titulo) }}</h1>
-      <p class="hola__sub">{{ T(about.hola_subtitulo) }}</p>
       {% for p in T(about.parrafos) %}<p>{{ p }}</p>{% endfor %}
       <p class="hola__boton"><a class="boton boton--claro" href="{{ url('contact/') }}">{{ T(g.botones.escribeme) }}</a></p>
     </div>
