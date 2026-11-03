@@ -70,7 +70,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - Diseño:
   - Nada de marrón oscuro en bloques de contenido ni degradados de atardecer (no le gustan a la usuaria). Para bloques de color se usa `--topo` (#D9CCB8, marrón claro neutro) alternado con `--arena-2`. El bloque final «Salgamos a hacer fotos» (`_cierre.html`) es `--topo` plano. El único bloque oscuro es el pie.
   - Solo tema claro. Paleta: arena, tierra/marrón, ocre, amanecer, amarillo suave, azul verdoso y un toque de gris. Tokens en `:root` de `estilos.css`.
-  - El texto de introducción de las cabeceras tiene el mismo tamaño en todas las páginas (`.texto-grande`, `.cab-nueva__intro`, `.tienda-cab__intro` comparten regla).
+  - El texto de introducción de las cabeceras tiene el mismo tamaño en todas las páginas (`.texto-grande`, `.cab-nueva__intro`, `.tienda-cab__intro` comparten regla), y el título grande (h1) de cada página también: el de Tarifa, `clamp(2.4rem, 6vw, 4rem)`, en una sola regla de `estilos.css`.
   - Tipografía: solo Jost (sin remates). Títulos en Jost Light (300), textos y menú en Jost 400. El token `--serif` del CSS se llama así por historia pero apunta a Jost.
 - Pie (bloque marrón): solo el logo y la frase `pie.frase` de `general.yml`, centrados, igual en todas las páginas (sin menú, teléfono, WhatsApp, Instagram ni idiomas; lo pidió la usuaria). WhatsApp ya está en el botón flotante e Instagram va en Contacto.
 - Contacto:

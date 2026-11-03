@@ -183,7 +183,7 @@ p { margin: 0 0 1.2em; }
 /* Portada corta: deja ver las tres galerías sin apenas bajar */
 .hero--corta { height: 56vh; height: 56svh; min-height: 340px; max-height: 720px; }
 .hero--corta .hero__texto { bottom: clamp(22px, 6vh, 64px); }
-.hero--corta h1 { font-size: clamp(2rem, 6.4vw, 4.2rem); max-width: 16ch; }
+.hero--corta h1 { max-width: 16ch; }
 @media (min-width: 900px) { .hero--corta { height: 52vh; height: 52svh; } }
 
 /* ── Galerías en la portada (buceo · surf · dron) ───────── */
@@ -319,6 +319,8 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 /* ── Cabeza de página interior ─────────────────────────── */
 .cabeza-pagina { padding: clamp(48px, 9vw, 120px) 0 clamp(36px, 6vw, 72px); text-align: center; }
 .cabeza-pagina h1 { margin-bottom: .3em; }
+/* Título grande de cada página: el mismo tamaño en todas (el de Tarifa) */
+.hero--corta h1, .cabeza-pagina h1, .hola__texto h1, .intro-servicios h1, .mural__cabeza h1, .cab-nueva h1, .tienda-cab h1, .sesion-pagina h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
 
 .otras-galerias { padding: 48px 0; }
 .otras-galerias__in { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
@@ -415,7 +417,7 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .hola__foto img { display: block; width: 100%; aspect-ratio: 5 / 6; object-fit: cover; object-position: var(--encuadre, 50% 50%); border-radius: var(--radio); }
 .hola__texto { max-width: 620px; }
 .hola__texto .antetitulo { color: var(--tierra); }
-.hola__texto h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); color: var(--tinta); margin-bottom: .3em; }
+.hola__texto h1 { color: var(--tinta); margin-bottom: .3em; }
 .hola__sub { margin: 0 0 1.8rem; font: 400 .78rem/1.4 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: #6f6458; }
 .hola__texto p:not([class]) { color: #3f3832; }
 .hola__boton { margin: 2rem 0 0; }
@@ -439,7 +441,7 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 
 /* ═════════════ Servicios (portada): espacio para el texto de introducción ═════════════ */
 .intro-servicios { padding: clamp(56px, 7.2vw, 92px) 0 clamp(28px, 5vw, 56px); text-align: center; }   /* la primera banda empieza a la altura a la que termina la foto de Servicios */
-.intro-servicios h1 { font-size: clamp(2.4rem, 6vw, 4rem); margin-bottom: .35em; }
+.intro-servicios h1 { margin-bottom: .35em; }
 .intro-servicios .texto-grande { margin: 0 auto; max-width: 62ch; }
 
 /* ═════════════ Contacto: fondo tipo mural ═════════════ */
@@ -449,7 +451,7 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .mural__foto img { width: 100%; height: 100%; object-fit: cover; object-position: var(--encuadre, 50% 50%); }
 .mural__in { position: relative; max-width: var(--max); margin: 0 auto; padding: 0 var(--margen); display: grid; gap: clamp(32px, 5vw, 72px); align-items: center; }
 @media (min-width: 960px) { .mural__in { grid-template-columns: 1fr 1.15fr; } }
-.mural__cabeza h1 { font-size: clamp(3rem, 9vw, 6rem); margin-bottom: .2em; }
+.mural__cabeza h1 { margin-bottom: .2em; }
 .mural__cabeza .texto-grande { color: rgba(255,255,255,.88); max-width: 34ch; }
 .mural__directo { margin-top: 2rem; }
 .mural__etiqueta { font: 500 .72rem/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--arena-2); margin-bottom: 14px; }
@@ -477,7 +479,7 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 @media (min-width: 900px) { .cab-nueva__in:has(.cab-nueva__arco) { grid-template-columns: 1.2fr .8fr; } }
 .cab-nueva__chip { display: inline-block; padding: 7px 14px; border-radius: var(--radio); background: var(--mar); color: #fff;
   font: 500 .72rem/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1.4rem; }
-.cab-nueva h1 { font-size: clamp(3rem, 9vw, 6.4rem); margin-bottom: .25em; }
+.cab-nueva h1 { margin-bottom: .25em; }
 .cab-nueva__intro { max-width: 42ch; margin: 0; }
 /* foto cuadrada y recta, sin marco, sombra ni movimiento (como en el resto de la web) */
 .cab-nueva__arco { justify-self: center; width: min(100%, 440px); aspect-ratio: 1 / 1; overflow: hidden; }
@@ -585,7 +587,7 @@ html:not(.js) .tienda-fotos__ver, .tienda-grupo.abierto .tienda-fotos__ver { dis
 /* página de cada sesión */
 .sesion-pagina { padding: clamp(36px, 6vw, 72px) 0 clamp(64px, 10vw, 120px); }
 .sesion-pagina__volver { display: inline-block; margin-bottom: 22px; }
-.sesion-pagina h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin-bottom: .25em; }
+.sesion-pagina h1 { margin-bottom: .25em; }
 .sesion-pagina__datos { color: var(--tierra); }
 .sesion-pagina__datos strong { color: var(--mar); font-weight: 500; }
 .fotos-venta { list-style: none; padding: 0 0 22px; margin: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
