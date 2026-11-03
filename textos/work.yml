@@ -8,6 +8,9 @@
 # (originales/1-trabajos/buceo/portada/, surf/portada/, dron/portada/). Para cambiarla, cambia esa foto. Si no hay, se usa «portada:» de abajo y, si está vacío, la primera por nombre.
 # Una galería de esta lista sin fotos aparece como «Próximamente».
 
+# Botón para ver el resto de fotos de cada grupo (de primeras salen 6)
+ver_mas: { en: "See more", es: "Ver más", fr: "Voir plus" }
+
 proximamente:
   en: "Coming soon"
   es: "Próximamente"
@@ -36,12 +39,15 @@ galerias:
     # Apartados de la galería de buceo (pestañas). Fotos en originales/1-servicio/buceo/<carpeta>/.
     # max: cuántas fotos se ven como mucho (las primeras por nombre).
     apartados:
+      # primeras: las 6 fotos que salen de primeras (antes de «Ver más»), en ese orden; el resto se ordena solo, sin juntar parecidas.
       - carpeta: "reportaje"
         max: 30
+        primeras: ["_MG_2748.jpg", "_MG_8950.jpg", "IMG_0895.jpg", "_MG_2091.jpg", "_MG_5551.jpg", "_MG_1613.jpg"]   # salto · descenso por el cabo · tortuga · retrato · paisaje · contraluz
         titulo: { en: "Photo report", es: "Reportaje", fr: "Reportage" }
       - carpeta: "buceo-100"
         titulo: { en: "Diving 100", es: "Buceo 100", fr: "Plongée 100" }
       - carpeta: "curso"
+        primeras: ["_MG_1785.jpg", "_MG_8804.jpg", "IMG_5799.jpg", "_MG_8670.jpg", "_MG_1827.jpg", "_MG_8771 (2).jpg"]   # salto · cabo · vida marina · retrato · paisaje · contraluz
         titulo: { en: "Course", es: "Curso", fr: "Cours" }
 
   surf:

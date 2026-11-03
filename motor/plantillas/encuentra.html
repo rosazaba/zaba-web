@@ -30,7 +30,7 @@
           <img class="sesion-tarjeta__img" src="{{ asset(f0.src) }}" width="{{ f0.ancho }}" height="{{ f0.alto }}" loading="lazy" decoding="async" alt="{{ pl.nombre }} {{ ses.fecha_corta }}">
           <span class="sesion-tarjeta__texto">
             <span class="sesion-tarjeta__titulo">{{ pl.nombre }} · {{ ses.dia_mes }}</span>
-            <span class="sesion-tarjeta__lugar">{{ pl.lugar }} · {{ ses.fotos|length }} {{ T(encuentra.fotos) }}</span>
+            <span class="sesion-tarjeta__lugar">{{ pl.lugar }}</span>
           </span>
         </a>
       </li>

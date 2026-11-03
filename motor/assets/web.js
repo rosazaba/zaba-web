@@ -49,6 +49,11 @@
     elementos.forEach(function (el) { el.classList.add("visible"); });
   }
 
+  /* Galerías: «Ver más» enseña el resto de fotos del grupo */
+  document.querySelectorAll("[data-ver-todas]").forEach(function (b) {
+    b.addEventListener("click", function () { b.closest("[data-grupo-fotos]").classList.add("abierto"); });
+  });
+
   /* Visor de fotos */
   var galerias = document.querySelectorAll("[data-galeria]");
   if (galerias.length) {

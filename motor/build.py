@@ -165,6 +165,34 @@ def _base_nombre(nombre):
         b = n
 
 
+def ordenar_variado(fotos, primeras, carpeta):
+    """Orden de un apartado: primero las fotos de «primeras» (work.yml, elegidas para que la tira de 6 sea variada:
+    salto, descenso, vida marina, retrato, paisaje, contraluz…) y después el resto, sin dejar juntas fotos parecidas
+    (color, composición o misma ráfaga) y dando preferencia a las mejores."""
+    import math
+    por_nombre = {f["origen"]: f for f in fotos}
+    elegidas = []
+    for n in primeras:
+        if n in por_nombre and por_nombre[n] not in elegidas:
+            elegidas.append(por_nombre[n])
+        else:
+            avisos.append(f"«primeras» de {carpeta}: no encuentro {n} (¿la has movido o renombrado?).")
+    resto = [f for f in fotos if f not in elegidas]
+    if not resto:
+        return elegidas
+    cal = [f["calidad"] for f in resto]; lo, hi = min(cal), max(cal)
+    def distancia(a, b):
+        d = math.dist(a["lab"], b["lab"]) / 40 + bin(a["huella"] ^ b["huella"]).count("1") / 128
+        return d * (0.3 if _misma_rafaga(a, b) else 1)
+    while resto:
+        def puntos(f):
+            cerca = min((distancia(f, e) for e in elegidas[-4:]), default=1)
+            return min(cerca, 1.5) + 0.5 * ((f["calidad"] - lo) / ((hi - lo) or 1))
+        mejor = max(resto, key=puntos)
+        elegidas.append(mejor); resto.remove(mejor)
+    return elegidas
+
+
 def quitar_repetidas(fotos, vistas, carpeta):
     """Quita fotos repetidas: la misma imagen (aunque esté en otra galería o con otro nombre)
     o una versión de la misma toma (DSC05033 y DSC05033-2, aunque una sea en blanco y negro). Se queda la primera."""
@@ -514,8 +542,9 @@ def main():
             fa = [optimizar(p, f"work/{sub}") for p in fotos_de(f"{C_TRABAJOS}/{sub}")]
             fa = quitar_repetidas(fa, ya_vistas, sub)
             fa.sort(key=lambda f: f["origen"])
+            fa = ordenar_variado(fa, a.get("primeras") or [], sub)
             if a.get("max") and len(fa) > int(a["max"]):
-                avisos.append(f"Apartado «{sub}»: hay {len(fa)} fotos y solo se muestran las {a['max']} primeras por nombre.")
+                avisos.append(f"Apartado «{sub}»: hay {len(fa)} fotos y se muestran {a['max']} (las de «primeras» y, después, las más variadas).")
                 fa = fa[:int(a["max"])]
             apartados.append({"id": slug(a["carpeta"]), "titulo": a.get("titulo") or {i: a["carpeta"] for i in IDIOMAS}, "fotos": fa})
         if c.get("apartados"):

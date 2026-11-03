@@ -4,7 +4,7 @@
 {% block contenido %}
 <section class="cabeza-pagina">
   <div class="estrecho">
-    <p class="antetitulo"><a href="{{ url('') }}">{{ T(g.menu.inicio) }}</a>{% if galeria.fotos %} / {{ galeria.fotos|length }}{% endif %}</p>
+    <p class="antetitulo"><a href="{{ url('') }}">{{ T(g.menu.inicio) }}</a></p>
     <h1>{{ T(galeria.titulo) }}</h1>
     <p class="texto-grande">{{ T(galeria.resumen) }}</p>
     {% if T(galeria.texto) %}<p>{{ T(galeria.texto) }}</p>{% endif %}
@@ -21,12 +21,15 @@
     {% else %}
     {# Fotos iguales y cuadradas; al tocarlas se abren enteras. Con apartados (buceo): una pestaña por apartado. #}
     {% macro cuadricula(lista, titulo) %}
+    <div class="grupo-fotos" data-grupo-fotos>
     <div class="cuadros" data-galeria>
       {% for f in lista %}
-      <a class="cuadros__item" href="{{ asset(f.srcset[-1][1]) }}" data-ancho="{{ f.ancho }}" data-alto="{{ f.alto }}">
-        {{ foto(f, "(min-width: 1100px) 25vw, (min-width: 600px) 33vw, 50vw", "", "eager" if loop.index <= 4 else "lazy", titulo ~ " — " ~ g.marca ~ " " ~ loop.index) }}
+      <a class="cuadros__item{% if loop.index > 6 %} cuadros__mas{% endif %}" href="{{ asset(f.srcset[-1][1]) }}" data-ancho="{{ f.ancho }}" data-alto="{{ f.alto }}">
+        {{ foto(f, "(min-width: 900px) 16vw, 33vw", "", "eager" if loop.index <= 6 else "lazy", titulo ~ " — " ~ g.marca ~ " " ~ loop.index) }}
       </a>
       {% endfor %}
+    </div>
+    {% if lista|length > 6 %}<p class="cuadros__ver"><button type="button" class="boton boton--linea" data-ver-todas>{{ T(work.ver_mas) }}</button></p>{% endif %}
     </div>
     {% endmacro %}
     {% if galeria.apartados %}

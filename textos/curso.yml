@@ -21,21 +21,21 @@ intro:
 # Las tres partes del curso (bandas con foto, como en Tarifa)
 partes:
   - carpeta: teoria
-    foto_provisional: "1-trabajos/buceo/_MG_3060.jpg"
+    foto_provisional: "1-trabajos/buceo/reportaje/_MG_3060.jpg"
     titulo: { en: "Theory", es: "Teoría", fr: "Théorie" }
     texto:
       en: "Light underwater, camera settings, composition and how to move without disturbing marine life."
       es: "La luz bajo el agua, ajustes de cámara, composición y cómo moverte sin molestar a la vida marina."
       fr: "La lumière sous l'eau, les réglages de l'appareil, la composition et comment se déplacer sans déranger la vie marine."
   - carpeta: practica
-    foto_provisional: "1-trabajos/buceo/_MG_5822.jpg"
+    foto_provisional: "1-trabajos/buceo/curso/_MG_5822.jpg"
     titulo: { en: "Practice in the water", es: "Práctica en el agua", fr: "Pratique dans l'eau" }
     texto:
       en: "We go into the water together and put everything into practice, step by step, with my guidance at every moment."
       es: "Entramos juntos al agua y ponemos todo en práctica, paso a paso, conmigo a tu lado en todo momento."
       fr: "Nous entrons dans l'eau ensemble et mettons tout en pratique, pas à pas, avec mon accompagnement à chaque instant."
   - carpeta: edicion
-    foto_provisional: "1-trabajos/buceo/_MG_7611.jpg"
+    foto_provisional: "1-trabajos/buceo/reportaje/_MG_7611.jpg"
     titulo: { en: "Editing", es: "Edición", fr: "Retouche" }
     texto:
       en: "We choose your best shots and edit them together: colour, contrast and the finishing touches that make them shine."

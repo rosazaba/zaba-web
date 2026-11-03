@@ -8,7 +8,7 @@
     <a class="enlace-flecha sesion-pagina__volver" href="{{ url(rutas.encuentra) }}">← {{ T(encuentra.volver) }}</a>
     <p class="antetitulo">{{ T(encuentra.titulo) }}</p>
     <h1>{{ playa.nombre }} · {{ sesion.dia_mes }}</h1>
-    <p class="sesion-pagina__datos">{{ playa.lugar }} · {{ sesion.fecha_corta }} · {{ sesion.fotos|length }} {{ T(encuentra.fotos) }} · <strong>{{ precio_foto }} {{ T(encuentra.por_foto) }}</strong></p>
+    <p class="sesion-pagina__datos">{{ playa.lugar }} · {{ sesion.fecha_corta }} · <strong>{{ precio_foto }} {{ T(encuentra.por_foto) }}</strong></p>
     <ol class="buscador__pasos">
       {% for p in encuentra.pasos[1:] %}<li><span>{{ loop.index }}</span>{{ T(p) }}</li>{% endfor %}
     </ol>

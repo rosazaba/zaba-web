@@ -1,5 +1,5 @@
 # TARIFA (antes «Servicios»; en el menú: Rates / Tarifa / Tarifs). Dirección: /rates/
-# Cada servicio usa la foto de su carpeta en originales/2-servicios/<carpeta>/
+# Cada servicio usa la foto de su carpeta en originales/2-tarifa/<carpeta>/
 # Mientras esa carpeta esté vacía usa foto_provisional (ruta dentro de originales/).
 # precio: escribe "" para que ponga "Consultar".
 
@@ -32,7 +32,7 @@ lista:
       fr: ["1 h 30 dans l'eau", "Plus de 40 photos retouchées", "Galerie en ligne sous 72 h"]
 
   - carpeta: buceo
-    foto_provisional: "1-trabajos/buceo/_MG_3060.jpg"
+    foto_provisional: "1-trabajos/buceo/reportaje/_MG_3060.jpg"
     titulo: { en: "Underwater session", es: "Sesión submarina", fr: "Séance sous-marine" }
     precio: "180 €"
     texto:
@@ -44,7 +44,8 @@ lista:
       es: ["Una o dos inmersiones", "Más de 30 fotos editadas", "Galería online en 72 h"]
       fr: ["Une ou deux plongées", "Plus de 30 photos retouchées", "Galerie en ligne sous 72 h"]
 
-  - carpeta: copias
+  - carpeta: dron                                   # carpeta originales/2-tarifa/dron/ (antes «copias»)
+    enlace: tienda                                   # el botón lleva a la Tienda de impresiones
     foto_provisional: "1-trabajos/dron/IMG_20260907_09553035.jpeg"
     titulo: { en: "Fine art prints", es: "Copias artísticas", fr: "Tirages d'art" }
     precio: "45 €"
