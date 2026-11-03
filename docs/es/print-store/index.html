@@ -57,187 +57,238 @@
 </header>
 
 <main id="contenido">
-<section class="cab-nueva cab-nueva--print">
-  <div class="cab-nueva__in">
-    <div class="cab-nueva__texto">
-      <p class="cab-nueva__chip">Copias artísticas</p>
-      <h1>Tienda</h1>
-      <p class="cab-nueva__intro">Llévate el mar a casa. Cualquier foto de mis galerías, impresa en papel de calidad museo y lista para colgar.</p>
-    </div>
-    <div class="cab-nueva__arco">
-      <img class="" src="../../img/work/buceo/img-4894-1280.webp" srcset="../../img/work/buceo/img-4894-640.webp 640w, ../../img/work/buceo/img-4894-1280.webp 1280w, ../../img/work/buceo/img-4894-2000.webp 2000w" sizes="(min-width: 900px) 34vw, 70vw" width="5184" height="3456" alt="Zaba — Tienda" loading="eager" decoding="async" fetchpriority="high">
-    </div>
+
+<section class="tienda-cab">
+  <div class="ancho">
+    <p class="antetitulo">Copias artísticas</p>
+    <h1>Tienda</h1>
+    <p class="tienda-cab__intro">Llévate el mar a casa. Mis fotografías, impresas en papel fine art y listas para colgar.</p>
+    <figure class="estancia estancia--grande">
+<img class="estancia__foto" src="../../img/print-store/estancia-salon.webp" width="1790" height="1350" fetchpriority="high" decoding="async" alt="Salón — Zaba">
+    </figure>
   </div>
 </section>
-<section class="bloque estancias-bloque">
+
+<section class="tienda-pasos">
+  <ol class="ancho tienda-pasos__lista">
+    <li class="tienda-paso">
+      <span class="tienda-paso__num">01</span>
+      <h2>Elige tu foto</h2>
+      <p>Mira la colección por categorías y toca la que te enamore.</p>
+      <a class="enlace-flecha" href="#elige">Ver las fotos ↓</a>
+    </li>
+    <li class="tienda-paso">
+      <span class="tienda-paso__num">02</span>
+      <h2>Elige tamaño y material</h2>
+      <p>Mira las opciones más abajo.</p>
+      <a class="enlace-flecha" href="#tamanos">Tamaños y precios ↓</a>
+    </li>
+    <li class="tienda-paso">
+      <span class="tienda-paso__num">03</span>
+      <h2>Haz tu pedido</h2>
+      <p>Rellena el formulario y envíamelo por WhatsApp.</p>
+      <a class="enlace-flecha" href="#pedido">Formulario ↓</a>
+    </li>
+  </ol>
+</section>
+
+<section class="tienda-estancias">
   <div class="ancho">
-    <h2 class="titulo-seccion aparece">Así queda en tu pared</h2>
-    <div class="estancias">
-      <figure class="estancia aparece">
-<svg class="estancia__svg" viewBox="0 0 1200 760" role="img" aria-label="Salón — Zaba">
-  <defs>
-    <linearGradient id="pared-salon" x1="0" x2="1" y1="0" y2="0">
-<stop offset="0" stop-color="#FBF8F2"/><stop offset=".55" stop-color="#F3EDE4"/><stop offset="1" stop-color="#ECE4D8"/>
-    </linearGradient>
-    <linearGradient id="suelo-salon" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0" stop-color="#E2D2BC"/><stop offset="1" stop-color="#D6C3A8"/>
-    </linearGradient>
-    <linearGradient id="luz-salon" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#FFFFFF" stop-opacity=".75"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
-    </linearGradient>
-    <filter id="sombra-salon" x="-20%" y="-20%" width="140%" height="150%">
-      <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#5a4632" flood-opacity=".22"/>
-    </filter>
-    <filter id="sombra-suave-salon" x="-20%" y="-50%" width="140%" height="200%">
-      <feGaussianBlur stdDeviation="10"/>
-    </filter>
-  </defs>
-
-  <!-- pared y suelo -->
-  <rect width="1200" height="760" fill="url(#pared-salon)"/>
-  <rect y="612" width="1200" height="148" fill="url(#suelo-salon)"/>
-  <rect y="604" width="1200" height="10" fill="#F7F3EC"/>
-<line x1="0" y1="614" x2="-60" y2="760" stroke="#CDB89B" stroke-width="1" opacity=".5"/><line x1="150" y1="614" x2="90" y2="760" stroke="#CDB89B" stroke-width="1" opacity=".5"/><line x1="300" y1="614" x2="240" y2="760" stroke="#CDB89B" stroke-width="1" opacity=".5"/><line x1="450" y1="614" x2="390" y2="760" stroke="#CDB89B" stroke-width="1" opacity=".5"/><line x1="600" y1="614" x2="540" y2="760" stroke="#CDB89B" stroke-width="1" opacity=".5"/><line x1="750" y1="614" x2="690" y2="760" stroke="#CDB89B" stroke-width="1" opacity=".5"/><line x1="900" y1="614" x2="840" y2="760" stroke="#CDB89B" stroke-width="1" opacity=".5"/><line x1="1050" y1="614" x2="990" y2="760" stroke="#CDB89B" stroke-width="1" opacity=".5"/>
-  <!-- ventana y luz -->
-  <rect x="40" y="70" width="190" height="500" fill="#F9FBFB" stroke="#FFFFFF" stroke-width="10"/>
-  <line x1="135" y1="70" x2="135" y2="570" stroke="#FFFFFF" stroke-width="6"/>
-  <rect x="40" y="70" width="190" height="500" fill="#DDE9E8" opacity=".35"/>
-  <rect x="22" y="56" width="34" height="550" rx="6" fill="#EFE8DC"/>
-  <polygon points="230,90 230,560 760,760 420,760" fill="url(#luz-salon)" opacity=".55"/>
-  <!-- alfombra -->
-  <ellipse cx="720" cy="690" rx="400" ry="52" fill="#EFE8DC"/>
-  <!-- cuadro -->
-  <g>
-    <rect x="510" y="130" width="440" height="300" fill="#C7A57B"/>
-    <rect x="522" y="142" width="416" height="276" fill="#FFFFFF"/>
-  </g>
-  <image href="../../img/work/buceo/img-4894-1280.webp" x="550" y="168" width="360" height="224" preserveAspectRatio="xMidYMid slice"/>
-  <rect x="550" y="168" width="360" height="224" fill="none" stroke="#000" stroke-opacity=".06"/>
-  <!-- sofá -->
-  <ellipse cx="730" cy="612" rx="330" ry="16" fill="#8a7560" opacity=".25" filter="url(#sombra-suave-salon)"/>
-  <rect x="440" y="455" width="580" height="110" rx="38" fill="#DCD4C8"/>
-  <rect x="400" y="500" width="70" height="100" rx="30" fill="#D3CABD"/>
-  <rect x="990" y="500" width="70" height="100" rx="30" fill="#D3CABD"/>
-  <rect x="455" y="520" width="550" height="70" rx="22" fill="#E6DFD4"/>
-  <rect x="470" y="470" width="150" height="62" rx="24" fill="#EAE4DA"/>
-  <rect x="640" y="468" width="160" height="64" rx="24" fill="#E9E2D7"/>
-  <rect x="820" y="474" width="150" height="58" rx="24" fill="#C9B79C"/>
-  <rect x="440" y="590" width="10" height="22" fill="#8C6E50"/><rect x="1010" y="590" width="10" height="22" fill="#8C6E50"/>
-  <!-- mesa baja -->
-  <rect x="620" y="640" width="230" height="16" rx="8" fill="#C7A57B"/>
-  <rect x="640" y="656" width="8" height="40" fill="#A98760"/><rect x="822" y="656" width="8" height="40" fill="#A98760"/>
-  <circle cx="700" cy="628" r="12" fill="#3E7C78" opacity=".85"/>
-  <rect x="740" y="624" width="70" height="14" rx="3" fill="#E7A284" opacity=".8"/>
-  <!-- planta -->
-  <path d="M328 612 l10 -86 h60 l10 86 z" fill="#E8DFD2"/>
-  <g fill="#7E9C83">
-    <ellipse cx="352" cy="470" rx="22" ry="62" transform="rotate(-22 352 470)"/>
-    <ellipse cx="392" cy="452" rx="20" ry="70" transform="rotate(14 392 452)"/>
-    <ellipse cx="372" cy="430" rx="18" ry="66" transform="rotate(-4 372 430)" fill="#6C8B72"/>
-    <ellipse cx="410" cy="492" rx="18" ry="48" transform="rotate(38 410 492)" fill="#90AD94"/>
-  </g>
-  <!-- lámpara de pie -->
-  <line x1="1110" y1="612" x2="1110" y2="300" stroke="#2E2925" stroke-width="5"/>
-  <path d="M1110 300 Q 1110 230 1050 236" fill="none" stroke="#2E2925" stroke-width="5"/>
-  <path d="M1010 236 h80 l-14 44 h-52 z" fill="#EDE6DA"/>
-  <ellipse cx="1110" cy="612" rx="30" ry="6" fill="#2E2925"/>
-</svg>        <figcaption>Salón</figcaption>
+    <h2 class="tienda-estancias__titulo">Así queda en tu pared</h2>
+    <div class="tienda-estancias__fila">
+      <figure class="estancia">
+<img class="estancia__foto" src="../../img/print-store/estancia-dormitorio.webp" width="2000" height="1500" loading="lazy" decoding="async" alt="Dormitorio — Zaba">
+        <figcaption>Dormitorio</figcaption>
       </figure>
-      <figure class="estancia aparece">
-<svg class="estancia__svg" viewBox="0 0 1200 760" role="img" aria-label="Dormitorio — Zaba">
-  <defs>
-    <linearGradient id="pared-dormitorio" x1="0" x2="1" y1="0" y2="0">
-<stop offset="0" stop-color="#ECE5DA"/><stop offset=".5" stop-color="#F3EEE6"/><stop offset="1" stop-color="#FAF7F1"/>    </linearGradient>
-    <linearGradient id="suelo-dormitorio" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0" stop-color="#E2D2BC"/><stop offset="1" stop-color="#D6C3A8"/>
-    </linearGradient>
-    <linearGradient id="luz-dormitorio" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#FFFFFF" stop-opacity=".75"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
-    </linearGradient>
-    <filter id="sombra-dormitorio" x="-20%" y="-20%" width="140%" height="150%">
-      <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#5a4632" flood-opacity=".22"/>
-    </filter>
-    <filter id="sombra-suave-dormitorio" x="-20%" y="-50%" width="140%" height="200%">
-      <feGaussianBlur stdDeviation="10"/>
-    </filter>
-  </defs>
-
-  <!-- pared y suelo -->
-  <rect width="1200" height="760" fill="url(#pared-dormitorio)"/>
-  <rect y="612" width="1200" height="148" fill="url(#suelo-dormitorio)"/>
-  <rect y="604" width="1200" height="10" fill="#F7F3EC"/>
-<line x1="0" y1="614" x2="-60" y2="760" stroke="#CDB89B" stroke-width="1" opacity=".5"/><line x1="150" y1="614" x2="90" y2="760" stroke="#CDB89B" stroke-width="1" opacity=".5"/><line x1="300" y1="614" x2="240" y2="760" stroke="#CDB89B" stroke-width="1" opacity=".5"/><line x1="450" y1="614" x2="390" y2="760" stroke="#CDB89B" stroke-width="1" opacity=".5"/><line x1="600" y1="614" x2="540" y2="760" stroke="#CDB89B" stroke-width="1" opacity=".5"/><line x1="750" y1="614" x2="690" y2="760" stroke="#CDB89B" stroke-width="1" opacity=".5"/><line x1="900" y1="614" x2="840" y2="760" stroke="#CDB89B" stroke-width="1" opacity=".5"/><line x1="1050" y1="614" x2="990" y2="760" stroke="#CDB89B" stroke-width="1" opacity=".5"/>
-  <!-- ventana a la derecha y luz -->
-  <rect x="975" y="80" width="180" height="480" fill="#F9FBFB" stroke="#FFFFFF" stroke-width="10"/>
-  <rect x="975" y="80" width="180" height="480" fill="#DDE9E8" opacity=".35"/>
-  <rect x="1148" y="64" width="34" height="540" rx="6" fill="#EFE8DC"/>
-  <polygon points="975,100 975,550 420,760 760,760" fill="url(#luz-dormitorio)" opacity=".5"/>
-  <!-- lámparas colgantes -->
-  <line x1="250" y1="0" x2="250" y2="250" stroke="#2E2925" stroke-width="2"/>
-  <circle cx="250" cy="270" r="26" fill="#EDE6DA"/>
-  <line x1="850" y1="0" x2="850" y2="250" stroke="#2E2925" stroke-width="2"/>
-  <circle cx="850" cy="270" r="26" fill="#EDE6DA"/>
-  <!-- cuadro -->
-  <g>
-    <rect x="360" y="110" width="380" height="262" fill="#FFFFFF" stroke="#E5DED3" stroke-width="2"/>
-  </g>
-  <rect x="368" y="118" width="364" height="246" fill="#FFFFFF"/>
-  <image href="../../img/work/surf/dsc05331-1280.webp" x="396" y="144" width="308" height="194" preserveAspectRatio="xMidYMid slice"/>
-  <rect x="396" y="144" width="308" height="194" fill="none" stroke="#000" stroke-opacity=".06"/>
-  <!-- cama -->
-  <ellipse cx="550" cy="700" rx="360" ry="18" fill="#8a7560" opacity=".22" filter="url(#sombra-suave-dormitorio)"/>
-  <rect x="300" y="400" width="500" height="200" rx="20" fill="#C7A57B"/>
-  <rect x="265" y="560" width="570" height="130" rx="16" fill="#FBF9F5"/>
-  <rect x="265" y="600" width="570" height="90" rx="14" fill="#F1ECE3"/>
-  <path d="M265 630 h570 v44 a16 16 0 0 1 -16 16 h-538 a16 16 0 0 1 -16 -16 z" fill="#D9CCB8"/>
-  <rect x="320" y="500" width="200" height="74" rx="26" fill="#FFFFFF"/>
-  <rect x="580" y="500" width="200" height="74" rx="26" fill="#FFFFFF"/>
-  <rect x="440" y="520" width="220" height="62" rx="24" fill="#E7A284" opacity=".55"/>
-  <rect x="275" y="690" width="10" height="20" fill="#8C6E50"/><rect x="815" y="690" width="10" height="20" fill="#8C6E50"/>
-  <!-- mesillas -->
-  <rect x="150" y="540" width="100" height="90" rx="8" fill="#E8DFD2"/>
-  <line x1="160" y1="585" x2="240" y2="585" stroke="#D3C6B3" stroke-width="2"/>
-  <rect x="158" y="630" width="6" height="40" fill="#A98760"/><rect x="236" y="630" width="6" height="40" fill="#A98760"/>
-  <rect x="860" y="540" width="100" height="90" rx="8" fill="#E8DFD2"/>
-  <line x1="870" y1="585" x2="950" y2="585" stroke="#D3C6B3" stroke-width="2"/>
-  <rect x="868" y="630" width="6" height="40" fill="#A98760"/><rect x="946" y="630" width="6" height="40" fill="#A98760"/>
-  <rect x="180" y="512" width="40" height="28" rx="4" fill="#3E7C78" opacity=".8"/>
-  <path d="M885 540 l8 -40 h34 l8 40 z" fill="#FBF8F2" stroke="#E2D7C6"/>
-  <path d="M905 500 c-14 -30 4 -50 14 -60 c4 22 14 30 0 60z" fill="#7E9C83"/>
-</svg>        <figcaption>Dormitorio</figcaption>
+      <figure class="estancia">
+<img class="estancia__foto" src="../../img/print-store/estancia-estudio.webp" width="1650" height="1602" loading="lazy" decoding="async" alt="Estudio — Zaba">
+        <figcaption>Estudio</figcaption>
       </figure>
     </div>
   </div>
 </section>
 
-<section class="bloque bloque--arena">
+<section class="bloque bloque--arena tienda-elige" id="elige" data-elige>
   <div class="ancho">
-    <h2 class="titulo-seccion aparece">Cómo pedir tu copia</h2>
-    <ol class="pasos-tienda">
-      <li class="paso-tienda aparece">
-        <span class="paso-tienda__num">01</span>
-        <h3>Elige tu foto</h3>
-        <p>Recorre las galerías y apunta la foto que te enamore (o mándame una captura).</p>
-<a class="enlace-flecha" href="../../es/">Ver galerías →</a>      </li>
-      <li class="paso-tienda aparece">
-        <span class="paso-tienda__num">02</span>
-        <h3>Elige el tamaño</h3>
-        <p>Escoge uno de los tamaños de abajo. Todas las copias van firmadas y numeradas.</p>
-        <ul class="tamanos" aria-label="Tamaños">
-<li><span>20 × 30 cm</span><strong>45 €</strong></li><li><span>30 × 45 cm</span><strong>65 €</strong></li><li><span>40 × 60 cm</span><strong>95 €</strong></li><li><span>60 × 90 cm</span><strong>150 €</strong></li>        </ul>
-      </li>
-      <li class="paso-tienda aparece">
-        <span class="paso-tienda__num">03</span>
-        <h3>Elige el acabado</h3>
-        <p>Solo papel, o enmarcada en roble natural o madera blanca con paspartú.</p>
-<p class="paso-tienda__nota">Marco: de +40 € a +90 € según el tamaño.</p>      </li>
-      <li class="paso-tienda aparece">
-        <span class="paso-tienda__num">04</span>
-        <h3>Pídela por WhatsApp</h3>
-        <p>Mándame la foto, el tamaño y el acabado. Te confirmo el precio y el plazo de entrega.</p>
-        <a class="boton" href="https://wa.me/34619811240?text=%C2%A1Hola%20Zaba%21%20Quiero%20una%20copia%20impresa.%20Foto%3A%20%E2%80%A6%20/%20Tama%C3%B1o%3A%20%E2%80%A6%20/%20Acabado%3A%20%E2%80%A6" target="_blank" rel="noopener">Pedir una copia por WhatsApp</a>
-      </li>
-    </ol>
+    <span class="tienda-paso__num">01</span>
+    <h2>Elige tu foto</h2>
+    <p class="tienda-elige__texto">Toca una foto para elegirla: su código se apunta solo en el formulario de pedido.</p>
+    <div class="tienda-pestanas" role="tablist">
+<button type="button" class="ficha" role="tab" id="tab-buceo" aria-controls="grupo-buceo" aria-selected="true" data-pestana="buceo">Buceo</button><button type="button" class="ficha" role="tab" id="tab-surf" aria-controls="grupo-surf" aria-selected="false" data-pestana="surf">Surf</button><button type="button" class="ficha" role="tab" id="tab-dron" aria-controls="grupo-dron" aria-selected="false" data-pestana="dron">Dron</button>    </div>
+    <div class="tienda-grupo" id="grupo-buceo" role="tabpanel" aria-labelledby="tab-buceo" data-grupo="buceo">
+      <h3 class="tienda-grupo__titulo">Buceo</h3>
+      <ul class="tienda-fotos">
+        <li><button type="button" class="tienda-foto" data-codigo-foto="BUCEO-15" aria-pressed="false">
+          <img class="" src="../../img/work/buceo/img-4894-1280.webp" srcset="../../img/work/buceo/img-4894-640.webp 640w, ../../img/work/buceo/img-4894-1280.webp 1280w, ../../img/work/buceo/img-4894-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="5184" height="3456" alt="Buceo BUCEO-15 — Zaba" loading="lazy" decoding="async">
+          <span>BUCEO-15</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="BUCEO-29" aria-pressed="false">
+          <img class="" src="../../img/work/buceo/mg-1613-1280.webp" srcset="../../img/work/buceo/mg-1613-640.webp 640w, ../../img/work/buceo/mg-1613-1280.webp 1280w, ../../img/work/buceo/mg-1613-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="3456" height="5184" alt="Buceo BUCEO-29 — Zaba" loading="lazy" decoding="async">
+          <span>BUCEO-29</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="BUCEO-33" aria-pressed="false">
+          <img class="" src="../../img/work/buceo/mg-2481-1280.webp" srcset="../../img/work/buceo/mg-2481-640.webp 640w, ../../img/work/buceo/mg-2481-1280.webp 1280w, ../../img/work/buceo/mg-2481-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="3456" height="5184" alt="Buceo BUCEO-33 — Zaba" loading="lazy" decoding="async">
+          <span>BUCEO-33</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="BUCEO-36" aria-pressed="false">
+          <img class="" src="../../img/work/buceo/mg-3060-1280.webp" srcset="../../img/work/buceo/mg-3060-640.webp 640w, ../../img/work/buceo/mg-3060-1280.webp 1280w, ../../img/work/buceo/mg-3060-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="3456" height="5184" alt="Buceo BUCEO-36 — Zaba" loading="lazy" decoding="async">
+          <span>BUCEO-36</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="BUCEO-40" aria-pressed="false">
+          <img class="" src="../../img/work/buceo/mg-3991-1280.webp" srcset="../../img/work/buceo/mg-3991-640.webp 640w, ../../img/work/buceo/mg-3991-1280.webp 1280w, ../../img/work/buceo/mg-3991-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="3456" height="5184" alt="Buceo BUCEO-40 — Zaba" loading="lazy" decoding="async">
+          <span>BUCEO-40</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="BUCEO-43" aria-pressed="false">
+          <img class="" src="../../img/work/buceo/mg-4453-1280.webp" srcset="../../img/work/buceo/mg-4453-640.webp 640w, ../../img/work/buceo/mg-4453-1280.webp 1280w, ../../img/work/buceo/mg-4453-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="3456" height="5184" alt="Buceo BUCEO-43 — Zaba" loading="lazy" decoding="async">
+          <span>BUCEO-43</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="BUCEO-49" aria-pressed="false">
+          <img class="" src="../../img/work/buceo/mg-5814-1280.webp" srcset="../../img/work/buceo/mg-5814-640.webp 640w, ../../img/work/buceo/mg-5814-1280.webp 1280w, ../../img/work/buceo/mg-5814-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="5184" height="3456" alt="Buceo BUCEO-49 — Zaba" loading="lazy" decoding="async">
+          <span>BUCEO-49</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="BUCEO-52" aria-pressed="false">
+          <img class="" src="../../img/work/buceo/mg-5822-1280.webp" srcset="../../img/work/buceo/mg-5822-640.webp 640w, ../../img/work/buceo/mg-5822-1280.webp 1280w, ../../img/work/buceo/mg-5822-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="3456" height="5184" alt="Buceo BUCEO-52 — Zaba" loading="lazy" decoding="async">
+          <span>BUCEO-52</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="BUCEO-54" aria-pressed="false">
+          <img class="" src="../../img/work/buceo/mg-6538-1280.webp" srcset="../../img/work/buceo/mg-6538-640.webp 640w, ../../img/work/buceo/mg-6538-1280.webp 1280w, ../../img/work/buceo/mg-6538-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="3456" height="5184" alt="Buceo BUCEO-54 — Zaba" loading="lazy" decoding="async">
+          <span>BUCEO-54</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="BUCEO-59" aria-pressed="false">
+          <img class="" src="../../img/work/buceo/mg-7921-1280.webp" srcset="../../img/work/buceo/mg-7921-640.webp 640w, ../../img/work/buceo/mg-7921-1280.webp 1280w, ../../img/work/buceo/mg-7921-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="3456" height="5184" alt="Buceo BUCEO-59 — Zaba" loading="lazy" decoding="async">
+          <span>BUCEO-59</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="BUCEO-62" aria-pressed="false">
+          <img class="" src="../../img/work/buceo/mg-8251-1280.webp" srcset="../../img/work/buceo/mg-8251-640.webp 640w, ../../img/work/buceo/mg-8251-1280.webp 1280w, ../../img/work/buceo/mg-8251-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="3456" height="5184" alt="Buceo BUCEO-62 — Zaba" loading="lazy" decoding="async">
+          <span>BUCEO-62</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="BUCEO-63" aria-pressed="false">
+          <img class="" src="../../img/work/buceo/mg-8319-copy-1280.webp" srcset="../../img/work/buceo/mg-8319-copy-640.webp 640w, ../../img/work/buceo/mg-8319-copy-1280.webp 1280w, ../../img/work/buceo/mg-8319-copy-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="3456" height="5184" alt="Buceo BUCEO-63 — Zaba" loading="lazy" decoding="async">
+          <span>BUCEO-63</span>
+        </button></li>
+      </ul>
+    </div>
+    <div class="tienda-grupo" id="grupo-surf" role="tabpanel" aria-labelledby="tab-surf" data-grupo="surf">
+      <h3 class="tienda-grupo__titulo">Surf</h3>
+      <ul class="tienda-fotos">
+        <li><button type="button" class="tienda-foto" data-codigo-foto="SURF-01" aria-pressed="false">
+          <img class="" src="../../img/work/surf/dsc04743-1280.webp" srcset="../../img/work/surf/dsc04743-640.webp 640w, ../../img/work/surf/dsc04743-1280.webp 1280w, ../../img/work/surf/dsc04743-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="8640" height="5760" alt="Surf SURF-01 — Zaba" loading="lazy" decoding="async">
+          <span>SURF-01</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="SURF-25" aria-pressed="false">
+          <img class="" src="../../img/work/surf/dsc05033-2-1280.webp" srcset="../../img/work/surf/dsc05033-2-640.webp 640w, ../../img/work/surf/dsc05033-2-1280.webp 1280w, ../../img/work/surf/dsc05033-2-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="8640" height="5760" alt="Surf SURF-25 — Zaba" loading="lazy" decoding="async">
+          <span>SURF-25</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="SURF-26" aria-pressed="false">
+          <img class="" src="../../img/work/surf/dsc05034-2-1280.webp" srcset="../../img/work/surf/dsc05034-2-640.webp 640w, ../../img/work/surf/dsc05034-2-1280.webp 1280w, ../../img/work/surf/dsc05034-2-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="8640" height="5760" alt="Surf SURF-26 — Zaba" loading="lazy" decoding="async">
+          <span>SURF-26</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="SURF-27" aria-pressed="false">
+          <img class="" src="../../img/work/surf/dsc05035-2-1280.webp" srcset="../../img/work/surf/dsc05035-2-640.webp 640w, ../../img/work/surf/dsc05035-2-1280.webp 1280w, ../../img/work/surf/dsc05035-2-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="8640" height="5760" alt="Surf SURF-27 — Zaba" loading="lazy" decoding="async">
+          <span>SURF-27</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="SURF-32" aria-pressed="false">
+          <img class="" src="../../img/work/surf/dsc05095-2-1280.webp" srcset="../../img/work/surf/dsc05095-2-640.webp 640w, ../../img/work/surf/dsc05095-2-1280.webp 1280w, ../../img/work/surf/dsc05095-2-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="8640" height="5760" alt="Surf SURF-32 — Zaba" loading="lazy" decoding="async">
+          <span>SURF-32</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="SURF-33" aria-pressed="false">
+          <img class="" src="../../img/work/surf/dsc05098-2-1280.webp" srcset="../../img/work/surf/dsc05098-2-640.webp 640w, ../../img/work/surf/dsc05098-2-1280.webp 1280w, ../../img/work/surf/dsc05098-2-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="8640" height="5760" alt="Surf SURF-33 — Zaba" loading="lazy" decoding="async">
+          <span>SURF-33</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="SURF-45" aria-pressed="false">
+          <img class="" src="../../img/work/surf/dsc05195-1280.webp" srcset="../../img/work/surf/dsc05195-640.webp 640w, ../../img/work/surf/dsc05195-1280.webp 1280w, ../../img/work/surf/dsc05195-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="8640" height="5760" alt="Surf SURF-45 — Zaba" loading="lazy" decoding="async">
+          <span>SURF-45</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="SURF-46" aria-pressed="false">
+          <img class="" src="../../img/work/surf/dsc05203-1280.webp" srcset="../../img/work/surf/dsc05203-640.webp 640w, ../../img/work/surf/dsc05203-1280.webp 1280w, ../../img/work/surf/dsc05203-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="8640" height="5760" alt="Surf SURF-46 — Zaba" loading="lazy" decoding="async">
+          <span>SURF-46</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="SURF-60" aria-pressed="false">
+          <img class="" src="../../img/work/surf/dsc05313-1280.webp" srcset="../../img/work/surf/dsc05313-640.webp 640w, ../../img/work/surf/dsc05313-1280.webp 1280w, ../../img/work/surf/dsc05313-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="5760" height="8640" alt="Surf SURF-60 — Zaba" loading="lazy" decoding="async">
+          <span>SURF-60</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="SURF-62" aria-pressed="false">
+          <img class="" src="../../img/work/surf/dsc05331-1280.webp" srcset="../../img/work/surf/dsc05331-640.webp 640w, ../../img/work/surf/dsc05331-1280.webp 1280w, ../../img/work/surf/dsc05331-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="8577" height="5718" alt="Surf SURF-62 — Zaba" loading="lazy" decoding="async">
+          <span>SURF-62</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="SURF-63" aria-pressed="false">
+          <img class="" src="../../img/work/surf/dsc05334-1280.webp" srcset="../../img/work/surf/dsc05334-640.webp 640w, ../../img/work/surf/dsc05334-1280.webp 1280w, ../../img/work/surf/dsc05334-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="8640" height="5760" alt="Surf SURF-63 — Zaba" loading="lazy" decoding="async">
+          <span>SURF-63</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="SURF-66" aria-pressed="false">
+          <img class="" src="../../img/work/surf/dsc08478-1280.webp" srcset="../../img/work/surf/dsc08478-640.webp 640w, ../../img/work/surf/dsc08478-1280.webp 1280w, ../../img/work/surf/dsc08478-2000.webp 2000w" sizes="(min-width: 900px) 220px, 45vw" width="8640" height="5760" alt="Surf SURF-66 — Zaba" loading="lazy" decoding="async">
+          <span>SURF-66</span>
+        </button></li>
+      </ul>
+    </div>
+    <div class="tienda-grupo" id="grupo-dron" role="tabpanel" aria-labelledby="tab-dron" data-grupo="dron">
+      <h3 class="tienda-grupo__titulo">Dron</h3>
+      <ul class="tienda-fotos">
+        <li><button type="button" class="tienda-foto" data-codigo-foto="DRON-01" aria-pressed="false">
+          <img class="" src="../../img/work/dron/img-20260907-09532450-1280.webp" srcset="../../img/work/dron/img-20260907-09532450-640.webp 640w, ../../img/work/dron/img-20260907-09532450-1280.webp 1280w, ../../img/work/dron/img-20260907-09532450-1512.webp 1512w" sizes="(min-width: 900px) 220px, 45vw" width="1512" height="2688" alt="Dron DRON-01 — Zaba" loading="lazy" decoding="async">
+          <span>DRON-01</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="DRON-02" aria-pressed="false">
+          <img class="" src="../../img/work/dron/img-20260907-09541134-1280.webp" srcset="../../img/work/dron/img-20260907-09541134-640.webp 640w, ../../img/work/dron/img-20260907-09541134-1280.webp 1280w, ../../img/work/dron/img-20260907-09541134-1512.webp 1512w" sizes="(min-width: 900px) 220px, 45vw" width="1512" height="2688" alt="Dron DRON-02 — Zaba" loading="lazy" decoding="async">
+          <span>DRON-02</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="DRON-03" aria-pressed="false">
+          <img class="" src="../../img/work/dron/img-20260907-09544991-1280.webp" srcset="../../img/work/dron/img-20260907-09544991-640.webp 640w, ../../img/work/dron/img-20260907-09544991-1280.webp 1280w, ../../img/work/dron/img-20260907-09544991-1512.webp 1512w" sizes="(min-width: 900px) 220px, 45vw" width="1512" height="2688" alt="Dron DRON-03 — Zaba" loading="lazy" decoding="async">
+          <span>DRON-03</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="DRON-04" aria-pressed="false">
+          <img class="" src="../../img/work/dron/img-20260907-09551703-1280.webp" srcset="../../img/work/dron/img-20260907-09551703-640.webp 640w, ../../img/work/dron/img-20260907-09551703-1280.webp 1280w, ../../img/work/dron/img-20260907-09551703-1512.webp 1512w" sizes="(min-width: 900px) 220px, 45vw" width="1512" height="2688" alt="Dron DRON-04 — Zaba" loading="lazy" decoding="async">
+          <span>DRON-04</span>
+        </button></li>
+        <li><button type="button" class="tienda-foto" data-codigo-foto="DRON-05" aria-pressed="false">
+          <img class="" src="../../img/work/dron/img-20260907-09553035-1280.webp" srcset="../../img/work/dron/img-20260907-09553035-640.webp 640w, ../../img/work/dron/img-20260907-09553035-1280.webp 1280w, ../../img/work/dron/img-20260907-09553035-1512.webp 1512w" sizes="(min-width: 900px) 220px, 45vw" width="1512" height="2688" alt="Dron DRON-05 — Zaba" loading="lazy" decoding="async">
+          <span>DRON-05</span>
+        </button></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="bloque tienda-opciones" id="tamanos">
+  <div class="ancho tienda-opciones__in">
+    <div>
+      <span class="tienda-paso__num">02</span>
+      <h2>Materiales</h2>
+      <p>Todas las fotografías se imprimen en papel fine art, para que el color dure y sea fiel.</p>
+      <ul class="lista-check">
+<li><strong>Papel fine art</strong> — Papel de algodón mate, sin marco. Negros profundos y tonos suaves.</li><li><strong>Enmarcada · roble natural</strong> — Marco fino de roble con paspartú blanco, lista para colgar.</li><li><strong>Enmarcada · madera blanca</strong> — Marco fino de madera blanca con paspartú.</li>      </ul>
+    </div>
+    <div>
+      <h2 class="tienda-opciones__h2">Tamaños y precios</h2>
+      <ul class="tamanos">
+<li><span>20 × 30 cm</span><strong>45 €</strong></li><li><span>30 × 45 cm</span><strong>65 €</strong></li><li><span>40 × 60 cm</span><strong>95 €</strong></li><li><span>60 × 90 cm</span><strong>150 €</strong></li>      </ul>
+      <p class="tamanos__nota">Marco: de +40 € a +90 € según el tamaño. Envío aparte.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bloque tienda-pedido" id="pedido">
+  <div class="estrecho tienda-pedido__in">
+    <div>
+      <span class="tienda-paso__num">03</span>
+      <h2>Haz tu pedido</h2>
+      <p>Cada copia se imprime por encargo. Rellena el formulario y te respondo por WhatsApp con el precio y el plazo.</p>
+      <form class="formulario formulario--fresco tienda-form" data-pedido data-whatsapp="34619811240" data-saludo="¡Hola Zaba! Quiero pedir una copia impresa.">
+        <label>Nombre<input name="nombre" required autocomplete="given-name" data-etiqueta="Nombre"></label>
+        <label>Apellidos<input name="apellidos" required autocomplete="family-name" data-etiqueta="Apellidos"></label>
+        <label class="ancho-total">Foto elegida (código o descripción)<input name="foto" required data-foto-elegida data-etiqueta="Foto elegida"></label>
+        <label>Material<select name="material" required data-etiqueta="Material">
+          <option value="">Elige…</option>
+<option>Papel fine art</option><option>Enmarcada · roble natural</option><option>Enmarcada · madera blanca</option>        </select></label>
+        <label>Tamaño<select name="tamano" required data-etiqueta="Tamaño">
+          <option value="">Elige…</option>
+<option>20 × 30 cm · 45 €</option><option>30 × 45 cm · 65 €</option><option>40 × 60 cm · 95 €</option><option>60 × 90 cm · 150 €</option>        </select></label>
+        <label class="ancho-total">País<input name="pais" autocomplete="country-name" data-etiqueta="País"></label>
+        <label class="ancho-total">Mensaje (opcional)<textarea name="mensaje" rows="3" data-etiqueta="Mensaje (opcional)"></textarea></label>
+        <button class="boton ancho-total" type="submit">Enviar pedido por WhatsApp</button>
+        <p class="tienda-form__nota ancho-total">Se abre WhatsApp con tu pedido ya escrito.</p>
+      </form>
+    </div>
   </div>
 </section>
 <section class="cierre">

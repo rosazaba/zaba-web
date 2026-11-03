@@ -128,25 +128,18 @@
     requestAnimationFrame(paso);
   });
 
-  /* Encuentra tus fotos: buscador por texto (playa, pueblo, fecha) y fichas por playa */
+  /* Encuentra tus fotos: fichas por playa y buscador por texto (playa, pueblo, fecha) sobre las tarjetas de sesión */
   var buscador = document.querySelector("[data-buscador]");
   if (buscador) {
     var campo = buscador.querySelector("[data-buscar]");
     var fichas = buscador.querySelectorAll("[data-playa]");
     var playaActiva = "";
-    var normal = function (t) { return (t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); };
+    var normal = function (t) { return (t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); };
     function filtrar() {
       var q = normal(campo.value.trim()), alguna = false;
-      buscador.querySelectorAll("[data-playa-bloque]").forEach(function (b) {
-        var deEsta = !playaActiva || b.dataset.playaBloque === playaActiva;
-        var sesiones = b.querySelectorAll("[data-sesion]"), visibles = 0;
-        sesiones.forEach(function (s) {
-          var ok = deEsta && (!q || normal(s.dataset.texto).indexOf(q) > -1);
-          s.hidden = !ok; if (ok) { visibles++; if (q) s.open = true; }
-        });
-        var nombreCoincide = !q || normal(b.dataset.texto).indexOf(q) > -1;
-        var mostrar = deEsta && (sesiones.length ? visibles > 0 : nombreCoincide);
-        b.hidden = !mostrar; if (mostrar) alguna = true;
+      buscador.querySelectorAll("[data-tarjeta]").forEach(function (t) {
+        var ok = (!playaActiva || t.dataset.playaDe === playaActiva) && (!q || normal(t.dataset.texto).indexOf(q) > -1);
+        t.hidden = !ok; if (ok) alguna = true;
       });
       buscador.querySelector("[data-nada]").hidden = alguna;
     }
@@ -157,6 +150,43 @@
         fichas.forEach(function (o) { o.setAttribute("aria-pressed", o === f); });
         filtrar();
       });
+    });
+  }
+
+  /* Tienda: pestañas por categoría, elegir foto (se apunta en el pedido) y pedido por WhatsApp */
+  var elige = document.querySelector("[data-elige]");
+  var pedido = document.querySelector("[data-pedido]");
+  if (elige) {
+    var pestanas = elige.querySelectorAll("[data-pestana]");
+    function verGrupo(id) {
+      pestanas.forEach(function (p) { p.setAttribute("aria-selected", p.dataset.pestana === id); });
+      elige.querySelectorAll("[data-grupo]").forEach(function (gr) { gr.hidden = gr.dataset.grupo !== id; });
+    }
+    if (pestanas.length) {
+      pestanas.forEach(function (p) { p.addEventListener("click", function () { verGrupo(p.dataset.pestana); }); });
+      verGrupo(pestanas[0].dataset.pestana);
+    }
+    var campoFoto = pedido && pedido.querySelector("[data-foto-elegida]");
+    elige.querySelectorAll("[data-codigo-foto]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        elige.querySelectorAll("[data-codigo-foto]").forEach(function (o) { o.setAttribute("aria-pressed", o === b); });
+        if (campoFoto) {
+          campoFoto.value = b.dataset.codigoFoto;
+          campoFoto.classList.add("recien-elegida");
+          setTimeout(function () { campoFoto.classList.remove("recien-elegida"); }, 1600);
+        }
+      });
+    });
+  }
+  if (pedido) {
+    pedido.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var lineas = [pedido.dataset.saludo];
+      pedido.querySelectorAll("[data-etiqueta]").forEach(function (c) {
+        var v = (c.tagName === "SELECT" ? (c.value ? c.options[c.selectedIndex].text : "") : c.value).trim();
+        if (v) lineas.push(c.dataset.etiqueta + ": " + v);
+      });
+      window.open("https://wa.me/" + pedido.dataset.whatsapp + "?text=" + encodeURIComponent(lineas.join("\n")), "_blank", "noopener");
     });
   }
 

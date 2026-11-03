@@ -1,1 +1,2 @@
-Fotos que vendes impresas. Las 2 primeras (por nombre: 01-, 02-) salen colgadas en el salon y el dormitorio de la Tienda.
+Fotos que vendes impresas (opcional). Si pones fotos aqui, son las que se eligen en la Tienda; si esta vacia, se eligen de las galerias (Surf, Buceo, Dron).
+estancias/ = habitaciones de ejemplo con tus fotos colgadas. portada/ no se usa ahora.

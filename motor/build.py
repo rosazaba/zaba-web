@@ -18,7 +18,7 @@ from pathlib import Path
 import yaml
 from jinja2 import Environment, FileSystemLoader
 from markupsafe import Markup, escape
-from PIL import Image, ImageOps
+from PIL import Image, ImageOps, ImageDraw, ImageFilter
 
 RAIZ = Path(__file__).resolve().parent.parent
 ORIG = RAIZ / "originales"
@@ -46,6 +46,7 @@ def en_orig(ruta):
 BANCOS_IMAGENES = ("unsplash", "pexels", "pixabay", "shutterstock", "istock", "adobestock", "freepik")
 NO_SON_GALERIAS = {"portada", "portadas", "seleccion", "fotos-banco-imagenes"}
 PRECIO_FOTO_DEFECTO = "15 €"
+FOTOS_TIENDA_POR_GALERIA = 12   # Tienda sin fotos propias: cuántas fotos de cada galería se pueden elegir
 # Menú (en este orden) y la dirección de cada página
 RUTAS = {"inicio": "", "services": "rates/", "print": "print-store/", "encuentra": "find-your-photos/",
          "about": "about/", "contact": "contact/"}
@@ -548,46 +549,128 @@ def main():
     portada_servicios = portada_de(C_SERVICIOS, "services")
     portada_contacto = portada_de(C_CONTACTO, "contact")
 
-    # ── Print Store: 2 estancias (salón y dormitorio) con una foto colgada en cada una ──
+    # ── Tienda: estancias (salón, dormitorio, estudio…) con una foto enmarcada en la pared ──
     tienda = leer("print-store")
     portada_tienda = portada_de(C_PRINT, "print-store")
-    fotos_tienda = [optimizar(p, "print-store") for p in fotos_de(C_PRINT)[:2]]
-    if len(fotos_tienda) < 2:
-        # Mientras 5-print-store/ esté vacía: las mejores fotos horizontales de galerías distintas
+    # Estancias REALES: originales/5-tienda/estancias/<tipo>-… (salon-…, dormitorio-…, estudio-…; fotos reales o de IA).
+    # La foto que se cuelga en cada una: print-store.yml → estancias_reales.<tipo>.foto (ruta dentro de originales/).
+    # Las fotos de las habitaciones no pasan por fotos_de(): pueden venir de un banco de imágenes (no son trabajo suyo).
+    carpeta_est = ORIG / C_PRINT / "estancias"
+    conf_est = tienda.get("estancias_reales") or {"salon": {}, "dormitorio": {}}
+    reserva = fotos_de(C_PRINT)[:len(conf_est)]
+    if len(reserva) < len(conf_est):
+        # sin foto indicada: las mejores fotos horizontales de galerías distintas
         candidatas = []
         for gal in galerias:
             horiz = sorted([f for f in gal["fotos"] if f["ratio"] > 1.25], key=lambda f: -f["calidad"])
-            if horiz: candidatas.append(horiz[0])
-        candidatas.sort(key=lambda f: -f["calidad"])
-        fotos_tienda += candidatas[:2 - len(fotos_tienda)]
-        avisos.append(f"La Tienda usa fotos de las galerías de ejemplo: pon las tuyas en originales/{C_PRINT}/ (las 2 primeras salen en las estancias).")
-    estancias = [{"tipo": t, "foto": f} for t, f in zip(["salon", "dormitorio"], fotos_tienda)]
-    # Estancias REALES: originales/5-tienda/estancias/salon-… y dormitorio-… (fotos reales o generadas con IA).
-    # Si existen, se monta la foto en la pared (posición en print-store.yml → estancias_reales) y sustituyen
-    # a las ilustraciones. No pasan por fotos_de(): pueden venir de un banco de imágenes (no son trabajo suyo).
-    carpeta_est = ORIG / C_PRINT / "estancias"
-    conf_est = tienda.get("estancias_reales") or {}
-    for e in estancias:
+            if horiz: candidatas.append(ORIG / horiz[0]["origen_ruta"])
+        reserva += candidatas
+    estancias = []
+    for tipo, c in conf_est.items():
+        c = c or {}
+        src = en_orig(c["foto"]) if c.get("foto") and en_orig(c["foto"]).exists() else None
+        if c.get("foto") and not src:
+            avisos.append(f"Tienda: no encuentro la foto de la estancia «{tipo}»: {c['foto']}")
+        if not src:
+            src = reserva.pop(0) if reserva else None
         sala = next((p for p in sorted(carpeta_est.glob("*")) if p.suffix.lower() in EXT
-                     and slug(p.stem).startswith(e["tipo"])), None) if carpeta_est.exists() else None
-        if not sala or not e["foto"]:
+                     and slug(p.stem).startswith(tipo)), None) if carpeta_est.exists() else None
+        e = {"tipo": tipo, "foto": None, "real": None}
+        if not src:
             continue
-        c = conf_est.get(e["tipo"]) or {}
-        out = IMG_DIR / "print-store" / f"estancia-{e['tipo']}.webp"
+        if not sala:
+            if tipo in ("salon", "dormitorio"):          # ilustración SVG de reserva
+                e["foto"] = optimizar(src, "print-store"); estancias.append(e)
+            continue
+        out = IMG_DIR / "print-store" / f"estancia-{tipo}.webp"
         out.parent.mkdir(parents=True, exist_ok=True)
         generadas.add(out)
-        with Image.open(sala) as fondo, Image.open(en_orig(e["foto"]["origen_ruta"])) as cuadro:
+        with Image.open(sala) as fondo, Image.open(src) as cuadro:
             fondo = ImageOps.exif_transpose(fondo).convert("RGB")
             fondo.thumbnail((2000, 2000), Image.LANCZOS)
             W, H = fondo.size
-            # posición del cuadro: centro (x, y) y ancho, en % de la foto de la estancia
-            cx, cy, ancho = (float(c.get(k, d)) / 100 for k, d in (("centro_x", 50), ("centro_y", 33), ("ancho", 34)))
             cuadro = ImageOps.exif_transpose(cuadro).convert("RGB")
-            w = round(W * ancho); h = round(w * cuadro.height / cuadro.width)
-            cuadro = ImageOps.fit(cuadro, (w, h), Image.LANCZOS)
-            fondo.paste(cuadro, (round(W * cx - w / 2), round(H * cy - h / 2)))
+            if c.get("girar"):
+                cuadro = cuadro.rotate(-float(c["girar"]), expand=True)     # grados en el sentido del reloj
+            if c.get("recorte"):                                            # proporción ancho/alto, p. ej. 1.5
+                rw = float(c["recorte"])
+                cw, ch = (cuadro.width, round(cuadro.width / rw)) if cuadro.width / cuadro.height < rw else (round(cuadro.height * rw), cuadro.height)
+                cuadro = ImageOps.fit(cuadro, (cw, ch), Image.LANCZOS)
+            if c.get("esquinas"):
+                # la foto sustituye el lienzo de un cuadro que ya está en la habitación, aunque se vea en perspectiva:
+                # esquinas [[x, y] arriba-izq, arriba-der, abajo-der, abajo-izq] en %
+                dst = [(v[0] / 100 * W, v[1] / 100 * H) for v in c["esquinas"]]
+                ancho_l = max(abs(dst[1][0] - dst[0][0]), abs(dst[2][0] - dst[3][0]))
+                alto_l = max(abs(dst[3][1] - dst[0][1]), abs(dst[2][1] - dst[1][1]))
+                cw, ch = round(ancho_l * 2), round(alto_l * 2)
+                lienzo = ImageOps.fit(cuadro, (cw, ch), Image.LANCZOS)
+                src_pts = [(0, 0), (cw, 0), (cw, ch), (0, ch)]
+                # coeficientes de la transformación (de cada punto de la habitación al punto del lienzo)
+                import numpy as np
+                A, B = [], []
+                for (X, Y), (u, v) in zip(dst, src_pts):
+                    A += [[X, Y, 1, 0, 0, 0, -u * X, -u * Y], [0, 0, 0, X, Y, 1, -v * X, -v * Y]]; B += [u, v]
+                coef = np.linalg.solve(np.array(A, float), np.array(B, float)).tolist()
+                capa = lienzo.transform(fondo.size, Image.PERSPECTIVE, coef, Image.BICUBIC)
+                mascara = Image.new("L", fondo.size, 0)
+                ImageDraw.Draw(mascara).polygon(dst, fill=255)
+                fondo.paste(capa, (0, 0), mascara.filter(ImageFilter.GaussianBlur(0.6)))
+                fondo.save(out, "WEBP", quality=82, method=5)
+                e["real"] = {"src": f"img/print-store/{out.name}", "ancho": W, "alto": H}
+                estancias.append(e)
+                continue
+            if c.get("hueco"):
+                # la foto sustituye el lienzo de un cuadro que ya está en la habitación: [x0, y0, x1, y1] en %
+                x0, y0, x1, y1 = (round(v / 100 * (W if i % 2 == 0 else H)) for i, v in enumerate(c["hueco"]))
+                fondo.paste(ImageOps.fit(cuadro, (x1 - x0, y1 - y0), Image.LANCZOS), (x0, y0))
+                fondo.save(out, "WEBP", quality=82, method=5)
+                e["real"] = {"src": f"img/print-store/{out.name}", "ancho": W, "alto": H}
+                estancias.append(e)
+                continue
+            # marco de roble fino y paspartú blanco (grosor relativo al ancho de la habitación)
+            con_marco = c.get("marco", True)
+            borde = (max(4, round(W * 0.008)) if con_marco else 0, round(W * 0.025) if con_marco else 0)
+            b = sum(borde)
+            # tamaño del cuadro entero: por «ancho» o por «alto» (en % de la foto de la estancia)
+            cx, cy = float(c.get("centro_x", 50)) / 100, float(c.get("centro_y", 33)) / 100
+            r = cuadro.height / cuadro.width
+            if c.get("alto"):
+                h = round(H * float(c["alto"]) / 100); fh = h - 2 * b; fw = round(fh / r); w = fw + 2 * b
+            else:
+                w = round(W * float(c.get("ancho", 34)) / 100); fw = w - 2 * b; fh = round(fw * r); h = fh + 2 * b
+            x, y = round(W * cx - w / 2), round(H * cy - h / 2)
+            if con_marco:
+                # sombra de contacto muy suave en la pared (para que no parezca pegado)
+                sombra = Image.new("L", fondo.size, 0)
+                ImageDraw.Draw(sombra).rectangle((x + 2, y + 6, x + w + 2, y + h + 8), fill=70)
+                sombra = sombra.filter(ImageFilter.GaussianBlur(max(6, w // 60)))
+                fondo = Image.composite(Image.new("RGB", fondo.size, (60, 52, 45)), fondo, sombra)
+                d = ImageDraw.Draw(fondo)
+                d.rectangle((x, y, x + w - 1, y + h - 1), fill=(176, 138, 98))                   # roble
+                d.rectangle((x + borde[0], y + borde[0], x + w - borde[0] - 1, y + h - borde[0] - 1), fill=(246, 244, 239))  # paspartú
+            fondo.paste(ImageOps.fit(cuadro, (fw, fh), Image.LANCZOS), (x + b, y + b))
             fondo.save(out, "WEBP", quality=82, method=5)
-            e["real"] = {"src": f"img/print-store/{out.name}", "ancho": W, "alto": H}
+        e["real"] = {"src": f"img/print-store/{out.name}", "ancho": W, "alto": H}
+        estancias.append(e)
+    if not any(e["real"] for e in estancias):
+        avisos.append(f"La Tienda usa las estancias dibujadas: pon fotos de habitaciones en originales/{C_PRINT}/estancias/.")
+    # Colección para elegir foto (paso 1): las fotos de 5-tienda/ si las hay; si no, las galerías (Surf, Buceo, Dron).
+    # Cada foto lleva un código corto (SURF-03) que se apunta solo en el formulario de pedido.
+    propias = fotos_de(C_PRINT)
+    if propias:
+        grupos_tienda = [{"id": "coleccion", "titulo": tienda.get("coleccion_titulo") or {"en": "Collection", "es": "Colección", "fr": "Collection"},
+                          "fotos": [optimizar(p, "print-store") for p in propias]}]
+    else:
+        grupos_tienda = [{"id": gal["id"], "titulo": gal["titulo"], "fotos": gal["fotos"]} for gal in galerias if gal["fotos"]]
+    for gr in grupos_tienda:
+        pre = slug(gr["id"]).upper().replace("-", "")[:8]
+        # el código sale del orden en la galería (no cambia aunque se muestren menos)
+        todas = [{"foto": f, "codigo": f"{pre}-{n:02d}"} for n, f in enumerate(gr["fotos"], 1)]
+        if gr["id"] != "coleccion" and len(todas) > FOTOS_TIENDA_POR_GALERIA:
+            # de una galería: solo las mejores (nitidez, contraste y color), en su orden
+            mejores = sorted(todas, key=lambda x: -x["foto"].get("calidad", 0))[:FOTOS_TIENDA_POR_GALERIA]
+            todas = [x for x in todas if x in mejores]
+        gr["fotos"] = todas
 
     # ── Encuentra tus fotos: playa → sesión (fecha) → fotos con marca de agua y código ──
     encuentra = leer("encuentra")
@@ -612,7 +695,11 @@ def main():
                                           f"{loc['codigo']}-{''.join(m.groups())}-{n:03d}")
                                 for n, p in enumerate(fotos_de(d.relative_to(ORIG).as_posix()), 1)]
                 if fotos_sesion:
-                    sesiones.append({"fecha": d.name, "fecha_corta": f"{m.group(3)}/{m.group(2)}/{m.group(1)}", "fotos": fotos_sesion})
+                    fecha = "-".join(m.groups())
+                    sesiones.append({"fecha": fecha, "fecha_corta": f"{m.group(3)}/{m.group(2)}/{m.group(1)}",
+                                     "dia_mes": f"{m.group(3)}.{m.group(2)}", "fotos": fotos_sesion,
+                                     # cada sesión tiene su página: find-your-photos/<playa>-<AAAA-MM-DD>/
+                                     "ruta": f"{RUTAS['encuentra']}{loc['carpeta']}-{fecha}/"})
         playas.append({**loc, "sesiones": sesiones, "n_fotos": sum(len(x["fotos"]) for x in sesiones)})
 
     # Páginas: (id, ruta sin idioma, plantilla, datos extra)
@@ -625,6 +712,11 @@ def main():
                ("contact", RUTAS["contact"], "contact.html", {"portada_pagina": portada_contacto})]
     for gal in galerias:
         paginas.append((f"galeria-{gal['id']}", f"work/{gal['url']}/", "galeria.html", {"galeria": gal}))
+    # Encuentra tus fotos: una página por sesión (la marca del menú sigue en «Encuentra tus fotos»)
+    for pl in playas:
+        for ses in pl["sesiones"]:
+            paginas.append(("encuentra", ses["ruta"], "encuentra-sesion.html",
+                            {"playa": pl, "sesion": ses, "miga": f"{pl['nombre']} · {ses['fecha_corta']}"}))
 
     # Iconos SVG locales (motor/assets/iconos/), incrustados en el HTML y coloreados con el color del texto
     iconos = {}
@@ -690,10 +782,11 @@ def main():
             if g["contacto"].get("instagram"): negocio["sameAs"] = ["https://www.instagram.com/" + g["contacto"]["instagram"] + "/"]
             grafo = [negocio]
             if ruta:
-                migas = [("inicio", "")]
+                migas = [("inicio", "")] + ([("encuentra", RUTAS["encuentra"])] if "miga" in extra else [])
                 elementos = [{"@type": "ListItem", "position": n + 1, "name": T(g["menu"][k]), "item": dom + "/" + prefijo + r}
                              for n, (k, r) in enumerate(migas)]
-                nombre_actual = T(extra["galeria"]["titulo"]) if "galeria" in extra else T(g["menu"].get(pid, {}))
+                nombre_actual = (T(extra["galeria"]["titulo"]) if "galeria" in extra
+                                 else extra["miga"] if "miga" in extra else T(g["menu"].get(pid, {})))
                 elementos.append({"@type": "ListItem", "position": len(elementos) + 1, "name": nombre_actual,
                                   "item": dom + "/" + ruta_completa})
                 grafo.append({"@type": "BreadcrumbList", "itemListElement": elementos})
@@ -703,7 +796,7 @@ def main():
             html = env.get_template(plantilla).render(json_ld=json_ld,
                 lang=lang, pid=pid, iconos=iconos, T=T, url=url, asset=asset, srcset=srcset, foto=foto,
                 g=g, inicio=inicio, work=work, services=services, about=about, contact=contact,
-                rutas=RUTAS, tienda=tienda, estancias=estancias, encuentra=encuentra, playas=playas, precio_foto=precio_foto,
+                rutas=RUTAS, tienda=tienda, estancias=estancias, grupos_tienda=grupos_tienda, encuentra=encuentra, playas=playas, precio_foto=precio_foto,
                 portada=portada[0] if portada else None, destacadas=destacadas,
                 foto_about=foto_about[0] if foto_about else None, sobre=sobre,
                 galerias=galerias, lista_servicios=lista_servicios,

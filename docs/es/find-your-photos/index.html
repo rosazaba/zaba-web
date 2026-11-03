@@ -74,31 +74,45 @@
     <ol class="buscador__pasos">
 <li><span>1</span>Busca tu sesión</li><li><span>2</span>Pulsa «Comprar» en tu foto</li><li><span>3</span>Págala y recíbela en alta resolución</li>    </ol>
     <div class="buscador__barra">
-      <input type="search" class="buscador__campo" placeholder="Busca playa, pueblo o fecha (p. ej. 01/11/2026)" aria-label="Busca playa, pueblo o fecha (p. ej. 01/11/2026)" data-buscar>
       <div class="buscador__fichas" role="group" aria-label="Encuentra tus fotos">
         <button type="button" class="ficha" aria-pressed="true" data-playa="">Todas</button>
-<button type="button" class="ficha" aria-pressed="false" data-playa="playa-de-patos-vigo">Playa de Patos · Vigo</button><button type="button" class="ficha" aria-pressed="false" data-playa="playa-de-berria-santona">Playa de Berria · Santoña</button>      </div>
+<button type="button" class="ficha" aria-pressed="false" data-playa="playa-de-patos-vigo">Playa de Patos</button><button type="button" class="ficha" aria-pressed="false" data-playa="playa-de-berria-santona">Playa de Berria</button>      </div>
+      <input type="search" class="buscador__campo" placeholder="Busca playa, pueblo o fecha (p. ej. 01/11/2026)" aria-label="Busca playa, pueblo o fecha (p. ej. 01/11/2026)" data-buscar>
     </div>
-    <p class="precio-foto"><strong>15 €</strong> por foto</p>
 
-    <article class="playa" data-playa-bloque="playa-de-patos-vigo" data-texto="playa de patos vigo">
-      <header class="playa__cabeza">
-        <h2>Playa de Patos <span>· Vigo</span></h2>
-        <p></p>
-      </header>
-      <p class="playa__vacia">Aún no hay sesiones: muy pronto.</p>
-    </article>
-    <article class="playa" data-playa-bloque="playa-de-berria-santona" data-texto="playa de berria santoña">
-      <header class="playa__cabeza">
-        <h2>Playa de Berria <span>· Santoña</span></h2>
-        <p></p>
-      </header>
-      <p class="playa__vacia">Aún no hay sesiones: muy pronto.</p>
-    </article>
+    <ul class="sesiones">
+      <li data-tarjeta data-playa-de="playa-de-patos-vigo" data-texto="playa de patos vigo">
+        <div class="sesion-tarjeta sesion-tarjeta--vacia">
+          <span class="sesion-tarjeta__texto">
+            <span class="sesion-tarjeta__titulo">Playa de Patos</span>
+            <span class="sesion-tarjeta__lugar">Vigo · próximamente</span>
+          </span>
+        </div>
+      </li>
+      <li data-tarjeta data-playa-de="playa-de-berria-santona" data-texto="playa de berria santoña">
+        <div class="sesion-tarjeta sesion-tarjeta--vacia">
+          <span class="sesion-tarjeta__texto">
+            <span class="sesion-tarjeta__titulo">Playa de Berria</span>
+            <span class="sesion-tarjeta__lugar">Santoña · próximamente</span>
+          </span>
+        </div>
+      </li>
+    </ul>
     <p class="buscador__nada" data-nada hidden>No hay sesiones que coincidan con tu búsqueda.</p>
+
+    <div class="encuentra-avisos">
+      <p class="encuentra-avisos__subida"><strong>Las fotos se suben la misma tarde de la sesión o a la mañana siguiente.</strong> <span>15 € por foto.</span></p>
+      <p class="encuentra-avisos__legal">Fotos tomadas en un entorno deportivo público y publicadas solo para que puedas encontrar y comprar las tuyas. Si quieres que retire alguna, escríbeme y la borro.</p>
+    </div>
   </div>
 </section>
-</main>
+<section class="cierre">
+  <div class="estrecho aparece">
+    <h2 class="titulo-grande">Salgamos a hacer fotos</h2>
+    <p>Cuéntame dónde, cuándo y qué tienes en mente. Suelo responder en menos de un día.</p>
+    <a class="boton" href="../../es/contact/">Escríbeme</a>
+  </div>
+</section></main>
 
 <footer class="pie">
   <div class="pie__in">

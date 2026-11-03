@@ -1,7 +1,9 @@
 # TIENDA (en inglés: Print Store; en francés: Boutique). Dirección: /print-store/
-# Fotos: originales/5-tienda/  → las 2 primeras salen colgadas en el salón y en el dormitorio.
-#        originales/5-tienda/portada/ → foto (opcional) de la cabecera.
-# Mientras la carpeta esté vacía se usan fotos de las galerías como ejemplo.
+# Organización inspirada en la tienda de Laurita Polvorilla: título, estancia grande, 3 pasos,
+# «Elige tu foto», «Materiales» + «Tamaños y precios» y formulario de pedido (se envía por WhatsApp).
+# Fotos: originales/5-tienda/ → las fotos a la venta (las 2 primeras salen colgadas en el salón y el dormitorio).
+#        Si está vacía, en «Elige tu foto» salen las galerías (Surf, Buceo, Dron).
+#        originales/5-tienda/estancias/ → fotos de las habitaciones (salon-… y dormitorio-…).
 
 titulo:
   en: "Print Store"
@@ -14,58 +16,116 @@ antetitulo:
   fr: "Tirages d'art"
 
 intro:
-  en: "Take the ocean home. Any photo from my galleries, printed on museum-grade paper and ready to hang."
-  es: "Llévate el mar a casa. Cualquier foto de mis galerías, impresa en papel de calidad museo y lista para colgar."
-  fr: "Rapportez l'océan chez vous. N'importe quelle photo de mes galeries, imprimée sur papier qualité musée et prête à accrocher."
+  en: "Bring the ocean home. My photographs, printed on fine art paper and ready to hang."
+  es: "Llévate el mar a casa. Mis fotografías, impresas en papel fine art y listas para colgar."
+  fr: "Rapportez l'océan chez vous. Mes photographies, imprimées sur papier fine art et prêtes à accrocher."
 
-# Estancias reales (fotos en originales/5-tienda/estancias/ que empiecen por salon- y dormitorio-).
-# Dónde se cuelga la foto, en % de la foto de la estancia: centro horizontal, centro vertical y ancho.
+# Estancias reales: fotos de habitaciones en originales/5-tienda/estancias/ que empiecen por salon-, dormitorio- y estudio-.
+# Para cada una: foto que se cuelga (ruta dentro de originales/), girar (grados, sentido del reloj),
+# dónde va el cuadro en % de la foto de la habitación (centro_x, centro_y) y su tamaño (ancho, o alto).
+# El cuadro lleva marco fino de roble y paspartú blanco (marco: false → foto sola).
+# hueco: [x0, y0, x1, y1] en % → la foto sustituye el lienzo de un cuadro que ya está en la foto de la habitación.
+# esquinas: [[x, y] ×4] en % (arriba-izq, arriba-der, abajo-der, abajo-izq) → igual que hueco, para un cuadro en perspectiva.
+# Habitaciones de Unsplash (licencia libre): salón de @dada_design, dormitorio de @naiyaru y estudio de @steveungermann.
 estancias_reales:
-  salon:      { centro_x: 50, centro_y: 33, ancho: 34 }
-  dormitorio: { centro_x: 50, centro_y: 30, ancho: 30 }
+  salon:
+    foto: "5-tienda/estancias/DSC04838.jpg"              # surf (la ola)
+    centro_x: 47
+    centro_y: 24
+    ancho: 36
+  dormitorio:
+    foto: "5-tienda/estancias/_MG_7611.jpg"              # buceo (la tortuga), en horizontal
+    girar: 90
+    # la foto ocupa el lienzo del cuadro que ya hay sobre la cama (se ve un poco en perspectiva)
+    esquinas: [[37.46, 12.28], [62.67, 7.5], [62.42, 34.78], [37.79, 35.78]]
+  estudio:
+    foto: "5-tienda/estancias/IMG_20260907_09544991.jpeg" # dron (la playa desde arriba), en horizontal
+    girar: 90
+    hueco: [19.82, 0, 85.88, 44.63]   # la foto ocupa el lienzo del cuadro de roble que ya hay sobre el escritorio
+
+estancias:
+  salon:      { en: "Living room", es: "Salón",      fr: "Salon" }
+  dormitorio: { en: "Bedroom",     es: "Dormitorio", fr: "Chambre" }
+  estudio:    { en: "Study",       es: "Estudio",    fr: "Bureau" }
 
 estancias_titulo:
   en: "See it on your wall"
   es: "Así queda en tu pared"
   fr: "Voyez-la sur votre mur"
 
-estancias:
-  salon:      { en: "Living room", es: "Salón",      fr: "Salon" }
-  dormitorio: { en: "Bedroom",     es: "Dormitorio", fr: "Chambre" }
-
-pasos_titulo:
-  en: "How to order your print"
-  es: "Cómo pedir tu copia"
-  fr: "Comment commander votre tirage"
-
+# Los 3 pasos de arriba (cada uno lleva a su apartado)
 pasos:
   - titulo: { en: "Choose your photo", es: "Elige tu foto", fr: "Choisissez votre photo" }
     texto:
-      en: "Browse the galleries and note the photo you love (or send me a screenshot)."
-      es: "Recorre las galerías y apunta la foto que te enamore (o mándame una captura)."
-      fr: "Parcourez les galeries et notez la photo qui vous plaît (ou envoyez-moi une capture)."
-    boton: { en: "View galleries", es: "Ver galerías", fr: "Voir les galeries" }
-  - titulo: { en: "Choose the size", es: "Elige el tamaño", fr: "Choisissez le format" }
+      en: "Browse the collection by category and tap the one you love."
+      es: "Mira la colección por categorías y toca la que te enamore."
+      fr: "Parcourez la collection par catégorie et touchez celle qui vous plaît."
+    boton: { en: "See the photos", es: "Ver las fotos", fr: "Voir les photos" }
+    destino: "elige"
+  - titulo: { en: "Choose size & material", es: "Elige tamaño y material", fr: "Choisissez format et support" }
     texto:
-      en: "Pick one of the sizes below. Every print is signed and numbered."
-      es: "Escoge uno de los tamaños de abajo. Todas las copias van firmadas y numeradas."
-      fr: "Choisissez l'un des formats ci-dessous. Chaque tirage est signé et numéroté."
-  - titulo: { en: "Choose the finish", es: "Elige el acabado", fr: "Choisissez la finition" }
+      en: "See the options below."
+      es: "Mira las opciones más abajo."
+      fr: "Voyez les options ci-dessous."
+    boton: { en: "Sizes & prices", es: "Tamaños y precios", fr: "Formats et prix" }
+    destino: "tamanos"
+  - titulo: { en: "Place your order", es: "Haz tu pedido", fr: "Passez commande" }
     texto:
-      en: "Paper only, or framed in natural oak or white wood with a passe-partout."
-      es: "Solo papel, o enmarcada en roble natural o madera blanca con paspartú."
-      fr: "Papier seul, ou encadré en chêne naturel ou bois blanc avec passe-partout."
-  - titulo: { en: "Order on WhatsApp", es: "Pídela por WhatsApp", fr: "Commandez sur WhatsApp" }
+      en: "Fill in the form and send it to me on WhatsApp."
+      es: "Rellena el formulario y envíamelo por WhatsApp."
+      fr: "Remplissez le formulaire et envoyez-le-moi sur WhatsApp."
+    boton: { en: "Order form", es: "Formulario", fr: "Formulaire" }
+    destino: "pedido"
+
+# Paso 1: elegir la foto
+elige_titulo:
+  en: "Choose your photo"
+  es: "Elige tu foto"
+  fr: "Choisissez votre photo"
+elige_texto:
+  en: "Tap a photo to choose it: its code goes straight into the order form."
+  es: "Toca una foto para elegirla: su código se apunta solo en el formulario de pedido."
+  fr: "Touchez une photo pour la choisir : son code s'inscrit tout seul dans le formulaire."
+elegida:
+  en: "Chosen photo"
+  es: "Foto elegida"
+  fr: "Photo choisie"
+ninguna:
+  en: "None yet"
+  es: "Ninguna todavía"
+  fr: "Aucune pour l'instant"
+
+# Paso 2: materiales y tamaños (provisionales)
+materiales_titulo:
+  en: "Materials"
+  es: "Materiales"
+  fr: "Supports"
+materiales_intro:
+  en: "Every photograph is printed on fine art paper for long-lasting, faithful colour."
+  es: "Todas las fotografías se imprimen en papel fine art, para que el color dure y sea fiel."
+  fr: "Chaque photographie est imprimée sur papier fine art, pour des couleurs fidèles et durables."
+materiales:
+  - nombre: { en: "Fine art paper", es: "Papel fine art", fr: "Papier fine art" }
     texto:
-      en: "Send me the photo, size and finish. I'll confirm the price and delivery time."
-      es: "Mándame la foto, el tamaño y el acabado. Te confirmo el precio y el plazo de entrega."
-      fr: "Envoyez-moi la photo, le format et la finition. Je vous confirme le prix et le délai."
+      en: "Matte cotton paper, unframed. Deep blacks and soft tones."
+      es: "Papel de algodón mate, sin marco. Negros profundos y tonos suaves."
+      fr: "Papier coton mat, sans cadre. Noirs profonds et tons doux."
+  - nombre: { en: "Framed · natural oak", es: "Enmarcada · roble natural", fr: "Encadré · chêne naturel" }
+    texto:
+      en: "Thin oak frame with a white passe-partout, ready to hang."
+      es: "Marco fino de roble con paspartú blanco, lista para colgar."
+      fr: "Cadre fin en chêne avec passe-partout blanc, prêt à accrocher."
+  - nombre: { en: "Framed · white wood", es: "Enmarcada · madera blanca", fr: "Encadré · bois blanc" }
+    texto:
+      en: "Thin white wooden frame with passe-partout."
+      es: "Marco fino de madera blanca con paspartú."
+      fr: "Cadre fin en bois blanc avec passe-partout."
 
 # Tamaños y precios (provisionales). precio "" = «Consultar»
 tamanos_titulo:
-  en: "Sizes"
-  es: "Tamaños"
-  fr: "Formats"
+  en: "Sizes & prices"
+  es: "Tamaños y precios"
+  fr: "Formats et prix"
 tamanos:
   - medida: "20 × 30 cm"
     precio: "45 €"
@@ -76,19 +136,35 @@ tamanos:
   - medida: "60 × 90 cm"
     precio: "150 €"
 marco_nota:
-  en: "Frame: +40 € to +90 € depending on size."
-  es: "Marco: de +40 € a +90 € según el tamaño."
-  fr: "Cadre : de +40 € à +90 € selon le format."
+  en: "Frame: +40 € to +90 € depending on size. Shipping not included."
+  es: "Marco: de +40 € a +90 € según el tamaño. Envío aparte."
+  fr: "Cadre : de +40 € à +90 € selon le format. Livraison en sus."
 
-pedir:
-  en: "Order a print on WhatsApp"
-  es: "Pedir una copia por WhatsApp"
-  fr: "Commander un tirage sur WhatsApp"
-# Mensaje que aparece ya escrito en WhatsApp
+# Paso 3: pedido
+pedido_titulo:
+  en: "Place your order"
+  es: "Haz tu pedido"
+  fr: "Passez commande"
+pedido_intro:
+  en: "Each print is made to order. Fill in the form and I'll reply on WhatsApp with the price and delivery time."
+  es: "Cada copia se imprime por encargo. Rellena el formulario y te respondo por WhatsApp con el precio y el plazo."
+  fr: "Chaque tirage est réalisé sur commande. Remplissez le formulaire et je vous réponds sur WhatsApp avec le prix et le délai."
+form:
+  nombre: { en: "First name", es: "Nombre", fr: "Prénom" }
+  apellidos: { en: "Last name", es: "Apellidos", fr: "Nom" }
+  foto: { en: "Chosen photo (code or description)", es: "Foto elegida (código o descripción)", fr: "Photo choisie (code ou description)" }
+  material: { en: "Material", es: "Material", fr: "Support" }
+  tamano: { en: "Size", es: "Tamaño", fr: "Format" }
+  pais: { en: "Country", es: "País", fr: "Pays" }
+  mensaje: { en: "Message (optional)", es: "Mensaje (opcional)", fr: "Message (facultatif)" }
+  elige: { en: "Choose…", es: "Elige…", fr: "Choisir…" }
+  enviar: { en: "Send order on WhatsApp", es: "Enviar pedido por WhatsApp", fr: "Envoyer la commande sur WhatsApp" }
+  nota: { en: "WhatsApp opens with your order already written.", es: "Se abre WhatsApp con tu pedido ya escrito.", fr: "WhatsApp s'ouvre avec votre commande déjà rédigée." }
+# Primera línea del mensaje de WhatsApp
 mensaje_whatsapp:
-  en: "Hi Zaba! I'd like a print. Photo: … / Size: … / Finish: …"
-  es: "¡Hola Zaba! Quiero una copia impresa. Foto: … / Tamaño: … / Acabado: …"
-  fr: "Bonjour Zaba ! Je voudrais un tirage. Photo : … / Format : … / Finition : …"
+  en: "Hi Zaba! I'd like to order a print."
+  es: "¡Hola Zaba! Quiero pedir una copia impresa."
+  fr: "Bonjour Zaba ! Je voudrais commander un tirage."
 
 descripcion_google:
   en: "Fine art prints of surf, diving and drone photography by Zaba. Choose your photo, size and finish."

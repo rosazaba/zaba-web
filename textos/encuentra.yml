@@ -46,6 +46,22 @@ mensaje_whatsapp:
   es: "¡Hola Zaba! Quiero comprar la foto"
   fr: "Bonjour Zaba ! Je voudrais acheter la photo"
 
+proximamente: { en: "coming soon", es: "próximamente", fr: "bientôt" }
+volver: { en: "All sessions", es: "Todas las sesiones", fr: "Toutes les séances" }
+aviso_subida:
+  en: "Photos are uploaded the evening of the session or the next morning."
+  es: "Las fotos se suben la misma tarde de la sesión o a la mañana siguiente."
+  fr: "Les photos sont publiées le soir de la séance ou le lendemain matin."
+aviso_legal:
+  en: "Photos taken in a public sports setting, shown only so that you can find and buy your own. If you'd like one removed, write to me and I'll delete it."
+  es: "Fotos tomadas en un entorno deportivo público y publicadas solo para que puedas encontrar y comprar las tuyas. Si quieres que retire alguna, escríbeme y la borro."
+  fr: "Photos prises dans un cadre sportif public, publiées uniquement pour que vous puissiez retrouver et acheter les vôtres. Pour en retirer une, écrivez-moi et je la supprime."
+# Descripción para Google de cada página de sesión ({playa} y {fecha} se rellenan solos)
+descripcion_sesion:
+  en: "Surf photos from {playa} on {fecha}. Find yourself and buy your photo in full resolution — Zaba."
+  es: "Fotos de surf en {playa} el {fecha}. Encuéntrate y compra tu foto en alta resolución — Zaba."
+  fr: "Photos de surf à {playa} le {fecha}. Retrouvez-vous et achetez votre photo en haute résolution — Zaba."
+
 pasos:
   - { en: "Find your session", es: "Busca tu sesión", fr: "Trouvez votre séance" }
   - { en: "Tap «Buy» on your photo", es: "Pulsa «Comprar» en tu foto", fr: "Touchez « Acheter » sur votre photo" }

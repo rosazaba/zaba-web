@@ -2,19 +2,47 @@
 {% block titulo %}{{ T(tienda.titulo) }} — {{ g.marca }}{% endblock %}
 {% block descripcion %}{{ T(tienda.descripcion_google) }}{% endblock %}
 {% block contenido %}
-{% with cab_variante="print", cab_ante=T(tienda.antetitulo), cab_titulo=T(tienda.titulo),
-        cab_intro=T(tienda.intro), cab_foto=portada_pagina or (estancias[0].foto if estancias else none) %}
-{% include "_cabecera_nueva.html" %}
-{% endwith %}
+{% set salon = estancias[0] if estancias else none %}
+{% set otras = estancias[1:] %}
+{% set F = tienda.form %}
 
-{# Dos simulaciones: la foto colgada en un salón y en un dormitorio #}
-{% if estancias %}
-<section class="bloque estancias-bloque">
+{# Título centrado y la estancia grande con una foto colgada #}
+<section class="tienda-cab">
   <div class="ancho">
-    <h2 class="titulo-seccion aparece">{{ T(tienda.estancias_titulo) }}</h2>
-    <div class="estancias">
-      {% for e in estancias %}
-      <figure class="estancia aparece">
+    <p class="antetitulo">{{ T(tienda.antetitulo) }}</p>
+    <h1>{{ T(tienda.titulo) }}</h1>
+    <p class="tienda-cab__intro">{{ T(tienda.intro) }}</p>
+    {% if salon %}
+    <figure class="estancia estancia--grande">
+      {% if salon.real %}<img class="estancia__foto" src="{{ asset(salon.real.src) }}" width="{{ salon.real.ancho }}" height="{{ salon.real.alto }}" fetchpriority="high" decoding="async" alt="{{ T(tienda.estancias.salon) }} — {{ g.marca }}">
+      {% else %}{% with e=salon %}{% include "_estancia.html" %}{% endwith %}{% endif %}
+    </figure>
+    {% elif portada_pagina %}{{ foto(portada_pagina, "(min-width: 900px) 760px, 100vw", "tienda-cab__foto", "eager") }}{% endif %}
+  </div>
+</section>
+
+{# Los 3 pasos #}
+<section class="tienda-pasos">
+  <ol class="ancho tienda-pasos__lista">
+    {% for p in tienda.pasos %}
+    <li class="tienda-paso">
+      <span class="tienda-paso__num">0{{ loop.index }}</span>
+      <h2>{{ T(p.titulo) }}</h2>
+      <p>{{ T(p.texto) }}</p>
+      <a class="enlace-flecha" href="#{{ p.destino }}">{{ T(p.boton) }} ↓</a>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+{# El resto de estancias (dormitorio, estudio…) #}
+{% if otras %}
+<section class="tienda-estancias">
+  <div class="ancho">
+    <h2 class="tienda-estancias__titulo">{{ T(tienda.estancias_titulo) }}</h2>
+    <div class="tienda-estancias__fila">
+      {% for e in otras %}
+      <figure class="estancia">
         {% if e.real %}<img class="estancia__foto" src="{{ asset(e.real.src) }}" width="{{ e.real.ancho }}" height="{{ e.real.alto }}" loading="lazy" decoding="async" alt="{{ T(tienda.estancias[e.tipo]) }} — {{ g.marca }}">
         {% else %}{% include "_estancia.html" %}{% endif %}
         <figcaption>{{ T(tienda.estancias[e.tipo]) }}</figcaption>
@@ -25,29 +53,81 @@
 </section>
 {% endif %}
 
-{# Instrucciones paso a paso (la tienda no tiene apartados) #}
-<section class="bloque bloque--arena">
+{# Paso 1: elegir la foto, por categorías #}
+<section class="bloque bloque--arena tienda-elige" id="elige" data-elige>
   <div class="ancho">
-    <h2 class="titulo-seccion aparece">{{ T(tienda.pasos_titulo) }}</h2>
-    <ol class="pasos-tienda">
-      {% for p in tienda.pasos %}
-      <li class="paso-tienda aparece">
-        <span class="paso-tienda__num">0{{ loop.index }}</span>
-        <h3>{{ T(p.titulo) }}</h3>
-        <p>{{ T(p.texto) }}</p>
-        {% if p.boton %}<a class="enlace-flecha" href="{{ url('') }}">{{ T(p.boton) }} →</a>{% endif %}
-        {% if loop.index == 2 %}
-        <ul class="tamanos" aria-label="{{ T(tienda.tamanos_titulo) }}">
-          {% for t in tienda.tamanos %}<li><span>{{ t.medida }}</span><strong>{{ t.precio or T(services.consultar) }}</strong></li>{% endfor %}
-        </ul>
-        {% endif %}
-        {% if loop.index == 3 %}<p class="paso-tienda__nota">{{ T(tienda.marco_nota) }}</p>{% endif %}
-        {% if loop.last and g.contacto.whatsapp %}
-        <a class="boton" href="https://wa.me/{{ g.contacto.whatsapp }}?text={{ T(tienda.mensaje_whatsapp)|urlencode }}" target="_blank" rel="noopener">{{ T(tienda.pedir) }}</a>
-        {% endif %}
-      </li>
-      {% endfor %}
-    </ol>
+    <span class="tienda-paso__num">01</span>
+    <h2>{{ T(tienda.elige_titulo) }}</h2>
+    <p class="tienda-elige__texto">{{ T(tienda.elige_texto) }}</p>
+    {% if grupos_tienda|length > 1 %}
+    <div class="tienda-pestanas" role="tablist">
+      {% for gr in grupos_tienda %}<button type="button" class="ficha" role="tab" id="tab-{{ gr.id }}" aria-controls="grupo-{{ gr.id }}" aria-selected="{{ 'true' if loop.first else 'false' }}" data-pestana="{{ gr.id }}">{{ T(gr.titulo) }}</button>{% endfor %}
+    </div>
+    {% endif %}
+    {% for gr in grupos_tienda %}
+    <div class="tienda-grupo" id="grupo-{{ gr.id }}" role="tabpanel" aria-labelledby="tab-{{ gr.id }}" data-grupo="{{ gr.id }}">
+      <h3 class="tienda-grupo__titulo">{{ T(gr.titulo) }}</h3>
+      <ul class="tienda-fotos">
+        {% for x in gr.fotos %}
+        <li><button type="button" class="tienda-foto" data-codigo-foto="{{ x.codigo }}" aria-pressed="false">
+          {{ foto(x.foto, "(min-width: 900px) 220px, 45vw", "", "lazy", T(gr.titulo) ~ " " ~ x.codigo ~ " — " ~ g.marca) }}
+          <span>{{ x.codigo }}</span>
+        </button></li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{# Paso 2: materiales · tamaños y precios #}
+<section class="bloque tienda-opciones" id="tamanos">
+  <div class="ancho tienda-opciones__in">
+    <div>
+      <span class="tienda-paso__num">02</span>
+      <h2>{{ T(tienda.materiales_titulo) }}</h2>
+      <p>{{ T(tienda.materiales_intro) }}</p>
+      <ul class="lista-check">
+        {% for m in tienda.materiales %}<li><strong>{{ T(m.nombre) }}</strong> — {{ T(m.texto) }}</li>{% endfor %}
+      </ul>
+    </div>
+    <div>
+      <h2 class="tienda-opciones__h2">{{ T(tienda.tamanos_titulo) }}</h2>
+      <ul class="tamanos">
+        {% for t in tienda.tamanos %}<li><span>{{ t.medida }}</span><strong>{{ t.precio or T(services.consultar) }}</strong></li>{% endfor %}
+      </ul>
+      <p class="tamanos__nota">{{ T(tienda.marco_nota) }}</p>
+    </div>
+  </div>
+</section>
+
+{# Paso 3: pedido (se envía por WhatsApp con el mensaje ya escrito) #}
+<section class="bloque tienda-pedido" id="pedido">
+  <div class="estrecho tienda-pedido__in">
+    <div>
+      <span class="tienda-paso__num">03</span>
+      <h2>{{ T(tienda.pedido_titulo) }}</h2>
+      <p>{{ T(tienda.pedido_intro) }}</p>
+      {% if g.contacto.whatsapp %}
+      <form class="formulario formulario--fresco tienda-form" data-pedido data-whatsapp="{{ g.contacto.whatsapp }}" data-saludo="{{ T(tienda.mensaje_whatsapp) }}">
+        <label>{{ T(F.nombre) }}<input name="nombre" required autocomplete="given-name" data-etiqueta="{{ T(F.nombre) }}"></label>
+        <label>{{ T(F.apellidos) }}<input name="apellidos" required autocomplete="family-name" data-etiqueta="{{ T(F.apellidos) }}"></label>
+        <label class="ancho-total">{{ T(F.foto) }}<input name="foto" required data-foto-elegida data-etiqueta="{{ T(tienda.elegida) }}"></label>
+        <label>{{ T(F.material) }}<select name="material" required data-etiqueta="{{ T(F.material) }}">
+          <option value="">{{ T(F.elige) }}</option>
+          {% for m in tienda.materiales %}<option>{{ T(m.nombre) }}</option>{% endfor %}
+        </select></label>
+        <label>{{ T(F.tamano) }}<select name="tamano" required data-etiqueta="{{ T(F.tamano) }}">
+          <option value="">{{ T(F.elige) }}</option>
+          {% for t in tienda.tamanos %}<option>{{ t.medida }}{% if t.precio %} · {{ t.precio }}{% endif %}</option>{% endfor %}
+        </select></label>
+        <label class="ancho-total">{{ T(F.pais) }}<input name="pais" autocomplete="country-name" data-etiqueta="{{ T(F.pais) }}"></label>
+        <label class="ancho-total">{{ T(F.mensaje) }}<textarea name="mensaje" rows="3" data-etiqueta="{{ T(F.mensaje) }}"></textarea></label>
+        <button class="boton ancho-total" type="submit">{{ T(F.enviar) }}</button>
+        <p class="tienda-form__nota ancho-total">{{ T(F.nota) }}</p>
+      </form>
+      {% endif %}
+    </div>
   </div>
 </section>
 {% include "_cierre.html" %}

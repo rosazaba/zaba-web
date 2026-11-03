@@ -28,7 +28,7 @@ class Pagina(HTMLParser):
         self.lang = None; self.titulos = []; self.h1 = 0; self.metas = {}; self.links = []
         self.hreflang = {}; self.canonical = None; self.imgs = []; self.refs = []; self.ids = set()
         self.jsonld = []; self._en = None; self._buf = ""
-        self.codigos = []; self.comprar = []; self.estancias = 0; self.menu = []; self._en_menu = False
+        self.codigos = []; self.comprar = []; self.estancias = 0; self.fotos_tienda = []; self.pedido = None; self.menu = []; self._en_menu = False
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -54,7 +54,12 @@ class Pagina(HTMLParser):
             self._en_menu = True
         elif tag == "li" and "data-codigo" in a:
             self.codigos.append(a["data-codigo"])
+        elif tag == "button" and "data-codigo-foto" in a:   # Tienda: fotos para elegir
+            self.fotos_tienda.append(a["data-codigo-foto"])
+        elif tag == "form" and "data-pedido" in a:
+            self.pedido = a.get("data-whatsapp", "")
         elif tag == "img":
+            if "estancia__foto" in (a.get("class") or ""): self.estancias += 1   # estancia real (foto)
             self.imgs.append(a)
             if a.get("src"): self.refs.append(("img", a["src"]))
             for parte in (a.get("srcset") or "").split(","):
@@ -219,6 +224,15 @@ def main():
         rel = p.relative_to(DOCS).as_posix()
         if rel.endswith("print-store/index.html") and a.estancias < 2:
             avisos.append(f"{rel}: Print Store tiene {a.estancias} estancias con foto (deberían ser 2)")
+        if rel.endswith("print-store/index.html"):
+            if not a.fotos_tienda: avisos.append(f"{rel}: la Tienda no tiene fotos para elegir")
+            if len(set(a.fotos_tienda)) != len(a.fotos_tienda): errores.append(f"{rel}: hay fotos de la Tienda con el código repetido")
+            if a.pedido is not None and not a.pedido.isdigit(): errores.append(f"{rel}: el formulario de pedido no tiene un WhatsApp válido")
+        # Encuentra: cada página de sesión (find-your-photos/<playa>-<fecha>/) tiene fotos con código
+        partes = rel.split("/")
+        i = partes.index("find-your-photos") if "find-your-photos" in partes else -1
+        if i >= 0 and len(partes) - i > 2 and not a.codigos:
+            errores.append(f"{rel}: página de sesión sin fotos")
 
     # Sitemap y robots
     sm = DOCS / "sitemap.xml"

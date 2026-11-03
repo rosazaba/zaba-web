@@ -1,2 +1,3 @@
-Fotos de estancias para la Tienda (reales o generadas con IA): un salon y un dormitorio, hechos de frente y con una pared libre.
-Nombres: salon-....jpg y dormitorio-....jpg. Claude coloca tu foto en la pared.
+Estancias de la Tienda: una foto de cada habitacion (salon-..., dormitorio-..., estudio-...) y las fotos tuyas que se cuelgan en ellas.
+Ahora: salon con la ola (DSC04838), dormitorio con la tortuga (_MG_7611) y estudio con la playa de dron (IMG_20260907_09544991).
+Para cambiar la foto de un cuadro, dile a Claude cual quieres (se configura en textos/print-store.yml).
