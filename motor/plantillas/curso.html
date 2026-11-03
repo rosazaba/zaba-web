@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block titulo %}{{ T(curso.titulo) }} — {{ g.marca }}{% endblock %}
+{% block descripcion %}{{ T(curso.descripcion_google) }}{% endblock %}
+{% block contenido %}
+{# Curso foto sub: mismo estilo que Tarifa (título + introducción y bandas foto / bloque de color) #}
+<section class="intro-servicios intro-curso">
+  <div class="estrecho">
+    <p class="antetitulo">{{ T(curso.antetitulo) }}</p>
+    <h1>{{ T(curso.titulo) }}</h1>
+    <p class="texto-grande">{{ T(curso.intro) }}</p>
+  </div>
+</section>
+
+<section class="paquetes">
+  {% for p in partes_curso %}
+  <article class="paquete{% if not p.foto %} paquete--sin-foto{% endif %}" id="{{ p.carpeta }}">
+    {% if p.foto %}<div class="paquete__foto">{{ foto(p.foto, "(min-width: 900px) 50vw, 100vw", "", "lazy", T(p.titulo) ~ " — " ~ T(curso.titulo)) }}</div>{% endif %}
+    <div class="paquete__texto aparece">
+      <p class="tienda-paso__num">0{{ loop.index }}</p>
+      <h2>{{ T(p.titulo) }}</h2>
+      <p>{{ T(p.texto) }}</p>
+    </div>
+  </article>
+  {% endfor %}
+</section>
+
+<section class="bloque curso-datos">
+  <div class="estrecho">
+    <h2 class="titulo-seccion">{{ T(curso.datos_titulo) }}</h2>
+    <ul class="tamanos curso-datos__lista">
+      {% for d in curso.datos if T(d.valor) %}<li><span>{{ T(d.etiqueta) }}</span><strong>{{ T(d.valor) }}</strong></li>{% endfor %}
+    </ul>
+    {% if g.contacto.whatsapp %}
+    <p class="curso-datos__boton"><a class="boton" data-reservar-curso href="https://wa.me/{{ g.contacto.whatsapp }}?text={{ T(curso.mensaje_whatsapp)|urlencode }}" target="_blank" rel="noopener">{{ T(curso.reservar) }}</a></p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

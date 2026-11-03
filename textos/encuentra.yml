@@ -1,12 +1,12 @@
 # ENCUENTRA TUS FOTOS. Dirección: /find-your-photos/
-# Fotos: originales/6-encuentra-tus-fotos/<carpeta de la playa>/<AAAA-MM-DD>/  (una carpeta por sesión)
-#        originales/6-encuentra-tus-fotos/portada/ → foto (opcional) de la cabecera.
+# Fotos: originales/7-encuentra-tus-fotos/<carpeta de la playa>/<AAAA-MM-DD>/  (una carpeta por sesión)
+#        originales/7-encuentra-tus-fotos/portada/ → foto (opcional) de la cabecera.
 # En la web solo salen pequeñas y con marca de agua; cada foto lleva un código (p. ej. PATOS-20261101-007).
 # Al pulsar «Comprar», el cliente te escribe por WhatsApp con ese código. Tú cobras y le envías la foto original.
 
 precio_foto: "15 €"
 
-# Playas. Para añadir una: crea su carpeta en originales/6-encuentra-tus-fotos/ y copia un bloque.
+# Playas. Para añadir una: crea su carpeta en originales/7-encuentra-tus-fotos/ y copia un bloque.
 #   carpeta: nombre de la carpeta · codigo: prefijo corto en MAYÚSCULAS para los códigos de las fotos
 localizaciones:
   - carpeta: "playa-de-patos-vigo"

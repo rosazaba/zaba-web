@@ -33,10 +33,12 @@ C_SERVICIOS = _primera("2-tarifa", "2-servicios")   # página «Tarifa / Rates»
 C_SOBRE_MI = "3-sobre-mi"
 C_CONTACTO = "4-contacto"             # solo su carpeta portada/ (foto del fondo-mural de Contacto)
 C_PRINT = _primera("5-tienda-de-impresiones", "5-tienda", "5-print-store")   # página «Tienda de impresiones / Print Store»: portada/ (cabecera) y las fotos que se venden impresas (las 2 primeras salen en las estancias)
-C_ENCUENTRA = "6-encuentra-tus-fotos"  # portada/ (cabecera) y <playa>/<AAAA-MM-DD>/ con las fotos de cada sesión
+C_CURSO = _primera("6-curso-foto-sub")   # página «Curso foto sub»: teoria/, practica/ y edicion/ (una foto en cada una)
+C_ENCUENTRA = _primera("7-encuentra-tus-fotos", "6-encuentra-tus-fotos")  # (antes 6-encuentra-tus-fotos) portada/ (cabecera) y <playa>/<AAAA-MM-DD>/ con las fotos de cada sesión
 # Rutas escritas en textos/*.yml con el nombre antiguo de una carpeta siguen funcionando
 ALIAS_CARPETAS = {"1-trabajos": C_TRABAJOS, "1-servicios": C_TRABAJOS, "1-servicio": C_TRABAJOS, "2-servicios": C_SERVICIOS, "2-tarifa": C_SERVICIOS,
-                  "5-tienda": C_PRINT, "5-tienda-de-impresiones": C_PRINT, "5-print-store": C_PRINT}
+                  "5-tienda": C_PRINT, "5-tienda-de-impresiones": C_PRINT, "5-print-store": C_PRINT,
+                  "6-encuentra-tus-fotos": C_ENCUENTRA, "7-encuentra-tus-fotos": C_ENCUENTRA}
 
 
 def en_orig(ruta):
@@ -49,8 +51,11 @@ NO_SON_GALERIAS = {"portada", "portadas", "seleccion", "fotos-banco-imagenes"}
 PRECIO_FOTO_DEFECTO = "15 €"
 FOTOS_TIENDA_POR_GALERIA = 12   # Tienda sin fotos propias: cuántas fotos de cada galería se pueden elegir
 # Menú (en este orden) y la dirección de cada página
-RUTAS = {"inicio": "", "services": "rates/", "print": "print-store/", "encuentra": "find-your-photos/",
-         "about": "about/", "contact": "contact/"}
+RUTAS = {"inicio": "", "services": "rates/", "print": "print-store/", "curso": "underwater-photo-course/",
+         "encuentra": "find-your-photos/", "about": "about/", "contact": "contact/"}
+# Menú: apartados principales y, dentro del desplegable «Más», el resto (en este orden)
+MENU_PRINCIPAL = ["inicio", "services", "about", "contact"]
+MENU_MAS = ["print", "curso", "encuentra"]
 TEXTOS = RAIZ / "textos"
 MOTOR = RAIZ / "motor"
 SALIDA = RAIZ / "docs"
@@ -567,6 +572,16 @@ def main():
             f = [en_orig(s["foto_provisional"])]
         lista_servicios.append({**s, "foto": optimizar(f[0], f"services/{s['carpeta']}") if f else None})
 
+    # ── Curso foto sub: tres partes (teoría, práctica, edición) con una foto cada una ──
+    curso = leer("curso")
+    partes_curso = []
+    for p_ in curso.get("partes", []):
+        f = fotos_de(f"{C_CURSO}/{p_['carpeta']}")
+        if not f and p_.get("foto_provisional") and en_orig(p_["foto_provisional"]).exists():
+            f = [en_orig(p_["foto_provisional"])]
+            avisos.append(f"Curso foto sub: {C_CURSO}/{p_['carpeta']}/ está vacía; de momento sale una foto de buceo de ejemplo.")
+        partes_curso.append({**p_, "foto": optimizar(f[0], f"curso/{p_['carpeta']}") if f else None})
+
     # Foto de arriba de Servicios y Contacto: su carpeta portada/ (si está vacía, la página sale sin foto)
     def portada_de(carpeta, destino):
         p = de_portadas(carpeta)
@@ -777,6 +792,7 @@ def main():
     paginas = [("inicio", "", "inicio.html", {}),
                ("services", RUTAS["services"], "services.html", {"portada_pagina": portada_servicios}),
                ("print", RUTAS["print"], "print-store.html", {"portada_pagina": portada_tienda}),
+               ("curso", RUTAS["curso"], "curso.html", {}),
                ("encuentra", RUTAS["encuentra"], "encuentra.html", {"portada_pagina": portada_encuentra}),
                ("about", RUTAS["about"], "about.html", {}),
                ("contact", RUTAS["contact"], "contact.html", {"portada_pagina": portada_contacto})]
@@ -866,7 +882,7 @@ def main():
             html = env.get_template(plantilla).render(json_ld=json_ld,
                 lang=lang, pid=pid, iconos=iconos, T=T, url=url, asset=asset, srcset=srcset, foto=foto,
                 g=g, inicio=inicio, work=work, services=services, about=about, contact=contact,
-                rutas=RUTAS, tienda=tienda, estancias=estancias, grupos_tienda=grupos_tienda, encuentra=encuentra, playas=playas, precio_foto=precio_foto,
+                rutas=RUTAS, menu_principal=MENU_PRINCIPAL, menu_mas=MENU_MAS, curso=curso, partes_curso=partes_curso, tienda=tienda, estancias=estancias, grupos_tienda=grupos_tienda, encuentra=encuentra, playas=playas, precio_foto=precio_foto,
                 portada=portada[0] if portada else None, destacadas=destacadas,
                 foto_about=foto_about[0] if foto_about else None, sobre=sobre,
                 galerias=galerias, lista_servicios=lista_servicios,

@@ -228,6 +228,9 @@ def main():
             if not a.fotos_tienda: avisos.append(f"{rel}: la Tienda no tiene fotos para elegir")
             if len(set(a.fotos_tienda)) != len(a.fotos_tienda): errores.append(f"{rel}: hay fotos de la Tienda con el código repetido")
             if a.pedido is not None and not a.pedido.isdigit(): errores.append(f"{rel}: el formulario de pedido no tiene un WhatsApp válido")
+        # Curso foto sub: botón de reservar por WhatsApp
+        if rel.endswith("underwater-photo-course/index.html") and not any("wa.me/" in u for u in a.comprar + [h for _, h in a.refs]):
+            avisos.append(f"{rel}: el curso no tiene botón de reservar por WhatsApp")
         # Encuentra: cada página de sesión (find-your-photos/<playa>-<fecha>/) tiene fotos con código
         partes = rel.split("/")
         i = partes.index("find-your-photos") if "find-your-photos" in partes else -1

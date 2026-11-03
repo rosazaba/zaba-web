@@ -47,9 +47,18 @@
     </a>
     <nav class="menu" id="menu" aria-label="Main">
       <ul>
-        {% for id, ruta in rutas.items() %}
-        <li><a href="{{ url(ruta) }}"{% if pid == id or (id == 'inicio' and pid.startswith('galeria')) %} aria-current="page"{% endif %}>{{ T(g.menu[id]) }}</a></li>
+        {% for id in menu_principal %}
+        <li><a href="{{ url(rutas[id]) }}"{% if pid == id or (id == 'inicio' and pid.startswith('galeria')) %} aria-current="page"{% endif %}>{{ T(g.menu[id]) }}</a></li>
         {% endfor %}
+        {# «Más»: desplegable con Tienda de impresiones, Curso foto sub y Encuentra tus fotos #}
+        <li class="menu__mas{% if pid in menu_mas %} menu__mas--actual{% endif %}" data-mas>
+          <button type="button" class="menu__mas-boton" aria-expanded="false" aria-controls="menu-mas" data-mas-boton>{{ T(g.menu.mas) }} <span aria-hidden="true">▾</span></button>
+          <ul class="menu__sub" id="menu-mas">
+            {% for id in menu_mas %}
+            <li><a href="{{ url(rutas[id]) }}"{% if pid == id %} aria-current="page"{% endif %}>{{ T(g.menu[id]) }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
       </ul>
       <div class="idiomas" aria-label="Language">
         {% for i in idiomas %}

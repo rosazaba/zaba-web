@@ -15,6 +15,23 @@
     });
   }
 
+  /* Menú «Más»: se abre y cierra al tocarlo (en ordenador también con el ratón, por CSS) */
+  var mas = document.querySelector("[data-mas]");
+  if (mas) {
+    var masBoton = mas.querySelector("[data-mas-boton]");
+    masBoton.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var abierto = mas.classList.toggle("abierto");
+      masBoton.setAttribute("aria-expanded", abierto);
+    });
+    document.addEventListener("click", function (e) {
+      if (!mas.contains(e.target)) { mas.classList.remove("abierto"); masBoton.setAttribute("aria-expanded", false); }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { mas.classList.remove("abierto"); masBoton.setAttribute("aria-expanded", false); }
+    });
+  }
+
   /* Cabecera: fondo al hacer scroll */
   var cab = document.querySelector("[data-cabecera]");
   function alScroll() { if (cab) cab.classList.toggle("con-sombra", window.scrollY > 40); }

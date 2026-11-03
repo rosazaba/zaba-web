@@ -1,0 +1,64 @@
+# CURSO FOTO SUB (en el menú, dentro de «Más»). Dirección: /underwater-photo-course/
+# Fotos: originales/6-curso-foto-sub/teoria/, practica/ y edicion/ (una en cada carpeta; si hay varias, la primera por nombre).
+# Mientras una carpeta esté vacía se usa foto_provisional (ruta dentro de originales/).
+# TEXTOS PROVISIONALES: cámbialos por los tuyos (o pásamelos y los traduzco).
+
+antetitulo:
+  en: "Underwater photography"
+  es: "Fotografía submarina"
+  fr: "Photographie sous-marine"
+
+titulo:
+  en: "Underwater photo course"
+  es: "Curso foto sub"
+  fr: "Cours photo sous-marine"
+
+intro:
+  en: "Learn to take your own photos underwater: a hands-on course with theory, practice in the water and editing, in small groups and at your own pace."
+  es: "Aprende a hacer tus propias fotos bajo el agua: un curso práctico con teoría, práctica en el agua y edición, en grupos pequeños y a tu ritmo."
+  fr: "Apprenez à faire vos propres photos sous l'eau : un cours pratique avec théorie, pratique dans l'eau et retouche, en petits groupes et à votre rythme."
+
+# Las tres partes del curso (bandas con foto, como en Tarifa)
+partes:
+  - carpeta: teoria
+    foto_provisional: "1-trabajos/buceo/_MG_3060.jpg"
+    titulo: { en: "Theory", es: "Teoría", fr: "Théorie" }
+    texto:
+      en: "Light underwater, camera settings, composition and how to move without disturbing marine life."
+      es: "La luz bajo el agua, ajustes de cámara, composición y cómo moverte sin molestar a la vida marina."
+      fr: "La lumière sous l'eau, les réglages de l'appareil, la composition et comment se déplacer sans déranger la vie marine."
+  - carpeta: practica
+    foto_provisional: "1-trabajos/buceo/_MG_5822.jpg"
+    titulo: { en: "Practice in the water", es: "Práctica en el agua", fr: "Pratique dans l'eau" }
+    texto:
+      en: "We go into the water together and put everything into practice, step by step, with my guidance at every moment."
+      es: "Entramos juntos al agua y ponemos todo en práctica, paso a paso, conmigo a tu lado en todo momento."
+      fr: "Nous entrons dans l'eau ensemble et mettons tout en pratique, pas à pas, avec mon accompagnement à chaque instant."
+  - carpeta: edicion
+    foto_provisional: "1-trabajos/buceo/_MG_7611.jpg"
+    titulo: { en: "Editing", es: "Edición", fr: "Retouche" }
+    texto:
+      en: "We choose your best shots and edit them together: colour, contrast and the finishing touches that make them shine."
+      es: "Elegimos tus mejores fotos y las editamos juntos: color, contraste y los últimos toques para que brillen."
+      fr: "Nous choisissons vos meilleures photos et les retouchons ensemble : couleur, contraste et les dernières finitions."
+
+# Datos del curso (provisionales). valor "" = no se muestra
+datos_titulo: { en: "Course details", es: "Datos del curso", fr: "Infos du cours" }
+datos:
+  - etiqueta: { en: "Duration", es: "Duración", fr: "Durée" }
+    valor: { en: "X hours", es: "X horas", fr: "X heures" }
+  - etiqueta: { en: "Group", es: "Grupo", fr: "Groupe" }
+    valor: { en: "Small groups", es: "Grupos reducidos", fr: "Petits groupes" }
+  - etiqueta: { en: "Price", es: "Precio", fr: "Prix" }
+    valor: { en: "Price on request", es: "Consultar", fr: "Sur demande" }
+
+reservar: { en: "Book on WhatsApp", es: "Reservar por WhatsApp", fr: "Réserver sur WhatsApp" }
+mensaje_whatsapp:
+  en: "Hi Zaba! I'd like information about the underwater photo course."
+  es: "¡Hola Zaba! Quiero información sobre el curso de fotografía submarina."
+  fr: "Bonjour Zaba ! Je voudrais des informations sur le cours de photo sous-marine."
+
+descripcion_google:
+  en: "Underwater photography course with Zaba: theory, practice in the water and editing, in small groups."
+  es: "Curso de fotografía submarina con Zaba: teoría, práctica en el agua y edición, en grupos reducidos."
+  fr: "Cours de photographie sous-marine avec Zaba : théorie, pratique dans l'eau et retouche, en petits groupes."

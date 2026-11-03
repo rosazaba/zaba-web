@@ -35,6 +35,8 @@ menu:
   inicio:    { en: "My services",      es: "Servicios",           fr: "Mes services" }   # la portada (galerías)
   services:  { en: "Rates",            es: "Tarifa",              fr: "Tarifs" }         # precios de las sesiones
   print:     { en: "Print Store",      es: "Tienda de impresiones", fr: "Boutique de tirages" }
+  curso:     { en: "Underwater photo course", es: "Curso foto sub", fr: "Cours photo sous-marine" }
+  mas:       { en: "More", es: "Más", fr: "Plus" }
   encuentra: { en: "Find your photos", es: "Encuentra tus fotos", fr: "Trouvez vos photos" }
   about:    { en: "About",    es: "Sobre mí",  fr: "À propos" }
   contact:  { en: "Contact",  es: "Contacto",  fr: "Contact" }

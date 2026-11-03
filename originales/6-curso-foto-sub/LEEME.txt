@@ -1,0 +1,1 @@
+Curso foto sub: una foto en teoria/, practica/ y edicion/. Los textos están en textos/curso.yml.
