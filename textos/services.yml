@@ -45,18 +45,17 @@ lista:
       fr: ["Une ou deux plongées", "Plus de 30 photos retouchées", "Galerie en ligne sous 72 h"]
 
   - carpeta: dron                                   # carpeta originales/2-tarifa/dron/ (antes «copias»)
-    enlace: tienda                                   # el botón lleva a la Tienda de impresiones
     foto_provisional: "1-trabajos/dron/IMG_20260907_09553035.jpeg"
-    titulo: { en: "Fine art prints", es: "Copias artísticas", fr: "Tirages d'art" }
-    precio: "45 €"
+    titulo: { en: "Drone session", es: "Sesión con dron", fr: "Séance drone" }
+    precio: "150 €"
     texto:
-      en: "Any photo from the galleries, printed on premium paper. Ask me about sizes and framing."
-      es: "Cualquier foto de las galerías, impresa en papel de alta calidad. Pregúntame por tamaños y enmarcado."
-      fr: "N'importe quelle photo des galeries, imprimée sur papier haut de gamme. Demandez-moi les formats et l'encadrement."
+      en: "Your beach, your boat, your surf session or your event seen from above, with aerial photos that show the whole place."
+      es: "Tu playa, tu barco, tu sesión de surf o tu evento vistos desde el aire, con fotos aéreas que enseñan todo el lugar."
+      fr: "Votre plage, votre bateau, votre séance de surf ou votre événement vus du ciel, avec des photos aériennes qui montrent tout le lieu."
     incluye:
-      en: ["Museum-grade paper", "Signed and numbered", "Shipping available"]
-      es: ["Papel de calidad museo", "Firmadas y numeradas", "Envío disponible"]
-      fr: ["Papier qualité musée", "Signés et numérotés", "Livraison possible"]
+      en: ["Up to 1 hour of flight", "20+ edited aerial photos", "Online gallery within 72 h"]
+      es: ["Hasta 1 hora de vuelo", "Más de 20 fotos aéreas editadas", "Galería online en 72 h"]
+      fr: ["Jusqu'à 1 h de vol", "Plus de 20 photos aériennes retouchées", "Galerie en ligne sous 72 h"]
 
 pasos_antetitulo: { en: "Next steps", es: "Próximos pasos", fr: "Prochaines étapes" }
 pasos_titulo: { en: "How it works", es: "Cómo funciona", fr: "Comment ça marche" }
