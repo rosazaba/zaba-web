@@ -26,6 +26,7 @@ intro:
 #   centro_x / centro_y / ancho (o alto) en % → cuadro nuevo con marco fino de roble y paspartú;
 #   hueco: [x0, y0, x1, y1] en % → la foto, entera sobre paspartú, ocupa el interior de un marco que ya está en la foto;
 #   esquinas: [[x, y] ×4] en % (arriba-izq, arriba-der, abajo-der, abajo-izq) → igual que hueco, para un marco en perspectiva.
+# paspartu: color fijo ("#151515") o false; margen: % del paspartú (7.5 por defecto); luz: <1 oscurece la foto en habitaciones con poca luz.
 # La foto de la usuaria nunca se recorta. Las tres estancias salen cuadradas y a la misma altura.
 # Habitaciones de bancos de imágenes gratuitos (Unsplash): el sofá de @dada_design y el escritorio de @steveungermann
 # (retocado: sin el cuadro que salía cortado). El aparador (ola.jpg) lo eligió la usuaria.
@@ -34,20 +35,21 @@ estancias_reales:
     habitacion: "ola.jpg"
     foto: "5-tienda/estancias/foto ola.jpg"             # surf (la ola)
     hueco: [33.94, 6.07, 78.76, 51.62]                   # dentro del marco negro que ya tiene la foto
-  salon:
+  dormitorio:
     habitacion: "tortuga.jpg"
     foto: "5-tienda/estancias/foto tortuga.jpg"         # buceo (la tortuga), en horizontal
+    girar: 90
+    hueco: [34.26, 15.23, 65.14, 41.87]                  # dentro del marco fino que ya hay sobre la cama
+    paspartu: "#151515"                                  # paspartú negro, como la lámina que había
+    margen: 4
+    luz: 0.9
+  salon:
+    habitacion: "playa.jpg"
+    foto: "5-tienda/estancias/foto playa.jpeg"          # dron (la playa desde arriba), en horizontal
     girar: 90
     centro_x: 47
     centro_y: 24
     ancho: 36
-  estudio:
-    habitacion: "playa.jpg"
-    foto: "5-tienda/estancias/foto playa.jpeg"          # dron (la playa desde arriba), en horizontal
-    girar: 90
-    centro_x: 46
-    centro_y: 27
-    ancho: 44
 
 estancias:
   comedor:    { en: "Dining room", es: "Comedor",    fr: "Salle à manger" }

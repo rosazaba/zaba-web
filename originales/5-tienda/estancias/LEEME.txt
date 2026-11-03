@@ -1,3 +1,3 @@
 Estancias de la Tienda. Cada habitacion se llama como la foto que va colgada en ella:
-ola.jpg (aparador) <- foto ola.jpg · tortuga.jpg (sofa) <- foto tortuga.jpg · playa.jpg (escritorio) <- foto playa.jpeg
-Para cambiar una, sustituye la habitacion o la foto con el mismo nombre (o avisa a Claude si cambias nombres).
+ola.jpg (aparador) <- foto ola.jpg · tortuga.jpg (dormitorio) <- foto tortuga.jpg · playa.jpg (sofa) <- foto playa.jpeg
+Para cambiar una, sustituye la habitacion o la foto con el mismo nombre (y avisa a Claude para colocar el cuadro).

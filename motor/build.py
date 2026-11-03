@@ -18,7 +18,7 @@ from pathlib import Path
 import yaml
 from jinja2 import Environment, FileSystemLoader
 from markupsafe import Markup, escape
-from PIL import Image, ImageOps, ImageDraw, ImageFilter
+from PIL import Image, ImageOps, ImageDraw, ImageFilter, ImageColor
 
 RAIZ = Path(__file__).resolve().parent.parent
 ORIG = RAIZ / "originales"
@@ -611,19 +611,26 @@ def main():
                 """La foto entera (sin recortar) sobre un paspartú del tamaño del lienzo. El paspartú toma la luz de la
                 pared a ambos lados del cuadro (algo más clara) y lleva una sombra fina en el borde, como en un marco real."""
                 import numpy as np
-                if not c.get("paspartu", True):
-                    return ImageOps.fit(cuadro, (ancho_l, alto_l), Image.LANCZOS)
-                izq, der = (np.array(fondo.crop(r).resize((1, 1), Image.BOX).getpixel((0, 0)), float) for r in refs)
-                t = np.linspace(0, 1, ancho_l)[None, :, None]
-                capa = (1 - t) * izq + t * der
-                capa = np.repeat(capa, alto_l, axis=0) * 1.05 + 5
+                foto = cuadro
+                if c.get("luz"):                       # habitaciones con poca luz: la foto algo más oscura, como la vería el ojo
+                    foto = Image.eval(foto, lambda v, k=float(c["luz"]): min(255, round(v * k)))
+                pas = c.get("paspartu", True)
+                if pas is False:
+                    return ImageOps.fit(foto, (ancho_l, alto_l), Image.LANCZOS)
+                if isinstance(pas, str):               # color fijo, p. ej. "#121212" (paspartú negro)
+                    capa = np.ones((alto_l, ancho_l, 3)) * np.array(ImageColor.getrgb(pas), float)
+                else:
+                    izq, der = (np.array(fondo.crop(r).resize((1, 1), Image.BOX).getpixel((0, 0)), float) for r in refs)
+                    t = np.linspace(0, 1, ancho_l)[None, :, None]
+                    capa = (1 - t) * izq + t * der
+                    capa = np.repeat(capa, alto_l, axis=0) * 1.05 + 5
                 # sombra interior: más marcada arriba (la luz viene de arriba) y suave en los lados
                 yy = np.arange(alto_l)[:, None]; xx = np.arange(ancho_l)[None, :]
                 d = max(3, round(min(ancho_l, alto_l) * 0.012))
                 sombra = 1 - 0.28 * np.exp(-yy / d) - 0.16 * np.exp(-xx / d) - 0.16 * np.exp(-(ancho_l - 1 - xx) / d) - 0.10 * np.exp(-(alto_l - 1 - yy) / d)
                 base = Image.fromarray(np.clip(capa * sombra[:, :, None], 0, 255).astype("uint8"))
-                m = round(min(ancho_l, alto_l) * 0.075)
-                f = cuadro.copy(); f.thumbnail((ancho_l - 2 * m, alto_l - 2 * m), Image.LANCZOS)
+                m = round(min(ancho_l, alto_l) * float(c.get("margen", 7.5)) / 100)
+                f = foto.copy(); f.thumbnail((ancho_l - 2 * m, alto_l - 2 * m), Image.LANCZOS)
                 base.paste(f, ((ancho_l - f.width) // 2, (alto_l - f.height) // 2))
                 return base
             if c.get("recorte"):                                            # proporción ancho/alto, p. ej. 1.5
