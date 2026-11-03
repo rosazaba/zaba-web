@@ -1,0 +1,2 @@
+Fotos de estancias para la Tienda (reales o generadas con IA): un salon y un dormitorio, hechos de frente y con una pared libre.
+Nombres: salon-....jpg y dormitorio-....jpg. Claude coloca tu foto en la pared.

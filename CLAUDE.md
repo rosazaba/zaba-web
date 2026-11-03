@@ -82,7 +82,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 
 - Cabecera exclusiva de Tienda y Encuentra tus fotos (`_cabecera_nueva.html`): banda de color de la gama de siempre (Tienda: `--topo`; Encuentra: `--arena-2`), etiqueta, título grande y foto CUADRADA. Sin amarillo, sin olas ni líneas curvas o torcidas (la usuaria no los quiere). Foto: carpeta `portada/` de la página; si no hay, la Tienda usa su primera estancia y Encuentra una foto horizontal de acción de surf (no la del surfista en el agua).
 - **Estilo de fotos en toda la web: rectas, sin arcos, sin marcos, sin sombras y sin movimiento** (la usuaria rechazó arcos, sombras y fotos torcidas). Esquinas con `--radio`.
-- Tienda (Print Store): dos estancias ILUSTRADAS en SVG (`_estancia.html`, salón y dormitorio; modernas, claras, luminosas) con la foto enmarcada en la pared. Sin apartados de tienda: instrucciones en 4 pasos (elige foto → tamaño → acabado → pide por WhatsApp con mensaje ya escrito). Tamaños, precios y nota del marco en `print-store.yml` (provisionales).
+- Tienda (Print Store): dos estancias (salón y dormitorio). La usuaria quiere estancias REALES: fotos (reales o generadas con IA, de frente y con pared libre) en `5-tienda/estancias/` que empiecen por `salon-` y `dormitorio-`; el build pega la foto recta en la pared según `print-store.yml` → `estancias_reales` (centro_x, centro_y, ancho en %) y hay que ajustar esas cifras mirando cada foto. Sin esas fotos se usan las ilustradas en SVG (`_estancia.html`). Sin apartados de tienda: instrucciones en 4 pasos (elige foto → tamaño → acabado → pide por WhatsApp con mensaje ya escrito). Tamaños, precios y nota del marco en `print-store.yml` (provisionales).
 - Encuentra tus fotos: buscador por texto (playa, pueblo, fecha) y fichas por playa (JS en `web.js`). Cada sesión es un desplegable con sus fotos. Las fotos se publican SOLO con `con_marca()`: 960 px, logo repetido en diagonal y banda con el código `<CÓDIGO>-<AAAAMMDD>-<nnn>`. «Comprar · 15 €» abre WhatsApp con el código. La usuaria cobra y envía el original (no hay pago ni descarga automáticos: lo decidió ella). Precio en `encuentra.yml` → `precio_foto`.
 - `revisar.py` comprueba además: mismo menú en todas las páginas, códigos únicos con botón de compra en Encuentra y 2 estancias con foto en la Tienda.
 
@@ -113,5 +113,6 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - Por confirmar con el usuario: precios de los servicios, ubicación ("Spain") y el dominio (`zaba.com` está puesto provisionalmente).
 - Tienda: fotos propias en `5-tienda/`, precios de tamaños y marcos por confirmar.
 - Encuentra tus fotos: aún sin sesiones (carpetas de Patos y Berria vacías).
-- En `web1` quedan sin uso `docs/services/`, `es/services/`, `fr/services/` (ahora `/rates/`), `2-tarifa/marcas/` y `5-print-store/`: pedir a la usuaria que las borre.
+- La usuaria renombrará `1-servicio` → `1-servicios` (el motor acepta ambos).
+- Tienda: esperar las fotos de `5-tienda/estancias/` y ajustar `estancias_reales` mirando cada foto.
 - Publicación: activar GitHub Pages (lo hace el usuario: Settings → Pages → `main` /docs; la app de Claude no tiene permiso de administración) cuando haya fotos reales y textos revisados.

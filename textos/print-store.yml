@@ -18,6 +18,12 @@ intro:
   es: "Llévate el mar a casa. Cualquier foto de mis galerías, impresa en papel de calidad museo y lista para colgar."
   fr: "Rapportez l'océan chez vous. N'importe quelle photo de mes galeries, imprimée sur papier qualité musée et prête à accrocher."
 
+# Estancias reales (fotos en originales/5-tienda/estancias/ que empiecen por salon- y dormitorio-).
+# Dónde se cuelga la foto, en % de la foto de la estancia: centro horizontal, centro vertical y ancho.
+estancias_reales:
+  salon:      { centro_x: 50, centro_y: 33, ancho: 34 }
+  dormitorio: { centro_x: 50, centro_y: 30, ancho: 30 }
+
 estancias_titulo:
   en: "See it on your wall"
   es: "Así queda en tu pared"

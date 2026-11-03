@@ -486,7 +486,7 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .estancias { display: grid; gap: clamp(24px, 4vw, 48px); }
 @media (min-width: 900px) { .estancias { grid-template-columns: 1fr 1fr; } }
 .estancia { margin: 0; }
-.estancia__svg { display: block; width: 100%; height: auto; }
+.estancia__svg, .estancia__foto { display: block; width: 100%; height: auto; }
 .estancia figcaption { margin-top: 12px; font: 500 .74rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--tierra); text-align: center; }
 .pasos-tienda { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; counter-reset: paso; }
 @media (min-width: 760px) { .pasos-tienda { grid-template-columns: repeat(2, 1fr); } }

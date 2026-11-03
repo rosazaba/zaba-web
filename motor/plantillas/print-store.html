@@ -15,7 +15,8 @@
     <div class="estancias">
       {% for e in estancias %}
       <figure class="estancia aparece">
-        {% include "_estancia.html" %}
+        {% if e.real %}<img class="estancia__foto" src="{{ asset(e.real.src) }}" width="{{ e.real.ancho }}" height="{{ e.real.alto }}" loading="lazy" decoding="async" alt="{{ T(tienda.estancias[e.tipo]) }} — {{ g.marca }}">
+        {% else %}{% include "_estancia.html" %}{% endif %}
         <figcaption>{{ T(tienda.estancias[e.tipo]) }}</figcaption>
       </figure>
       {% endfor %}

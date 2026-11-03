@@ -272,6 +272,7 @@ def optimizar(src: Path, destino_rel: str, girar: int = 0):
         "lab": lab,
         "huella": huella,
         "origen": src.name,
+        "origen_ruta": src.relative_to(ORIG).as_posix() if ORIG in src.parents else str(src),
         "srcset": versiones,
         "src": versiones[min(1, len(versiones) - 1)][1],
         "ancho": w0, "alto": h0,
@@ -561,6 +562,32 @@ def main():
         fotos_tienda += candidatas[:2 - len(fotos_tienda)]
         avisos.append(f"La Tienda usa fotos de las galerías de ejemplo: pon las tuyas en originales/{C_PRINT}/ (las 2 primeras salen en las estancias).")
     estancias = [{"tipo": t, "foto": f} for t, f in zip(["salon", "dormitorio"], fotos_tienda)]
+    # Estancias REALES: originales/5-tienda/estancias/salon-… y dormitorio-… (fotos reales o generadas con IA).
+    # Si existen, se monta la foto en la pared (posición en print-store.yml → estancias_reales) y sustituyen
+    # a las ilustraciones. No pasan por fotos_de(): pueden venir de un banco de imágenes (no son trabajo suyo).
+    carpeta_est = ORIG / C_PRINT / "estancias"
+    conf_est = tienda.get("estancias_reales") or {}
+    for e in estancias:
+        sala = next((p for p in sorted(carpeta_est.glob("*")) if p.suffix.lower() in EXT
+                     and slug(p.stem).startswith(e["tipo"])), None) if carpeta_est.exists() else None
+        if not sala or not e["foto"]:
+            continue
+        c = conf_est.get(e["tipo"]) or {}
+        out = IMG_DIR / "print-store" / f"estancia-{e['tipo']}.webp"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        generadas.add(out)
+        with Image.open(sala) as fondo, Image.open(en_orig(e["foto"]["origen_ruta"])) as cuadro:
+            fondo = ImageOps.exif_transpose(fondo).convert("RGB")
+            fondo.thumbnail((2000, 2000), Image.LANCZOS)
+            W, H = fondo.size
+            # posición del cuadro: centro (x, y) y ancho, en % de la foto de la estancia
+            cx, cy, ancho = (float(c.get(k, d)) / 100 for k, d in (("centro_x", 50), ("centro_y", 33), ("ancho", 34)))
+            cuadro = ImageOps.exif_transpose(cuadro).convert("RGB")
+            w = round(W * ancho); h = round(w * cuadro.height / cuadro.width)
+            cuadro = ImageOps.fit(cuadro, (w, h), Image.LANCZOS)
+            fondo.paste(cuadro, (round(W * cx - w / 2), round(H * cy - h / 2)))
+            fondo.save(out, "WEBP", quality=82, method=5)
+            e["real"] = {"src": f"img/print-store/{out.name}", "ancho": W, "alto": H}
 
     # ── Encuentra tus fotos: playa → sesión (fecha) → fotos con marca de agua y código ──
     encuentra = leer("encuentra")
