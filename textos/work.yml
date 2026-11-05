@@ -41,7 +41,7 @@ galerias:
     # el resto se ordena solo, sin juntar parecidas.
     apartados:
       - carpeta: "reportaje"
-        primeras: ["_MG_1785.jpg", "_MG_8950.jpg", "IMG_0895.jpg", "_MG_2091.jpg", "_MG_5551.jpg", "_MG_1613.jpg"]   # salto · descenso por el cabo · tortuga · retrato · paisaje · contraluz
+        primeras: ["_MG_1785.jpg", "_MG_8950.jpg", "IMG_0895.jpg", "_MG_2091.jpg", "_MG_5551.jpg", "IMG_6982.JPG"]   # salto · descenso por el cabo · tortuga · retrato · paisaje · la 6.ª la eligió Rosa
         titulo: { en: "Photo report", es: "Reportaje", fr: "Reportage" }
 
   surf:
