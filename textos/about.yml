@@ -74,9 +74,9 @@ objetivos:
       fr: "Si vous pouvez le rêver, vous pouvez le faire."
     # mas: el texto que se abre con el botón «Más» (vacío = no sale el botón)
     mas:
-      en: "I'm a photographer who never studied photography. I worked as an underwater photographer without having taken a single photo above water. It's never too late to start. If you don't know how to begin, write to me and I'll tell you how to get started in underwater photography."
-      es: "Soy fotógrafa sin haber estudiado fotografía. Trabajé como fotógrafa submarina sin haber hecho ni una foto en superficie. Siempre estás a tiempo de empezar. Si no sabes cómo empezar, escríbeme y te cuento cómo empezar en el mundo foto sub."
-      fr: "Je suis photographe sans avoir étudié la photographie. J'ai travaillé comme photographe sous-marine sans avoir pris une seule photo en surface. Il n'est jamais trop tard pour commencer. Si vous ne savez pas par où commencer, écrivez-moi et je vous explique comment débuter dans la photo sous-marine."
+      en: "I'm a photographer who never studied photography. I worked as an underwater photographer without having taken a single photo above water. It's never too late for anything. If you don't know how to start, write to me and I'll tell you how I did it."
+      es: "Soy fotógrafa sin haber estudiado fotografía. Trabajé como fotógrafa submarina sin haber hecho ni una foto en superficie. Siempre estás a tiempo de todo. Si no sabes cómo empezar, escríbeme y te cuento cómo lo hice yo."
+      fr: "Je suis photographe sans avoir étudié la photographie. J'ai travaillé comme photographe sous-marine sans avoir pris une seule photo en surface. Il n'est jamais trop tard pour rien. Si vous ne savez pas par où commencer, écrivez-moi et je vous raconte comment je l'ai fait."
     # botones debajo del texto que se abre (destino: curso, contact, services, print, encuentra, about o inicio)
     botones:
       - { destino: curso,   texto: { en: "Underwater photo course", es: "Curso foto sub", fr: "Cours photo sous-marine" } }
