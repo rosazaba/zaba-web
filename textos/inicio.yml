@@ -9,9 +9,9 @@ portada_girar: 0
 #   Si esa carpeta está vacía, se eligen solas de las galerías y se ordenan por color.
 
 portada_titulo:
-  en: "Where the ocean tells the story"
-  es: "Donde el océano cuenta la historia"
-  fr: "Là où l'océan raconte l'histoire"
+  en: "The eternal moment, the emotion intact"
+  es: "El instante eterno, la emoción intacta"
+  fr: "L'instant éternel, l'émotion intacte"
 
 portada_subtitulo:
   en: "Surf and diving photography by Zaba"
