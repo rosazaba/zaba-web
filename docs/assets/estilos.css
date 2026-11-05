@@ -450,6 +450,14 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .objetivo__num { font: 400 .72rem var(--sans); letter-spacing: .3em; color: var(--ocre); }
 .objetivo h3 { margin: .5rem 0 .4rem; font-size: 1.45rem; }
 .objetivo p { margin: 0; color: #5a5048; }
+/* «Más»: abre el resto del texto del punto y sus botones */
+.objetivo__mas { margin-top: 16px; }
+.objetivo__mas summary { list-style: none; cursor: pointer; display: inline-flex; }
+.objetivo__mas summary::-webkit-details-marker { display: none; }
+.objetivo__mas[open] summary { display: none; }
+.objetivo__mas > p { margin-top: 4px; line-height: 1.7; }
+.objetivo__mas .objetivo__botones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.boton--peque { min-height: 42px; padding: 0 22px; font-size: .74rem; }
 
 /* 4. Cuadrícula de fotos entremezclada con frases */
   background: var(--arena-2); color: var(--tierra); font: 300 clamp(1.05rem, 2.4vw, 1.7rem)/1.3 var(--serif); }

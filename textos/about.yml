@@ -52,22 +52,35 @@ proposito_texto:   # (texto de Rosa)
   es: "Congelar un instante que dura segundos, y emocionar sin decir una palabra a quien lo quiera tener para siempre."
   fr: "Figer un instant qui ne dure que quelques secondes, et émouvoir sans un mot celui qui veut le garder pour toujours."
 
+# Los 3 puntos de debajo de «Mi propósito»: título, frase corta y, si se rellena «mas», un botón «Más» que abre el resto del texto y sus botones
+ver_mas: { en: "More", es: "Más", fr: "Plus" }
 objetivos:
   - titulo: { en: "Real moments",       es: "Momentos reales",        fr: "Des moments vrais" }
     texto:
       en: "No poses: I look for the instant that tells your session as it was."
       es: "Sin poses: busco el instante que cuenta tu sesión tal y como fue."
       fr: "Pas de poses : je cherche l'instant qui raconte votre session telle qu'elle a été."
+    # mas / botones: pendiente (lo manda Rosa); mismo formato que el punto 3
   - titulo: { en: "Respect for the sea", es: "Respeto por el mar",     fr: "Le respect de la mer" }
     texto:
       en: "I photograph without disturbing marine life and following good diving practice."
       es: "Fotografío sin molestar a la vida marina y siguiendo las buenas prácticas de buceo."
       fr: "Je photographie sans déranger la vie marine, en respectant les bonnes pratiques de plongée."
-  - titulo: { en: "Images that last",   es: "Imágenes que perduran",  fr: "Des images qui restent" }
+    # mas / botones: pendiente (lo manda Rosa); mismo formato que el punto 3
+  - titulo: { en: "Reaching more people", es: "Llegar a más gente", fr: "Toucher plus de monde" }   # (texto de Rosa)
     texto:
-      en: "Photos you'll want to print and keep, not just post."
-      es: "Fotos que quieras imprimir y guardar, no solo publicar."
-      fr: "Des photos que vous voudrez imprimer et garder, pas seulement publier."
+      en: "If you can dream it, you can do it."
+      es: "Si lo puedes soñar, lo puedes hacer."
+      fr: "Si vous pouvez le rêver, vous pouvez le faire."
+    # mas: el texto que se abre con el botón «Más» (vacío = no sale el botón)
+    mas:
+      en: "I'm a photographer who never studied photography. I worked as an underwater photographer without having taken a single photo above water. It's never too late to start. If you don't know how to begin, write to me and I'll tell you how to get started in underwater photography."
+      es: "Soy fotógrafa sin haber estudiado fotografía. Trabajé como fotógrafa submarina sin haber hecho ni una foto en superficie. Siempre estás a tiempo de empezar. Si no sabes cómo empezar, escríbeme y te cuento cómo empezar en el mundo foto sub."
+      fr: "Je suis photographe sans avoir étudié la photographie. J'ai travaillé comme photographe sous-marine sans avoir pris une seule photo en surface. Il n'est jamais trop tard pour commencer. Si vous ne savez pas par où commencer, écrivez-moi et je vous explique comment débuter dans la photo sous-marine."
+    # botones debajo del texto que se abre (destino: curso, contact, services, print, encuentra, about o inicio)
+    botones:
+      - { destino: curso,   texto: { en: "Underwater photo course", es: "Curso foto sub", fr: "Cours photo sous-marine" } }
+      - { destino: contact, texto: { en: "Let's talk", es: "Hablamos", fr: "Parlons-en" } }
 
 # Pequeños datos (etiqueta + valor)
 datos:
