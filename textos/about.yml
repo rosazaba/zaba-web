@@ -76,7 +76,7 @@ datos:
   - etiqueta: { en: "In the water", es: "En el agua", fr: "Dans l'eau" }
     valor:    { en: "Surf · Scuba · Freediving", es: "Surf · Buceo · Apnea", fr: "Surf · Plongée · Apnée" }
   - etiqueta: { en: "Languages", es: "Idiomas", fr: "Langues" }
-    valor:    { en: "English · Español · Français", es: "English · Español · Français", fr: "English · Español · Français" }
+    valor:    { en: "English · Español", es: "English · Español", fr: "English · Español" }
 
 # Fotos provisionales mientras no haya fotos tuyas en originales/3-sobre-mi/ (rutas dentro de originales/)
 provisional:
