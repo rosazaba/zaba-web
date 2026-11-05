@@ -29,20 +29,17 @@ hola_subtitulo:
   es: "Quién está detrás de la lente"
   fr: "Derrière l'objectif"
 
-# Tu historia. Cada línea es un párrafo. (TEXTO PROVISIONAL: cámbialo por el tuyo)
+# Tu historia. Cada línea es un párrafo. (Texto de Rosa)
 parrafos:
   en:
-    - "I'm a surf and diving photographer. What started as filming friends in the line-up turned into a way of life: reading forecasts, waking up before sunrise and spending hours in the water waiting for the right moment."
-    - "Below the surface I found a different kind of quiet. Diving taught me patience and respect for the ocean — and that the best images come when you blend in rather than chase."
-    - "Today I work with surfers and divers who want honest, luminous images of their time in the sea."
+    - "Walking barefoot, salt-kissed and close to the sea as a way of life. That this is my work uniform is crazy. My great passions are the sea, photography and sport. Being able to bring them all together and turn them into a profession, coming from Toledo, hasn't been luck."
+    - "I've been a diving instructor for more than 8 years. For over three years I've worked professionally in underwater photography, and I'm making my way as a surf photographer while never stopping learning."
   es:
-    - "Me dedico a la fotografía de surf y buceo. Lo que empezó grabando a mis amigos en el pico se convirtió en una forma de vida: mirar previsiones, levantarme antes del amanecer y pasar horas en el agua esperando el momento justo."
-    - "Bajo la superficie encontré otro tipo de calma. El buceo me enseñó paciencia y respeto por el océano, y que las mejores imágenes llegan cuando te integras en lugar de perseguir."
-    - "Hoy trabajo con surfistas y buceadores que quieren imágenes honestas y luminosas de su tiempo en el mar."
+    - "Andar descalza, ensalitrada y cerca del mar como estilo de vida. Que sea mi uniforme de trabajo es una locura. Mis grandes pasiones son el mar, la fotografía y el deporte. Poder mezclarlo todo y hacer de ello una profesión siendo de Toledo no ha sido suerte."
+    - "Soy instructora de buceo desde hace más de 8 años. Llevo más de tres años dedicándome a la fotografía submarina de manera profesional y abriéndome camino como fotógrafa de surf, sin dejar de formarme."
   fr:
-    - "Je suis photographe de surf et de plongée. Ce qui a commencé en filmant mes amis au line-up est devenu un mode de vie : lire les prévisions, se lever avant le soleil et passer des heures dans l'eau à attendre le bon moment."
-    - "Sous la surface, j'ai trouvé un autre calme. La plongée m'a appris la patience et le respect de l'océan — et que les meilleures images viennent quand on se fond dans le décor plutôt que de courir après."
-    - "Aujourd'hui, je travaille avec des surfeurs et des plongeurs qui veulent des images sincères et lumineuses de leurs moments en mer."
+    - "Marcher pieds nus, le sel sur la peau et près de la mer, comme mode de vie. Que ce soit mon uniforme de travail, c'est fou. Mes grandes passions sont la mer, la photographie et le sport. Pouvoir tout réunir et en faire mon métier en venant de Tolède, ce n'est pas une question de chance."
+    - "Je suis monitrice de plongée depuis plus de 8 ans. Depuis plus de trois ans, je me consacre professionnellement à la photographie sous-marine et je me fais une place comme photographe de surf, sans jamais cesser de me former."
 
 # ── 3. Mi propósito ─────────────────────────────────────────  (TEXTO PROVISIONAL)
 proposito_titulo:
@@ -50,10 +47,10 @@ proposito_titulo:
   es: "Mi propósito"
   fr: "Ma démarche"
 
-proposito_texto:
-  en: "I want every image to carry what it feels like to be in the water: the light, the cold, the silence and the adrenaline."
-  es: "Quiero que cada imagen transmita lo que se siente estando en el agua: la luz, el frío, el silencio y la adrenalina."
-  fr: "Je veux que chaque image transmette ce que l'on ressent dans l'eau : la lumière, le froid, le silence et l'adrénaline."
+proposito_texto:   # (texto de Rosa)
+  en: "I like to think that I can freeze a moment that lasts only seconds for someone who wants to keep it forever, and move whoever looks at it again without saying a word."
+  es: "Me gusta pensar que puedo congelar un instante que dura segundos para alguien que quiera tenerlo para siempre, y emocionar sin decir una palabra a quien lo contemple de nuevo."
+  fr: "J'aime penser que je peux figer un instant qui ne dure que quelques secondes pour quelqu'un qui veut le garder pour toujours, et émouvoir sans un mot celui qui le regarde à nouveau."
 
 objetivos:
   - titulo: { en: "Real moments",       es: "Momentos reales",        fr: "Des moments vrais" }
