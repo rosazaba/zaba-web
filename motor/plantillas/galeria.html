@@ -32,7 +32,7 @@
     {% if lista|length > 6 %}<p class="cuadros__ver"><button type="button" class="boton boton--linea" data-ver-todas>{{ T(work.ver_mas) }}</button></p>{% endif %}
     </div>
     {% endmacro %}
-    {% if galeria.apartados %}
+    {% if galeria.apartados|length > 1 %}
     {# Buceo: los tres apartados uno debajo de otro, cada uno con su título, una breve descripción y su tira de 6 #}
     <div class="apartados">
       {% for a in galeria.apartados %}
@@ -45,6 +45,9 @@
       </section>
       {% endfor %}
     </div>
+    {% elif galeria.apartados %}
+    {# Un solo apartado (buceo → reportaje): sale como surf y dron, sin título ni descripción #}
+    {{ cuadricula(galeria.apartados[0].fotos, T(galeria.titulo)) }}
     {% else %}
     {{ cuadricula(galeria.fotos, T(galeria.titulo)) }}
     {% endif %}

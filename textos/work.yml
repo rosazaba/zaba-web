@@ -36,31 +36,13 @@ galerias:
       en: "Reefs, wrecks, marine life and the divers who explore them."
       es: "Arrecifes, pecios, vida marina y los buceadores que los exploran."
       fr: "Récifs, épaves, vie marine et les plongeurs qui les explorent."
-    # Apartados de la galería de buceo (uno debajo de otro, con título y breve descripción en «texto»). Fotos en originales/1-servicio/buceo/<carpeta>/.
-    # max: cuántas fotos se ven como mucho (las primeras por nombre).
+    # Buceo es una sola galería, como surf y dron (la usuaria quitó Buceo 100 y Curso): fotos en originales/1-servicio/buceo/reportaje/.
+    # Al ser un único apartado sale sin título ni descripción. primeras: las 6 fotos de la tira de arriba (antes de «Ver más»), en ese orden;
+    # el resto se ordena solo, sin juntar parecidas.
     apartados:
-      # primeras: las 6 fotos que salen de primeras (antes de «Ver más»), en ese orden; el resto se ordena solo, sin juntar parecidas.
       - carpeta: "reportaje"
-        max: 30
-        primeras: ["_MG_2748.jpg", "_MG_8950.jpg", "IMG_0895.jpg", "_MG_2091.jpg", "_MG_5551.jpg", "_MG_1613.jpg"]   # salto · descenso por el cabo · tortuga · retrato · paisaje · contraluz
+        primeras: ["_MG_1785.jpg", "_MG_8950.jpg", "IMG_0895.jpg", "_MG_2091.jpg", "_MG_5551.jpg", "_MG_1613.jpg"]   # salto · descenso por el cabo · tortuga · retrato · paisaje · contraluz
         titulo: { en: "Photo report", es: "Reportaje", fr: "Reportage" }
-        texto:   # breve descripción debajo del título (provisional)
-          en: "A full day of diving told in photos: the boat, the jump into the water, the descent and the life you meet below."
-          es: "Un día de buceo contado en fotos: el barco, el salto al agua, el descenso y la vida que te encuentras abajo."
-          fr: "Une journée de plongée racontée en photos : le bateau, le saut dans l'eau, la descente et la vie que l'on croise en bas."
-      - carpeta: "buceo-100"
-        titulo: { en: "Diving 100", es: "Buceo 100", fr: "Plongée 100" }
-        texto:
-          en: "Photos to celebrate your 100th dive, a milestone worth remembering."
-          es: "Fotos para celebrar tu inmersión número 100, un momento que merece recordarse."
-          fr: "Des photos pour fêter votre 100e plongée, un moment qui mérite d'être gardé."
-      - carpeta: "curso"
-        primeras: ["_MG_1785.jpg", "_MG_8804.jpg", "IMG_5799.jpg", "_MG_8670.jpg", "_MG_1827.jpg", "_MG_8771 (2).jpg"]   # salto · cabo · vida marina · retrato · paisaje · contraluz
-        titulo: { en: "Course", es: "Curso", fr: "Cours" }
-        texto:
-          en: "Your first breaths underwater and every step of your diving course, captured so you never forget them."
-          es: "Tus primeras respiraciones bajo el agua y cada paso de tu curso de buceo, para que nunca los olvides."
-          fr: "Vos premières respirations sous l'eau et chaque étape de votre formation de plongée, pour ne jamais les oublier."
 
   surf:
     url: "surf"          # dirección: .../work/surf/
