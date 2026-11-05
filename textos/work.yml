@@ -47,6 +47,8 @@ galerias:
   surf:
     url: "surf"          # dirección: .../work/surf/
     orden: 2
+    # primeras: las 6 fotos de la tira de arriba (las eligió Rosa), en ese orden; el resto se mezcla solo, sin juntar parecidas
+    primeras: ["DSC04781-2.jpg", "DSC04968-2.jpg", "DSC05182.jpg", "DSC04863.jpg", "DSC08539-2.jpg", "DSC08626-2.jpg"]
     color: "tierra"
     portada: ""
     titulo:  { en: "Surf", es: "Surf", fr: "Surf" }

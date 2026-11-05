@@ -529,6 +529,8 @@ def main():
         fotos.sort(key=lambda f: not es_portada(f))
         fotos = quitar_repetidas(fotos, ya_vistas, carpeta)
         fotos.sort(key=lambda f: f["origen"])
+        if c.get("primeras") and not c.get("apartados"):   # surf / dron: la tira de 6 la elige Rosa y el resto se mezcla sin juntar parecidas
+            fotos = ordenar_variado(fotos, c["primeras"], carpeta)
         hay_en_apartados = any(fotos_de(f"{C_TRABAJOS}/{carpeta}/{a['carpeta']}") for a in (c.get("apartados") or []))
         if not fotos and not hay_en_apartados:
             if carpeta not in conf:
