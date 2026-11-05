@@ -46,7 +46,7 @@ formulario_titulo:
   es: "Cuéntame tu idea"
   fr: "Parlez-moi de votre idée"
 
-# Fondo-mural: foto de originales/4-contacto/portada/ en transparencia sobre un color sólido
+# Fondo-mural: foto de originales/3-contacto/portada/ en transparencia sobre un color sólido
 mural_color: "mar"        # mar (azul verdoso), topo, arena-2, ocre…
 mural_opacidad: 0.28      # 0 = no se ve la foto, 1 = foto sin transparencia
 

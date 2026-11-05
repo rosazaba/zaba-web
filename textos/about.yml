@@ -1,5 +1,5 @@
 # SOBRE MÍ
-# Fotos: originales/3-sobre-mi/
+# Fotos: originales/2-sobre-mi/
 #   portada/   -> la foto apaisada de arriba (horizontal), dentro de la carpeta «portada»
 #   retrato-…  -> tu foto del bloque «¡Hola! Soy Rosa» (mejor vertical)
 # Mientras no haya fotos tuyas se usan las de «provisional» (fotos de tus galerías).
@@ -91,10 +91,10 @@ datos:
   - etiqueta: { en: "Languages", es: "Idiomas", fr: "Langues" }
     valor:    { en: "English · Español", es: "English · Español", fr: "English · Español" }
 
-# Fotos provisionales mientras no haya fotos tuyas en originales/3-sobre-mi/ (rutas dentro de originales/)
+# Fotos provisionales mientras no haya fotos tuyas en originales/2-sobre-mi/ (rutas dentro de originales/)
 provisional:
   portada: "1-trabajos/buceo/_MG_8142.jpg"
-  retrato: "3-sobre-mi/portada/IMG_20221225_181806_612.jpg"   # retrato del bloque «Hola»: la misma foto de la portada (elegido por Rosa)
+  retrato: "2-sobre-mi/portada/IMG_20221225_181806_612.jpg"   # retrato del bloque «Hola»: la misma foto de la portada (elegido por Rosa)
 
 # Encuadre de la foto de arriba: "horizontal vertical" en %. 50% 50% = centrada;
 # vertical más bajo (p. ej. 25%) enseña más la parte de arriba de la foto, más alto (75%) la de abajo.

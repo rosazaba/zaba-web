@@ -1,5 +1,5 @@
 # TARIFA (antes «Servicios»; en el menú: Rates / Tarifa / Tarifs). Dirección: /rates/
-# Cada servicio usa la foto de su carpeta en originales/2-tarifa/<carpeta>/
+# Cada servicio usa la foto de su carpeta en originales/4-tarifa/<carpeta>/
 # Mientras esa carpeta esté vacía usa foto_provisional (ruta dentro de originales/).
 # precio: escribe "" para que ponga "Consultar".
 
@@ -44,7 +44,7 @@ lista:
       es: ["Una o dos inmersiones", "Más de 30 fotos editadas", "Galería online en 72 h"]
       fr: ["Une ou deux plongées", "Plus de 30 photos retouchées", "Galerie en ligne sous 72 h"]
 
-  - carpeta: dron                                   # carpeta originales/2-tarifa/dron/ (antes «copias»)
+  - carpeta: dron                                   # carpeta originales/4-tarifa/dron/ (antes «copias»)
     foto_provisional: "1-trabajos/dron/IMG_20260907_09553035.jpeg"
     titulo: { en: "Drone session", es: "Sesión con dron", fr: "Séance drone" }
     precio: "000 €"

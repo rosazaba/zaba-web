@@ -29,16 +29,18 @@ def _primera(*nombres):
 C_TRABAJOS = _primera("1-servicio", "1-servicios", "1-trabajos")   # página «Servicios / My services»: portada/, seleccion/ y una carpeta por galería
 C_PORTADA = f"{C_TRABAJOS}/portada"    # la foto grande de arriba (cada galería tiene además su <galería>/portada/)
 C_SELECCION = f"{C_TRABAJOS}/seleccion"
-C_SERVICIOS = _primera("2-tarifa", "2-servicios")   # página «Tarifa / Rates»: portada/ y <servicio>/
-C_SOBRE_MI = "3-sobre-mi"
-C_CONTACTO = "4-contacto"             # solo su carpeta portada/ (foto del fondo-mural de Contacto)
-C_PRINT = _primera("5-tienda-de-impresiones", "5-tienda de impresiones", "5-tienda", "5-print-store")   # página «Tienda de impresiones / Print Store»: portada/ (cabecera) y las fotos que se venden impresas (las 2 primeras salen en las estancias)
-C_CURSO = _primera("6-curso-foto-sub")   # página «Curso foto sub»: teoria/, practica/ y edicion/ (una foto en cada una)
+C_SOBRE_MI = _primera("2-sobre-mi", "3-sobre-mi")
+C_CONTACTO = _primera("3-contacto", "4-contacto")   # solo su carpeta portada/ (foto del fondo-mural de Contacto)
+C_SERVICIOS = _primera("4-tarifa", "2-tarifa", "2-servicios")   # página «Tarifa / Rates» (dentro de «Más»): portada/ y <servicio>/
+C_PRINT = _primera("6-tienda-de-impresiones", "6-tienda de impresiones", "5-tienda-de-impresiones", "5-tienda de impresiones", "5-tienda", "5-print-store")   # página «Tienda de impresiones / Print Store»: portada/ (cabecera) y las fotos que se venden impresas (las 2 primeras salen en las estancias)
+C_CURSO = _primera("5-curso-foto-sub", "6-curso-foto-sub")   # página «Curso foto sub»: teoria/, practica/ y edicion/ (una foto en cada una)
 C_ENCUENTRA = _primera("7-encuentra-tus-fotos", "6-encuentra-tus-fotos")  # (antes 6-encuentra-tus-fotos) portada/ (cabecera) y <playa>/<AAAA-MM-DD>/ con las fotos de cada sesión
 # Rutas escritas en textos/*.yml con el nombre antiguo de una carpeta siguen funcionando
 ALIAS_CARPETAS = {"1-trabajos": C_TRABAJOS, "1-servicios": C_TRABAJOS, "1-servicio": C_TRABAJOS, "2-servicios": C_SERVICIOS, "2-tarifa": C_SERVICIOS,
                   "5-tienda": C_PRINT, "5-tienda-de-impresiones": C_PRINT, "5-tienda de impresiones": C_PRINT, "5-print-store": C_PRINT,
-                  "6-encuentra-tus-fotos": C_ENCUENTRA, "7-encuentra-tus-fotos": C_ENCUENTRA}
+                  "6-encuentra-tus-fotos": C_ENCUENTRA, "7-encuentra-tus-fotos": C_ENCUENTRA,
+                  "4-tarifa": C_SERVICIOS, "2-sobre-mi": C_SOBRE_MI, "3-sobre-mi": C_SOBRE_MI, "3-contacto": C_CONTACTO, "4-contacto": C_CONTACTO,
+                  "6-tienda-de-impresiones": C_PRINT, "6-tienda de impresiones": C_PRINT, "5-curso-foto-sub": C_CURSO, "6-curso-foto-sub": C_CURSO}
 
 
 def en_orig(ruta):
@@ -54,8 +56,8 @@ FOTOS_TIENDA_POR_GALERIA = 12   # Tienda sin fotos propias: cuántas fotos de ca
 RUTAS = {"inicio": "", "services": "rates/", "print": "print-store/", "curso": "underwater-photo-course/",
          "encuentra": "find-your-photos/", "about": "about/", "contact": "contact/"}
 # Menú: apartados principales y, dentro del desplegable «Más», el resto (en este orden)
-MENU_PRINCIPAL = ["inicio", "services", "about", "contact"]
-MENU_MAS = ["print", "curso", "encuentra"]
+MENU_PRINCIPAL = ["inicio", "about", "contact"]
+MENU_MAS = ["services", "curso", "print", "encuentra"]
 TEXTOS = RAIZ / "textos"
 MOTOR = RAIZ / "motor"
 SALIDA = RAIZ / "docs"

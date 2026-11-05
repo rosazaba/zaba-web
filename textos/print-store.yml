@@ -1,9 +1,9 @@
 # TIENDA DE IMPRESIONES (en inglés: Print Store; en francés: Boutique de tirages). Dirección: /print-store/
 # Organización inspirada en la tienda de Laurita Polvorilla: título, estancia grande, 3 pasos,
 # «Elige tu foto», «Materiales» + «Tamaños y precios» y formulario de pedido (se envía por WhatsApp).
-# Fotos: originales/5-tienda-de-impresiones/buceo/, surf/ y dron/ → las fotos a la venta (pestañas de «Elige tu foto»).
+# Fotos: originales/6-tienda-de-impresiones/buceo/, surf/ y dron/ → las fotos a la venta (pestañas de «Elige tu foto»).
 #        Si una está vacía, de ejemplo salen las mejores fotos de esa galería.
-#        originales/5-tienda-de-impresiones/estancias/ → habitaciones (salon-…, dormitorio-…, estudio-…) y las fotos que se cuelgan en ellas.
+#        originales/6-tienda-de-impresiones/estancias/ → habitaciones (salon-…, dormitorio-…, estudio-…) y las fotos que se cuelgan en ellas.
 
 titulo:
   en: "Print Store"
@@ -20,7 +20,7 @@ intro:
   es: "Llévate el mar a casa. Mis fotografías, impresas en papel fine art y listas para colgar."
   fr: "Rapportez l'océan chez vous. Mes photographies, imprimées sur papier fine art et prêtes à accrocher."
 
-# Estancias: en originales/5-tienda-de-impresiones/estancias/ la usuaria nombra cada habitación como la foto que se cuelga en ella
+# Estancias: en originales/6-tienda-de-impresiones/estancias/ la usuaria nombra cada habitación como la foto que se cuelga en ella
 # (ola.jpg ↔ «foto ola.jpg», tortuga.jpg ↔ «foto tortuga.jpg», playa.jpg ↔ «foto playa.jpeg»).
 # Para cada estancia: habitacion (archivo), foto (ruta dentro de originales/), girar (grados, sentido del reloj) y dónde va:
 #   centro_x / centro_y / ancho (o alto) en % → cuadro nuevo con marco fino de roble y paspartú;
@@ -33,11 +33,11 @@ intro:
 estancias_reales:
   comedor:
     habitacion: "ola.jpg"
-    foto: "5-tienda-de-impresiones/estancias/foto ola.jpg"             # surf (la ola)
+    foto: "6-tienda-de-impresiones/estancias/foto ola.jpg"             # surf (la ola)
     hueco: [33.94, 6.07, 78.76, 51.62]                   # dentro del marco negro que ya tiene la foto
   salon:
     habitacion: "playa.jpg"
-    foto: "5-tienda-de-impresiones/estancias/foto playa.jpeg"          # dron (la playa desde arriba), en horizontal
+    foto: "6-tienda-de-impresiones/estancias/foto playa.jpeg"          # dron (la playa desde arriba), en horizontal
     girar: 90
     centro_x: 47
     centro_y: 24
@@ -45,7 +45,7 @@ estancias_reales:
 
   dormitorio:
     habitacion: "tortuga.jpg"
-    foto: "5-tienda-de-impresiones/estancias/foto tortuga.jpg"         # buceo (la tortuga), en horizontal
+    foto: "6-tienda-de-impresiones/estancias/foto tortuga.jpg"         # buceo (la tortuga), en horizontal
     girar: 90
     hueco: [34.26, 15.23, 65.14, 41.87]                  # dentro del marco fino que ya hay sobre la cama
     paspartu: "#151515"                                  # paspartú negro, como la lámina que había
