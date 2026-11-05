@@ -470,6 +470,7 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .mural__in { position: relative; max-width: var(--max); margin: 0 auto; padding: 0 var(--margen); display: grid; gap: clamp(32px, 5vw, 72px); align-items: start; }
 @media (min-width: 960px) { .mural__in { grid-template-columns: 1fr 1.15fr; } }
 .mural__cabeza h1 { margin-bottom: .2em; }
+.mural__lema { margin: 0 0 .5rem; font: 300 clamp(1.5rem, 3vw, 2rem)/1.2 var(--serif); color: #fff; }
 .mural__cabeza .texto-grande { color: rgba(255,255,255,.88); max-width: 34ch; }
 .mural__directo { margin-top: 2rem; }
 .mural__etiqueta { color: var(--arena-2); }   /* mismo formato que .antetitulo; solo cambia el color sobre el mural */

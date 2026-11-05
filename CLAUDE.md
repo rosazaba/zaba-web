@@ -79,8 +79,8 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - Pie (bloque marrón): solo el logo y la frase `pie.frase` de `general.yml`, centrados, igual en todas las páginas (sin menú, teléfono, WhatsApp, Instagram ni idiomas; lo pidió la usuaria). WhatsApp ya está en el botón flotante e Instagram va en Contacto.
 - Contacto:
   - Sin foto de cabecera ni botón «Llamar». Fondo tipo mural a toda la página: foto de `4-contacto/portada/` en transparencia (`mural_opacidad`) sobre un color sólido (`mural_color`, en `contact.yml`).
-  - El bloque de texto empieza arriba (no centrado en vertical), con el título a la misma altura que en las demás páginas. A la izquierda título, entradilla, WhatsApp e Instagram; a la derecha el formulario en una tarjeta recta, sin sombra.
-  - Campos: Nombre, Apellidos, «Asunto a tratar» (desplegable: surf, buceo, dron, en `contact.yml` → `intereses`) y Mensaje (la usuaria quiso mantenerlo).
+  - El bloque de texto empieza arriba (no centrado en vertical), con el título a la misma altura que en las demás páginas. A la izquierda el título «Contacto», debajo «¡Trabajemos junt@s!» (`lema`), «Cuéntame lo que tienes en mente.» (`intro`) y los iconos de WhatsApp e Instagram, los dos con el mismo estilo de línea fina en círculo (`motor/assets/iconos/whatsapp.svg` lo dibujó Claude a juego con el de Instagram). A la derecha el formulario en una tarjeta recta, sin sombra, con el título «¡Hola! Cuéntame tu idea» (`formulario_saludo` + `formulario_titulo`).
+  - Campos: Nombre, Apellidos, «Asunto» (campo libre, ya no desplegable; al llegar desde Tarifa con `?s=surf|buceo|dron` se rellena solo con los textos de `contact.yml` → `intereses`) y Mensaje.
   - Destino de los mensajes: `contacto.email_formulario` (rouszaba@gmail.com). No se muestra en la web; va codificado en `data-destino` (base64 invertido) para evitar robots. `contacto.email` es el email visible y está vacío a propósito.
   - Sin `web3forms_clave`, el formulario abre el correo del visitante (mailto). Con clave, envía por Web3Forms y muestra un campo de email.
   - El botón flotante de WhatsApp no aparece en la página de contacto.

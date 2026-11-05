@@ -232,7 +232,9 @@
   if (form) {
     var param = new URLSearchParams(location.search).get("s");
     var sel = form.querySelector("[data-servicio]");
-    if (param && sel && sel.querySelector('option[value="' + param + '"]')) sel.value = param;
+    if (param && sel && !sel.value) {
+      try { var asuntos = JSON.parse(sel.dataset.asuntos || "{}"); if (asuntos[param]) sel.value = asuntos[param]; } catch (err) {}
+    }
     var estado = form.querySelector(".formulario__estado");
 
     form.addEventListener("submit", function (e) {
@@ -248,11 +250,11 @@
           .finally(function () { btn.disabled = false; });
       } else {
         // Sin clave: abre el correo del visitante con el mensaje ya escrito
-        var interes = sel ? sel.options[sel.selectedIndex].text : "";
+        var interes = sel ? sel.value.trim() : "";
         var nombre = [datos.get("name"), datos.get("surname")].filter(Boolean).join(" ");
-        var texto = datos.get("message") + "\n\n— " + nombre + " (" + interes + ")";
+        var texto = datos.get("message") + "\n\n— " + nombre;
         var destino = form.dataset.destino ? atob(form.dataset.destino.split("").reverse().join("")) : "";
-        location.href = "mailto:" + destino + "?subject=" + encodeURIComponent(datos.get("subject") + " · " + interes) +
+        location.href = "mailto:" + destino + "?subject=" + encodeURIComponent(datos.get("subject") + (interes ? " · " + interes : "")) +
           "&body=" + encodeURIComponent(texto);
       }
     });

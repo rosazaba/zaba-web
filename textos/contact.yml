@@ -5,22 +5,28 @@ titulo:
   es: "Contacto"
   fr: "Contact"
 
+# Debajo del título «Contacto» (texto de Rosa)
+lema:
+  en: "Let's work together!"
+  es: "¡Trabajemos junt@s!"
+  fr: "Travaillons ensemble !"
+
 intro:
-  en: "Planning a session or want a print? Write to me and I'll get back to you soon."
-  es: "¿Quieres una sesión o una copia impresa? Escríbeme y te respondo pronto."
-  fr: "Une séance ou un tirage ? Écrivez-moi et je vous réponds rapidement."
+  en: "Tell me what you have in mind."
+  es: "Cuéntame lo que tienes en mente."
+  fr: "Racontez-moi ce que vous avez en tête."
 
 formulario:
   nombre:   { en: "First name",            es: "Nombre",               fr: "Prénom" }
   apellidos: { en: "Last name",            es: "Apellidos",            fr: "Nom" }
   email:    { en: "Email",                 es: "Email",                fr: "E-mail" }
-  servicio: { en: "Subject",               es: "Asunto a tratar",      fr: "Sujet" }
+  servicio: { en: "Subject",               es: "Asunto",               fr: "Sujet" }
   mensaje:  { en: "Message",               es: "Mensaje",              fr: "Message" }
   enviar:   { en: "Send message",          es: "Enviar mensaje",       fr: "Envoyer le message" }
   gracias:  { en: "Thank you! I'll reply very soon.", es: "¡Gracias! Te respondo muy pronto.", fr: "Merci ! Je vous réponds très vite." }
   error:    { en: "Something went wrong. Please email me directly.", es: "Algo ha fallado. Escríbeme directamente por email.", fr: "Une erreur s'est produite. Écrivez-moi directement par e-mail." }
 
-# Opciones de «Asunto a tratar» (valor: texto en cada idioma)
+# El asunto es un campo libre. Estos textos solo se usan para rellenarlo solo al llegar desde Tarifa (?s=surf…)
 intereses:
   surf:  { en: "Surf",   es: "Surf",  fr: "Surf" }
   buceo: { en: "Diving", es: "Buceo", fr: "Plongée" }
@@ -34,6 +40,7 @@ directo:
   es: "Escríbeme"
   fr: "Écrivez-moi"
 
+formulario_saludo: { en: "Hi!", es: "¡Hola!", fr: "Bonjour !" }
 formulario_titulo:
   en: "Tell me about your idea"
   es: "Cuéntame tu idea"

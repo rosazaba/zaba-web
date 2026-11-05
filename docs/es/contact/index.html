@@ -67,16 +67,17 @@
 <div class="mural__foto" aria-hidden="true"><img class="" src="../../img/contact/dsc05285-1280.webp" srcset="../../img/contact/dsc05285-640.webp 640w, ../../img/contact/dsc05285-1280.webp 1280w, ../../img/contact/dsc05285-2000.webp 2000w" sizes="100vw" width="8640" height="5760" alt="Zaba — Fotografía de surf y buceo" loading="eager" decoding="async" fetchpriority="high"></div>  <div class="mural__in">
     <div class="mural__cabeza">
       <h1>Contacto</h1>
-      <p class="texto-grande">¿Quieres una sesión o una copia impresa? Escríbeme y te respondo pronto.</p>
+      <p class="mural__lema">¡Trabajemos junt@s!</p>
+      <p class="texto-grande">Cuéntame lo que tienes en mente.</p>
       <div class="mural__directo">
         <p class="antetitulo mural__etiqueta">Escríbeme</p>
         <div class="mural__botones">
-<a class="boton boton--claro" href="https://wa.me/34619811240" target="_blank" rel="noopener">WhatsApp</a><a class="icono-red mural__ig" href="https://www.instagram.com/r.zabafoto/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" fill="currentColor" class="icono" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.3" cy="6.7" r=".35" fill="currentColor" stroke-width=".7"/></g></svg></a>        </div>
+<a class="icono-red mural__ig" href="https://wa.me/34619811240" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" fill="currentColor" class="icono" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2a8.8 8.8 0 0 0-7.55 13.3L3.3 20.7l4.3-1.13A8.8 8.8 0 1 0 12 3.2z"/><path d="M9.3 7.7c.3-.12.62.02.74.3l.66 1.58c.11.27.03.58-.19.77l-.62.53c.62 1.3 1.62 2.3 2.92 2.92l.53-.62c.19-.22.5-.3.77-.19l1.58.66c.28.12.42.44.3.74l-.36.94c-.18.47-.65.76-1.15.72-3.47-.3-6.22-3.05-6.52-6.52-.04-.5.25-.97.72-1.15z"/></g></svg></a><a class="icono-red mural__ig" href="https://www.instagram.com/r.zabafoto/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" fill="currentColor" class="icono" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.3" cy="6.7" r=".35" fill="currentColor" stroke-width=".7"/></g></svg></a>        </div>
       </div>
     </div>
 
     <div class="tarjeta-form">
-      <h2>Cuéntame tu idea</h2>
+      <h2>¡Hola! Cuéntame tu idea</h2>
       <form class="formulario formulario--fresco" data-formulario
             data-clave="" data-destino="t92YuwWah12ZAFmYhp3c19mc"
             data-gracias="¡Gracias! Te respondo muy pronto." data-error="Algo ha fallado. Escríbeme directamente por email.">
@@ -84,11 +85,7 @@
         <input type="checkbox" name="botcheck" class="oculto" tabindex="-1" autocomplete="off">
         <label>Nombre<input name="name" required autocomplete="given-name"></label>
         <label>Apellidos<input name="surname" required autocomplete="family-name"></label>
-        <fieldset class="asunto ancho-total">
-          <legend>Asunto a tratar</legend>
-          <select name="service" data-servicio class="asunto__select" aria-label="Asunto a tratar">
-<option value="surf">Surf</option><option value="buceo">Buceo</option><option value="dron">Dron</option>          </select>
-        </fieldset>
+        <label class="ancho-total">Asunto<input name="service" data-servicio data-asuntos='{"buceo": "Buceo", "dron": "Dron", "surf": "Surf"}'></label>
         <label class="ancho-total">Mensaje<textarea name="message" rows="4" required></textarea></label>
         <button class="boton ancho-total" type="submit">Enviar mensaje →</button>
         <p class="formulario__estado ancho-total" role="status" aria-live="polite"></p>
