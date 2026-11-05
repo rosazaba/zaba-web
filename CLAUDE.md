@@ -118,6 +118,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
   - Clave de Web3Forms (en `textos/general.yml`), que habría que crear con holazabafoto@gmail.com.
   - Fotos: faltan las de Sobre mí (portada, retrato, cuadrícula), las de servicios y los originales de dron con más resolución.
   - Textos de Sobre mí (historia, propósito, objetivos, frases): los actuales son provisionales.
+- Precios: TODOS están en «000 €» (Tarifa, Tienda —tamaños y marco—, Encuentra tus fotos y Curso) hasta que la usuaria los dé.
 - Por confirmar con el usuario: precios de los servicios, ubicación ("Spain") y el dominio (`zaba.com` está puesto provisionalmente).
 - Tienda: fotos propias en `5-tienda-de-impresiones/`, precios de tamaños y marcos por confirmar.
 - Encuentra tus fotos: aún sin sesiones (carpetas de Patos y Berria vacías).

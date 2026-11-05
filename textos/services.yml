@@ -21,7 +21,7 @@ lista:
   - carpeta: surf
     foto_provisional: "1-trabajos/surf/DSC05129.jpg"
     titulo: { en: "Surf session", es: "Sesión de surf", fr: "Séance de surf" }
-    precio: "120 €"
+    precio: "000 €"
     texto:
       en: "I shoot you surfing from the water or the beach. Perfect for keeping a memory of your trip or tracking your progress."
       es: "Te fotografío surfeando desde el agua o desde la playa. Ideal para guardar el recuerdo de tu viaje o ver tu progresión."
@@ -34,7 +34,7 @@ lista:
   - carpeta: buceo
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_3060.jpg"
     titulo: { en: "Underwater session", es: "Sesión submarina", fr: "Séance sous-marine" }
-    precio: "180 €"
+    precio: "000 €"
     texto:
       en: "Photos of your dive, your course or your freediving session, with natural light and a calm, safe approach."
       es: "Fotos de tu inmersión, tu curso o tu sesión de apnea, con luz natural y un enfoque tranquilo y seguro."
@@ -47,7 +47,7 @@ lista:
   - carpeta: dron                                   # carpeta originales/2-tarifa/dron/ (antes «copias»)
     foto_provisional: "1-trabajos/dron/IMG_20260907_09553035.jpeg"
     titulo: { en: "Drone session", es: "Sesión con dron", fr: "Séance drone" }
-    precio: "150 €"
+    precio: "000 €"
     texto:
       en: "Your beach, your boat, your surf session or your event seen from above, with aerial photos that show the whole place."
       es: "Tu playa, tu barco, tu sesión de surf o tu evento vistos desde el aire, con fotos aéreas que enseñan todo el lugar."

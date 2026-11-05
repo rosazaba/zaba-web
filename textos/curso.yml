@@ -50,7 +50,7 @@ datos:
   - etiqueta: { en: "Group", es: "Grupo", fr: "Groupe" }
     valor: { en: "Small groups", es: "Grupos reducidos", fr: "Petits groupes" }
   - etiqueta: { en: "Price", es: "Precio", fr: "Prix" }
-    valor: { en: "Price on request", es: "Consultar", fr: "Sur demande" }
+    valor: { en: "000 €", es: "000 €", fr: "000 €" }
 
 reservar: { en: "Book on WhatsApp", es: "Reservar por WhatsApp", fr: "Réserver sur WhatsApp" }
 mensaje_whatsapp:

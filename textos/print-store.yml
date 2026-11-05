@@ -147,17 +147,17 @@ tamanos_titulo:
   fr: "Formats et prix"
 tamanos:
   - medida: "20 × 30 cm"
-    precio: "45 €"
+    precio: "000 €"
   - medida: "30 × 45 cm"
-    precio: "65 €"
+    precio: "000 €"
   - medida: "40 × 60 cm"
-    precio: "95 €"
+    precio: "000 €"
   - medida: "60 × 90 cm"
-    precio: "150 €"
+    precio: "000 €"
 marco_nota:
-  en: "Frame: +40 € to +90 € depending on size. Shipping not included."
-  es: "Marco: de +40 € a +90 € según el tamaño. Envío aparte."
-  fr: "Cadre : de +40 € à +90 € selon le format. Livraison en sus."
+  en: "Frame: +000 € depending on size. Shipping not included."
+  es: "Marco: +000 € según el tamaño. Envío aparte."
+  fr: "Cadre : +000 € selon le format. Livraison en sus."
 
 # Paso 3: pedido
 pedido_titulo:
