@@ -81,7 +81,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
   - Sin foto de cabecera. Fondo tipo mural a toda la página: foto de `4-contacto/portada/` en transparencia (`mural_opacidad`) sobre un color sólido (`mural_color`, en `contact.yml`).
   - El bloque de texto empieza arriba (no centrado en vertical), con el título a la misma altura que en las demás páginas. A la izquierda el título «Contacto», debajo «¡Trabajemos junt@s!» (`lema`), «Cuéntame lo que tienes en mente.» (`intro`) y cuatro iconos con el mismo estilo de línea fina en círculo: WhatsApp, Instagram, correo (`contacto.email_icono` = holazabafoto@gmail.com, codificado en `data-correo` contra robots) y llamar (`tel:` con `contacto.telefono`, el mismo número del WhatsApp). `whatsapp.svg`, `email.svg` y `telefono.svg` de `motor/assets/iconos/` los dibujó Claude a juego con el de Instagram. A la derecha el formulario en una tarjeta recta, sin sombra, con el título «¡Hola! Cuéntame tu idea» (`formulario_saludo` + `formulario_titulo`).
   - Campos: Nombre, Apellidos, «Asunto» (campo libre, ya no desplegable; al llegar desde Tarifa con `?s=surf|buceo|dron` se rellena solo con los textos de `contact.yml` → `intereses`) y Mensaje.
-  - Destino de los mensajes: `contacto.email_formulario` (rouszaba@gmail.com). No se muestra en la web; va codificado en `data-destino` (base64 invertido) para evitar robots. `contacto.email` es el email visible y está vacío a propósito.
+  - Destino de los mensajes: `contacto.email_formulario` (holazabafoto@gmail.com, el mismo del icono de correo: la usuaria unificó sus correos de trabajo; antes rouszaba@gmail.com). No se muestra en la web; va codificado en `data-destino` (base64 invertido) para evitar robots. `contacto.email` es el email visible y está vacío a propósito.
   - Sin `web3forms_clave`, el formulario abre el correo del visitante (mailto). Con clave, envía por Web3Forms y muestra un campo de email.
   - El botón flotante de WhatsApp no aparece en la página de contacto.
 
@@ -115,7 +115,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 
 ## Pendiente
 - Datos del usuario:
-  - Clave de Web3Forms (en `textos/general.yml`), creada con rouszaba@gmail.com.
+  - Clave de Web3Forms (en `textos/general.yml`), que habría que crear con holazabafoto@gmail.com.
   - Fotos: faltan las de Sobre mí (portada, retrato, cuadrícula), las de servicios y los originales de dron con más resolución.
   - Textos de Sobre mí (historia, propósito, objetivos, frases): los actuales son provisionales.
 - Por confirmar con el usuario: precios de los servicios, ubicación ("Spain") y el dominio (`zaba.com` está puesto provisionalmente).
