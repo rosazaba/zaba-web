@@ -48,9 +48,9 @@ proposito_titulo:
   fr: "Ma démarche"
 
 proposito_texto:   # (texto de Rosa)
-  en: "I like to think that I can freeze a moment that lasts only seconds for someone who wants to keep it forever, and move whoever looks at it again without saying a word."
-  es: "Me gusta pensar que puedo congelar un instante que dura segundos para alguien que quiera tenerlo para siempre, y emocionar sin decir una palabra a quien lo contemple de nuevo."
-  fr: "J'aime penser que je peux figer un instant qui ne dure que quelques secondes pour quelqu'un qui veut le garder pour toujours, et émouvoir sans un mot celui qui le regarde à nouveau."
+  en: "Freezing a moment that lasts only seconds, and moving whoever wants to keep it forever without saying a word."
+  es: "Congelar un instante que dura segundos, y emocionar sin decir una palabra a quien lo quiera tener para siempre."
+  fr: "Figer un instant qui ne dure que quelques secondes, et émouvoir sans un mot celui qui veut le garder pour toujours."
 
 objetivos:
   - titulo: { en: "Real moments",       es: "Momentos reales",        fr: "Des moments vrais" }

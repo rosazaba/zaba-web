@@ -14,6 +14,7 @@ publicar_dominio: false
 contacto:
   email: ""                    # email visible en la web (vacío = no se muestra)
   email_formulario: "rouszaba@gmail.com"   # adonde llegan los mensajes del formulario (no se muestra)
+  email_icono: "holazabafoto@gmail.com"    # icono de correo en Contacto (junto a WhatsApp e Instagram); va codificado contra robots
   instagram: "r.zabafoto"      # solo el usuario, sin @
   whatsapp: "34619811240"      # con prefijo y sin espacios. Vacío = no se muestra
   telefono: "+34 619 81 12 40" # para llamar. Vacío = no se muestra

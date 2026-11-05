@@ -16,6 +16,8 @@
         <div class="mural__botones">
           {% if g.contacto.whatsapp %}<a class="icono-red mural__ig" href="https://wa.me/{{ g.contacto.whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">{{ iconos.whatsapp }}</a>{% endif %}
           {% if g.contacto.instagram %}<a class="icono-red mural__ig" href="https://www.instagram.com/{{ g.contacto.instagram }}/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">{{ iconos.instagram }}</a>{% endif %}
+          {% if g.contacto.email_icono %}<a class="icono-red mural__ig" href="#" data-correo="{{ email_icono_codificado }}" aria-label="Email" title="Email">{{ iconos.email }}</a>{% endif %}
+          {% if g.contacto.telefono %}<a class="icono-red mural__ig" href="tel:{{ g.contacto.telefono|replace(' ', '') }}" aria-label="{{ T(contact.llamar) }}" title="{{ T(contact.llamar) }}">{{ iconos.telefono }}</a>{% endif %}
         </div>
         {% if g.contacto.email %}<p><a href="mailto:{{ g.contacto.email }}">✉ {{ g.contacto.email }}</a></p>{% endif %}
       </div>

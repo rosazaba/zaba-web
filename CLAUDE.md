@@ -29,7 +29,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
   - `7-encuentra-tus-fotos/` (ya renombrada por la usuaria; el motor acepta también `6-encuentra-tus-fotos/`): `portada/` (opcional, cabecera) y `<playa>/<AAAA-MM-DD>/` con las fotos de cada sesión. Las playas se definen en `textos/encuentra.yml` → `localizaciones` (carpeta, código, nombre, lugar).
   - `simulacros/`: capturas de diseños que le gustan a la usuaria, como referencia. No se publican.
   - `3-sobre-mi/`: `portada/` (foto apaisada con la cita) y `retrato-…` (bloque «¡Hola! Soy Rosa»). El resto de fotos de la carpeta de momento no se usan. Sin fotos propias usa `textos/about.yml` → `provisional`.
-  - `logo/`
+  - `logo/` (también `zaba-perfil-whatsapp.png`, 1080×1080 fondo arena, y `zaba-firma-correo.png`, 600 px transparente: hechos por Claude para que la usuaria los use en WhatsApp y en su correo; el motor no los usa)
   - Las rutas de las imágenes publicadas no cambian (`img/work/...`, `img/inicio/...`, `img/about/...`, `img/services/...`).
 - `textos/*.yml`: todo el texto visible. Cada clave lleva `en`, `es` y `fr`.
 - `motor/`:
@@ -78,8 +78,8 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
   - Tipografía: solo Jost (sin remates). Títulos en Jost Light (300), textos y menú en Jost 400. El token `--serif` del CSS se llama así por historia pero apunta a Jost.
 - Pie (bloque marrón): solo el logo y la frase `pie.frase` de `general.yml`, centrados, igual en todas las páginas (sin menú, teléfono, WhatsApp, Instagram ni idiomas; lo pidió la usuaria). WhatsApp ya está en el botón flotante e Instagram va en Contacto.
 - Contacto:
-  - Sin foto de cabecera ni botón «Llamar». Fondo tipo mural a toda la página: foto de `4-contacto/portada/` en transparencia (`mural_opacidad`) sobre un color sólido (`mural_color`, en `contact.yml`).
-  - El bloque de texto empieza arriba (no centrado en vertical), con el título a la misma altura que en las demás páginas. A la izquierda el título «Contacto», debajo «¡Trabajemos junt@s!» (`lema`), «Cuéntame lo que tienes en mente.» (`intro`) y los iconos de WhatsApp e Instagram, los dos con el mismo estilo de línea fina en círculo (`motor/assets/iconos/whatsapp.svg` lo dibujó Claude a juego con el de Instagram). A la derecha el formulario en una tarjeta recta, sin sombra, con el título «¡Hola! Cuéntame tu idea» (`formulario_saludo` + `formulario_titulo`).
+  - Sin foto de cabecera. Fondo tipo mural a toda la página: foto de `4-contacto/portada/` en transparencia (`mural_opacidad`) sobre un color sólido (`mural_color`, en `contact.yml`).
+  - El bloque de texto empieza arriba (no centrado en vertical), con el título a la misma altura que en las demás páginas. A la izquierda el título «Contacto», debajo «¡Trabajemos junt@s!» (`lema`), «Cuéntame lo que tienes en mente.» (`intro`) y cuatro iconos con el mismo estilo de línea fina en círculo: WhatsApp, Instagram, correo (`contacto.email_icono` = holazabafoto@gmail.com, codificado en `data-correo` contra robots) y llamar (`tel:` con `contacto.telefono`, el mismo número del WhatsApp). `whatsapp.svg`, `email.svg` y `telefono.svg` de `motor/assets/iconos/` los dibujó Claude a juego con el de Instagram. A la derecha el formulario en una tarjeta recta, sin sombra, con el título «¡Hola! Cuéntame tu idea» (`formulario_saludo` + `formulario_titulo`).
   - Campos: Nombre, Apellidos, «Asunto» (campo libre, ya no desplegable; al llegar desde Tarifa con `?s=surf|buceo|dron` se rellena solo con los textos de `contact.yml` → `intereses`) y Mensaje.
   - Destino de los mensajes: `contacto.email_formulario` (rouszaba@gmail.com). No se muestra en la web; va codificado en `data-destino` (base64 invertido) para evitar robots. `contacto.email` es el email visible y está vacío a propósito.
   - Sin `web3forms_clave`, el formulario abre el correo del visitante (mailto). Con clave, envía por Web3Forms y muestra un campo de email.

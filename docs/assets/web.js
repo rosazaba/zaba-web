@@ -227,6 +227,11 @@
     });
   }
 
+  /* Icono de correo: la dirección va codificada (base64 al revés) para que no la lean los robots */
+  document.querySelectorAll("[data-correo]").forEach(function (a) {
+    try { a.href = "mailto:" + atob(a.dataset.correo.split("").reverse().join("")); } catch (err) {}
+  });
+
   /* Formulario de contacto */
   var form = document.querySelector("[data-formulario]");
   if (form) {
