@@ -12,9 +12,9 @@ lema:
   fr: "Travaillons ensemble !"
 
 intro:
-  en: "Tell me what you have in mind."
-  es: "Cuéntame lo que tienes en mente."
-  fr: "Racontez-moi ce que vous avez en tête."
+  en: "Let's start creating."
+  es: "Comencemos a crear."
+  fr: "Commençons à créer."
 
 formulario:
   nombre:   { en: "First name",            es: "Nombre",               fr: "Prénom" }
