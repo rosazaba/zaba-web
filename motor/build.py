@@ -108,7 +108,7 @@ def mapa_viajes(lista):
     pp = [proy(m["lon"], m["lat"]) for _, m in puntos]
     xs, ys = [p[0] for p in pp], [p[1] for p in pp]
     cx, cy = (min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2
-    w = max((max(xs) - min(xs)) * 1.5, proy(130, 0)[0])        # como mínimo ~130° de ancho: se ve en qué parte del mundo está
+    w = max((max(xs) - min(xs)) * 1.7, proy(130, 0)[0])        # como mínimo ~130° de ancho: se ve en qué parte del mundo está
     h = max((max(ys) - min(ys)) * 1.5, w * 5 / 4); w = h * 4 / 5   # vertical 4:5
     x0, y0 = cx - w / 2, cy - h / 2 - h * 0.12   # algo más de norte: arriba va la frase
     W, H = 400, 500
@@ -129,7 +129,12 @@ def mapa_viajes(lista):
             trozos.append("M" + "L".join(f"{x:.1f} {y:.1f}" for x, y in pts) + "Z")
         if trozos:
             caminos.append({"d": "".join(trozos), "viajes": " ".join(paises_de.get(iso, []))})
-    marcas = [{"carpeta": c, "x": round(a_svg(*p)[0], 1), "y": round(a_svg(*p)[1], 1)} for (c, _), p in zip(puntos, pp)]
+    marcas = []
+    for (c, _), p in zip(puntos, pp):
+        x, y = a_svg(*p)
+        lado = "start" if x < W * .35 else "end" if x > W * .65 else "middle"   # que el nombre no se corte en el borde
+        marcas.append({"carpeta": c, "x": round(x, 1), "y": round(y, 1), "ancla": lado,
+                       "tx": round(x - 26 if lado == "start" else x + 26 if lado == "end" else x, 1)})
     return {"ancho": W, "alto": H, "paises": caminos, "marcas": marcas}
 
 def leer(nombre):
@@ -664,6 +669,8 @@ def main():
     lista_viajes = []
     for v in viajes.get("lista", []):
         f = fotos_de(f"{C_VIAJES}/{v['carpeta']}")[:1]
+        if not f and v.get("antes"):   # carpeta con su nombre antiguo
+            f = fotos_de(f"{C_VIAJES}/{v['antes']}")[:1]
         if not f and v.get("foto_provisional") and en_orig(v["foto_provisional"]).exists():
             f = [en_orig(v["foto_provisional"])]
         lista_viajes.append({**v, "foto": optimizar(f[0], f"viajes/{v['carpeta']}") if f else None})

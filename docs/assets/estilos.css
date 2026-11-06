@@ -691,9 +691,10 @@ html:not(.js) .tienda-fotos__ver, .tienda-grupo.abierto .tienda-fotos__ver { dis
   .mapa__svg { width: auto; height: 100%; aspect-ratio: 4 / 5; margin-right: var(--margen); }
 }
 @media (min-width: 1000px) {
-  .viajes { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
-  .viajes__mapa { position: sticky; top: calc(var(--altura-cabecera) + 20px); }
-  .mapa { aspect-ratio: 4 / 5; max-height: calc(100vh - var(--altura-cabecera) - 40px); margin: 0 auto; }
+  /* el panel del mapa es tan alto como los tres viajes; dentro, frase y mapa se quedan fijos al bajar */
+  .viajes { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: stretch; }
+  .viajes__mapa { background: var(--topo); border-radius: var(--radio); }
+  .mapa { position: sticky; top: calc(var(--altura-cabecera) + 20px); aspect-ratio: 4 / 5; max-height: calc(100vh - var(--altura-cabecera) - 40px); margin: 0 auto; }
   .mapa__frase { top: clamp(24px, 3vw, 40px); left: clamp(24px, 3vw, 40px); right: clamp(24px, 3vw, 40px); }
   .viaje { grid-template-columns: minmax(180px, 2fr) 3fr; align-items: start; }
 }

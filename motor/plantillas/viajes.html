@@ -24,7 +24,7 @@
         <g class="mapa__marca{% if m.carpeta == activo %} activo{% endif %}" data-viajes="{{ m.carpeta }}">
           <circle class="mapa__halo" cx="{{ m.x }}" cy="{{ m.y }}" r="30"/>
           <circle class="mapa__punto" cx="{{ m.x }}" cy="{{ m.y }}" r="4.5"/>
-          <text x="{{ m.x }}" y="{{ m.y - 40 }}" text-anchor="middle">{{ T(v.destino) }}</text>
+          <text x="{{ m.tx }}" y="{{ m.y + 54 }}" text-anchor="{{ m.ancla }}">{{ T(v.destino) }}</text>
         </g>{% endfor %}
       </svg>
     </div>

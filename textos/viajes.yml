@@ -7,9 +7,9 @@
 antetitulo: { en: "Community", es: "Comunidad", fr: "Communauté" }
 titulo: { en: "Trips", es: "Viajes", fr: "Voyages" }
 descripcion_google:
-  en: "Underwater photography trips and trainings with Zaba: Formentera, the Maldives and more destinations."
-  es: "Viajes y formaciones de fotografía submarina con Zaba: Formentera, Maldivas y más destinos."
-  fr: "Voyages et formations de photographie sous-marine avec Zaba : Formentera, les Maldives et d'autres destinations."
+  en: "Underwater photography trips and trainings with Zaba: Fuerteventura, the Maldives and more destinations."
+  es: "Viajes y formaciones de fotografía submarina con Zaba: Fuerteventura, Maldivas y más destinos."
+  fr: "Voyages et formations de photographie sous-marine avec Zaba : Fuerteventura, les Maldives et d'autres destinations."
 intro:
   en: "Trips to learn, dive and create together: small groups, the sea as a classroom and photos to remember them by."
   es: "Viajes para aprender, bucear y crear juntos: grupos pequeños, el mar como aula y fotos para recordarlos."
@@ -26,12 +26,13 @@ apuntarme: { en: "Count me in", es: "Me apunto", fr: "Je m'inscris" }
 avisame: { en: "Let me know", es: "Avísame", fr: "Prévenez-moi" }
 
 lista:
-  - carpeta: formentera
+  - carpeta: fuerteventura
+    antes: formentera   # nombre antiguo de la carpeta (se sigue aceptando)
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_8950.jpg"
     etiqueta: { en: "Training", es: "Formación", fr: "Formation" }
-    mapa: { lon: 1.45, lat: 38.7, paises: [ESP] }   # dónde se resalta en el mapa (paises: código ISO de 3 letras)
+    mapa: { lon: -14.0, lat: 28.4, paises: [ESP] }   # dónde se resalta en el mapa (paises: código ISO de 3 letras)
     titulo: { en: "Underwater photography training 1", es: "Formación de fotografía submarina 1", fr: "Formation de photographie sous-marine 1" }
-    destino: { en: "Formentera", es: "Formentera", fr: "Formentera" }
+    destino: { en: "Fuerteventura", es: "Fuerteventura", fr: "Fuerteventura" }
     fechas: ""   # p. ej. { en: "May 2027", es: "Mayo 2027", fr: "Mai 2027" }
     plazas: { en: "Small group", es: "Grupo reducido", fr: "Petit groupe" }
     precio: "000 €"
@@ -40,9 +41,9 @@ lista:
       es: "Pronto, una breve descripción del viaje."
       fr: "Bientôt, une brève description du voyage."
     mensaje_whatsapp:
-      en: "Hi Rosa! I'd like to join the underwater photography training 1 in Formentera."
-      es: "¡Hola Rosa! Me gustaría apuntarme a la formación de fotografía submarina 1 en Formentera."
-      fr: "Bonjour Rosa ! J'aimerais m'inscrire à la formation de photographie sous-marine 1 à Formentera."
+      en: "Hi Rosa! I'd like to join the underwater photography training 1 in Fuerteventura."
+      es: "¡Hola Rosa! Me gustaría apuntarme a la formación de fotografía submarina 1 en Fuerteventura."
+      fr: "Bonjour Rosa ! J'aimerais m'inscrire à la formation de photographie sous-marine 1 à Fuerteventura."
   - carpeta: maldivas
     foto_provisional: "1-trabajos/buceo/reportaje/IMG_0895.jpg"
     etiqueta: { en: "Photo & video", es: "Foto y vídeo", fr: "Photo et vidéo" }
