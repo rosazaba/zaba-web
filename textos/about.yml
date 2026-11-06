@@ -69,13 +69,7 @@ objetivos:
       en: "No poses: I look for the instant that tells your session as it was."
       es: "Sin poses: busco el instante que cuenta tu sesión tal y como fue."
       fr: "Pas de poses : je cherche l'instant qui raconte votre session telle qu'elle a été."
-    # mas / botones: pendiente (lo manda Rosa); mismo formato que el punto 3
-  - titulo: { en: "Respect for the sea", es: "Respeto por el mar",     fr: "Le respect de la mer" }
-    texto:
-      en: "I photograph without disturbing marine life and following good diving practice."
-      es: "Fotografío sin molestar a la vida marina y siguiendo las buenas prácticas de buceo."
-      fr: "Je photographie sans déranger la vie marine, en respectant les bonnes pratiques de plongée."
-    # mas / botones: pendiente (lo manda Rosa); mismo formato que el punto 3
+    # mas / botones: pendiente (lo manda Rosa); mismo formato que «Llegar a más gente»
   - titulo: { en: "Reaching more people", es: "Llegar a más gente", fr: "Toucher plus de monde" }   # (texto de Rosa)
     texto:
       en: "If you can dream it, you can do it."
@@ -90,7 +84,12 @@ objetivos:
     botones:
       - { destino: curso,   texto: { en: "Underwater photo course", es: "Curso foto sub", fr: "Cours photo sous-marine" } }
       - { destino: contact, texto: { en: "Shall we talk?", es: "¿Hablamos?", fr: "On en parle ?" } }
-
+  - titulo: { en: "Respect for the sea", es: "Respeto por el mar",     fr: "Le respect de la mer" }
+    texto:
+      en: "I photograph without disturbing marine life and following good diving practice."
+      es: "Fotografío sin molestar a la vida marina y siguiendo las buenas prácticas de buceo."
+      fr: "Je photographie sans déranger la vie marine, en respectant les bonnes pratiques de plongée."
+    # PROVISIONAL: aquí irá el nuevo punto 3 que redacta Rosa (título, frase y, si quiere, «mas» y botones)
 # Pequeños datos (etiqueta + valor)
 datos:
   - etiqueta: { en: "Based in", es: "Vivo en", fr: "Où" }
