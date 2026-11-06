@@ -70,9 +70,9 @@ objetivos:
       es: "Construir algo con sentido."
       fr: "Construire quelque chose qui a du sens."
     mas:
-      en: "Real is whatever each moment brings, what you expect and what you don't. Handling all of that is my purpose as a professional. Every project begins with a two-way statement of intent. Only from listening and respect can you build things that are real and authentic."
-      es: "Real es lo que llega en cada momento, lo que esperas y lo que no. Cómo gestionar todo eso es mi propósito como profesional. Todo proyecto comienza con una declaración de intenciones bidireccional. Desde la escucha y el respeto solo se pueden construir cosas reales y auténticas."
-      fr: "Le vrai, c'est ce qui arrive à chaque instant, ce que l'on attend et ce que l'on n'attend pas. Savoir gérer tout cela, c'est mon objectif en tant que professionnelle. Chaque projet commence par une déclaration d'intentions réciproque. Ce n'est qu'à partir de l'écoute et du respect que l'on peut construire des choses vraies et authentiques."
+      en: "Real is something sincere, and that is my purpose as a professional. Every project begins with a two-way statement of intent. Only from listening and respect can you build things that are real and authentic."
+      es: "Real es algo sincero, y ese es mi propósito como profesional. Todo proyecto comienza con una declaración de intenciones bidireccional. Desde la escucha y el respeto solo se pueden construir cosas reales y auténticas."
+      fr: "Le vrai, c'est quelque chose de sincère, et c'est mon objectif en tant que professionnelle. Chaque projet commence par une déclaration d'intentions réciproque. Ce n'est qu'à partir de l'écoute et du respect que l'on peut construire des choses vraies et authentiques."
     botones:
       - { destino: inicio,  texto: { en: "See my work", es: "Ver trabajo", fr: "Voir mon travail" } }
       - { destino: contact, texto: { en: "Let's begin", es: "Comenzamos", fr: "Commençons" } }

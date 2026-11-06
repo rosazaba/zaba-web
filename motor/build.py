@@ -50,6 +50,7 @@ def en_orig(ruta):
     primera, _, resto = str(ruta).partition("/")
     return ORIG / ALIAS_CARPETAS.get(primera, primera) / resto
 BANCOS_IMAGENES = ("unsplash", "pexels", "pixabay", "shutterstock", "istock", "adobestock", "freepik")
+BANCOS_DE_PAGO = ("shutterstock", "istock", "adobestock", "gettyimages")   # nunca se publican: sin licencia comprada salen con marca de agua
 NO_SON_GALERIAS = {"portada", "portadas", "seleccion", "fotos-banco-imagenes"}
 PRECIO_FOTO_DEFECTO = "15 €"
 FOTOS_TIENDA_POR_GALERIA = 12   # Tienda sin fotos propias: cuántas fotos de cada galería se pueden elegir
@@ -149,9 +150,10 @@ def fotos_de(carpeta, banco_permitido=False):
     fotos = sorted(p for p in c.iterdir() if p.suffix.lower() in EXT and not p.name.startswith("."))
     # Las fotos de bancos de imágenes no son de la fotógrafa: nunca se publican como trabajo suyo
     # (salvo donde la usuaria las pone a propósito: la foto de cada destino en Viajes)
-    ajenas = [] if banco_permitido else [p for p in fotos if any(b in p.name.lower() for b in BANCOS_IMAGENES)]
+    bancos = BANCOS_DE_PAGO if banco_permitido else BANCOS_IMAGENES
+    ajenas = [p for p in fotos if any(b in p.name.lower() for b in bancos)]
     for p in ajenas:
-        avisos.append(f"Foto de banco de imágenes, no se publica: {p.relative_to(ORIG)}")
+        avisos.append(f"Foto de banco de imágenes{' de pago' if banco_permitido else ''}, no se publica: {p.relative_to(ORIG)}")
     return [p for p in fotos if p not in ajenas]
 
 
@@ -659,7 +661,7 @@ def main():
     curso = leer("curso")
     partes_curso = []
     for p_ in curso.get("partes", []):
-        f = fotos_de(f"{C_CURSO}/{p_['carpeta']}")
+        f = fotos_de(f"{C_CURSO}/{p_['carpeta']}", banco_permitido=True)   # en el curso valen fotos gratis de Unsplash/Pexels
         if not f and p_.get("foto_provisional") and en_orig(p_["foto_provisional"]).exists():
             f = [en_orig(p_["foto_provisional"])]
             avisos.append(f"Curso foto sub: {C_CURSO}/{p_['carpeta']}/ está vacía; de momento sale una foto de buceo de ejemplo.")
