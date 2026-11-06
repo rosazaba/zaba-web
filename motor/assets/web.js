@@ -54,6 +54,14 @@
     b.addEventListener("click", function () { b.closest("[data-grupo-fotos]").classList.add("abierto"); });
   });
 
+  /* «Mi propósito»: al abrir el «Más» de un punto se cierra el que estuviera abierto */
+  document.querySelectorAll("[data-acordeon]").forEach(function (d) {
+    d.addEventListener("toggle", function () {
+      if (!d.open) return;
+      document.querySelectorAll("[data-acordeon]").forEach(function (o) { if (o !== d) o.open = false; });
+    });
+  });
+
   /* Visor de fotos */
   var galerias = document.querySelectorAll("[data-galeria]");
   if (galerias.length) {

@@ -51,7 +51,7 @@
         <h3>{{ T(o.titulo) }}</h3>
         <p>{{ T(o.texto) }}</p>
         {% if o.mas and T(o.mas) %}
-        <details class="objetivo__mas">
+        <details class="objetivo__mas" name="proposito" data-acordeon>
           <summary class="boton boton--linea boton--peque">{{ T(about.ver_mas) }}</summary>
           <p>{{ T(o.mas) }}</p>
           {% if o.botones %}<p class="objetivo__botones">{% for b in o.botones %}<a class="boton{% if not loop.first %} boton--linea{% endif %} boton--peque" href="{{ url(rutas[b.destino]) }}">{{ T(b.texto) }}</a>{% endfor %}</p>{% endif %}

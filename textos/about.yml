@@ -64,12 +64,18 @@ proposito_texto:   # (texto de Rosa)
 # Los 3 puntos de debajo de «Mi propósito»: título, frase corta y, si se rellena «mas», un botón «Más» que abre el resto del texto y sus botones
 ver_mas: { en: "More", es: "Más", fr: "Plus" }
 objetivos:
-  - titulo: { en: "Real moments",       es: "Momentos reales",        fr: "Des moments vrais" }
+  - titulo: { en: "Real moments", es: "Momentos reales", fr: "Des moments vrais" }   # (texto de Rosa)
     texto:
-      en: "No poses: I look for the instant that tells your session as it was."
-      es: "Sin poses: busco el instante que cuenta tu sesión tal y como fue."
-      fr: "Pas de poses : je cherche l'instant qui raconte votre session telle qu'elle a été."
-    # mas / botones: pendiente (lo manda Rosa); mismo formato que «Llegar a más gente»
+      en: "Real is whatever each moment brings, what you expect and what you don't."
+      es: "Real es lo que llega en cada momento, lo que esperas y lo que no."
+      fr: "Le vrai, c'est ce qui arrive à chaque instant, ce que l'on attend et ce que l'on n'attend pas."
+    mas:
+      en: "Handling all of that is my purpose as a professional. Every project begins with a two-way statement of intent. Only from listening and respect can you build things that are real and authentic."
+      es: "Cómo gestionar todo eso es mi propósito como profesional. Todo proyecto comienza con una declaración de intenciones bidireccional. Desde la escucha y el respeto solo se pueden construir cosas reales y auténticas."
+      fr: "Savoir gérer tout cela, c'est mon objectif en tant que professionnelle. Chaque projet commence par une déclaration d'intentions réciproque. Ce n'est qu'à partir de l'écoute et du respect que l'on peut construire des choses vraies et authentiques."
+    botones:
+      - { destino: inicio,  texto: { en: "See my work", es: "Ver trabajo", fr: "Voir mon travail" } }
+      - { destino: contact, texto: { en: "Let's begin", es: "Comenzamos", fr: "Commençons" } }
   - titulo: { en: "Reaching more people", es: "Llegar a más gente", fr: "Toucher plus de monde" }   # (texto de Rosa)
     texto:
       en: "If you can dream it, you can do it."
