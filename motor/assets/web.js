@@ -272,4 +272,29 @@
       }
     });
   }
+
+  // Viajes: al tocar un viaje o al llegar a él con el scroll, se resalta su zona en el mapa
+  var mapa = document.querySelector("[data-mapa]");
+  if (mapa) {
+    var viajes = document.querySelectorAll("[data-viaje]");
+    var activar = function (id) {
+      mapa.setAttribute("data-activo", id);
+      mapa.querySelectorAll("[data-viajes]").forEach(function (e) {
+        e.classList.toggle("activo", (" " + e.getAttribute("data-viajes") + " ").indexOf(" " + id + " ") > -1);
+      });
+      viajes.forEach(function (v) { v.classList.toggle("activo", v.getAttribute("data-viaje") === id); });
+    };
+    viajes.forEach(function (v) {
+      var id = v.getAttribute("data-viaje");
+      v.addEventListener("mouseenter", function () { activar(id); });
+      v.addEventListener("click", function () { activar(id); });
+      v.addEventListener("focusin", function () { activar(id); });
+    });
+    if ("IntersectionObserver" in window) {
+      var obs = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) activar(e.target.getAttribute("data-viaje")); });
+      }, { rootMargin: "-55% 0px -40% 0px" });
+      viajes.forEach(function (v) { obs.observe(v); });
+    }
+  }
 })();

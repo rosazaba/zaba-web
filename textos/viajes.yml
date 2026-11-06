@@ -28,7 +28,8 @@ avisame: { en: "Let me know", es: "Avísame", fr: "Prévenez-moi" }
 lista:
   - carpeta: formentera
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_8950.jpg"
-    etiqueta: { en: "Trip 01 · Training", es: "Viaje 01 · Formación", fr: "Voyage 01 · Formation" }
+    etiqueta: { en: "Training", es: "Formación", fr: "Formation" }
+    mapa: { lon: 1.45, lat: 38.7, paises: [ESP] }   # dónde se resalta en el mapa (paises: código ISO de 3 letras)
     titulo: { en: "Underwater photography training 1", es: "Formación de fotografía submarina 1", fr: "Formation de photographie sous-marine 1" }
     destino: { en: "Formentera", es: "Formentera", fr: "Formentera" }
     fechas: ""   # p. ej. { en: "May 2027", es: "Mayo 2027", fr: "Mai 2027" }
@@ -44,7 +45,8 @@ lista:
       fr: "Bonjour Rosa ! J'aimerais m'inscrire à la formation de photographie sous-marine 1 à Formentera."
   - carpeta: maldivas
     foto_provisional: "1-trabajos/buceo/reportaje/IMG_0895.jpg"
-    etiqueta: { en: "Trip 02 · Photo & video", es: "Viaje 02 · Foto y vídeo", fr: "Voyage 02 · Photo et vidéo" }
+    etiqueta: { en: "Photo & video", es: "Foto y vídeo", fr: "Photo et vidéo" }
+    mapa: { lon: 73.4, lat: 3.2, paises: [MDV] }
     titulo: { en: "Underwater photo course 2", es: "Curso foto sub 2", fr: "Cours photo sous-marine 2" }
     destino: { en: "Maldives", es: "Maldivas", fr: "Maldives" }
     fechas: ""   # p. ej. { en: "May 2027", es: "Mayo 2027", fr: "Mai 2027" }
@@ -61,7 +63,7 @@ lista:
   - carpeta: viaje-3
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_5551.jpg"
     proximamente: true
-    etiqueta: { en: "Trip 03 · Coming soon", es: "Viaje 03 · Próximamente", fr: "Voyage 03 · Bientôt" }
+    etiqueta: { en: "Coming soon", es: "Próximamente", fr: "Bientôt" }   # sin «mapa»: no se resalta nada
     titulo: { en: "Next destination", es: "Próximo destino", fr: "Prochaine destination" }
     destino: { en: "To be revealed", es: "Por desvelar", fr: "À dévoiler" }
     fechas: ""   # p. ej. { en: "May 2027", es: "Mayo 2027", fr: "Mai 2027" }
@@ -76,4 +78,5 @@ lista:
       es: "¡Hola Rosa! Avísame cuando esté listo el próximo viaje."
       fr: "Bonjour Rosa ! Prévenez-moi quand le prochain voyage sera prêt."
 
+frase_mapa: { en: "It can change your life", es: "Te puede cambiar la vida", fr: "Ça peut changer votre vie" }
 anteriores_titulo: { en: "Previous trips", es: "Viajes anteriores", fr: "Voyages précédents" }

@@ -656,33 +656,45 @@ html:not(.js) .tienda-fotos__ver, .tienda-grupo.abierto .tienda-fotos__ver { dis
 .boton--mini { min-height: 36px; padding: 0 14px; font-size: .7rem; letter-spacing: .12em; white-space: nowrap; }
 [hidden] { display: none !important; }
 
-/* Viajes: lista de salidas, como un panel de viajes. Filas separadas por líneas finas sobre el fondo
-   de la página (sin tarjetas ni bandas de color): número grande, foto pequeña cuadrada, destino y datos. */
+/* Viajes (inspirado en el ejemplo de Pixieset de la usuaria): a un lado un panel vertical con el mapa
+   y la frase «Te puede cambiar la vida»; al otro los viajes, cada uno con su foto y su texto, sin números.
+   Al tocar un viaje (o al llegar a él con el scroll) se resalta su zona del mundo. Sin sombras. */
 .intro-viajes h1 { margin-top: 0; }
-.salidas { max-width: 1180px; margin: 0 auto; padding: clamp(8px, 2vw, 24px) var(--margen) clamp(48px, 7vw, 96px); }
-.salidas__lista { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--tinta); }
-.salida { display: grid; grid-template-columns: auto 1fr; gap: 14px 18px; padding: clamp(22px, 3vw, 36px) 0; border-bottom: 1px solid var(--linea); }
-.salida__num { font: 300 clamp(1.6rem, 3vw, 2.4rem)/1 var(--serif); color: var(--ocre); }
-.salida__foto { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: var(--radio); background: var(--linea); width: min(100%, 220px); }
-.salida__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.salida__principal { grid-column: 1 / -1; }
-.salida__principal .antetitulo { color: var(--mar); margin: 0 0 .5rem; }
-.salida__destino { margin: 0; font: 300 clamp(2.2rem, 5vw, 3.4rem)/1 var(--serif); letter-spacing: -.01em; }
-.salida__titulo { margin: .45rem 0 .8rem; color: var(--tierra); }
-.salida__texto { margin: 0; max-width: 34rem; line-height: 1.7; }
-.salida__datos { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; margin: 0; }
-.salida__datos dt { font: 500 .64rem/1.4 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--gris); }
-.salida__datos dd { margin: .2rem 0 0; }
-.salida__boton { grid-column: 1 / -1; }
-.salida--pronto .salida__foto img { opacity: .55; filter: saturate(.7); }
-.salida--pronto .salida__destino { color: var(--gris); }
-@media (min-width: 560px) {
-  .salida { grid-template-columns: auto 160px 1fr; }
-  .salida__principal { grid-column: auto; }
+.viajes { max-width: var(--max); margin: 0 auto; padding: clamp(8px, 2vw, 24px) var(--margen) clamp(48px, 7vw, 96px); display: grid; gap: clamp(24px, 4vw, 56px); align-items: start; }
+.mapa { position: relative; background: var(--topo); border-radius: var(--radio); overflow: hidden; }
+.mapa__frase { position: absolute; z-index: 1; margin: 0; font: 300 clamp(1.5rem, 3vw, 2.4rem)/1.12 var(--serif); color: var(--tinta); }
+.mapa__svg { display: block; width: 100%; height: 100%; }
+.mapa__svg path { fill: var(--arena-2); stroke: var(--topo); stroke-width: .5; transition: fill .3s; }
+.mapa__svg path.activo { fill: var(--mar); }
+.mapa__marca { opacity: 0; transition: opacity .3s; }
+.mapa__marca.activo { opacity: 1; }
+.mapa__halo { fill: var(--mar); fill-opacity: .16; stroke: var(--mar); stroke-width: 1; }
+.mapa__punto { fill: var(--ocre); stroke: var(--papel); stroke-width: 1.5; }
+.mapa__marca text { font: 400 15px var(--sans); letter-spacing: .14em; text-transform: uppercase; fill: var(--tinta); }
+.viajes__lista { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(28px, 4vw, 52px); }
+.viaje { display: grid; gap: 16px clamp(20px, 3vw, 36px); outline: none; }
+.viaje__foto { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border-radius: var(--radio); background: var(--linea); }
+.viaje__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.viaje__texto .antetitulo { color: var(--mar); margin: 0 0 .45rem; }
+.viaje__texto h2 { margin: 0; font: 300 clamp(1.9rem, 3.4vw, 2.6rem)/1.05 var(--serif); transition: color .3s; }
+.viaje.activo h2 { color: var(--mar); }
+.viaje__titulo { margin: .35rem 0 .8rem; color: var(--tierra); }
+.viaje__desc { margin: 0 0 .8rem; line-height: 1.7; max-width: 36rem; }
+.viaje__datos { margin: 0 0 1rem; font-size: .92rem; color: var(--gris); }
+.viaje__boton { margin: 0; }
+.viaje--pronto .viaje__foto img { opacity: .55; filter: saturate(.7); }
+/* Móvil: el mapa se queda arriba (pegado bajo el menú) y la frase a su lado */
+@media (max-width: 999px) {
+  .viajes__mapa { position: sticky; top: var(--altura-cabecera); z-index: 3; margin: 0 calc(-1 * var(--margen)); }
+  .mapa { border-radius: 0; height: min(58vw, 300px); display: flex; justify-content: flex-end; }
+  .mapa__frase { left: var(--margen); top: 50%; transform: translateY(-50%); max-width: 44%; font-size: clamp(1.35rem, 6vw, 2rem); }
+  .mapa__svg { width: auto; height: 100%; aspect-ratio: 4 / 5; margin-right: var(--margen); }
 }
 @media (min-width: 1000px) {
-  .salida { grid-template-columns: 64px 200px minmax(0, 1fr) 230px; gap: 0 clamp(24px, 3vw, 44px); align-items: start; }
-  .salida__datos { grid-column: auto; grid-template-columns: 1fr; gap: 14px; padding-left: clamp(18px, 2vw, 28px); border-left: 1px solid var(--linea); }
-  .salida__num { padding-top: .3rem; }
+  .viajes { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .viajes__mapa { position: sticky; top: calc(var(--altura-cabecera) + 20px); }
+  .mapa { aspect-ratio: 4 / 5; max-height: calc(100vh - var(--altura-cabecera) - 40px); margin: 0 auto; }
+  .mapa__frase { top: clamp(24px, 3vw, 40px); left: clamp(24px, 3vw, 40px); right: clamp(24px, 3vw, 40px); }
+  .viaje { grid-template-columns: minmax(180px, 2fr) 3fr; align-items: start; }
 }
 .viajes-anteriores .titulo-seccion { text-align: center; }

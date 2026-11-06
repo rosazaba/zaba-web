@@ -90,6 +90,48 @@ def slug(texto):
     return re.sub(r"[^a-z0-9]+", "-", t.lower()).strip("-") or "foto"
 
 
+
+# ── Mapa de Viajes: mapa del mundo (Natural Earth, dominio público, simplificado en motor/datos/mundo.json)
+#    en proyección Equal Earth, recortado en vertical (4:5) alrededor de los destinos que tienen «mapa» en viajes.yml.
+def mapa_viajes(lista):
+    import math
+    A1, A2, A3, A4, M = 1.340264, -0.081106, 0.000893, 0.003796, math.sqrt(3) / 2
+    def proy(lon, lat):
+        l, f = math.radians(lon), math.radians(lat)
+        t = math.asin(M * math.sin(f)); t2 = t * t; t6 = t2 ** 3
+        x = 2 * math.sqrt(3) * l * math.cos(t) / (3 * (9 * A4 * t6 * t2 + 7 * A3 * t6 + 3 * A2 * t2 + A1))
+        y = t * (A4 * t6 * t2 + A3 * t6 + A2 * t2 + A1)
+        return x, -y
+    puntos = [(v["carpeta"], v["mapa"]) for v in lista if v.get("mapa")]
+    if not puntos:
+        return None
+    pp = [proy(m["lon"], m["lat"]) for _, m in puntos]
+    xs, ys = [p[0] for p in pp], [p[1] for p in pp]
+    cx, cy = (min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2
+    w = max((max(xs) - min(xs)) * 1.5, proy(130, 0)[0])        # como mínimo ~130° de ancho: se ve en qué parte del mundo está
+    h = max((max(ys) - min(ys)) * 1.5, w * 5 / 4); w = h * 4 / 5   # vertical 4:5
+    x0, y0 = cx - w / 2, cy - h / 2 - h * 0.12   # algo más de norte: arriba va la frase
+    W, H = 400, 500
+    def a_svg(x, y):
+        return (x - x0) / w * W, (y - y0) / h * H
+    paises_de = {}
+    for carpeta, m in puntos:
+        for iso in m.get("paises", []):
+            paises_de.setdefault(iso, []).append(carpeta)
+    datos = json.loads((MOTOR / "datos" / "mundo.json").read_text())
+    caminos = []
+    for iso, anillos in datos.items():
+        trozos = []
+        for an in anillos:
+            pts = [a_svg(*proy(lon, lat)) for lon, lat in an]
+            if max(p[0] for p in pts) < -20 or min(p[0] for p in pts) > W + 20 or max(p[1] for p in pts) < -20 or min(p[1] for p in pts) > H + 20:
+                continue
+            trozos.append("M" + "L".join(f"{x:.1f} {y:.1f}" for x, y in pts) + "Z")
+        if trozos:
+            caminos.append({"d": "".join(trozos), "viajes": " ".join(paises_de.get(iso, []))})
+    marcas = [{"carpeta": c, "x": round(a_svg(*p)[0], 1), "y": round(a_svg(*p)[1], 1)} for (c, _), p in zip(puntos, pp)]
+    return {"ancho": W, "alto": H, "paises": caminos, "marcas": marcas}
+
 def leer(nombre):
     with open(TEXTOS / f"{nombre}.yml", encoding="utf-8") as f:
         return yaml.safe_load(f) or {}
@@ -625,6 +667,7 @@ def main():
         if not f and v.get("foto_provisional") and en_orig(v["foto_provisional"]).exists():
             f = [en_orig(v["foto_provisional"])]
         lista_viajes.append({**v, "foto": optimizar(f[0], f"viajes/{v['carpeta']}") if f else None})
+    mapa = mapa_viajes(viajes.get("lista", []))
     fotos_viajes_anteriores = [optimizar(x, "viajes/anteriores") for x in fotos_de(f"{C_VIAJES}/anteriores")]
 
     # Foto de arriba de Servicios y Contacto: su carpeta portada/ (si está vacía, la página sale sin foto)
@@ -928,7 +971,7 @@ def main():
             html = env.get_template(plantilla).render(json_ld=json_ld,
                 lang=lang, pid=pid, iconos=iconos, T=T, url=url, asset=asset, srcset=srcset, foto=foto,
                 g=g, inicio=inicio, work=work, services=services, about=about, contact=contact,
-                rutas=RUTAS, menu_principal=MENU_PRINCIPAL, menu_mas=MENU_MAS, curso=curso, partes_curso=partes_curso, viajes=viajes, lista_viajes=lista_viajes, fotos_viajes_anteriores=fotos_viajes_anteriores, tienda=tienda, estancias=estancias, grupos_tienda=grupos_tienda, encuentra=encuentra, playas=playas, precio_foto=precio_foto,
+                rutas=RUTAS, menu_principal=MENU_PRINCIPAL, menu_mas=MENU_MAS, curso=curso, partes_curso=partes_curso, viajes=viajes, lista_viajes=lista_viajes, mapa_viajes=mapa, fotos_viajes_anteriores=fotos_viajes_anteriores, tienda=tienda, estancias=estancias, grupos_tienda=grupos_tienda, encuentra=encuentra, playas=playas, precio_foto=precio_foto,
                 portada=portada[0] if portada else None, destacadas=destacadas,
                 foto_about=foto_about[0] if foto_about else None, sobre=sobre,
                 galerias=galerias, lista_servicios=lista_servicios,

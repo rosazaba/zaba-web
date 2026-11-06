@@ -2,7 +2,7 @@
 {% block titulo %}{{ T(viajes.titulo) }} — {{ g.marca }}{% endblock %}
 {% block descripcion %}{{ T(viajes.descripcion_google) }}{% endblock %}
 {% block contenido %}
-{# Viajes: cabecera como Tarifa/Curso y una lista de salidas (número · foto pequeña · destino · datos) #}
+{# Viajes: cabecera como Tarifa/Curso y mapa vertical con la zona del viaje resaltada + lista de viajes #}
 <section class="intro-servicios intro-viajes">
   <div class="estrecho">
     <p class="antetitulo">{{ T(viajes.antetitulo) }}</p>
@@ -11,25 +11,37 @@
   </div>
 </section>
 
-<section class="salidas">
-  {# Lista de salidas, como un panel de viajes: número, destino grande, datos en columnas y botón. Sin bandas alternas. #}
-  <ol class="salidas__lista">
-  {% for v in lista_viajes %}
-  <li class="salida{% if v.proximamente %} salida--pronto{% endif %}" id="{{ v.carpeta }}">
-    <span class="salida__num">0{{ loop.index }}</span>
-    {% if v.foto %}<div class="salida__foto">{{ foto(v.foto, "(min-width: 900px) 220px, 40vw", "", "eager" if loop.first else "lazy", T(v.titulo) ~ " — " ~ T(v.destino)) }}</div>{% endif %}
-    <div class="salida__principal">
-      <p class="antetitulo">{{ T(v.etiqueta) }}</p>
-      <h2 class="salida__destino">{{ T(v.destino) }}</h2>
-      <p class="salida__titulo">{{ T(v.titulo) }}</p>
-      <p class="salida__texto">{{ T(v.texto) }}</p>
+{# Mapa vertical (se resalta la zona del viaje que se toca o se está viendo) + los viajes con su foto, título y texto #}
+{% set activo = (lista_viajes|selectattr("mapa")|first or {}).carpeta %}
+<section class="viajes" data-viajes>
+  {% if mapa_viajes %}
+  <div class="viajes__mapa">
+    <div class="mapa" data-mapa data-activo="{{ activo }}">
+      <p class="mapa__frase">{{ T(viajes.frase_mapa) }}</p>
+      <svg class="mapa__svg" viewBox="0 0 {{ mapa_viajes.ancho }} {{ mapa_viajes.alto }}" role="img" aria-label="{{ T(viajes.frase_mapa) }}">
+        {% for p in mapa_viajes.paises %}<path d="{{ p.d }}"{% if p.viajes %} class="mapa__pais{% if activo in p.viajes.split() %} activo{% endif %}" data-viajes="{{ p.viajes }}"{% endif %}/>{% endfor %}
+        {% for m in mapa_viajes.marcas %}{% set v = lista_viajes|selectattr("carpeta", "equalto", m.carpeta)|first %}
+        <g class="mapa__marca{% if m.carpeta == activo %} activo{% endif %}" data-viajes="{{ m.carpeta }}">
+          <circle class="mapa__halo" cx="{{ m.x }}" cy="{{ m.y }}" r="30"/>
+          <circle class="mapa__punto" cx="{{ m.x }}" cy="{{ m.y }}" r="4.5"/>
+          <text x="{{ m.x }}" y="{{ m.y - 40 }}" text-anchor="middle">{{ T(v.destino) }}</text>
+        </g>{% endfor %}
+      </svg>
     </div>
-    <dl class="salida__datos">
-      <div><dt>{{ T(viajes.etiquetas.fechas) }}</dt><dd>{{ T(v.fechas) or T(viajes.sin_fechas) }}</dd></div>
-      {% if T(v.plazas) %}<div><dt>{{ T(viajes.etiquetas.plazas) }}</dt><dd>{{ T(v.plazas) }}</dd></div>{% endif %}
-      {% if T(v.precio) %}<div><dt>{{ T(viajes.etiquetas.precio) }}</dt><dd>{{ T(v.precio) }}</dd></div>{% endif %}
-      {% if g.contacto.whatsapp %}<div class="salida__boton"><a class="boton{% if v.proximamente %} boton--linea{% endif %} boton--peque" data-apuntarme href="https://wa.me/{{ g.contacto.whatsapp }}?text={{ T(v.mensaje_whatsapp)|urlencode }}" target="_blank" rel="noopener">{{ T(viajes.avisame) if v.proximamente else T(viajes.apuntarme) }}</a></div>{% endif %}
-    </dl>
+  </div>
+  {% endif %}
+  <ol class="viajes__lista">
+  {% for v in lista_viajes %}
+  <li class="viaje{% if v.proximamente %} viaje--pronto{% endif %}{% if v.carpeta == activo %} activo{% endif %}" id="{{ v.carpeta }}" data-viaje="{{ v.carpeta }}" tabindex="-1">
+    {% if v.foto %}<div class="viaje__foto">{{ foto(v.foto, "(min-width: 1000px) 260px, 100vw", "", "eager" if loop.first else "lazy", T(v.titulo) ~ " — " ~ T(v.destino)) }}</div>{% endif %}
+    <div class="viaje__texto">
+      <p class="antetitulo">{{ T(v.etiqueta) }}</p>
+      <h2>{{ T(v.destino) }}</h2>
+      <p class="viaje__titulo">{{ T(v.titulo) }}</p>
+      <p class="viaje__desc">{{ T(v.texto) }}</p>
+      <p class="viaje__datos">{{ T(v.fechas) or T(viajes.sin_fechas) }}{% if T(v.plazas) %} · {{ T(v.plazas) }}{% endif %}{% if T(v.precio) %} · {{ T(v.precio) }}{% endif %}</p>
+      {% if g.contacto.whatsapp %}<p class="viaje__boton"><a class="boton{% if v.proximamente %} boton--linea{% endif %} boton--peque" data-apuntarme href="https://wa.me/{{ g.contacto.whatsapp }}?text={{ T(v.mensaje_whatsapp)|urlencode }}" target="_blank" rel="noopener">{{ T(viajes.avisame) if v.proximamente else T(viajes.apuntarme) }}</a></p>{% endif %}
+    </div>
   </li>
   {% endfor %}
   </ol>
