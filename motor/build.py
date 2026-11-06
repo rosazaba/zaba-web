@@ -142,13 +142,14 @@ def leer(nombre):
         return yaml.safe_load(f) or {}
 
 
-def fotos_de(carpeta):
+def fotos_de(carpeta, banco_permitido=False):
     c = ORIG / carpeta
     if not c.exists():
         return []
     fotos = sorted(p for p in c.iterdir() if p.suffix.lower() in EXT and not p.name.startswith("."))
     # Las fotos de bancos de imágenes no son de la fotógrafa: nunca se publican como trabajo suyo
-    ajenas = [p for p in fotos if any(b in p.name.lower() for b in BANCOS_IMAGENES)]
+    # (salvo donde la usuaria las pone a propósito: la foto de cada destino en Viajes)
+    ajenas = [] if banco_permitido else [p for p in fotos if any(b in p.name.lower() for b in BANCOS_IMAGENES)]
     for p in ajenas:
         avisos.append(f"Foto de banco de imágenes, no se publica: {p.relative_to(ORIG)}")
     return [p for p in fotos if p not in ajenas]
@@ -668,9 +669,9 @@ def main():
     viajes = leer("viajes")
     lista_viajes = []
     for v in viajes.get("lista", []):
-        f = fotos_de(f"{C_VIAJES}/{v['carpeta']}")[:1]
+        f = fotos_de(f"{C_VIAJES}/{v['carpeta']}", banco_permitido=True)[:1]
         if not f and v.get("antes"):   # carpeta con su nombre antiguo
-            f = fotos_de(f"{C_VIAJES}/{v['antes']}")[:1]
+            f = fotos_de(f"{C_VIAJES}/{v['antes']}", banco_permitido=True)[:1]
         if not f and v.get("foto_provisional") and en_orig(v["foto_provisional"]).exists():
             f = [en_orig(v["foto_provisional"])]
         lista_viajes.append({**v, "foto": optimizar(f[0], f"viajes/{v['carpeta']}") if f else None})
