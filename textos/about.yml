@@ -33,13 +33,22 @@ hola_subtitulo:
 parrafos:
   en:
     - "Walking barefoot, salt-kissed and close to the sea as a way of life. That this is my work uniform is crazy. My great passions are the sea, photography and sport. Being able to bring them all together and turn them into a profession, coming from Toledo, hasn't been luck."
-    - "I've been a diving instructor for more than 8 years. For over three years I've worked professionally in underwater photography, and I'm making my way as a surf photographer while never stopping learning."
+    - "I'm a photographer, filmmaker and founder of my own brand. Based in Fuerteventura, I have spent more than eight years in the diving industry and more than three as a professional photographer, making my way in the surf world while I keep learning and evolving."
   es:
     - "Andar descalza, ensalitrada y cerca del mar como estilo de vida. Que sea mi uniforme de trabajo es una locura. Mis grandes pasiones son el mar, la fotografía y el deporte. Poder mezclarlo todo y hacer de ello una profesión siendo de Toledo no ha sido suerte."
-    - "Soy instructora de buceo desde hace más de 8 años. Llevo más de tres años dedicándome a la fotografía submarina de manera profesional y abriéndome camino como fotógrafa de surf, sin dejar de formarme."
+    - "Soy fotógrafa, filmmaker y fundadora de mi propia marca. Con base en Fuerteventura, llevo más de ocho años en la industria del buceo y más de tres como fotógrafa profesional, abriéndome camino en el mundo del surf sin dejar de aprender y en constante evolución."
   fr:
     - "Marcher pieds nus, le sel sur la peau et près de la mer, comme mode de vie. Que ce soit mon uniforme de travail, c'est fou. Mes grandes passions sont la mer, la photographie et le sport. Pouvoir tout réunir et en faire mon métier en venant de Tolède, ce n'est pas une question de chance."
-    - "Je suis monitrice de plongée depuis plus de 8 ans. Depuis plus de trois ans, je me consacre professionnellement à la photographie sous-marine et je me fais une place comme photographe de surf, sans jamais cesser de me former."
+    - "Je suis photographe, vidéaste et fondatrice de ma propre marque. Basée à Fuerteventura, je travaille depuis plus de huit ans dans le monde de la plongée et depuis plus de trois ans comme photographe professionnelle, en me faisant une place dans le monde du surf, sans cesser d'apprendre et en constante évolution."
+
+# Texto que se abre con el botón «Más» debajo de la historia (texto de Rosa). Vacío = no sale el botón.
+parrafos_mas:
+  en:
+    - "The ocean taught me to slow down in a world that rushes, to wait for the right moment to press the shutter and bring to life an image my mind had already imagined. My office has no walls or ceiling, because my mind didn't have them either when it came to setting limits of time or age. And you? Are you who you want to be? All it takes is the will — no hurry."
+  es:
+    - "El océano me enseñó a ir despacio en un mundo que va deprisa, a esperar el momento adecuado para darle al clic y que se haga realidad una imagen que mi mente ya anticipaba. Mi oficina no tiene paredes ni techo, porque mi mente tampoco los tuvo en su momento para ponerme límites de tiempo ni de edad. ¿Y tú? ¿Eres quien quieres ser? Solo hay que tener ganas, no prisa."
+  fr:
+    - "L'océan m'a appris à ralentir dans un monde qui va vite, à attendre le bon moment pour déclencher et voir naître une image que mon esprit avait déjà imaginée. Mon bureau n'a ni murs ni plafond, parce que mon esprit n'en avait pas non plus lorsqu'il s'agissait de me fixer des limites de temps ou d'âge. Et vous ? Êtes-vous qui vous voulez être ? Il suffit d'en avoir envie, sans se presser."
 
 # ── 3. Mi propósito ─────────────────────────────────────────  (TEXTO PROVISIONAL)
 proposito_titulo:

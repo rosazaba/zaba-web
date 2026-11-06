@@ -451,7 +451,10 @@ html:not(.js) .tira__foto[data-copia] { display: none; }
 .objetivo h3 { margin: .5rem 0 .4rem; font-size: 1.45rem; }
 .objetivo p { margin: 0; color: #5a5048; }
 /* «Más»: abre el resto del texto del punto y sus botones */
-.objetivo__mas { margin-top: 16px; }
+.objetivo__mas, .hola__mas { margin-top: 16px; }
+.hola__mas summary { list-style: none; cursor: pointer; display: inline-flex; }
+.hola__mas summary::-webkit-details-marker { display: none; }
+.hola__mas[open] summary { display: none; }
 .objetivo__mas summary { list-style: none; cursor: pointer; display: inline-flex; }
 .objetivo__mas summary::-webkit-details-marker { display: none; }
 .objetivo__mas[open] summary { display: none; }

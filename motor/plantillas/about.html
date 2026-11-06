@@ -25,6 +25,12 @@
       <p class="antetitulo">{{ T(about.hola_subtitulo) }}</p>{# «Quién está detrás de la lente» como etiqueta encima del título #}
       <h1>{{ T(about.hola_titulo) }}</h1>
       {% for p in T(about.parrafos) %}<p>{{ p }}</p>{% endfor %}
+      {% if about.parrafos_mas and T(about.parrafos_mas) %}
+      <details class="hola__mas">
+        <summary class="boton boton--linea boton--peque">{{ T(about.ver_mas) }}</summary>
+        {% for p in T(about.parrafos_mas) %}<p>{{ p }}</p>{% endfor %}
+      </details>
+      {% endif %}
       <p class="hola__boton"><a class="boton boton--claro" href="{{ url('contact/') }}">{{ T(g.botones.escribeme) }}</a></p>
     </div>
   </div>
