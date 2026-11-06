@@ -28,14 +28,14 @@ galerias:
     color: "mar"         # color del recuadro mientras no haya fotos
     portada: ""
     titulo:  { en: "Dive", es: "Buceo", fr: "Plongée" }
-    resumen:
-      en: "Life beneath the surface, in natural light."
-      es: "La vida bajo la superficie, con luz natural."
-      fr: "La vie sous la surface, en lumière naturelle."
+    resumen:   # texto de Rosa
+      en: "Your dive, your story."
+      es: "Tu inmersión, tu historia."
+      fr: "Votre plongée, votre histoire."
     texto:
-      en: "Reefs, wrecks, marine life and the divers who explore them."
-      es: "Arrecifes, pecios, vida marina y los buceadores que los exploran."
-      fr: "Récifs, épaves, vie marine et les plongeurs qui les explorent."
+      en: "In your photo report we tell the story of your dive as it unfolds: from setting up your gear, the leap into the blue, the descent and the underwater landscapes, to portraits with your friends and the marine life the ocean gifts us that day. You'll get 35 high-resolution photos of your diving course or one of your dives. And if you know what Buceo 100 is, you can also have a day to remember."
+      es: "En tu reportaje de fotos contamos tu historia de buceo según va pasando: desde el montaje de tu equipo, el salto al azul, el descenso y los paisajes de la inmersión, hasta los retratos con tus amigos y la vida marina que el océano nos regale ese día. Tendrás 35 fotos en alta resolución de tu curso de buceo o de una de tus inmersiones. Y si sabes lo que es el Buceo 100, también podrás tener un día para recordar."
+      fr: "Dans votre reportage photo, nous racontons votre plongée au fil de son déroulement : du montage de votre équipement, le saut dans le bleu, la descente et les paysages de l'immersion, jusqu'aux portraits avec vos amis et la vie marine que l'océan voudra bien nous offrir ce jour-là. Vous recevrez 35 photos en haute résolution de votre cours de plongée ou de l'une de vos plongées. Et si vous savez ce qu'est le Buceo 100, vous pourrez aussi vivre une journée inoubliable."
     # Buceo es una sola galería, como surf y dron (la usuaria quitó Buceo 100 y Curso): fotos en originales/1-servicio/buceo/reportaje/.
     # Al ser un único apartado sale sin título ni descripción. primeras: las 6 fotos de la tira de arriba (antes de «Ver más»), en ese orden;
     # el resto se ordena solo, sin juntar parecidas.
