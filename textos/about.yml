@@ -84,12 +84,18 @@ objetivos:
     botones:
       - { destino: curso,   texto: { en: "Underwater photo course", es: "Curso foto sub", fr: "Cours photo sous-marine" } }
       - { destino: contact, texto: { en: "Shall we talk?", es: "¿Hablamos?", fr: "On en parle ?" } }
-  - titulo: { en: "Respect for the sea", es: "Respeto por el mar",     fr: "Le respect de la mer" }
+  - titulo: { en: "Building community", es: "Crear comunidad", fr: "Créer une communauté" }   # (texto de Rosa)
     texto:
-      en: "I photograph without disturbing marine life and following good diving practice."
-      es: "Fotografío sin molestar a la vida marina y siguiendo las buenas prácticas de buceo."
-      fr: "Je photographie sans déranger la vie marine, en respectant les bonnes pratiques de plongée."
-    # PROVISIONAL: aquí irá el nuevo punto 3 que redacta Rosa (título, frase y, si quiere, «mas» y botones)
+      en: "A flock of black sheep."
+      es: "Rebaño de ovejas negras."
+      fr: "Un troupeau de moutons noirs."
+    mas:
+      en: "If you have ever felt like a black sheep, you should know there are more black sheep somewhere else. If you think this could be a way to start your story, a place to begin or grow a career, or to share trips with people who are just as restless and curious, maybe you don't need to look any further."
+      es: "Si en algún momento te has sentido una oveja negra, quizá debas saber que hay más ovejas negras en otro lugar. Si crees que esta puede ser una manera de empezar tu historia, un lugar donde empezar o desarrollar una profesión o compartir viajes con gente con más inquietudes, quizá no tengas que buscar más."
+      fr: "Si vous vous êtes déjà senti comme un mouton noir, sachez qu'il y a d'autres moutons noirs ailleurs. Si vous pensez que ce pourrait être une façon de commencer votre histoire, un endroit où débuter ou développer un métier, ou partager des voyages avec des gens tout aussi curieux, vous n'avez peut-être pas besoin de chercher plus loin."
+    botones:
+      - { destino: contact, texto: { en: "Write to me", es: "Escríbeme", fr: "Écrivez-moi" } }
+
 # Pequeños datos (etiqueta + valor)
 datos:
   - etiqueta: { en: "Based in", es: "Vivo en", fr: "Où" }
