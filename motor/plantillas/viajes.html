@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block titulo %}{{ T(viajes.titulo) }} — {{ g.marca }}{% endblock %}
+{% block descripcion %}{{ T(viajes.descripcion_google) }}{% endblock %}
+{% block contenido %}
+{# Viajes: cabecera como Tarifa/Curso y una lista de salidas (número · foto pequeña · destino · datos) #}
+<section class="intro-servicios intro-viajes">
+  <div class="estrecho">
+    <p class="antetitulo">{{ T(viajes.antetitulo) }}</p>
+    <h1>{{ T(viajes.titulo) }}</h1>
+    <p class="texto-grande">{{ T(viajes.intro) }}</p>
+  </div>
+</section>
+
+<section class="salidas">
+  {# Lista de salidas, como un panel de viajes: número, destino grande, datos en columnas y botón. Sin bandas alternas. #}
+  <ol class="salidas__lista">
+  {% for v in lista_viajes %}
+  <li class="salida{% if v.proximamente %} salida--pronto{% endif %}" id="{{ v.carpeta }}">
+    <span class="salida__num">0{{ loop.index }}</span>
+    {% if v.foto %}<div class="salida__foto">{{ foto(v.foto, "(min-width: 900px) 220px, 40vw", "", "eager" if loop.first else "lazy", T(v.titulo) ~ " — " ~ T(v.destino)) }}</div>{% endif %}
+    <div class="salida__principal">
+      <p class="antetitulo">{{ T(v.etiqueta) }}</p>
+      <h2 class="salida__destino">{{ T(v.destino) }}</h2>
+      <p class="salida__titulo">{{ T(v.titulo) }}</p>
+      <p class="salida__texto">{{ T(v.texto) }}</p>
+    </div>
+    <dl class="salida__datos">
+      <div><dt>{{ T(viajes.etiquetas.fechas) }}</dt><dd>{{ T(v.fechas) or T(viajes.sin_fechas) }}</dd></div>
+      {% if T(v.plazas) %}<div><dt>{{ T(viajes.etiquetas.plazas) }}</dt><dd>{{ T(v.plazas) }}</dd></div>{% endif %}
+      {% if T(v.precio) %}<div><dt>{{ T(viajes.etiquetas.precio) }}</dt><dd>{{ T(v.precio) }}</dd></div>{% endif %}
+      {% if g.contacto.whatsapp %}<div class="salida__boton"><a class="boton{% if v.proximamente %} boton--linea{% endif %} boton--peque" data-apuntarme href="https://wa.me/{{ g.contacto.whatsapp }}?text={{ T(v.mensaje_whatsapp)|urlencode }}" target="_blank" rel="noopener">{{ T(viajes.avisame) if v.proximamente else T(viajes.apuntarme) }}</a></div>{% endif %}
+    </dl>
+  </li>
+  {% endfor %}
+  </ol>
+</section>
+
+{% if fotos_viajes_anteriores %}
+<section class="bloque viajes-anteriores">
+  <div class="ancho">
+    <h2 class="titulo-seccion">{{ T(viajes.anteriores_titulo) }}</h2>
+    <div class="grupo-fotos" data-grupo-fotos>
+    <div class="cuadros" data-galeria>
+      {% for f in fotos_viajes_anteriores %}
+      <a class="cuadros__item{% if loop.index > 6 %} cuadros__mas{% endif %}" href="{{ asset(f.srcset[-1][1]) }}" data-ancho="{{ f.ancho }}" data-alto="{{ f.alto }}">
+        {{ foto(f, "(min-width: 900px) 16vw, 33vw", "", "lazy", T(viajes.anteriores_titulo) ~ " — " ~ g.marca ~ " " ~ loop.index) }}
+      </a>
+      {% endfor %}
+    </div>
+    {% if fotos_viajes_anteriores|length > 6 %}<p class="cuadros__ver"><button type="button" class="boton boton--linea" data-ver-todas>{{ T(work.ver_mas) }}</button></p>{% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

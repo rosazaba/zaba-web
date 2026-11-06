@@ -231,6 +231,8 @@ def main():
         # Curso foto sub: botón de reservar por WhatsApp
         if rel.endswith("underwater-photo-course/index.html") and not any("wa.me/" in u for u in a.comprar + [h for _, h in a.refs]):
             avisos.append(f"{rel}: el curso no tiene botón de reservar por WhatsApp")
+        if rel.endswith("trips/index.html") and not any("wa.me/" in u for u in a.comprar + [h for _, h in a.refs]):
+            avisos.append(f"{rel}: los viajes no tienen botón de apuntarse por WhatsApp")
         # Encuentra: cada página de sesión (find-your-photos/<playa>-<fecha>/) tiene fotos con código
         partes = rel.split("/")
         i = partes.index("find-your-photos") if "find-your-photos" in partes else -1

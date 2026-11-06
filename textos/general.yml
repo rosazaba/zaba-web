@@ -39,6 +39,7 @@ menu:
   curso:     { en: "Underwater photo course", es: "Curso foto sub", fr: "Cours photo sous-marine" }
   mas:       { en: "More", es: "Más", fr: "Plus" }
   encuentra: { en: "Find your photos", es: "Encuentra tus fotos", fr: "Trouvez vos photos" }
+  viajes:   { en: "Trips", es: "Viajes", fr: "Voyages" }
   about:    { en: "About",    es: "Sobre mí",  fr: "À propos" }
   contact:  { en: "Contact",  es: "Contacto",  fr: "Contact" }
 

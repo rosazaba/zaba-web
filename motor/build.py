@@ -34,13 +34,14 @@ C_CONTACTO = _primera("3-contacto", "4-contacto")   # solo su carpeta portada/ (
 C_SERVICIOS = _primera("4-tarifa", "2-tarifa", "2-servicios")   # página «Tarifa / Rates» (dentro de «Más»): portada/ y <servicio>/
 C_PRINT = _primera("6-tienda-de-impresiones", "6-tienda de impresiones", "5-tienda-de-impresiones", "5-tienda de impresiones", "5-tienda", "5-print-store")   # página «Tienda de impresiones / Print Store»: portada/ (cabecera) y las fotos que se venden impresas (las 2 primeras salen en las estancias)
 C_CURSO = _primera("5-curso-foto-sub", "6-curso-foto-sub")   # página «Curso foto sub»: teoria/, practica/ y edicion/ (una foto en cada una)
+C_VIAJES = _primera("8-viajes")   # página «Viajes / Trips» (dentro de «Más»): portada/ (opcional), una carpeta por viaje y anteriores/
 C_ENCUENTRA = _primera("7-encuentra-tus-fotos", "6-encuentra-tus-fotos")  # (antes 6-encuentra-tus-fotos) portada/ (cabecera) y <playa>/<AAAA-MM-DD>/ con las fotos de cada sesión
 # Rutas escritas en textos/*.yml con el nombre antiguo de una carpeta siguen funcionando
 ALIAS_CARPETAS = {"1-trabajos": C_TRABAJOS, "1-servicios": C_TRABAJOS, "1-servicio": C_TRABAJOS, "2-servicios": C_SERVICIOS, "2-tarifa": C_SERVICIOS,
                   "5-tienda": C_PRINT, "5-tienda-de-impresiones": C_PRINT, "5-tienda de impresiones": C_PRINT, "5-print-store": C_PRINT,
                   "6-encuentra-tus-fotos": C_ENCUENTRA, "7-encuentra-tus-fotos": C_ENCUENTRA,
                   "4-tarifa": C_SERVICIOS, "2-sobre-mi": C_SOBRE_MI, "3-sobre-mi": C_SOBRE_MI, "3-contacto": C_CONTACTO, "4-contacto": C_CONTACTO,
-                  "6-tienda-de-impresiones": C_PRINT, "6-tienda de impresiones": C_PRINT, "5-curso-foto-sub": C_CURSO, "6-curso-foto-sub": C_CURSO}
+                  "6-tienda-de-impresiones": C_PRINT, "6-tienda de impresiones": C_PRINT, "5-curso-foto-sub": C_CURSO, "6-curso-foto-sub": C_CURSO, "8-viajes": C_VIAJES}
 
 
 def en_orig(ruta):
@@ -54,10 +55,10 @@ PRECIO_FOTO_DEFECTO = "15 €"
 FOTOS_TIENDA_POR_GALERIA = 12   # Tienda sin fotos propias: cuántas fotos de cada galería se pueden elegir
 # Menú (en este orden) y la dirección de cada página
 RUTAS = {"inicio": "", "services": "rates/", "print": "print-store/", "curso": "underwater-photo-course/",
-         "encuentra": "find-your-photos/", "about": "about/", "contact": "contact/"}
+         "encuentra": "find-your-photos/", "viajes": "trips/", "about": "about/", "contact": "contact/"}
 # Menú: apartados principales y, dentro del desplegable «Más», el resto (en este orden)
 MENU_PRINCIPAL = ["inicio", "about", "contact"]
-MENU_MAS = ["services", "curso", "print", "encuentra"]
+MENU_MAS = ["services", "curso", "print", "encuentra", "viajes"]
 TEXTOS = RAIZ / "textos"
 MOTOR = RAIZ / "motor"
 SALIDA = RAIZ / "docs"
@@ -616,6 +617,16 @@ def main():
             avisos.append(f"Curso foto sub: {C_CURSO}/{p_['carpeta']}/ está vacía; de momento sale una foto de buceo de ejemplo.")
         partes_curso.append({**p_, "foto": optimizar(f[0], f"curso/{p_['carpeta']}") if f else None})
 
+    # ── Viajes: una tarjeta por viaje (foto de 8-viajes/<carpeta>/ o foto_provisional) y tira de viajes anteriores ──
+    viajes = leer("viajes")
+    lista_viajes = []
+    for v in viajes.get("lista", []):
+        f = fotos_de(f"{C_VIAJES}/{v['carpeta']}")[:1]
+        if not f and v.get("foto_provisional") and en_orig(v["foto_provisional"]).exists():
+            f = [en_orig(v["foto_provisional"])]
+        lista_viajes.append({**v, "foto": optimizar(f[0], f"viajes/{v['carpeta']}") if f else None})
+    fotos_viajes_anteriores = [optimizar(x, "viajes/anteriores") for x in fotos_de(f"{C_VIAJES}/anteriores")]
+
     # Foto de arriba de Servicios y Contacto: su carpeta portada/ (si está vacía, la página sale sin foto)
     def portada_de(carpeta, destino):
         p = de_portadas(carpeta)
@@ -828,6 +839,7 @@ def main():
                ("print", RUTAS["print"], "print-store.html", {"portada_pagina": portada_tienda}),
                ("curso", RUTAS["curso"], "curso.html", {}),
                ("encuentra", RUTAS["encuentra"], "encuentra.html", {"portada_pagina": portada_encuentra}),
+               ("viajes", RUTAS["viajes"], "viajes.html", {}),
                ("about", RUTAS["about"], "about.html", {}),
                ("contact", RUTAS["contact"], "contact.html", {"portada_pagina": portada_contacto})]
     for gal in galerias:
@@ -916,7 +928,7 @@ def main():
             html = env.get_template(plantilla).render(json_ld=json_ld,
                 lang=lang, pid=pid, iconos=iconos, T=T, url=url, asset=asset, srcset=srcset, foto=foto,
                 g=g, inicio=inicio, work=work, services=services, about=about, contact=contact,
-                rutas=RUTAS, menu_principal=MENU_PRINCIPAL, menu_mas=MENU_MAS, curso=curso, partes_curso=partes_curso, tienda=tienda, estancias=estancias, grupos_tienda=grupos_tienda, encuentra=encuentra, playas=playas, precio_foto=precio_foto,
+                rutas=RUTAS, menu_principal=MENU_PRINCIPAL, menu_mas=MENU_MAS, curso=curso, partes_curso=partes_curso, viajes=viajes, lista_viajes=lista_viajes, fotos_viajes_anteriores=fotos_viajes_anteriores, tienda=tienda, estancias=estancias, grupos_tienda=grupos_tienda, encuentra=encuentra, playas=playas, precio_foto=precio_foto,
                 portada=portada[0] if portada else None, destacadas=destacadas,
                 foto_about=foto_about[0] if foto_about else None, sobre=sobre,
                 galerias=galerias, lista_servicios=lista_servicios,

@@ -1,0 +1,79 @@
+# VIAJES (en el menú, dentro de «Más»). Dirección: /trips/
+# Fotos: originales/8-viajes/<carpeta>/ (una por viaje; si hay varias, la primera por nombre).
+#        Mientras una carpeta esté vacía se usa foto_provisional (ruta dentro de originales/).
+#        originales/8-viajes/anteriores/: fotos de viajes ya hechos (si hay, salen en una tira al final).
+# fechas vacío ("") → sale «Fechas por confirmar». TEXTOS PROVISIONALES.
+
+antetitulo: { en: "Community", es: "Comunidad", fr: "Communauté" }
+titulo: { en: "Trips", es: "Viajes", fr: "Voyages" }
+descripcion_google:
+  en: "Underwater photography trips and trainings with Zaba: Formentera, the Maldives and more destinations."
+  es: "Viajes y formaciones de fotografía submarina con Zaba: Formentera, Maldivas y más destinos."
+  fr: "Voyages et formations de photographie sous-marine avec Zaba : Formentera, les Maldives et d'autres destinations."
+intro:
+  en: "Trips to learn, dive and create together: small groups, the sea as a classroom and photos to remember them by."
+  es: "Viajes para aprender, bucear y crear juntos: grupos pequeños, el mar como aula y fotos para recordarlos."
+  fr: "Des voyages pour apprendre, plonger et créer ensemble : petits groupes, la mer comme salle de classe et des photos pour s'en souvenir."
+
+# Etiquetas de los datos de cada viaje
+etiquetas:
+  destino: { en: "Destination", es: "Destino", fr: "Destination" }
+  fechas: { en: "Dates", es: "Fechas", fr: "Dates" }
+  plazas: { en: "Places", es: "Plazas", fr: "Places" }
+  precio: { en: "Price", es: "Precio", fr: "Prix" }
+sin_fechas: { en: "Dates to be confirmed", es: "Fechas por confirmar", fr: "Dates à confirmer" }
+apuntarme: { en: "Count me in", es: "Me apunto", fr: "Je m'inscris" }
+avisame: { en: "Let me know", es: "Avísame", fr: "Prévenez-moi" }
+
+lista:
+  - carpeta: formentera
+    foto_provisional: "1-trabajos/buceo/reportaje/_MG_8950.jpg"
+    etiqueta: { en: "Trip 01 · Training", es: "Viaje 01 · Formación", fr: "Voyage 01 · Formation" }
+    titulo: { en: "Underwater photography training 1", es: "Formación de fotografía submarina 1", fr: "Formation de photographie sous-marine 1" }
+    destino: { en: "Formentera", es: "Formentera", fr: "Formentera" }
+    fechas: ""   # p. ej. { en: "May 2027", es: "Mayo 2027", fr: "Mai 2027" }
+    plazas: { en: "Small group", es: "Grupo reducido", fr: "Petit groupe" }
+    precio: "000 €"
+    texto:   # pendiente: texto de Rosa
+      en: "Short description of the trip coming soon."
+      es: "Pronto, una breve descripción del viaje."
+      fr: "Bientôt, une brève description du voyage."
+    mensaje_whatsapp:
+      en: "Hi Rosa! I'd like to join the underwater photography training 1 in Formentera."
+      es: "¡Hola Rosa! Me gustaría apuntarme a la formación de fotografía submarina 1 en Formentera."
+      fr: "Bonjour Rosa ! J'aimerais m'inscrire à la formation de photographie sous-marine 1 à Formentera."
+  - carpeta: maldivas
+    foto_provisional: "1-trabajos/buceo/reportaje/IMG_0895.jpg"
+    etiqueta: { en: "Trip 02 · Photo & video", es: "Viaje 02 · Foto y vídeo", fr: "Voyage 02 · Photo et vidéo" }
+    titulo: { en: "Underwater photo course 2", es: "Curso foto sub 2", fr: "Cours photo sous-marine 2" }
+    destino: { en: "Maldives", es: "Maldivas", fr: "Maldives" }
+    fechas: ""   # p. ej. { en: "May 2027", es: "Mayo 2027", fr: "Mai 2027" }
+    plazas: { en: "Small group", es: "Grupo reducido", fr: "Petit groupe" }
+    precio: "000 €"
+    texto:
+      en: "A trip to the Maldives for people who want to film, or learn to film, photo and video content underwater."
+      es: "Un viaje a Maldivas para quienes quieren grabar, o aprender a grabar, contenido de foto y vídeo bajo el agua."
+      fr: "Un voyage aux Maldives pour celles et ceux qui veulent filmer, ou apprendre à filmer, du contenu photo et vidéo sous l'eau."
+    mensaje_whatsapp:
+      en: "Hi Rosa! I'd like to join the underwater photo course 2 in the Maldives."
+      es: "¡Hola Rosa! Me gustaría apuntarme al curso foto sub 2 en Maldivas."
+      fr: "Bonjour Rosa ! J'aimerais m'inscrire au cours photo sous-marine 2 aux Maldives."
+  - carpeta: viaje-3
+    foto_provisional: "1-trabajos/buceo/reportaje/_MG_5551.jpg"
+    proximamente: true
+    etiqueta: { en: "Trip 03 · Coming soon", es: "Viaje 03 · Próximamente", fr: "Voyage 03 · Bientôt" }
+    titulo: { en: "Next destination", es: "Próximo destino", fr: "Prochaine destination" }
+    destino: { en: "To be revealed", es: "Por desvelar", fr: "À dévoiler" }
+    fechas: ""   # p. ej. { en: "May 2027", es: "Mayo 2027", fr: "Mai 2027" }
+    plazas: ""
+    precio: ""
+    texto:
+      en: "A new trip is on its way. Write to me and I'll let you know as soon as it's ready."
+      es: "Un nuevo viaje está en camino. Escríbeme y te aviso en cuanto esté listo."
+      fr: "Un nouveau voyage est en préparation. Écrivez-moi et je vous préviens dès qu'il est prêt."
+    mensaje_whatsapp:
+      en: "Hi Rosa! Let me know when the next trip is ready."
+      es: "¡Hola Rosa! Avísame cuando esté listo el próximo viaje."
+      fr: "Bonjour Rosa ! Prévenez-moi quand le prochain voyage sera prêt."
+
+anteriores_titulo: { en: "Previous trips", es: "Viajes anteriores", fr: "Voyages précédents" }

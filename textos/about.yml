@@ -66,13 +66,13 @@ ver_mas: { en: "More", es: "Más", fr: "Plus" }
 objetivos:
   - titulo: { en: "Real moments", es: "Momentos reales", fr: "Des moments vrais" }   # (texto de Rosa)
     texto:
-      en: "Real is whatever each moment brings, what you expect and what you don't."
-      es: "Real es lo que llega en cada momento, lo que esperas y lo que no."
-      fr: "Le vrai, c'est ce qui arrive à chaque instant, ce que l'on attend et ce que l'on n'attend pas."
+      en: "Building something meaningful."
+      es: "Construir algo con sentido."
+      fr: "Construire quelque chose qui a du sens."
     mas:
-      en: "Handling all of that is my purpose as a professional. Every project begins with a two-way statement of intent. Only from listening and respect can you build things that are real and authentic."
-      es: "Cómo gestionar todo eso es mi propósito como profesional. Todo proyecto comienza con una declaración de intenciones bidireccional. Desde la escucha y el respeto solo se pueden construir cosas reales y auténticas."
-      fr: "Savoir gérer tout cela, c'est mon objectif en tant que professionnelle. Chaque projet commence par une déclaration d'intentions réciproque. Ce n'est qu'à partir de l'écoute et du respect que l'on peut construire des choses vraies et authentiques."
+      en: "Real is whatever each moment brings, what you expect and what you don't. Handling all of that is my purpose as a professional. Every project begins with a two-way statement of intent. Only from listening and respect can you build things that are real and authentic."
+      es: "Real es lo que llega en cada momento, lo que esperas y lo que no. Cómo gestionar todo eso es mi propósito como profesional. Todo proyecto comienza con una declaración de intenciones bidireccional. Desde la escucha y el respeto solo se pueden construir cosas reales y auténticas."
+      fr: "Le vrai, c'est ce qui arrive à chaque instant, ce que l'on attend et ce que l'on n'attend pas. Savoir gérer tout cela, c'est mon objectif en tant que professionnelle. Chaque projet commence par une déclaration d'intentions réciproque. Ce n'est qu'à partir de l'écoute et du respect que l'on peut construire des choses vraies et authentiques."
     botones:
       - { destino: inicio,  texto: { en: "See my work", es: "Ver trabajo", fr: "Voir mon travail" } }
       - { destino: contact, texto: { en: "Let's begin", es: "Comenzamos", fr: "Commençons" } }
@@ -100,6 +100,7 @@ objetivos:
       es: "Si en algún momento te has sentido una oveja negra, quizá debas saber que hay más ovejas negras en otro lugar. Si crees que esta puede ser una manera de empezar tu historia, un lugar donde empezar o desarrollar una profesión o compartir viajes con gente con más inquietudes, quizá no tengas que buscar más."
       fr: "Si vous vous êtes déjà senti comme un mouton noir, sachez qu'il y a d'autres moutons noirs ailleurs. Si vous pensez que ce pourrait être une façon de commencer votre histoire, un endroit où débuter ou développer un métier, ou partager des voyages avec des gens tout aussi curieux, vous n'avez peut-être pas besoin de chercher plus loin."
     botones:
+      - { destino: viajes, texto: { en: "Trips", es: "Viajes", fr: "Voyages" } }
       - { destino: contact, texto: { en: "Write to me", es: "Escríbeme", fr: "Écrivez-moi" } }
 
 # Pequeños datos (etiqueta + valor)
