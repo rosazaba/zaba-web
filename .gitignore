@@ -7,3 +7,5 @@ __pycache__/
 Thumbs.db
 # Vista previa local (se abre con doble clic, no se publica)
 vista-previa/
+# Fotos del curso igualadas en luz y color (se regeneran solas)
+.ajustes/

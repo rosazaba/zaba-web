@@ -35,6 +35,7 @@ partes:
       es: "Entramos juntos al agua y ponemos todo en práctica, paso a paso, conmigo a tu lado en todo momento."
       fr: "Nous entrons dans l'eau ensemble et mettons tout en pratique, pas à pas, avec mon accompagnement à chaque instant."
   - carpeta: edicion
+    recorte: [0, 0.19, 1, 0.71]   # de la foto vertical se usa solo la pantalla con Lightroom (x0, y0, x1, y1 en fracciones)
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_7611.jpg"
     titulo: { en: "Editing", es: "Edición", fr: "Retouche" }
     texto:

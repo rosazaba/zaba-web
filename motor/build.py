@@ -92,6 +92,36 @@ def slug(texto):
 
 
 
+
+# ── Curso: las tres fotos (de bancos distintos, del móvil…) se igualan en luz, contraste, color y saturación
+#    para que queden acordes. El original no se toca: el ajuste se guarda en .ajustes/ (ignorada por git).
+AJUSTE_VERSION = 1
+def armonizar(src: Path, destino_rel: str, recorte=None) -> Path:
+    import numpy as np
+    clave = f"v{AJUSTE_VERSION}-" + ("-".join(f"{c:g}" for c in recorte) if recorte else "x")
+    out = RAIZ / ".ajustes" / destino_rel / f"{src.stem}.jpg"
+    marca = out.with_suffix(".txt")
+    if out.exists() and out.stat().st_mtime >= src.stat().st_mtime and marca.exists() and marca.read_text() == clave:
+        return out
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with Image.open(src) as im:
+        im = ImageOps.exif_transpose(im).convert("RGB")
+        if recorte:   # [x0, y0, x1, y1] en fracciones de la foto
+            w, h = im.size
+            im = im.crop((round(recorte[0] * w), round(recorte[1] * h), round(recorte[2] * w), round(recorte[3] * h)))
+        im = ImageOps.autocontrast(im, cutoff=0.5)
+        a = np.asarray(im).astype(np.float32) / 255
+        lum = (0.299 * a[..., 0] + 0.587 * a[..., 1] + 0.114 * a[..., 2]).mean()
+        a = np.clip(a, 0, 1) ** (np.log(0.46) / np.log(max(min(lum, 0.95), 0.05)))   # misma luz media
+        gris = a.mean(axis=2, keepdims=True)
+        sat = np.abs(a - gris).mean()
+        a = gris + (a - gris) * (1 + 0.6 * (0.11 / max(sat, 0.02) - 1))                 # saturación parecida, sin pasarse
+        a = a * np.array([1.03, 1.0, 0.965])                                             # un toque cálido común (paleta arena)
+        a = 0.03 + a * 0.95                                                              # negros algo suaves, como el resto de la web
+        Image.fromarray((np.clip(a, 0, 1) * 255).astype("uint8")).save(out, quality=95)
+    marca.write_text(clave)
+    return out
+
 # ── Mapa de Viajes: mapa del mundo (Natural Earth, dominio público, simplificado en motor/datos/mundo.json)
 #    en proyección Equal Earth, recortado en vertical (4:5) alrededor de los destinos que tienen «mapa» en viajes.yml.
 def mapa_viajes(lista):
@@ -665,6 +695,8 @@ def main():
         if not f and p_.get("foto_provisional") and en_orig(p_["foto_provisional"]).exists():
             f = [en_orig(p_["foto_provisional"])]
             avisos.append(f"Curso foto sub: {C_CURSO}/{p_['carpeta']}/ está vacía; de momento sale una foto de buceo de ejemplo.")
+        if f and not p_.get("sin_ajuste"):
+            f = [armonizar(f[0], f"curso/{p_['carpeta']}", p_.get("recorte"))]
         partes_curso.append({**p_, "foto": optimizar(f[0], f"curso/{p_['carpeta']}") if f else None})
 
     # ── Viajes: una tarjeta por viaje (foto de 8-viajes/<carpeta>/ o foto_provisional) y tira de viajes anteriores ──
