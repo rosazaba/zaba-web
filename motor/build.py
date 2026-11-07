@@ -892,6 +892,7 @@ def main():
     # ── Encuentra tus fotos: playa → sesión (fecha) → fotos con marca de agua y código ──
     encuentra = leer("encuentra")
     portada_encuentra = portada_de(C_ENCUENTRA, "encuentra")
+    foto_pronto = portada_encuentra   # la foto de 7-encuentra-tus-fotos/portada/ va de fondo, velada, en las playas «próximamente»
     if not portada_encuentra:
         # sin foto en 6-encuentra-tus-fotos/portada/: una foto horizontal de acción de surf (no la del surfista en el agua)
         surf = next((gal["fotos"] for gal in galerias if gal["id"] == "surf"), [])
@@ -925,7 +926,7 @@ def main():
                ("services", RUTAS["services"], "services.html", {"portada_pagina": portada_servicios}),
                ("print", RUTAS["print"], "print-store.html", {"portada_pagina": portada_tienda}),
                ("curso", RUTAS["curso"], "curso.html", {}),
-               ("encuentra", RUTAS["encuentra"], "encuentra.html", {"portada_pagina": portada_encuentra}),
+               ("encuentra", RUTAS["encuentra"], "encuentra.html", {"portada_pagina": portada_encuentra, "foto_pronto": foto_pronto}),
                ("viajes", RUTAS["viajes"], "viajes.html", {}),
                ("about", RUTAS["about"], "about.html", {}),
                ("contact", RUTAS["contact"], "contact.html", {"portada_pagina": portada_contacto})]

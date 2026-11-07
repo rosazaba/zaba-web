@@ -39,7 +39,8 @@
       {# Playas aún sin sesiones: tarjeta «Próximamente» del color de la web #}
       {% for pl in playas if not pl.sesiones %}
       <li data-tarjeta data-playa-de="{{ pl.carpeta }}" data-texto="{{ (pl.nombre ~ ' ' ~ pl.lugar)|lower }}">
-        <div class="sesion-tarjeta sesion-tarjeta--vacia">
+        <div class="sesion-tarjeta sesion-tarjeta--vacia{% if foto_pronto %} sesion-tarjeta--con-foto{% endif %}">
+          {% if foto_pronto %}{{ foto(foto_pronto, "(min-width: 900px) 33vw, 100vw", "sesion-tarjeta__img", "lazy", pl.nombre ~ " — " ~ T(encuentra.proximamente)) }}{% endif %}
           <span class="sesion-tarjeta__texto">
             <span class="sesion-tarjeta__titulo">{{ pl.nombre }}</span>
             <span class="sesion-tarjeta__lugar">{{ pl.lugar }} · {{ T(encuentra.proximamente) }}</span>

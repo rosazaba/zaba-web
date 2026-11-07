@@ -9,10 +9,6 @@ precio_foto: "000 €"
 # Playas. Para añadir una: crea su carpeta en originales/7-encuentra-tus-fotos/ y copia un bloque.
 #   carpeta: nombre de la carpeta · codigo: prefijo corto en MAYÚSCULAS para los códigos de las fotos
 localizaciones:
-  - carpeta: "playa-de-patos-vigo"
-    codigo: "PATOS"
-    nombre: "Playa de Patos"
-    lugar: "Vigo"
   - carpeta: "playa-de-berria-santona"
     codigo: "BERRIA"
     nombre: "Playa de Berria"

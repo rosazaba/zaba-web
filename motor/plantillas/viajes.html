@@ -41,6 +41,7 @@
       <p class="viaje__desc">{{ T(v.texto) }}</p>
       <p class="viaje__datos">{{ T(v.fechas) or T(viajes.sin_fechas) }}{% if T(v.plazas) %} · {{ T(v.plazas) }}{% endif %}{% if T(v.precio) %} · {{ T(v.precio) }}{% endif %}</p>
       {% if g.contacto.whatsapp %}<p class="viaje__boton"><a class="boton{% if v.proximamente %} boton--linea{% endif %} boton--peque" data-apuntarme href="https://wa.me/{{ g.contacto.whatsapp }}?text={{ T(v.mensaje_whatsapp)|urlencode }}" target="_blank" rel="noopener">{{ T(viajes.avisame) if v.proximamente else T(viajes.apuntarme) }}</a></p>{% endif %}
+      <p class="viaje__info">{{ T(viajes.info_detalle) }}</p>
     </div>
   </li>
   {% endfor %}

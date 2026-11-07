@@ -189,3 +189,5 @@ descripcion_google:
   en: "Fine art prints of surf, diving and drone photography by Zaba. Choose your photo, size and finish."
   es: "Copias artísticas de fotografía de surf, buceo y dron de Zaba. Elige tu foto, tamaño y acabado."
   fr: "Tirages d'art de photographies de surf, plongée et drone par Zaba. Choisissez photo, format et finition."
+
+quitar_ayuda: { en: "Changed your mind? Tap the chosen photo again to remove it.", es: "¿Te has equivocado? Toca otra vez la foto elegida para quitarla.", fr: "Vous avez changé d'avis ? Touchez à nouveau la photo choisie pour la retirer." }

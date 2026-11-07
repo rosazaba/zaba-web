@@ -585,6 +585,11 @@ html:not(.js) .tienda-fotos__ver, .tienda-grupo.abierto .tienda-fotos__ver { dis
 .tienda-foto[aria-pressed="true"] img { outline-color: var(--mar); }
 .tienda-foto[aria-pressed="true"] span { color: var(--mar); }
 .tienda-foto[aria-pressed="true"] span::after { content: " ✓"; }
+/* la foto elegida lleva una × en la esquina: tocarla otra vez la quita del pedido */
+.tienda-foto { position: relative; }
+.tienda-foto[aria-pressed="true"]::after { content: "×"; position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--papel); color: var(--mar); font: 300 22px/26px var(--sans); text-align: center; }
+.tienda-fotos__ayuda { margin: 14px 0 0; font-size: .85rem; color: var(--gris); }
 
 .tienda-estancias__fila { display: grid; gap: clamp(14px, 2.4vw, 28px); }
 @media (min-width: 640px) { .tienda-estancias__fila { grid-template-columns: repeat(3, 1fr); } }
@@ -636,6 +641,8 @@ html:not(.js) .tienda-fotos__ver, .tienda-grupo.abierto .tienda-fotos__ver { dis
 .sesion-tarjeta--vacia { background: var(--topo); color: var(--tinta); }
 .sesion-tarjeta--vacia::after { display: none; }
 .sesion-tarjeta--vacia .sesion-tarjeta__lugar { color: var(--tierra); opacity: 1; }
+/* «próximamente» con la foto de portada/ de fondo, velada (como la tira «Selección») sobre el color topo */
+.sesion-tarjeta--con-foto .sesion-tarjeta__img, .sesion-tarjeta--con-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .45; filter: saturate(.7); }
 .buscador__nada { margin-top: 28px; color: var(--tierra); }
 .encuentra-avisos { margin-top: clamp(32px, 5vw, 56px); padding-top: 22px; border-top: 1px solid var(--linea); }
 .encuentra-avisos__subida { margin-bottom: .6em; }
@@ -682,6 +689,7 @@ html:not(.js) .tienda-fotos__ver, .tienda-grupo.abierto .tienda-fotos__ver { dis
 .viaje__desc { margin: 0 0 .8rem; line-height: 1.7; max-width: 36rem; }
 .viaje__datos { margin: 0 0 1rem; font-size: .92rem; color: var(--gris); }
 .viaje__boton { margin: 0; }
+.viaje__info { margin: .8rem 0 0; font-size: .9rem; color: var(--tierra); }
 .viaje--pronto .viaje__foto img { opacity: .55; filter: saturate(.7); }
 /* Móvil: el mapa se queda arriba (pegado bajo el menú) y la frase a su lado */
 @media (max-width: 999px) {

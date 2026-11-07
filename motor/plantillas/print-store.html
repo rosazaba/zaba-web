@@ -55,7 +55,7 @@
       <h3 class="tienda-grupo__titulo">{{ T(gr.titulo) }}</h3>
       <ul class="tienda-fotos">
         {% for x in gr.fotos %}
-        <li{% if loop.index > 6 %} class="tienda-fotos__mas"{% endif %}><button type="button" class="tienda-foto" data-codigo-foto="{{ x.codigo }}" aria-pressed="false">
+        <li{% if loop.index > 6 %} class="tienda-fotos__mas"{% endif %}><button type="button" class="tienda-foto" data-codigo-foto="{{ x.codigo }}" aria-pressed="false" title="{{ T(tienda.quitar_ayuda) }}">
           {{ foto(x.foto, "(min-width: 900px) 220px, 45vw", "", "lazy", T(gr.titulo) ~ " " ~ x.codigo ~ " — " ~ g.marca) }}
           <span>{{ x.codigo }}</span>
         </button></li>
@@ -64,6 +64,7 @@
       {% if gr.fotos|length > 6 %}<p class="tienda-fotos__ver"><button type="button" class="boton boton--linea" data-ver-mas>{{ T(tienda.ver_mas) }}</button></p>{% endif %}
     </div>
     {% endfor %}
+    <p class="tienda-fotos__ayuda">{{ T(tienda.quitar_ayuda) }}</p>
   </div>
 </section>
 

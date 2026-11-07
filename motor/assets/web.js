@@ -214,14 +214,22 @@
     var campoFoto = pedido && pedido.querySelector("[data-foto-elegida]");
     elige.querySelectorAll("[data-codigo-foto]").forEach(function (b) {
       b.addEventListener("click", function () {
-        elige.querySelectorAll("[data-codigo-foto]").forEach(function (o) { o.setAttribute("aria-pressed", o === b); });
+        var quitar = b.getAttribute("aria-pressed") === "true";   // tocar otra vez la foto elegida la quita
+        elige.querySelectorAll("[data-codigo-foto]").forEach(function (o) { o.setAttribute("aria-pressed", !quitar && o === b); });
         if (campoFoto) {
-          campoFoto.value = b.dataset.codigoFoto;
+          campoFoto.value = quitar ? "" : b.dataset.codigoFoto;
           campoFoto.classList.add("recien-elegida");
           setTimeout(function () { campoFoto.classList.remove("recien-elegida"); }, 1600);
         }
       });
     });
+    if (campoFoto) {   // si borran o cambian el código a mano, la foto deja de estar marcada
+      campoFoto.addEventListener("input", function () {
+        elige.querySelectorAll("[data-codigo-foto]").forEach(function (o) {
+          o.setAttribute("aria-pressed", o.dataset.codigoFoto === campoFoto.value.trim());
+        });
+      });
+    }
   }
   if (pedido) {
     pedido.addEventListener("submit", function (e) {

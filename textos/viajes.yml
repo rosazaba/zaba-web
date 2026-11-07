@@ -80,4 +80,5 @@ lista:
       fr: "Bonjour Rosa ! Prévenez-moi quand le prochain voyage sera prêt."
 
 frase_mapa: { en: "It can change your life", es: "Te puede cambiar la vida", fr: "Ça peut changer votre vie" }
+info_detalle: { en: "Write to me and I'll send you all the detailed information about the trip.", es: "Escríbeme y te paso toda la información detallada del viaje.", fr: "Écrivez-moi et je vous envoie toutes les informations détaillées du voyage." }
 anteriores_titulo: { en: "Previous trips", es: "Viajes anteriores", fr: "Voyages précédents" }

@@ -41,9 +41,9 @@ partes:
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_7611.jpg"
     titulo: { en: "Editing", es: "Edición", fr: "Retouche" }
     texto:
-      en: "We choose your best shots and edit them together: colour, contrast and the finishing touches that make them shine."
-      es: "Elegimos tus mejores fotos y las editamos juntos: color, contraste y los últimos toques para que brillen."
-      fr: "Nous choisissons vos meilleures photos et les retouchons ensemble : couleur, contraste et les dernières finitions."
+      en: "We choose the best photos, try out different ways of organising them and edit them together in different versions, so you can find your personal style. There's no single right way to do it. Think about what you want to convey and what your goal is with each photo."
+      es: "Elegimos las mejores fotos, practicamos diferentes sistemas de organización y las editamos juntos en distintas versiones para que puedas encontrar tu estilo personal. No hay una única manera de hacerlo bien. Piensa qué quieres transmitir y cuál es tu objetivo con cada foto."
+      fr: "Nous choisissons les meilleures photos, testons différentes façons de les organiser et les retouchons ensemble en plusieurs versions, pour que vous trouviez votre style personnel. Il n'y a pas une seule bonne façon de faire. Pensez à ce que vous voulez transmettre et à votre objectif avec chaque photo."
 
 # Datos del curso (provisionales). valor "" = no se muestra
 datos_titulo: { en: "Course details", es: "Datos del curso", fr: "Infos du cours" }
@@ -52,7 +52,9 @@ datos:
     valor: { en: "X hours", es: "X horas", fr: "X heures" }
   - etiqueta: { en: "Group", es: "Grupo", fr: "Groupe" }
     valor: { en: "Small groups", es: "Grupos reducidos", fr: "Petits groupes" }
-  - etiqueta: { en: "Price", es: "Precio", fr: "Prix" }
+  - etiqueta: { en: "Price with your own camera", es: "Precio con cámara propia", fr: "Prix avec votre propre appareil" }
+    valor: { en: "000 €", es: "000 €", fr: "000 €" }
+  - etiqueta: { en: "Price with rented camera", es: "Precio con cámara alquilada", fr: "Prix avec appareil loué" }
     valor: { en: "000 €", es: "000 €", fr: "000 €" }
 
 reservar: { en: "Book on WhatsApp", es: "Reservar por WhatsApp", fr: "Réserver sur WhatsApp" }
