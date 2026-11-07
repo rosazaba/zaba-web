@@ -10,6 +10,9 @@ marca: "Zaba"
 dominio: "https://rosazaba.github.io/zaba-web"   # cambiar al .com cuando esté enlazado
 # Pon true cuando el dominio ya apunte a GitHub (crea el archivo CNAME).
 publicar_dominio: false
+# Modo prueba: la web se puede ver con el enlace pero Google no la indexa (noindex + robots.txt).
+# Poner false el día del lanzamiento.
+modo_prueba: true
 
 contacto:
   email: ""                    # email visible en la web (vacío = no se muestra)
@@ -26,37 +29,41 @@ lema:
   en: "Surf & diving photography"
   es: "Fotografía de surf y buceo"
   fr: "Photographie de surf et de plongée"
+  de: "Surf- & Tauchfotografie"
 
 descripcion_google:
   en: "Zaba — surf and diving photography. Portfolio, surf and underwater photo sessions, and prints."
   es: "Zaba — fotografía de surf y buceo. Portfolio, sesiones de fotos de surf y buceo, y copias impresas."
   fr: "Zaba — photographie de surf et de plongée. Portfolio, séances photo de surf et de plongée, et tirages."
+  de: "Zaba – Surf- und Tauchfotografie. Portfolio, Surf- und Unterwasser-Fotosessions und Prints."
 
 menu:
-  inicio:    { en: "My services",      es: "Servicios",           fr: "Mes services" }   # la portada (galerías)
-  services:  { en: "Rates",            es: "Tarifa",              fr: "Tarifs" }         # precios de las sesiones
-  print:     { en: "Print Store",      es: "Tienda de impresiones", fr: "Boutique de tirages" }
-  curso:     { en: "Underwater photo course", es: "Curso foto sub", fr: "Cours photo sous-marine" }
-  mas:       { en: "More", es: "Más", fr: "Plus" }
-  encuentra: { en: "Find your photos", es: "Encuentra tus fotos", fr: "Trouvez vos photos" }
-  viajes:   { en: "Trips", es: "Viajes", fr: "Voyages" }
-  about:    { en: "About",    es: "Sobre mí",  fr: "À propos" }
-  contact:  { en: "Contact",  es: "Contacto",  fr: "Contact" }
+  inicio:    { en: "My services",      es: "Servicios",           fr: "Mes services", de: "Meine Leistungen" }   # la portada (galerías)
+  services:  { en: "Rates",            es: "Tarifa",              fr: "Tarifs", de: "Preise" }         # precios de las sesiones
+  print:     { en: "Print Store",      es: "Tienda de impresiones", fr: "Boutique de tirages", de: "Print-Shop" }
+  curso:     { en: "Underwater photo course", es: "Curso foto sub", fr: "Cours photo sous-marine", de: "Unterwasser-Fotokurs" }
+  mas:       { en: "More", es: "Más", fr: "Plus", de: "Mehr" }
+  encuentra: { en: "Find your photos", es: "Encuentra tus fotos", fr: "Trouvez vos photos", de: "Finde deine Fotos" }
+  viajes:   { en: "Trips", es: "Viajes", fr: "Voyages", de: "Reisen" }
+  about:    { en: "About",    es: "Sobre mí",  fr: "À propos", de: "Über mich" }
+  contact:  { en: "Contact",  es: "Contacto",  fr: "Contact", de: "Kontakt" }
 
 botones:
-  ver_trabajo:  { en: "See the work",     es: "Ver trabajo",        fr: "Voir le travail" }
-  reservar:     { en: "Book a session",   es: "Reservar sesión",    fr: "Réserver une séance" }
-  ver_galeria:  { en: "View gallery",     es: "Ver galería",        fr: "Voir la galerie" }
-  ver_servicios: { en: "See all rates",   es: "Ver tarifa",         fr: "Voir les tarifs" }
-  escribeme:    { en: "Get in touch",     es: "Escríbeme",          fr: "Écrivez-moi" }
-  pedir:        { en: "Ask about this",   es: "Consultar",          fr: "Demander" }
+  ver_trabajo:  { en: "See the work",     es: "Ver trabajo",        fr: "Voir le travail", de: "Arbeiten ansehen" }
+  reservar:     { en: "Book a session",   es: "Reservar sesión",    fr: "Réserver une séance", de: "Session buchen" }
+  ver_galeria:  { en: "View gallery",     es: "Ver galería",        fr: "Voir la galerie", de: "Galerie ansehen" }
+  ver_servicios: { en: "See all rates",   es: "Ver tarifa",         fr: "Voir les tarifs", de: "Alle Preise ansehen" }
+  escribeme:    { en: "Get in touch",     es: "Escríbeme",          fr: "Écrivez-moi", de: "Kontakt aufnehmen" }
+  pedir:        { en: "Ask about this",   es: "Consultar",          fr: "Demander", de: "Dazu anfragen" }
 
 pie:
   frase:
     en: "The eternal instant, the emotion intact."
     es: "El instante eterno, la emoción intacta."
     fr: "L'instant éternel, l'émotion intacte."
+    de: "Der ewige Augenblick, die unberührte Emotion."
   derechos:
     en: "All photographs © Zaba. Please don't use them without permission."
     es: "Todas las fotografías © Zaba. No las uses sin permiso."
     fr: "Toutes les photographies © Zaba. Merci de ne pas les utiliser sans autorisation."
+    de: "Alle Fotografien © Zaba. Bitte nicht ohne Erlaubnis verwenden."

@@ -9,17 +9,19 @@
 # Una galería de esta lista sin fotos aparece como «Próximamente».
 
 # Botón para ver el resto de fotos de cada grupo (de primeras salen 6)
-ver_mas: { en: "See more", es: "Ver más", fr: "Voir plus" }
+ver_mas: { en: "See more", es: "Ver más", fr: "Voir plus", de: "Mehr ansehen" }
 
 proximamente:
   en: "Coming soon"
   es: "Próximamente"
   fr: "Bientôt"
+  de: "Demnächst"
 
 proximamente_texto:
   en: "New photos are on their way. In the meantime, get in touch if you'd like a session."
   es: "Pronto habrá fotos nuevas. Mientras tanto, escríbeme si quieres una sesión."
   fr: "De nouvelles photos arrivent bientôt. En attendant, écrivez-moi si vous souhaitez une séance."
+  de: "Neue Fotos sind unterwegs. Melde dich gern in der Zwischenzeit, wenn du eine Session möchtest."
 
 galerias:
   buceo:
@@ -27,22 +29,24 @@ galerias:
     orden: 1
     color: "mar"         # color del recuadro mientras no haya fotos
     portada: ""
-    titulo:  { en: "Dive", es: "Buceo", fr: "Plongée" }
+    titulo:  { en: "Dive", es: "Buceo", fr: "Plongée", de: "Tauchen" }
     resumen:   # texto de Rosa
       en: "Your dive, your story."
       es: "Tu inmersión, tu historia."
       fr: "Votre plongée, votre histoire."
+      de: "Dein Tauchgang, deine Geschichte."
     texto:
       en: "Your dive day, told as a story. From setting up your gear, the leap into the blue, the descent and the underwater landscapes, to portraits, group shots with your friends and the marine life the ocean gifts us that day. You'll get 35 high-resolution photos of your diving course or one of your dives. And if you know what Buceo 100 is, you can also have a special day to remember."
       es: "Tu día de buceo contado como una historia. Desde el montaje de tu equipo, el salto al azul, el descenso y los paisajes de la inmersión, hasta las fotos de retrato, en grupo con tus amigos y la vida marina que el océano nos regale ese día. Tendrás 35 fotos en alta resolución de tu curso de buceo o de una de tus inmersiones. Y si sabes lo que es el Buceo 100, también podrás tener un día especial para recordar."
       fr: "Votre journée de plongée racontée comme une histoire. Du montage de votre équipement, le saut dans le bleu, la descente et les paysages de l'immersion, jusqu'aux portraits, aux photos de groupe avec vos amis et à la vie marine que l'océan voudra bien nous offrir ce jour-là. Vous recevrez 35 photos en haute résolution de votre cours de plongée ou de l'une de vos plongées. Et si vous savez ce qu'est le Buceo 100, vous pourrez aussi vivre une journée spéciale inoubliable."
+      de: "Dein Tauchtag, erzählt als Geschichte. Vom Aufbau deiner Ausrüstung, dem Sprung ins Blau, dem Abstieg und den Unterwasserlandschaften bis zu Porträts, Gruppenfotos mit deinen Freunden und dem Meeresleben, das uns der Ozean an diesem Tag schenkt. Du bekommst 35 Fotos in hoher Auflösung von deinem Tauchkurs oder einem deiner Tauchgänge. Und wenn du weißt, was Buceo 100 ist, kannst du auch einen besonderen Tag zum Erinnern haben."
     # Buceo es una sola galería, como surf y dron (la usuaria quitó Buceo 100 y Curso): fotos en originales/1-servicio/buceo/reportaje/.
     # Al ser un único apartado sale sin título ni descripción. primeras: las 6 fotos de la tira de arriba (antes de «Ver más»), en ese orden;
     # el resto se ordena solo, sin juntar parecidas.
     apartados:
       - carpeta: "reportaje"
         primeras: ["_MG_1785.jpg", "_MG_8950.jpg", "IMG_0895.jpg", "_MG_2091.jpg", "_MG_5551.jpg", "IMG_6982.JPG"]   # salto · descenso por el cabo · tortuga · retrato · paisaje · la 6.ª la eligió Rosa
-        titulo: { en: "Photo report", es: "Reportaje", fr: "Reportage" }
+        titulo: { en: "Photo report", es: "Reportaje", fr: "Reportage", de: "Fotoreportage" }
 
   surf:
     url: "surf"          # dirección: .../work/surf/
@@ -51,27 +55,31 @@ galerias:
     primeras: ["DSC04781-2.jpg", "DSC04968-2.jpg", "DSC05182.jpg", "DSC04863.jpg", "DSC08539-2.jpg", "DSC08626-2.jpg"]
     color: "tierra"
     portada: ""
-    titulo:  { en: "Surf", es: "Surf", fr: "Surf" }
+    titulo:  { en: "Surf", es: "Surf", fr: "Surf", de: "Surfen" }
     resumen:
       en: "Peaks, barrels and the people who surf them."
       es: "Picos, tubos y la gente que los surfea."
       fr: "Les pics, les tubes et ceux qui les surfent."
+      de: "Peaks, Tubes und die Menschen, die sie surfen."
     texto:   # texto de Rosa
       en: "You can have your surf day captured from the sand, with wide shots or before you paddle out, and from the water at the best peaks, always depending on the sea conditions."
       es: "Podrás tener tu día de surf desde la arena, con planos amplios o antes de entrar, y desde el agua en los mejores picos, siempre sujeto a las condiciones del mar."
       fr: "Vous pourrez avoir votre journée de surf depuis le sable, en plans larges ou avant d'entrer à l'eau, et depuis l'eau sur les meilleurs pics, toujours selon les conditions de la mer."
+      de: "Du kannst deinen Surftag vom Sand aus festhalten lassen, mit weiten Einstellungen oder bevor du rauspaddelst, und vom Wasser aus an den besten Peaks, immer abhängig von den Bedingungen auf dem Meer."
 
   dron:
     url: "drone"         # dirección: .../work/drone/
     orden: 3
     color: "ocre"
     portada: ""
-    titulo:  { en: "Drone", es: "Dron", fr: "Drone" }
+    titulo:  { en: "Drone", es: "Dron", fr: "Drone", de: "Drohne" }
     resumen:
       en: "Surf, sun and sand from above."
       es: "Surf, sol y arena desde las alturas."
       fr: "Surf, soleil et sable vus d'en haut."
+      de: "Surf, Sonne und Sand von oben."
     texto:   # texto de Rosa
       en: "The coast from the air: artistic lines in the sand, waves, reefs. Can you think of a better plan? Tell me your idea and let's start creating."
       es: "La costa desde el aire: líneas artísticas en la arena, olas, arrecifes. ¿Se te ocurre mejor plan? Cuéntame tu idea para comenzar a crear."
       fr: "La côte vue du ciel : des lignes artistiques dans le sable, des vagues, des récifs. Vous voyez un meilleur projet ? Racontez-moi votre idée pour commencer à créer."
+      de: "Die Küste aus der Luft: kunstvolle Linien im Sand, Wellen, Riffe. Fällt dir ein besserer Plan ein? Erzähl mir deine Idee und lass uns kreativ werden."

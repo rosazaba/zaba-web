@@ -8,6 +8,7 @@ titulo:
   en: "About me"
   es: "Sobre mí"
   fr: "À propos"
+  de: "Über mich"
 
 # ── 1. Foto de arriba con cita ──────────────────────────────
 mostrar_portada: false   # la usuaria la quitó: la página empieza con el bloque oscuro «¡Hola! Soy Rosa». true = vuelve a salir
@@ -15,6 +16,7 @@ cita:
   en: "The sea, once it casts its spell, holds one in its net of wonder forever."
   es: "El mar, una vez que lanza su hechizo, te atrapa para siempre en su red de maravillas."
   fr: "La mer, une fois qu'elle a jeté son sort, vous retient à jamais dans son filet de merveilles."
+  de: "Das Meer, wenn es einmal seinen Zauber geworfen hat, hält einen für immer in seinem Netz des Staunens."
 cita_autor: "Jacques-Yves Cousteau"
 cita_lado: "izquierda"        # izquierda o derecha: dónde va la cita sobre la foto
 
@@ -23,11 +25,13 @@ hola_titulo:
   en: "Hi! I'm Rosa"
   es: "¡Hola! Soy Rosa"
   fr: "Bonjour ! Je suis Rosa"
+  de: "Hallo! Ich bin Rosa"
 
 hola_subtitulo:
   en: "The person behind the lens"
   es: "Quién está detrás de la lente"
   fr: "Derrière l'objectif"
+  de: "Wer hinter der Linse steht"
 
 # Tu historia. Cada línea es un párrafo. (Texto de Rosa)
 parrafos:
@@ -40,6 +44,9 @@ parrafos:
   fr:
     - "Marcher pieds nus, le sel sur la peau et près de la mer, comme mode de vie. Que ce soit mon uniforme de travail, c'est fou. Mes grandes passions sont la mer, la photographie et le sport. Pouvoir tout réunir et en faire mon métier en venant de Tolède, ce n'est pas une question de chance."
     - "Je suis photographe, vidéaste et fondatrice de ma propre marque. Basée à Fuerteventura, je travaille depuis plus de huit ans dans le monde de la plongée et depuis plus de trois ans comme photographe professionnelle, en me faisant une place dans le monde du surf, sans cesser d'apprendre et en constante évolution."
+  de:
+    - "Barfuß, salzgeküsst und nah am Meer als Lebensweise. Dass das meine Arbeitskleidung ist, ist verrückt. Meine großen Leidenschaften sind das Meer, die Fotografie und der Sport. Sie alle zu verbinden und daraus einen Beruf zu machen, als jemand aus Toledo, war kein Glück."
+    - "Ich bin Fotografin, Filmemacherin und Gründerin meiner eigenen Marke. Ich lebe auf Fuerteventura, arbeite seit mehr als acht Jahren in der Tauchbranche und seit über drei Jahren als professionelle Fotografin und finde meinen Weg in der Surfwelt, während ich weiter lerne und mich weiterentwickle."
 
 # Texto que se abre con el botón «Más» debajo de la historia (texto de Rosa). Vacío = no sale el botón.
 parrafos_mas:
@@ -49,68 +56,78 @@ parrafos_mas:
     - "El océano me enseñó a ir despacio en un mundo que va deprisa, a esperar el momento adecuado para darle al clic y que se haga realidad una imagen que mi mente ya anticipaba. Mi oficina no tiene paredes ni techo, porque mi mente tampoco los tuvo en su momento para ponerme límites de tiempo ni de edad. ¿Y tú? ¿Eres quien quieres ser? Solo hay que tener ganas, no prisa."
   fr:
     - "L'océan m'a appris à ralentir dans un monde qui va vite, à attendre le bon moment pour déclencher et voir naître une image que mon esprit avait déjà imaginée. Mon bureau n'a ni murs ni plafond, parce que mon esprit n'en avait pas non plus lorsqu'il s'agissait de me fixer des limites de temps ou d'âge. Et vous ? Êtes-vous qui vous voulez être ? Il suffit d'en avoir envie, sans se presser."
+  de:
+    - "Der Ozean hat mich gelehrt, in einer Welt voller Eile langsamer zu werden, auf den richtigen Moment für den Auslöser zu warten und ein Bild zum Leben zu erwecken, das mein Kopf sich schon vorgestellt hatte. Mein Büro hat weder Wände noch Decke, denn auch mein Kopf hatte keine, wenn es darum ging, Grenzen bei Zeit oder Alter zu setzen. Und du? Bist du, wer du sein willst? Es braucht nur den Willen – ohne Eile."
 
 # ── 3. Mi propósito ─────────────────────────────────────────  (TEXTO PROVISIONAL)
 proposito_titulo:
   en: "My purpose"
   es: "Mi propósito"
   fr: "Ma démarche"
+  de: "Mein Ziel"
 
 proposito_texto:   # (texto de Rosa)
   en: "Freezing a moment that lasts only seconds, and moving whoever wants to keep it forever without saying a word."
   es: "Congelar un instante que dura segundos, y emocionar sin decir una palabra a quien lo quiera tener para siempre."
   fr: "Figer un instant qui ne dure que quelques secondes, et émouvoir sans un mot celui qui veut le garder pour toujours."
+  de: "Einen Moment festhalten, der nur Sekunden dauert, und alle berühren, die ihn für immer bewahren möchten, ohne ein Wort zu sagen."
 
 # Los 3 puntos de debajo de «Mi propósito»: título, frase corta y, si se rellena «mas», un botón «Más» que abre el resto del texto y sus botones
-ver_mas: { en: "More", es: "Más", fr: "Plus" }
+ver_mas: { en: "More", es: "Más", fr: "Plus", de: "Mehr" }
 objetivos:
-  - titulo: { en: "Real moments", es: "Momentos reales", fr: "Des moments vrais" }   # (texto de Rosa)
+  - titulo: { en: "Real moments", es: "Momentos reales", fr: "Des moments vrais", de: "Echte Momente" }   # (texto de Rosa)
     texto:
       en: "Building something meaningful."
       es: "Construir algo con sentido."
       fr: "Construire quelque chose qui a du sens."
+      de: "Etwas mit Sinn aufbauen."
     mas:
       en: "Real is something sincere, and that is my purpose as a professional. Every project begins with a two-way statement of intent. Only from listening and respect can you build things that are real and authentic."
       es: "Real es algo sincero, y ese es mi propósito como profesional. Todo proyecto comienza con una declaración de intenciones bidireccional. Desde la escucha y el respeto solo se pueden construir cosas reales y auténticas."
       fr: "Le vrai, c'est quelque chose de sincère, et c'est mon objectif en tant que professionnelle. Chaque projet commence par une déclaration d'intentions réciproque. Ce n'est qu'à partir de l'écoute et du respect que l'on peut construire des choses vraies et authentiques."
+      de: "Echt ist etwas Aufrichtiges, und das ist mein Ziel als Fotografin. Jedes Projekt beginnt mit einer gegenseitigen Absichtserklärung. Nur aus Zuhören und Respekt entstehen Dinge, die echt und authentisch sind."
     botones:
-      - { destino: inicio,  texto: { en: "See my work", es: "Ver trabajo", fr: "Voir mon travail" } }
-      - { destino: contact, texto: { en: "Let's begin", es: "Comenzamos", fr: "Commençons" } }
-  - titulo: { en: "Reaching more people", es: "Llegar a más gente", fr: "Toucher plus de monde" }   # (texto de Rosa)
+      - { destino: inicio,  texto: { en: "See my work", es: "Ver trabajo", fr: "Voir mon travail", de: "Meine Arbeit ansehen" } }
+      - { destino: contact, texto: { en: "Let's begin", es: "Comenzamos", fr: "Commençons", de: "Lass uns beginnen" } }
+  - titulo: { en: "Reaching more people", es: "Llegar a más gente", fr: "Toucher plus de monde", de: "Mehr Menschen erreichen" }   # (texto de Rosa)
     texto:
       en: "If you can dream it, you can do it."
       es: "Si lo puedes soñar, lo puedes hacer."
       fr: "Si vous pouvez le rêver, vous pouvez le faire."
+      de: "Wenn du es träumen kannst, kannst du es auch tun."
     # mas: el texto que se abre con el botón «Más» (vacío = no sale el botón)
     mas:
       en: "I'm a photographer who never studied photography. I worked as an underwater photographer without having taken a single photo above water. It's never too late for anything. If you don't know how to get started in underwater photography, write to me and I'll tell you how I did it."
       es: "Soy fotógrafa sin haber estudiado fotografía. Trabajé como fotógrafa submarina sin haber hecho ni una foto en superficie. Siempre estás a tiempo de todo. Si no sabes cómo empezar en el mundo de la fotografía submarina, escríbeme y te cuento cómo lo hice yo."
       fr: "Je suis photographe sans avoir étudié la photographie. J'ai travaillé comme photographe sous-marine sans avoir pris une seule photo en surface. Il n'est jamais trop tard pour rien. Si vous ne savez pas comment débuter dans la photographie sous-marine, écrivez-moi et je vous raconte comment je l'ai fait."
+      de: "Ich bin eine Fotografin, die nie Fotografie studiert hat. Ich habe als Unterwasserfotografin gearbeitet, ohne je ein Foto über Wasser gemacht zu haben. Für nichts ist es je zu spät. Wenn du nicht weißt, wie du mit der Unterwasserfotografie anfangen sollst, schreib mir und ich erzähle dir, wie ich es gemacht habe."
     # botones debajo del texto que se abre (destino: curso, contact, services, print, encuentra, about o inicio)
     botones:
-      - { destino: curso,   texto: { en: "Underwater photo course", es: "Curso foto sub", fr: "Cours photo sous-marine" } }
-      - { destino: contact, texto: { en: "Shall we talk?", es: "¿Hablamos?", fr: "On en parle ?" } }
-  - titulo: { en: "Building community", es: "Crear comunidad", fr: "Créer une communauté" }   # (texto de Rosa)
+      - { destino: curso,   texto: { en: "Underwater photo course", es: "Curso foto sub", fr: "Cours photo sous-marine", de: "Unterwasser-Fotokurs" } }
+      - { destino: contact, texto: { en: "Shall we talk?", es: "¿Hablamos?", fr: "On en parle ?", de: "Sollen wir reden?" } }
+  - titulo: { en: "Building community", es: "Crear comunidad", fr: "Créer une communauté", de: "Gemeinschaft schaffen" }   # (texto de Rosa)
     texto:
       en: "A flock of black sheep."
       es: "Rebaño de ovejas negras."
       fr: "Un troupeau de moutons noirs."
+      de: "Eine Herde schwarzer Schafe."
     mas:
       en: "If you have ever felt like a black sheep, you should know there are more black sheep somewhere else. If you think this could be a way to start your story, a place to begin or grow a career, or to share trips with people who are just as restless and curious, maybe you don't need to look any further."
       es: "Si en algún momento te has sentido una oveja negra, quizá debas saber que hay más ovejas negras en otro lugar. Si crees que esta puede ser una manera de empezar tu historia, un lugar donde empezar o desarrollar una profesión o compartir viajes con gente con más inquietudes, quizá no tengas que buscar más."
       fr: "Si vous vous êtes déjà senti comme un mouton noir, sachez qu'il y a d'autres moutons noirs ailleurs. Si vous pensez que ce pourrait être une façon de commencer votre histoire, un endroit où débuter ou développer un métier, ou partager des voyages avec des gens tout aussi curieux, vous n'avez peut-être pas besoin de chercher plus loin."
+      de: "Wenn du dich je wie ein schwarzes Schaf gefühlt hast, solltest du wissen, dass es anderswo noch mehr schwarze Schafe gibt. Wenn du denkst, dass dies ein Weg sein könnte, deine Geschichte zu beginnen, ein Ort, um eine Karriere zu starten oder auszubauen, oder um Reisen mit Menschen zu teilen, die genauso rastlos und neugierig sind, musst du vielleicht nicht weiter suchen."
     botones:
-      - { destino: viajes, texto: { en: "Trips", es: "Viajes", fr: "Voyages" } }
-      - { destino: contact, texto: { en: "Write to me", es: "Escríbeme", fr: "Écrivez-moi" } }
+      - { destino: viajes, texto: { en: "Trips", es: "Viajes", fr: "Voyages", de: "Reisen" } }
+      - { destino: contact, texto: { en: "Write to me", es: "Escríbeme", fr: "Écrivez-moi", de: "Schreib mir" } }
 
 # Pequeños datos (etiqueta + valor)
 datos:
-  - etiqueta: { en: "Based in", es: "Vivo en", fr: "Où" }
-    valor:    { en: "Spain",    es: "España", fr: "Espagne" }
-  - etiqueta: { en: "In the water", es: "En el agua", fr: "Dans l'eau" }
-    valor:    { en: "Surf · Scuba · Freediving", es: "Surf · Buceo · Apnea", fr: "Surf · Plongée · Apnée" }
-  - etiqueta: { en: "Languages", es: "Idiomas", fr: "Langues" }
-    valor:    { en: "English · Español", es: "English · Español", fr: "English · Español" }
+  - etiqueta: { en: "Based in", es: "Vivo en", fr: "Où", de: "Wohnort" }
+    valor:    { en: "Spain",    es: "España", fr: "Espagne", de: "Spanien" }
+  - etiqueta: { en: "In the water", es: "En el agua", fr: "Dans l'eau", de: "Im Wasser" }
+    valor:    { en: "Surf · Scuba · Freediving", es: "Surf · Buceo · Apnea", fr: "Surf · Plongée · Apnée", de: "Surfen · Tauchen · Freitauchen" }
+  - etiqueta: { en: "Languages", es: "Idiomas", fr: "Langues", de: "Sprachen" }
+    valor:    { en: "English · Español", es: "English · Español", fr: "English · Español", de: "English · Español" }
 
 # Fotos provisionales mientras no haya fotos tuyas en originales/2-sobre-mi/ (rutas dentro de originales/)
 provisional:

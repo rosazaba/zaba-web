@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{% block titulo %}{{ g.marca }} — {{ T(g.lema) }}{% endblock %}</title>
-<meta name="description" content="{% block descripcion %}{{ T(g.descripcion_google) }}{% endblock %}">
+{% if g.modo_prueba %}<meta name="robots" content="noindex, nofollow">
+{% endif %}<meta name="description" content="{% block descripcion %}{{ T(g.descripcion_google) }}{% endblock %}">
 <meta name="theme-color" content="#F6F0E6">
 <link rel="canonical" href="{{ canonical }}">
 {% for a in alternos %}
@@ -35,7 +36,7 @@
 
 
 
-<a class="saltar" href="#contenido">{{ T({"en":"Skip to content","es":"Ir al contenido","fr":"Aller au contenu"}) }}</a>
+<a class="saltar" href="#contenido">{{ T({"en":"Skip to content","es":"Ir al contenido","fr":"Aller au contenu","de":"Zum Inhalt springen"}) }}</a>
 
 <header class="cabecera" data-cabecera>
   <div class="cabecera__in">

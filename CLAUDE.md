@@ -7,7 +7,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - Cuando la usuaria mande el nombre de una foto de portada, Claude la coloca en su carpeta `portada/` (preguntando antes).
 - **El usuario** decide el contenido y selecciona las fotos. No toca código ni hace pasos técnicos.
 - **Claude** hace todo lo técnico: optimizar, generar, revisar, publicar y configurar.
-- El usuario escribe en español. Claude traduce a EN y FR y le enseña los textos nuevos antes de publicar.
+- El usuario escribe en español. Claude traduce a EN, FR y DE (alemán, añadido a petición de la usuaria; de tú, como en español) y le enseña los textos nuevos antes de publicar.
 
 ## Dónde se trabaja
 - El proyecto vive en el ordenador del usuario, en `C:\Users\rousm\web1` (Windows).
@@ -33,7 +33,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
   - `2-sobre-mi/`: `portada/` (foto apaisada con la cita) y `retrato-…` (bloque «¡Hola! Soy Rosa»). El resto de fotos de la carpeta de momento no se usan. Sin fotos propias usa `textos/about.yml` → `provisional`.
   - `logo/` (también `zaba-perfil-whatsapp.png`, 1080×1080 fondo arena, y `zaba-firma-correo.png`, 600 px transparente: hechos por Claude para que la usuaria los use en WhatsApp y en su correo; el motor no los usa)
   - Las rutas de las imágenes publicadas no cambian (`img/work/...`, `img/inicio/...`, `img/about/...`, `img/services/...`).
-- `textos/*.yml`: todo el texto visible. Cada clave lleva `en`, `es` y `fr`.
+- `textos/*.yml`: todo el texto visible. Cada clave lleva `en`, `es`, `fr` y `de`.
 - `motor/`:
   - `build.py`: generador.
   - `revisar.py`: tests de SEO y enlaces.
@@ -70,7 +70,8 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - Encuadre de las fotos de arriba: `portada_encuadre` ("x% y%") en `services.yml`, `contact.yml` y `about.yml`; `portada_lado` (izquierda/derecha) en `services.yml` para el texto; `retrato_encuadre` en `about.yml` para la foto de «¡Hola! Soy Rosa».
 - Fotos: WebP con calidad adaptable (baja hasta que pesan menos de `PESO_MAX`). Siempre se guardan en `docs/img`; `vista-previa/` no tiene imágenes propias, las enlaza desde `../docs/img`.
 - `build.py` borra las páginas generadas que ya no existen (pero en `web1` no se pueden borrar desde aquí: pedírselo al usuario).
-- Idiomas: inglés por defecto en la raíz, español en `/es/` y francés en `/fr/`. Las URLs son iguales en los tres idiomas.
+- Idiomas (`IDIOMAS` en `build.py` y `revisar.py`): inglés por defecto en la raíz, español en `/es/`, francés en `/fr/` y alemán en `/de/`. Las URLs son iguales en los cuatro idiomas.
+- Modo prueba (`modo_prueba: true` en `general.yml`): la web se puede ver con el enlace de GitHub Pages pero lleva `noindex` y `robots.txt` con `Disallow: /`, para que la usuaria la enseñe por WhatsApp sin que Google la indexe. Ponerlo en `false` el día del lanzamiento (revisar.py avisa mientras esté activo).
 - Cada función nueva que afecte al SEO o a los enlaces debe llevar su comprobación en `revisar.py`.
 - Diseño:
   - Nada de marrón oscuro en bloques de contenido ni degradados de atardecer (no le gustan a la usuaria). Para bloques de color se usa `--topo` (#D9CCB8, marrón claro neutro) alternado con `--arena-2`. El bloque final «Salgamos a hacer fotos» (`_cierre.html`) es `--topo` plano y ya NO sale en Servicios, Tarifa, Tienda ni Encuentra tus fotos (la usuaria lo quitó); ahora no lo incluye ninguna página. El único bloque oscuro es el pie.
@@ -101,6 +102,7 @@ Web estática de fotografía de surf y buceo (marca **Zaba**). Prioridades: se v
 - Repositorio **rosazaba/zaba-web**: público (lo exige GitHub Pages gratis), con el proyecto entero sin `originales/`.
 - GitHub Pages publica desde la rama `main`, carpeta `/docs`.
 - Claude hace el push desde su espacio de trabajo mediante la app de Claude para GitHub (instalada solo en `zaba-web`). El usuario no usa cliente de git.
+- Para enseñarla antes del lanzamiento, la usuaria activa Pages (Settings → Pages → `main` /docs) y comparte `https://rosazaba.github.io/zaba-web/` (con `modo_prueba` activo).
 - Mientras no haya dominio, `dominio` vale `https://rosazaba.github.io/zaba-web` y `publicar_dominio: false`. Los enlaces internos son relativos, así que la web funciona en esa subruta y en el dominio sin cambios.
 - Dominio .com:
   1. Poner `dominio` y `publicar_dominio: true` en `textos/general.yml`. El build crea `docs/CNAME`.

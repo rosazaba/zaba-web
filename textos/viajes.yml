@@ -4,69 +4,75 @@
 #        originales/8-viajes/anteriores/: fotos de viajes ya hechos (si hay, salen en una tira al final).
 # fechas vacío ("") → sale «Fechas por confirmar». TEXTOS PROVISIONALES.
 
-antetitulo: { en: "Community", es: "Comunidad", fr: "Communauté" }
-titulo: { en: "Trips", es: "Viajes", fr: "Voyages" }
+antetitulo: { en: "Community", es: "Comunidad", fr: "Communauté", de: "Gemeinschaft" }
+titulo: { en: "Trips", es: "Viajes", fr: "Voyages", de: "Reisen" }
 descripcion_google:
   en: "Underwater photography trips and trainings with Zaba: Fuerteventura, the Maldives and more destinations."
   es: "Viajes y formaciones de fotografía submarina con Zaba: Fuerteventura, Maldivas y más destinos."
   fr: "Voyages et formations de photographie sous-marine avec Zaba : Fuerteventura, les Maldives et d'autres destinations."
+  de: "Unterwasserfotografie-Reisen und Trainings mit Zaba: Fuerteventura, die Malediven und weitere Ziele."
 intro:
   en: "Trips to learn, dive and create together: small groups, the sea as a classroom and photos to remember them by."
   es: "Viajes para aprender, bucear y crear juntos: grupos pequeños, el mar como aula y fotos para recordarlos."
   fr: "Des voyages pour apprendre, plonger et créer ensemble : petits groupes, la mer comme salle de classe et des photos pour s'en souvenir."
+  de: "Reisen, um gemeinsam zu lernen, zu tauchen und kreativ zu sein: kleine Gruppen, das Meer als Klassenzimmer und Fotos, die bleiben."
 
 # Etiquetas de los datos de cada viaje
 etiquetas:
-  destino: { en: "Destination", es: "Destino", fr: "Destination" }
-  fechas: { en: "Dates", es: "Fechas", fr: "Dates" }
-  plazas: { en: "Places", es: "Plazas", fr: "Places" }
-  precio: { en: "Price", es: "Precio", fr: "Prix" }
-sin_fechas: { en: "Dates to be confirmed", es: "Fechas por confirmar", fr: "Dates à confirmer" }
-apuntarme: { en: "Count me in", es: "Me apunto", fr: "Je m'inscris" }
-avisame: { en: "Let me know", es: "Avísame", fr: "Prévenez-moi" }
+  destino: { en: "Destination", es: "Destino", fr: "Destination", de: "Ziel" }
+  fechas: { en: "Dates", es: "Fechas", fr: "Dates", de: "Termine" }
+  plazas: { en: "Places", es: "Plazas", fr: "Places", de: "Plätze" }
+  precio: { en: "Price", es: "Precio", fr: "Prix", de: "Preis" }
+sin_fechas: { en: "Dates to be confirmed", es: "Fechas por confirmar", fr: "Dates à confirmer", de: "Termine folgen" }
+apuntarme: { en: "Count me in", es: "Me apunto", fr: "Je m'inscris", de: "Ich bin dabei" }
+avisame: { en: "Let me know", es: "Avísame", fr: "Prévenez-moi", de: "Sag mir Bescheid" }
 
 lista:
   - carpeta: fuerteventura
     antes: formentera   # nombre antiguo de la carpeta (se sigue aceptando)
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_8950.jpg"
-    etiqueta: { en: "Training", es: "Formación", fr: "Formation" }
+    etiqueta: { en: "Training", es: "Formación", fr: "Formation", de: "Training" }
     mapa: { lon: -14.0, lat: 28.4, paises: [ESP] }   # dónde se resalta en el mapa (paises: código ISO de 3 letras)
-    titulo: { en: "Underwater photography training 1", es: "Formación de fotografía submarina 1", fr: "Formation de photographie sous-marine 1" }
-    destino: { en: "Fuerteventura", es: "Fuerteventura", fr: "Fuerteventura" }
+    titulo: { en: "Underwater photography training 1", es: "Formación de fotografía submarina 1", fr: "Formation de photographie sous-marine 1", de: "Unterwasserfotografie-Training 1" }
+    destino: { en: "Fuerteventura", es: "Fuerteventura", fr: "Fuerteventura", de: "Fuerteventura" }
     fechas: ""   # p. ej. { en: "May 2027", es: "Mayo 2027", fr: "Mai 2027" }
-    plazas: { en: "Small group", es: "Grupo reducido", fr: "Petit groupe" }
+    plazas: { en: "Small group", es: "Grupo reducido", fr: "Petit groupe", de: "Kleine Gruppe" }
     precio: "000 €"
     texto:   # pendiente: texto de Rosa
       en: "Short description of the trip coming soon."
       es: "Pronto, una breve descripción del viaje."
       fr: "Bientôt, une brève description du voyage."
+      de: "Bald folgt eine kurze Beschreibung der Reise."
     mensaje_whatsapp:
       en: "Hi Rosa! I'd like to join the underwater photography training 1 in Fuerteventura."
       es: "¡Hola Rosa! Me gustaría apuntarme a la formación de fotografía submarina 1 en Fuerteventura."
       fr: "Bonjour Rosa ! J'aimerais m'inscrire à la formation de photographie sous-marine 1 à Fuerteventura."
+      de: "Hallo Rosa! Ich möchte am Unterwasserfotografie-Training 1 auf Fuerteventura teilnehmen."
   - carpeta: maldivas
     foto_provisional: "1-trabajos/buceo/reportaje/IMG_0895.jpg"
-    etiqueta: { en: "Photo & video", es: "Foto y vídeo", fr: "Photo et vidéo" }
+    etiqueta: { en: "Photo & video", es: "Foto y vídeo", fr: "Photo et vidéo", de: "Foto & Video" }
     mapa: { lon: 73.4, lat: 3.2, paises: [MDV] }
-    titulo: { en: "Underwater photo course 2", es: "Curso foto sub 2", fr: "Cours photo sous-marine 2" }
-    destino: { en: "Maldives", es: "Maldivas", fr: "Maldives" }
+    titulo: { en: "Underwater photo course 2", es: "Curso foto sub 2", fr: "Cours photo sous-marine 2", de: "Unterwasser-Fotokurs 2" }
+    destino: { en: "Maldives", es: "Maldivas", fr: "Maldives", de: "Malediven" }
     fechas: ""   # p. ej. { en: "May 2027", es: "Mayo 2027", fr: "Mai 2027" }
-    plazas: { en: "Small group", es: "Grupo reducido", fr: "Petit groupe" }
+    plazas: { en: "Small group", es: "Grupo reducido", fr: "Petit groupe", de: "Kleine Gruppe" }
     precio: "000 €"
     texto:
       en: "A trip to the Maldives for people who want to film, or learn to film, photo and video content underwater."
       es: "Un viaje a Maldivas para quienes quieren grabar, o aprender a grabar, contenido de foto y vídeo bajo el agua."
       fr: "Un voyage aux Maldives pour celles et ceux qui veulent filmer, ou apprendre à filmer, du contenu photo et vidéo sous l'eau."
+      de: "Eine Reise auf die Malediven für alle, die unter Wasser Foto- und Videoinhalte filmen oder das Filmen lernen möchten."
     mensaje_whatsapp:
       en: "Hi Rosa! I'd like to join the underwater photo course 2 in the Maldives."
       es: "¡Hola Rosa! Me gustaría apuntarme al curso foto sub 2 en Maldivas."
       fr: "Bonjour Rosa ! J'aimerais m'inscrire au cours photo sous-marine 2 aux Maldives."
+      de: "Hallo Rosa! Ich möchte am Unterwasser-Fotokurs 2 auf den Malediven teilnehmen."
   - carpeta: viaje-3
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_5551.jpg"
     proximamente: true
-    etiqueta: { en: "Coming soon", es: "Próximamente", fr: "Bientôt" }   # sin «mapa»: no se resalta nada
-    titulo: { en: "Next destination", es: "Próximo destino", fr: "Prochaine destination" }
-    destino: { en: "To be revealed", es: "Por desvelar", fr: "À dévoiler" }
+    etiqueta: { en: "Coming soon", es: "Próximamente", fr: "Bientôt", de: "Demnächst" }   # sin «mapa»: no se resalta nada
+    titulo: { en: "Next destination", es: "Próximo destino", fr: "Prochaine destination", de: "Nächstes Ziel" }
+    destino: { en: "To be revealed", es: "Por desvelar", fr: "À dévoiler", de: "Wird bald verraten" }
     fechas: ""   # p. ej. { en: "May 2027", es: "Mayo 2027", fr: "Mai 2027" }
     plazas: ""
     precio: ""
@@ -74,11 +80,13 @@ lista:
       en: "A new trip is on its way. Write to me and I'll let you know as soon as it's ready."
       es: "Un nuevo viaje está en camino. Escríbeme y te aviso en cuanto esté listo."
       fr: "Un nouveau voyage est en préparation. Écrivez-moi et je vous préviens dès qu'il est prêt."
+      de: "Eine neue Reise ist in Planung. Schreib mir und ich sage dir Bescheid, sobald sie bereit ist."
     mensaje_whatsapp:
       en: "Hi Rosa! Let me know when the next trip is ready."
       es: "¡Hola Rosa! Avísame cuando esté listo el próximo viaje."
       fr: "Bonjour Rosa ! Prévenez-moi quand le prochain voyage sera prêt."
+      de: "Hallo Rosa! Sag mir Bescheid, wenn die nächste Reise bereit ist."
 
-frase_mapa: { en: "It can change your life", es: "Te puede cambiar la vida", fr: "Ça peut changer votre vie" }
-info_detalle: { en: "Write to me and I'll send you all the detailed information about the trip.", es: "Escríbeme y te paso toda la información detallada del viaje.", fr: "Écrivez-moi et je vous envoie toutes les informations détaillées du voyage." }
-anteriores_titulo: { en: "Previous trips", es: "Viajes anteriores", fr: "Voyages précédents" }
+frase_mapa: { en: "It can change your life", es: "Te puede cambiar la vida", fr: "Ça peut changer votre vie", de: "Es kann dein Leben verändern" }
+info_detalle: { en: "Write to me and I'll send you all the detailed information about the trip.", es: "Escríbeme y te paso toda la información detallada del viaje.", fr: "Écrivez-moi et je vous envoie toutes les informations détaillées du voyage.", de: "Schreib mir und ich schicke dir alle detaillierten Infos zur Reise." }
+anteriores_titulo: { en: "Previous trips", es: "Viajes anteriores", fr: "Voyages précédents", de: "Bisherige Reisen" }

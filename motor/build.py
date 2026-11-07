@@ -64,8 +64,8 @@ TEXTOS = RAIZ / "textos"
 MOTOR = RAIZ / "motor"
 SALIDA = RAIZ / "docs"
 
-IDIOMAS = ["en", "es", "fr"]        # el primero es el idioma por defecto (sin prefijo en la URL)
-NOMBRE_IDIOMA = {"en": "EN", "es": "ES", "fr": "FR"}
+IDIOMAS = ["en", "es", "fr", "de"]        # el primero es el idioma por defecto (sin prefijo en la URL)
+NOMBRE_IDIOMA = {"en": "EN", "es": "ES", "fr": "FR", "de": "DE"}
 EXT = {".jpg", ".jpeg", ".png", ".webp", ".tif", ".tiff"}
 ANCHOS = [640, 1280, 2000]           # tamaños generados para cada foto
 TIRA_POR_GALERIA = 10               # fotos de cada galería en la tira de la portada
@@ -1047,7 +1047,10 @@ def main():
         cname.write_text(dominio + "\n")
     elif cname.exists():
         cname.unlink()
-    (SALIDA / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {g['dominio'].rstrip('/')}/sitemap.xml\n")
+    if g.get("modo_prueba"):   # web en pruebas: se ve con el enlace pero los buscadores no la indexan
+        (SALIDA / "robots.txt").write_text("User-agent: *\nDisallow: /\n")
+    else:
+        (SALIDA / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {g['dominio'].rstrip('/')}/sitemap.xml\n")
     urls = [g["dominio"].rstrip("/") + "/" + ("" if l == IDIOMAS[0] else f"{l}/") + r
             for l in IDIOMAS for _, r, _, _ in paginas]
     (SALIDA / "sitemap.xml").write_text(

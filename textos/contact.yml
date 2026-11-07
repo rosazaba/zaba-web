@@ -4,47 +4,52 @@ titulo:
   en: "Contact"
   es: "Contacto"
   fr: "Contact"
+  de: "Kontakt"
 
 # Debajo del título «Contacto» (texto de Rosa)
 lema:
   en: "Let's work together!"
   es: "¡Trabajemos junt@s!"
   fr: "Travaillons ensemble !"
+  de: "Lass uns zusammenarbeiten!"
 
 intro:
   en: "Let's start creating."
   es: "Comencemos a crear."
   fr: "Commençons à créer."
+  de: "Lass uns gemeinsam kreativ werden."
 
 formulario:
-  nombre:   { en: "First name",            es: "Nombre",               fr: "Prénom" }
-  apellidos: { en: "Last name",            es: "Apellidos",            fr: "Nom" }
-  email:    { en: "Email",                 es: "Email",                fr: "E-mail" }
-  servicio: { en: "Subject",               es: "Asunto",               fr: "Sujet" }
-  mensaje:  { en: "Message",               es: "Mensaje",              fr: "Message" }
-  enviar:   { en: "Send message",          es: "Enviar mensaje",       fr: "Envoyer le message" }
-  gracias:  { en: "Thank you! I'll reply very soon.", es: "¡Gracias! Te respondo muy pronto.", fr: "Merci ! Je vous réponds très vite." }
-  error:    { en: "Something went wrong. Please email me directly.", es: "Algo ha fallado. Escríbeme directamente por email.", fr: "Une erreur s'est produite. Écrivez-moi directement par e-mail." }
+  nombre:   { en: "First name",            es: "Nombre",               fr: "Prénom", de: "Vorname" }
+  apellidos: { en: "Last name",            es: "Apellidos",            fr: "Nom", de: "Nachname" }
+  email:    { en: "Email",                 es: "Email",                fr: "E-mail", de: "E-Mail" }
+  servicio: { en: "Subject",               es: "Asunto",               fr: "Sujet", de: "Betreff" }
+  mensaje:  { en: "Message",               es: "Mensaje",              fr: "Message", de: "Nachricht" }
+  enviar:   { en: "Send message",          es: "Enviar mensaje",       fr: "Envoyer le message", de: "Nachricht senden" }
+  gracias:  { en: "Thank you! I'll reply very soon.", es: "¡Gracias! Te respondo muy pronto.", fr: "Merci ! Je vous réponds très vite.", de: "Danke! Ich antworte dir ganz bald." }
+  error:    { en: "Something went wrong. Please email me directly.", es: "Algo ha fallado. Escríbeme directamente por email.", fr: "Une erreur s'est produite. Écrivez-moi directement par e-mail.", de: "Etwas ist schiefgelaufen. Bitte schreib mir direkt eine E-Mail." }
 
 # El asunto es un campo libre. Estos textos solo se usan para rellenarlo solo al llegar desde Tarifa (?s=surf…)
 intereses:
-  surf:  { en: "Surf",   es: "Surf",  fr: "Surf" }
-  buceo: { en: "Diving", es: "Buceo", fr: "Plongée" }
-  dron:  { en: "Drone",  es: "Dron",  fr: "Drone" }
+  surf:  { en: "Surf",   es: "Surf",  fr: "Surf", de: "Surfen" }
+  buceo: { en: "Diving", es: "Buceo", fr: "Plongée", de: "Tauchen" }
+  dron:  { en: "Drone",  es: "Dron",  fr: "Drone", de: "Drohne" }
 
-llamar:   { en: "Call",     es: "Llamar",   fr: "Appeler" }
-whatsapp: { en: "WhatsApp", es: "WhatsApp", fr: "WhatsApp" }
+llamar:   { en: "Call",     es: "Llamar",   fr: "Appeler", de: "Anrufen" }
+whatsapp: { en: "WhatsApp", es: "WhatsApp", fr: "WhatsApp", de: "WhatsApp" }
 
 directo:
   en: "Message me"
   es: "Escríbeme"
   fr: "Écrivez-moi"
+  de: "Schreib mir"
 
-formulario_saludo: { en: "Hi!", es: "¡Hola!", fr: "Bonjour !" }
+formulario_saludo: { en: "Hi!", es: "¡Hola!", fr: "Bonjour !", de: "Hallo!" }
 formulario_titulo:
   en: "Tell me about your idea"
   es: "Cuéntame tu idea"
   fr: "Parlez-moi de votre idée"
+  de: "Erzähl mir von deiner Idee"
 
 # Fondo-mural: foto de originales/3-contacto/portada/ en transparencia sobre un color sólido
 mural_color: "mar"        # mar (azul verdoso), topo, arena-2, ocre…

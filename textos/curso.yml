@@ -7,16 +7,19 @@ antetitulo:
   en: "Underwater photography"
   es: "Fotografía submarina"
   fr: "Photographie sous-marine"
+  de: "Unterwasserfotografie"
 
 titulo:
   en: "Underwater photo course"
   es: "Curso foto sub"
   fr: "Cours photo sous-marine"
+  de: "Unterwasser-Fotokurs"
 
 intro:
   en: "Learn to take your own photos underwater: a hands-on course with theory, practice in the water and editing, in small groups and at your own pace."
   es: "Aprende a hacer tus propias fotos bajo el agua: un curso práctico con teoría, práctica en el agua y edición, en grupos pequeños y a tu ritmo."
   fr: "Apprenez à faire vos propres photos sous l'eau : un cours pratique avec théorie, pratique dans l'eau et retouche, en petits groupes et à votre rythme."
+  de: "Lerne, deine eigenen Fotos unter Wasser zu machen: ein praxisnaher Kurs mit Theorie, Übung im Wasser und Bildbearbeitung, in kleinen Gruppen und in deinem Tempo."
 
 # Las tres partes del curso (bandas con foto, como en Tarifa)
 # igualar_color: true iguala luz y color de las tres fotos (a la usuaria no le gustó: se dejan originales)
@@ -24,46 +27,51 @@ igualar_color: false
 partes:
   - carpeta: teoria
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_3060.jpg"
-    titulo: { en: "Theory", es: "Teoría", fr: "Théorie" }
+    titulo: { en: "Theory", es: "Teoría", fr: "Théorie", de: "Theorie" }
     texto:
       en: "Light underwater, camera settings, composition and how to move without disturbing marine life. Tell me your starting point and we'll build from there, adapting the course to your interests."
       es: "La luz bajo el agua, ajustes de cámara, composición y cómo moverte sin molestar a la vida marina. Cuéntame desde qué punto partes y empezamos a construir desde ahí, para adaptar el curso a tus intereses."
       fr: "La lumière sous l'eau, les réglages de l'appareil, la composition et comment se déplacer sans déranger la vie marine. Dites-moi d'où vous partez et nous construirons à partir de là, pour adapter le cours à vos envies."
+      de: "Licht unter Wasser, Kameraeinstellungen, Bildaufbau und wie du dich bewegst, ohne das Meeresleben zu stören. Erzähl mir, wo du stehst, und wir bauen von dort aus auf, damit der Kurs zu deinen Interessen passt."
   - carpeta: practica
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_5822.jpg"
-    titulo: { en: "Practice in the water", es: "Práctica en el agua", fr: "Pratique dans l'eau" }
+    titulo: { en: "Practice in the water", es: "Práctica en el agua", fr: "Pratique dans l'eau", de: "Übung im Wasser" }
     texto:
       en: "We go into the water together and put everything into practice, step by step. On the first dive we'll do some basic exercises to get comfortable with manual mode and light, and on the second dive you'll be able to make your own decisions and develop a more artistic side. It's very important to know your level and experience underwater too: good buoyancy is essential, out of respect for marine life and for safety."
       es: "Entramos juntos al agua y ponemos todo en práctica, paso a paso. En la primera inmersión practicaremos unos ejercicios básicos para soltarte con el modo manual y la luz, y en el segundo buceo podrás tomar decisiones y desarrollar una parte más artística. Es muy importante saber cuál es tu nivel y tu experiencia también debajo del agua: la flotabilidad es fundamental, por respeto a la vida marina y por seguridad."
       fr: "Nous entrons dans l'eau ensemble et mettons tout en pratique, pas à pas. Lors de la première plongée, nous ferons quelques exercices de base pour être à l'aise avec le mode manuel et la lumière, et lors de la deuxième, vous pourrez prendre vos propres décisions et développer un côté plus artistique. Il est très important de connaître votre niveau et votre expérience sous l'eau : une bonne flottabilité est essentielle, par respect pour la vie marine et pour la sécurité."
+      de: "Wir gehen gemeinsam ins Wasser und setzen alles Schritt für Schritt in die Praxis um. Beim ersten Tauchgang machen wir einige Grundübungen, damit du mit dem manuellen Modus und dem Licht vertraut wirst, und beim zweiten Tauchgang kannst du eigene Entscheidungen treffen und eine kreativere Seite entwickeln. Es ist sehr wichtig, auch dein Niveau und deine Erfahrung unter Wasser zu kennen: Gute Tarierung ist entscheidend, aus Respekt vor dem Meeresleben und für die Sicherheit."
   - carpeta: edicion
     recorte: [0, 0.19, 1, 0.71]   # de la foto vertical se usa solo la pantalla con Lightroom (x0, y0, x1, y1 en fracciones)
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_7611.jpg"
-    titulo: { en: "Editing", es: "Edición", fr: "Retouche" }
+    titulo: { en: "Editing", es: "Edición", fr: "Retouche", de: "Bildbearbeitung" }
     texto:
       en: "We choose the best photos, try out different ways of organising them and edit them together in different versions, so you can find your personal style. There's no single right way to do it. Think about what you want to convey and what your goal is with each photo."
       es: "Elegimos las mejores fotos, practicamos diferentes sistemas de organización y las editamos juntos en distintas versiones para que puedas encontrar tu estilo personal. No hay una única manera de hacerlo bien. Piensa qué quieres transmitir y cuál es tu objetivo con cada foto."
       fr: "Nous choisissons les meilleures photos, testons différentes façons de les organiser et les retouchons ensemble en plusieurs versions, pour que vous trouviez votre style personnel. Il n'y a pas une seule bonne façon de faire. Pensez à ce que vous voulez transmettre et à votre objectif avec chaque photo."
+      de: "Wir wählen die besten Fotos aus, probieren verschiedene Arten aus, sie zu organisieren, und bearbeiten sie gemeinsam in unterschiedlichen Versionen, damit du deinen eigenen Stil findest. Es gibt nicht nur einen richtigen Weg. Überleg dir, was du vermitteln möchtest und welches Ziel du mit jedem Foto verfolgst."
 
 # Datos del curso (provisionales). valor "" = no se muestra
-datos_titulo: { en: "Course details", es: "Datos del curso", fr: "Infos du cours" }
+datos_titulo: { en: "Course details", es: "Datos del curso", fr: "Infos du cours", de: "Kursdetails" }
 datos:
-  - etiqueta: { en: "Duration", es: "Duración", fr: "Durée" }
-    valor: { en: "X hours", es: "X horas", fr: "X heures" }
-  - etiqueta: { en: "Group", es: "Grupo", fr: "Groupe" }
-    valor: { en: "Small groups", es: "Grupos reducidos", fr: "Petits groupes" }
-  - etiqueta: { en: "Price with your own camera", es: "Precio con cámara propia", fr: "Prix avec votre propre appareil" }
-    valor: { en: "000 €", es: "000 €", fr: "000 €" }
-  - etiqueta: { en: "Price with rented camera", es: "Precio con cámara alquilada", fr: "Prix avec appareil loué" }
-    valor: { en: "000 €", es: "000 €", fr: "000 €" }
+  - etiqueta: { en: "Duration", es: "Duración", fr: "Durée", de: "Dauer" }
+    valor: { en: "X hours", es: "X horas", fr: "X heures", de: "X Stunden" }
+  - etiqueta: { en: "Group", es: "Grupo", fr: "Groupe", de: "Gruppe" }
+    valor: { en: "Small groups", es: "Grupos reducidos", fr: "Petits groupes", de: "Kleine Gruppen" }
+  - etiqueta: { en: "Price with your own camera", es: "Precio con cámara propia", fr: "Prix avec votre propre appareil", de: "Preis mit eigener Kamera" }
+    valor: { en: "000 €", es: "000 €", fr: "000 €", de: "000 €" }
+  - etiqueta: { en: "Price with rented camera", es: "Precio con cámara alquilada", fr: "Prix avec appareil loué", de: "Preis mit Leihkamera" }
+    valor: { en: "000 €", es: "000 €", fr: "000 €", de: "000 €" }
 
-reservar: { en: "Book on WhatsApp", es: "Reservar por WhatsApp", fr: "Réserver sur WhatsApp" }
+reservar: { en: "Book on WhatsApp", es: "Reservar por WhatsApp", fr: "Réserver sur WhatsApp", de: "Über WhatsApp buchen" }
 mensaje_whatsapp:
   en: "Hi Zaba! I'd like information about the underwater photo course."
   es: "¡Hola Zaba! Quiero información sobre el curso de fotografía submarina."
   fr: "Bonjour Zaba ! Je voudrais des informations sur le cours de photo sous-marine."
+  de: "Hallo Zaba! Ich hätte gern Infos zum Unterwasser-Fotokurs."
 
 descripcion_google:
   en: "Underwater photography course with Zaba: theory, practice in the water and editing, in small groups."
   es: "Curso de fotografía submarina con Zaba: teoría, práctica en el agua y edición, en grupos reducidos."
   fr: "Cours de photographie sous-marine avec Zaba : théorie, pratique dans l'eau et retouche, en petits groupes."
+  de: "Unterwasser-Fotokurs mit Zaba: Theorie, Übung im Wasser und Bildbearbeitung, in kleinen Gruppen."

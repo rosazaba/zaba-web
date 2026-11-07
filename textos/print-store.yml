@@ -9,16 +9,19 @@ titulo:
   en: "Print Store"
   es: "Tienda de impresiones"
   fr: "Boutique de tirages"
+  de: "Print-Shop"
 
 antetitulo:
   en: "Fine art prints"
   es: "Copias artísticas"
   fr: "Tirages d'art"
+  de: "Fine-Art-Prints"
 
 intro:
   en: "Bring the ocean home. My photographs, printed on fine art paper and ready to hang."
   es: "Llévate el mar a casa. Mis fotografías, impresas en papel fine art y listas para colgar."
   fr: "Rapportez l'océan chez vous. Mes photographies, imprimées sur papier fine art et prêtes à accrocher."
+  de: "Hol dir den Ozean nach Hause. Meine Fotografien, auf Fine-Art-Papier gedruckt und bereit zum Aufhängen."
 
 # Estancias: en originales/6-tienda-de-impresiones/estancias/ la usuaria nombra cada habitación como la foto que se cuelga en ella
 # (ola.jpg ↔ «foto ola.jpg», tortuga.jpg ↔ «foto tortuga.jpg», playa.jpg ↔ «foto playa.jpeg»).
@@ -52,44 +55,49 @@ estancias_reales:
     margen: 4
     luz: 0.9
 estancias:
-  comedor:    { en: "Dining room", es: "Comedor",    fr: "Salle à manger" }
-  salon:      { en: "Living room", es: "Salón",      fr: "Salon" }
-  dormitorio: { en: "Bedroom",     es: "Dormitorio", fr: "Chambre" }
-  estudio:    { en: "Study",       es: "Estudio",    fr: "Bureau" }
+  comedor:    { en: "Dining room", es: "Comedor",    fr: "Salle à manger", de: "Esszimmer" }
+  salon:      { en: "Living room", es: "Salón",      fr: "Salon", de: "Wohnzimmer" }
+  dormitorio: { en: "Bedroom",     es: "Dormitorio", fr: "Chambre", de: "Schlafzimmer" }
+  estudio:    { en: "Study",       es: "Estudio",    fr: "Bureau", de: "Arbeitszimmer" }
 
 estancias_titulo:
   en: "See it on your wall"
   es: "Así queda en tu pared"
   fr: "Voyez-la sur votre mur"
+  de: "So sieht es an deiner Wand aus"
 
 # Título encima de los 3 pasos
 como_funciona:
   en: "How does it work?"
   es: "¿Cómo funciona?"
   fr: "Comment ça marche ?"
+  de: "Wie funktioniert es?"
 
 # Los 3 pasos de arriba (cada uno lleva a su apartado)
 pasos:
-  - titulo: { en: "Choose your photo", es: "Elige tu foto", fr: "Choisissez votre photo" }
+  - titulo: { en: "Choose your photo", es: "Elige tu foto", fr: "Choisissez votre photo", de: "Wähle dein Foto" }
     texto:
       en: "Browse the collection by category and tap the one you love."
       es: "Mira la colección por categorías y toca la que te enamore."
       fr: "Parcourez la collection par catégorie et touchez celle qui vous plaît."
-    boton: { en: "See the photos", es: "Ver las fotos", fr: "Voir les photos" }
+      de: "Stöbere nach Kategorien in der Sammlung und tippe auf dein Lieblingsbild."
+    boton: { en: "See the photos", es: "Ver las fotos", fr: "Voir les photos", de: "Fotos ansehen" }
     destino: "elige"
-  - titulo: { en: "Choose size & material", es: "Elige tamaño y material", fr: "Choisissez format et support" }
+  - titulo: { en: "Choose size & material", es: "Elige tamaño y material", fr: "Choisissez format et support", de: "Wähle Größe & Material" }
     texto:
       en: "See the options below."
       es: "Mira las opciones más abajo."
       fr: "Voyez les options ci-dessous."
-    boton: { en: "Sizes & prices", es: "Tamaños y precios", fr: "Formats et prix" }
+      de: "Die Optionen findest du unten."
+    boton: { en: "Sizes & prices", es: "Tamaños y precios", fr: "Formats et prix", de: "Größen & Preise" }
     destino: "tamanos"
-  - titulo: { en: "Place your order", es: "Haz tu pedido", fr: "Passez commande" }
+  - titulo: { en: "Place your order", es: "Haz tu pedido", fr: "Passez commande", de: "Gib deine Bestellung auf" }
     texto:
       en: "Fill in the form and send it to me on WhatsApp."
       es: "Rellena el formulario y envíamelo por WhatsApp."
       fr: "Remplissez le formulaire et envoyez-le-moi sur WhatsApp."
-    boton: { en: "Order form", es: "Formulario", fr: "Formulaire" }
+      de: "Füll das Formular aus und schick es mir per WhatsApp."
+    boton: { en: "Order form", es: "Formulario", fr: "Formulaire", de: "Bestellformular" }
     destino: "pedido"
 
 # Paso 1: elegir la foto
@@ -97,54 +105,65 @@ elige_titulo:
   en: "Choose your photo"
   es: "Elige tu foto"
   fr: "Choisissez votre photo"
+  de: "Wähle dein Foto"
 elige_texto:
   en: "Tap a photo to choose it: its code goes straight into the order form."
   es: "Toca una foto para elegirla: su código se apunta solo en el formulario de pedido."
   fr: "Touchez une photo pour la choisir : son code s'inscrit tout seul dans le formulaire."
+  de: "Tippe auf ein Foto, um es auszuwählen: Sein Code wird direkt ins Bestellformular übernommen."
 ver_mas:
   en: "See more"
   es: "Ver más"
   fr: "Voir plus"
+  de: "Mehr ansehen"
 elegida:
   en: "Chosen photo"
   es: "Foto elegida"
   fr: "Photo choisie"
+  de: "Gewähltes Foto"
 ninguna:
   en: "None yet"
   es: "Ninguna todavía"
   fr: "Aucune pour l'instant"
+  de: "Noch keins"
 
 # Paso 2: materiales y tamaños (provisionales)
 materiales_titulo:
   en: "Materials"
   es: "Materiales"
   fr: "Supports"
+  de: "Materialien"
 materiales_intro:
   en: "Every photograph is printed on fine art paper for long-lasting, faithful colour."
   es: "Todas las fotografías se imprimen en papel fine art, para que el color dure y sea fiel."
   fr: "Chaque photographie est imprimée sur papier fine art, pour des couleurs fidèles et durables."
+  de: "Jede Fotografie wird auf Fine-Art-Papier gedruckt, für langlebige, naturgetreue Farben."
 materiales:
-  - nombre: { en: "Fine art paper", es: "Papel fine art", fr: "Papier fine art" }
+  - nombre: { en: "Fine art paper", es: "Papel fine art", fr: "Papier fine art", de: "Fine-Art-Papier" }
     texto:
       en: "Matte cotton paper, unframed. Deep blacks and soft tones."
       es: "Papel de algodón mate, sin marco. Negros profundos y tonos suaves."
       fr: "Papier coton mat, sans cadre. Noirs profonds et tons doux."
-  - nombre: { en: "Framed · natural oak", es: "Enmarcada · roble natural", fr: "Encadré · chêne naturel" }
+      de: "Mattes Baumwollpapier, ohne Rahmen. Tiefe Schwarztöne und sanfte Farben."
+  - nombre: { en: "Framed · natural oak", es: "Enmarcada · roble natural", fr: "Encadré · chêne naturel", de: "Gerahmt · Eiche natur" }
     texto:
       en: "Thin oak frame with a white passe-partout, ready to hang."
       es: "Marco fino de roble con paspartú blanco, lista para colgar."
       fr: "Cadre fin en chêne avec passe-partout blanc, prêt à accrocher."
-  - nombre: { en: "Framed · white wood", es: "Enmarcada · madera blanca", fr: "Encadré · bois blanc" }
+      de: "Schmaler Eichenrahmen mit weißem Passepartout, bereit zum Aufhängen."
+  - nombre: { en: "Framed · white wood", es: "Enmarcada · madera blanca", fr: "Encadré · bois blanc", de: "Gerahmt · weißes Holz" }
     texto:
       en: "Thin white wooden frame with passe-partout."
       es: "Marco fino de madera blanca con paspartú."
       fr: "Cadre fin en bois blanc avec passe-partout."
+      de: "Schmaler weißer Holzrahmen mit Passepartout."
 
 # Tamaños y precios (provisionales). precio "" = «Consultar»
 tamanos_titulo:
   en: "Sizes & prices"
   es: "Tamaños y precios"
   fr: "Formats et prix"
+  de: "Größen & Preise"
 tamanos:
   - medida: "20 × 30 cm"
     precio: "000 €"
@@ -158,36 +177,41 @@ marco_nota:
   en: "Frame: +000 € depending on size. Shipping not included."
   es: "Marco: +000 € según el tamaño. Envío aparte."
   fr: "Cadre : +000 € selon le format. Livraison en sus."
+  de: "Rahmen: +000 € je nach Größe. Versand nicht inbegriffen."
 
 # Paso 3: pedido
 pedido_titulo:
   en: "Place your order"
   es: "Haz tu pedido"
   fr: "Passez commande"
+  de: "Gib deine Bestellung auf"
 pedido_intro:
   en: "Each print is made to order. Fill in the form and I'll reply on WhatsApp with the price and delivery time."
   es: "Cada copia se imprime por encargo. Rellena el formulario y te respondo por WhatsApp con el precio y el plazo."
   fr: "Chaque tirage est réalisé sur commande. Remplissez le formulaire et je vous réponds sur WhatsApp avec le prix et le délai."
+  de: "Jeder Print wird auf Bestellung gefertigt. Füll das Formular aus und ich antworte dir per WhatsApp mit Preis und Lieferzeit."
 form:
-  nombre: { en: "First name", es: "Nombre", fr: "Prénom" }
-  apellidos: { en: "Last name", es: "Apellidos", fr: "Nom" }
-  foto: { en: "Chosen photo (code or description)", es: "Foto elegida (código o descripción)", fr: "Photo choisie (code ou description)" }
-  material: { en: "Material", es: "Material", fr: "Support" }
-  tamano: { en: "Size", es: "Tamaño", fr: "Format" }
-  pais: { en: "Country", es: "País", fr: "Pays" }
-  mensaje: { en: "Message (optional)", es: "Mensaje (opcional)", fr: "Message (facultatif)" }
-  elige: { en: "Choose…", es: "Elige…", fr: "Choisir…" }
-  enviar: { en: "Send order on WhatsApp", es: "Enviar pedido por WhatsApp", fr: "Envoyer la commande sur WhatsApp" }
-  nota: { en: "WhatsApp opens with your order already written.", es: "Se abre WhatsApp con tu pedido ya escrito.", fr: "WhatsApp s'ouvre avec votre commande déjà rédigée." }
+  nombre: { en: "First name", es: "Nombre", fr: "Prénom", de: "Vorname" }
+  apellidos: { en: "Last name", es: "Apellidos", fr: "Nom", de: "Nachname" }
+  foto: { en: "Chosen photo (code or description)", es: "Foto elegida (código o descripción)", fr: "Photo choisie (code ou description)", de: "Gewähltes Foto (Code oder Beschreibung)" }
+  material: { en: "Material", es: "Material", fr: "Support", de: "Material" }
+  tamano: { en: "Size", es: "Tamaño", fr: "Format", de: "Größe" }
+  pais: { en: "Country", es: "País", fr: "Pays", de: "Land" }
+  mensaje: { en: "Message (optional)", es: "Mensaje (opcional)", fr: "Message (facultatif)", de: "Nachricht (optional)" }
+  elige: { en: "Choose…", es: "Elige…", fr: "Choisir…", de: "Bitte wählen…" }
+  enviar: { en: "Send order on WhatsApp", es: "Enviar pedido por WhatsApp", fr: "Envoyer la commande sur WhatsApp", de: "Bestellung per WhatsApp senden" }
+  nota: { en: "WhatsApp opens with your order already written.", es: "Se abre WhatsApp con tu pedido ya escrito.", fr: "WhatsApp s'ouvre avec votre commande déjà rédigée.", de: "WhatsApp öffnet sich mit deiner Bestellung schon geschrieben." }
 # Primera línea del mensaje de WhatsApp
 mensaje_whatsapp:
   en: "Hi Zaba! I'd like to order a print."
   es: "¡Hola Zaba! Quiero pedir una copia impresa."
   fr: "Bonjour Zaba ! Je voudrais commander un tirage."
+  de: "Hallo Zaba! Ich möchte einen Print bestellen."
 
 descripcion_google:
   en: "Fine art prints of surf, diving and drone photography by Zaba. Choose your photo, size and finish."
   es: "Copias artísticas de fotografía de surf, buceo y dron de Zaba. Elige tu foto, tamaño y acabado."
   fr: "Tirages d'art de photographies de surf, plongée et drone par Zaba. Choisissez photo, format et finition."
+  de: "Fine-Art-Prints von Surf-, Tauch- und Drohnenfotografie von Zaba. Wähle dein Foto, die Größe und das Finish."
 
-quitar_ayuda: { en: "Changed your mind? Tap the chosen photo again to remove it.", es: "¿Te has equivocado? Toca otra vez la foto elegida para quitarla.", fr: "Vous avez changé d'avis ? Touchez à nouveau la photo choisie pour la retirer." }
+quitar_ayuda: { en: "Changed your mind? Tap the chosen photo again to remove it.", es: "¿Te has equivocado? Toca otra vez la foto elegida para quitarla.", fr: "Vous avez changé d'avis ? Touchez à nouveau la photo choisie pour la retirer.", de: "Vertan? Tippe noch einmal auf das gewählte Foto, um es zu entfernen." }

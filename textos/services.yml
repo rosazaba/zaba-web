@@ -7,74 +7,94 @@ titulo:
   en: "Rates"
   es: "Tarifa"
   fr: "Tarifs"
+  de: "Preise"
 
 intro:
   en: "Surf, diving and drone photography on the Atlantic coast. Have a look at each gallery and tell me what you'd like to capture: a session in the water, a dive or the coast seen from above."
   es: "Fotografía de surf, buceo y dron en la costa atlántica. Echa un vistazo a cada galería y cuéntame qué quieres capturar: una sesión en el agua, una inmersión o la costa vista desde el aire."
   fr: "Photographie de surf, de plongée et de drone sur la côte atlantique. Parcourez chaque galerie et dites-moi ce que vous aimeriez capturer : une séance dans l'eau, une plongée ou la côte vue du ciel."
+  de: "Surf-, Tauch- und Drohnenfotografie an der Atlantikküste. Schau dir die Galerien an und erzähl mir, was du festhalten möchtest: eine Session im Wasser, einen Tauchgang oder die Küste von oben."
 
-desde:     { en: "Starting at",   es: "Desde",     fr: "À partir de" }
-incluye_titulo: { en: "Includes", es: "Incluye", fr: "Inclus" }
-consultar: { en: "Price on request", es: "Consultar", fr: "Sur demande" }
+desde:     { en: "Starting at",   es: "Desde",     fr: "À partir de", de: "Ab" }
+incluye_titulo: { en: "Includes", es: "Incluye", fr: "Inclus", de: "Inklusive" }
+consultar: { en: "Price on request", es: "Consultar", fr: "Sur demande", de: "Preis auf Anfrage" }
 
 lista:
   - carpeta: surf
     foto_provisional: "1-trabajos/surf/DSC05129.jpg"
-    titulo: { en: "Surf session", es: "Sesión de surf", fr: "Séance de surf" }
+    titulo: { en: "Surf session", es: "Sesión de surf", fr: "Séance de surf", de: "Surf-Session" }
     precio: "000 €"
     texto:
       en: "I shoot you surfing from the water or the beach. Perfect for keeping a memory of your trip or tracking your progress."
       es: "Te fotografío surfeando desde el agua o desde la playa. Ideal para guardar el recuerdo de tu viaje o ver tu progresión."
       fr: "Je vous photographie en train de surfer depuis l'eau ou la plage. Idéal pour garder un souvenir de votre voyage ou suivre vos progrès."
+      de: "Ich fotografiere dich beim Surfen vom Wasser oder vom Strand aus. Perfekt als Erinnerung an deine Reise oder um deinen Fortschritt zu sehen."
     incluye:
       en: ["1.5 hours in the water", "40+ edited photos", "Online gallery within 72 h"]
       es: ["1,5 horas en el agua", "Más de 40 fotos editadas", "Galería online en 72 h"]
       fr: ["1 h 30 dans l'eau", "Plus de 40 photos retouchées", "Galerie en ligne sous 72 h"]
+      de:
+        - "1,5 Stunden im Wasser"
+        - "40+ bearbeitete Fotos"
+        - "Online-Galerie innerhalb von 72 h"
 
   - carpeta: buceo
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_3060.jpg"
-    titulo: { en: "Underwater session", es: "Sesión submarina", fr: "Séance sous-marine" }
+    titulo: { en: "Underwater session", es: "Sesión submarina", fr: "Séance sous-marine", de: "Unterwasser-Session" }
     precio: "000 €"
     texto:
       en: "Photos of your dive, your course or your freediving session, with natural light and a calm, safe approach."
       es: "Fotos de tu inmersión, tu curso o tu sesión de apnea, con luz natural y un enfoque tranquilo y seguro."
       fr: "Photos de votre plongée, de votre formation ou de votre séance d'apnée, en lumière naturelle et en toute sécurité."
+      de: "Fotos von deinem Tauchgang, deinem Kurs oder deiner Freitauch-Session, mit natürlichem Licht und einem ruhigen, sicheren Ansatz."
     incluye:
       en: ["One or two dives", "30+ edited photos", "Online gallery within 72 h"]
       es: ["Una o dos inmersiones", "Más de 30 fotos editadas", "Galería online en 72 h"]
       fr: ["Une ou deux plongées", "Plus de 30 photos retouchées", "Galerie en ligne sous 72 h"]
+      de:
+        - "Ein oder zwei Tauchgänge"
+        - "30+ bearbeitete Fotos"
+        - "Online-Galerie innerhalb von 72 h"
 
   - carpeta: dron                                   # carpeta originales/4-tarifa/dron/ (antes «copias»)
     foto_provisional: "1-trabajos/dron/IMG_20260907_09553035.jpeg"
-    titulo: { en: "Drone session", es: "Sesión con dron", fr: "Séance drone" }
+    titulo: { en: "Drone session", es: "Sesión con dron", fr: "Séance drone", de: "Drohnen-Session" }
     precio: "000 €"
     texto:
       en: "Your beach, your boat, your surf session or your event seen from above, with aerial photos that show the whole place."
       es: "Tu playa, tu barco, tu sesión de surf o tu evento vistos desde el aire, con fotos aéreas que enseñan todo el lugar."
       fr: "Votre plage, votre bateau, votre séance de surf ou votre événement vus du ciel, avec des photos aériennes qui montrent tout le lieu."
+      de: "Dein Strand, dein Boot, deine Surf-Session oder dein Event von oben, mit Luftaufnahmen, die den ganzen Ort zeigen."
     incluye:
       en: ["Up to 1 hour of flight", "20+ edited aerial photos", "Online gallery within 72 h"]
       es: ["Hasta 1 hora de vuelo", "Más de 20 fotos aéreas editadas", "Galería online en 72 h"]
       fr: ["Jusqu'à 1 h de vol", "Plus de 20 photos aériennes retouchées", "Galerie en ligne sous 72 h"]
+      de:
+        - "Bis zu 1 Stunde Flugzeit"
+        - "20+ bearbeitete Luftaufnahmen"
+        - "Online-Galerie innerhalb von 72 h"
 
-pasos_antetitulo: { en: "Next steps", es: "Próximos pasos", fr: "Prochaines étapes" }
-pasos_titulo: { en: "How it works", es: "Cómo funciona", fr: "Comment ça marche" }
+pasos_antetitulo: { en: "Next steps", es: "Próximos pasos", fr: "Prochaines étapes", de: "Nächste Schritte" }
+pasos_titulo: { en: "How it works", es: "Cómo funciona", fr: "Comment ça marche", de: "So funktioniert es" }
 pasos:
-  - titulo: { en: "Tell me your idea", es: "Cuéntame tu idea", fr: "Racontez-moi votre idée" }
+  - titulo: { en: "Tell me your idea", es: "Cuéntame tu idea", fr: "Racontez-moi votre idée", de: "Erzähl mir deine Idee" }
     texto:
       en: "Send me a message with the place, dates and what you'd like."
       es: "Envíame un mensaje con el lugar, las fechas y lo que te gustaría."
       fr: "Envoyez-moi un message avec le lieu, les dates et vos envies."
-  - titulo: { en: "We pick the window", es: "Elegimos el momento", fr: "On choisit le créneau" }
+      de: "Schick mir eine Nachricht mit Ort, Daten und deinen Wünschen."
+  - titulo: { en: "We pick the window", es: "Elegimos el momento", fr: "On choisit le créneau", de: "Wir wählen das Zeitfenster" }
     texto:
       en: "I check the forecast and we choose the best day and time together."
       es: "Miro la previsión y elegimos juntos el mejor día y la mejor hora."
       fr: "Je consulte les prévisions et nous choisissons ensemble le meilleur jour et la meilleure heure."
-  - titulo: { en: "Shoot & deliver", es: "Fotos y entrega", fr: "Shooting et livraison" }
+      de: "Ich prüfe die Vorhersage und wir wählen gemeinsam den besten Tag und die beste Uhrzeit."
+  - titulo: { en: "Shoot & deliver", es: "Fotos y entrega", fr: "Shooting et livraison", de: "Fotografieren & liefern" }
     texto:
       en: "We shoot, I edit, and you receive your private online gallery."
       es: "Hacemos las fotos, las edito y recibes tu galería online privada."
       fr: "On shoote, je retouche, et vous recevez votre galerie privée en ligne."
+      de: "Wir fotografieren, ich bearbeite, und du bekommst deine private Online-Galerie."
 
 # Encuadre de la foto de arriba: "horizontal vertical" en %. 50% 50% = centrada;
 # vertical más bajo (p. ej. 25%) enseña más la parte de arriba de la foto, más alto (75%) la de abajo.

@@ -17,7 +17,7 @@ import yaml
 RAIZ = Path(__file__).resolve().parent.parent
 DOCS = RAIZ / "docs"
 TEXTOS = RAIZ / "textos"
-IDIOMAS = ["en", "es", "fr"]
+IDIOMAS = ["en", "es", "fr", "de"]
 PESO_MAX_FOTO = 600_000      # bytes
 TITULO_MAX, DESC_MIN, DESC_MAX = 65, 50, 165
 
@@ -249,6 +249,8 @@ def main():
             if f"<loc>{dominio}/{ruta}</loc>" not in contenido:
                 errores.append(f"sitemap.xml no incluye {dominio}/{ruta}")
     if not (DOCS / "robots.txt").exists(): errores.append("Falta robots.txt")
+    elif "Disallow: /\n" in (DOCS / "robots.txt").read_text():
+        avisos.append("Modo prueba activo: Google no indexa la web (poner modo_prueba: false en general.yml al lanzarla)")
 
     # Peso de las fotos
     for f in (DOCS / "img").rglob("*") if (DOCS / "img").exists() else []:
