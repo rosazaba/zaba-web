@@ -26,9 +26,9 @@ partes:
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_3060.jpg"
     titulo: { en: "Theory", es: "Teoría", fr: "Théorie" }
     texto:
-      en: "Light underwater, camera settings, composition and how to move without disturbing marine life."
-      es: "La luz bajo el agua, ajustes de cámara, composición y cómo moverte sin molestar a la vida marina."
-      fr: "La lumière sous l'eau, les réglages de l'appareil, la composition et comment se déplacer sans déranger la vie marine."
+      en: "Light underwater, camera settings, composition and how to move without disturbing marine life. Tell me your starting point and we'll build from there, adapting the course to your interests."
+      es: "La luz bajo el agua, ajustes de cámara, composición y cómo moverte sin molestar a la vida marina. Cuéntame desde qué punto partes y empezamos a construir desde ahí, para adaptar el curso a tus intereses."
+      fr: "La lumière sous l'eau, les réglages de l'appareil, la composition et comment se déplacer sans déranger la vie marine. Dites-moi d'où vous partez et nous construirons à partir de là, pour adapter le cours à vos envies."
   - carpeta: practica
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_5822.jpg"
     titulo: { en: "Practice in the water", es: "Práctica en el agua", fr: "Pratique dans l'eau" }

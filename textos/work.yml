@@ -68,6 +68,10 @@ galerias:
     portada: ""
     titulo:  { en: "Drone", es: "Dron", fr: "Drone" }
     resumen:
-      en: "The coast from above: waves, reefs and lines in the sand."
-      es: "La costa desde el aire: olas, arrecifes y líneas en la arena."
-      fr: "La côte vue du ciel : vagues, récifs et lignes dans le sable."
+      en: "Surf, sun and sand from above."
+      es: "Surf, sol y arena desde las alturas."
+      fr: "Surf, soleil et sable vus d'en haut."
+    texto:   # texto de Rosa
+      en: "The coast from the air: artistic lines in the sand, waves, reefs. Can you think of a better plan? Tell me your idea and let's start creating."
+      es: "La costa desde el aire: líneas artísticas en la arena, olas, arrecifes. ¿Se te ocurre mejor plan? Cuéntame tu idea para comenzar a crear."
+      fr: "La côte vue du ciel : des lignes artistiques dans le sable, des vagues, des récifs. Vous voyez un meilleur projet ? Racontez-moi votre idée pour commencer à créer."
