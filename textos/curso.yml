@@ -33,9 +33,9 @@ partes:
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_5822.jpg"
     titulo: { en: "Practice in the water", es: "Práctica en el agua", fr: "Pratique dans l'eau" }
     texto:
-      en: "We go into the water together and put everything into practice, step by step, with my guidance at every moment."
-      es: "Entramos juntos al agua y ponemos todo en práctica, paso a paso, conmigo a tu lado en todo momento."
-      fr: "Nous entrons dans l'eau ensemble et mettons tout en pratique, pas à pas, avec mon accompagnement à chaque instant."
+      en: "We go into the water together and put everything into practice, step by step. On the first dive we'll do some basic exercises to get comfortable with manual mode and light, and on the second dive you'll be able to make your own decisions and develop a more artistic side. It's very important to know your level and experience underwater too: good buoyancy is essential, out of respect for marine life and for safety."
+      es: "Entramos juntos al agua y ponemos todo en práctica, paso a paso. En la primera inmersión practicaremos unos ejercicios básicos para soltarte con el modo manual y la luz, y en el segundo buceo podrás tomar decisiones y desarrollar una parte más artística. Es muy importante saber cuál es tu nivel y tu experiencia también debajo del agua: la flotabilidad es fundamental, por respeto a la vida marina y por seguridad."
+      fr: "Nous entrons dans l'eau ensemble et mettons tout en pratique, pas à pas. Lors de la première plongée, nous ferons quelques exercices de base pour être à l'aise avec le mode manuel et la lumière, et lors de la deuxième, vous pourrez prendre vos propres décisions et développer un côté plus artistique. Il est très important de connaître votre niveau et votre expérience sous l'eau : une bonne flottabilité est essentielle, par respect pour la vie marine et pour la sécurité."
   - carpeta: edicion
     recorte: [0, 0.19, 1, 0.71]   # de la foto vertical se usa solo la pantalla con Lightroom (x0, y0, x1, y1 en fracciones)
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_7611.jpg"
