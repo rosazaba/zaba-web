@@ -19,6 +19,8 @@ intro:
   fr: "Apprenez à faire vos propres photos sous l'eau : un cours pratique avec théorie, pratique dans l'eau et retouche, en petits groupes et à votre rythme."
 
 # Las tres partes del curso (bandas con foto, como en Tarifa)
+# igualar_color: true iguala luz y color de las tres fotos (a la usuaria no le gustó: se dejan originales)
+igualar_color: false
 partes:
   - carpeta: teoria
     foto_provisional: "1-trabajos/buceo/reportaje/_MG_3060.jpg"

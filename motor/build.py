@@ -96,9 +96,9 @@ def slug(texto):
 # ── Curso: las tres fotos (de bancos distintos, del móvil…) se igualan en luz, contraste, color y saturación
 #    para que queden acordes. El original no se toca: el ajuste se guarda en .ajustes/ (ignorada por git).
 AJUSTE_VERSION = 1
-def armonizar(src: Path, destino_rel: str, recorte=None) -> Path:
+def armonizar(src: Path, destino_rel: str, recorte=None, color=True) -> Path:
     import numpy as np
-    clave = f"v{AJUSTE_VERSION}-" + ("-".join(f"{c:g}" for c in recorte) if recorte else "x")
+    clave = f"v{AJUSTE_VERSION}-{'c' if color else 'n'}-" + ("-".join(f"{c:g}" for c in recorte) if recorte else "x")
     out = RAIZ / ".ajustes" / destino_rel / f"{src.stem}.jpg"
     marca = out.with_suffix(".txt")
     if out.exists() and out.stat().st_mtime >= src.stat().st_mtime and marca.exists() and marca.read_text() == clave:
@@ -109,6 +109,8 @@ def armonizar(src: Path, destino_rel: str, recorte=None) -> Path:
         if recorte:   # [x0, y0, x1, y1] en fracciones de la foto
             w, h = im.size
             im = im.crop((round(recorte[0] * w), round(recorte[1] * h), round(recorte[2] * w), round(recorte[3] * h)))
+        if not color:   # solo recorte: luz y color originales
+            im.save(out, quality=95); marca.write_text(clave); return out
         im = ImageOps.autocontrast(im, cutoff=0.5)
         a = np.asarray(im).astype(np.float32) / 255
         lum = (0.299 * a[..., 0] + 0.587 * a[..., 1] + 0.114 * a[..., 2]).mean()
@@ -696,7 +698,7 @@ def main():
             f = [en_orig(p_["foto_provisional"])]
             avisos.append(f"Curso foto sub: {C_CURSO}/{p_['carpeta']}/ está vacía; de momento sale una foto de buceo de ejemplo.")
         if f and not p_.get("sin_ajuste"):
-            f = [armonizar(f[0], f"curso/{p_['carpeta']}", p_.get("recorte"))]
+            f = [armonizar(f[0], f"curso/{p_['carpeta']}", p_.get("recorte"), curso.get("igualar_color", False))]
         partes_curso.append({**p_, "foto": optimizar(f[0], f"curso/{p_['carpeta']}") if f else None})
 
     # ── Viajes: una tarjeta por viaje (foto de 8-viajes/<carpeta>/ o foto_provisional) y tira de viajes anteriores ──
