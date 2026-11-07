@@ -53,13 +53,13 @@ galerias:
     portada: ""
     titulo:  { en: "Surf", es: "Surf", fr: "Surf" }
     resumen:
-      en: "Line-ups, barrels and the people who chase them."
-      es: "Picos, tubos y la gente que los persigue."
-      fr: "Les line-ups, les tubes et ceux qui les chassent."
-    texto:
-      en: "Shot from the water and from the shore, at dawn and at golden hour."
-      es: "Desde el agua y desde la orilla, al amanecer y a última hora de la tarde."
-      fr: "Depuis l'eau et depuis la plage, à l'aube et à l'heure dorée."
+      en: "Peaks, barrels and the people who surf them."
+      es: "Picos, tubos y la gente que los surfea."
+      fr: "Les pics, les tubes et ceux qui les surfent."
+    texto:   # texto de Rosa
+      en: "You can have your surf day captured from the sand, with wide shots or before you paddle out, and from the water at the best peaks, always depending on the sea conditions."
+      es: "Podrás tener tu día de surf desde la arena, con planos amplios o antes de entrar, y desde el agua en los mejores picos, siempre sujeto a las condiciones del mar."
+      fr: "Vous pourrez avoir votre journée de surf depuis le sable, en plans larges ou avant d'entrer à l'eau, et depuis l'eau sur les meilleurs pics, toujours selon les conditions de la mer."
 
   dron:
     url: "drone"         # dirección: .../work/drone/
